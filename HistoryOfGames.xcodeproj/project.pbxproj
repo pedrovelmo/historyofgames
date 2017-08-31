@@ -14,6 +14,14 @@
 		496AC8EB1F58722E00A6D490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496AC8E91F58722E00A6D490 /* Main.storyboard */; };
 		496AC8ED1F58722E00A6D490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496AC8EC1F58722E00A6D490 /* Assets.xcassets */; };
 		496AC8F01F58722E00A6D490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496AC8EE1F58722E00A6D490 /* LaunchScreen.storyboard */; };
+		496AC8FB1F58762B00A6D490 /* Epoch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FA1F58762B00A6D490 /* Epoch.swift */; };
+		496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FC1F5876C800A6D490 /* Ability.swift */; };
+		496AC8FF1F5876D900A6D490 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FE1F5876D900A6D490 /* Player.swift */; };
+		496AC9011F587C6400A6D490 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9001F587C6400A6D490 /* Floor.swift */; };
+		496AC9031F587F0C00A6D490 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9021F587F0C00A6D490 /* Obstacles.swift */; };
+		496AC9051F58808A00A6D490 /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 496AC9041F58808A00A6D490 /* photo.jpg */; };
+		496AC9071F5880F800A6D490 /* grama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 496AC9061F5880F800A6D490 /* grama.jpg */; };
+		496AC9091F58834B00A6D490 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9081F58834B00A6D490 /* Background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		496AC8EC1F58722E00A6D490 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		496AC8EF1F58722E00A6D490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		496AC8F11F58722E00A6D490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		496AC8FA1F58762B00A6D490 /* Epoch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Epoch.swift; sourceTree = "<group>"; };
+		496AC8FC1F5876C800A6D490 /* Ability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
+		496AC8FE1F5876D900A6D490 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		496AC9001F587C6400A6D490 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		496AC9021F587F0C00A6D490 /* Obstacles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
+		496AC9041F58808A00A6D490 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo.jpg; sourceTree = "<group>"; };
+		496AC9061F5880F800A6D490 /* grama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grama.jpg; sourceTree = "<group>"; };
+		496AC9081F58834B00A6D490 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +74,48 @@
 		496AC8DE1F58722E00A6D490 /* HistoryOfGames */ = {
 			isa = PBXGroup;
 			children = (
+				496AC8F91F5875C100A6D490 /* Controller */,
+				496AC8F81F5875BD00A6D490 /* View */,
+				496AC8F71F5875B900A6D490 /* Model */,
 				496AC8DF1F58722E00A6D490 /* AppDelegate.swift */,
 				496AC8E31F58722E00A6D490 /* Actions.sks */,
-				496AC8E51F58722E00A6D490 /* GameScene.swift */,
-				496AC8E71F58722E00A6D490 /* GameViewController.swift */,
-				496AC8E91F58722E00A6D490 /* Main.storyboard */,
 				496AC8EC1F58722E00A6D490 /* Assets.xcassets */,
-				496AC8EE1F58722E00A6D490 /* LaunchScreen.storyboard */,
+				496AC9041F58808A00A6D490 /* photo.jpg */,
+				496AC9061F5880F800A6D490 /* grama.jpg */,
 				496AC8F11F58722E00A6D490 /* Info.plist */,
 			);
 			path = HistoryOfGames;
+			sourceTree = "<group>";
+		};
+		496AC8F71F5875B900A6D490 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				496AC8FA1F58762B00A6D490 /* Epoch.swift */,
+				496AC8FC1F5876C800A6D490 /* Ability.swift */,
+				496AC8FE1F5876D900A6D490 /* Player.swift */,
+				496AC9001F587C6400A6D490 /* Floor.swift */,
+				496AC9021F587F0C00A6D490 /* Obstacles.swift */,
+				496AC9081F58834B00A6D490 /* Background.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		496AC8F81F5875BD00A6D490 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				496AC8EE1F58722E00A6D490 /* LaunchScreen.storyboard */,
+				496AC8E91F58722E00A6D490 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		496AC8F91F5875C100A6D490 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				496AC8E71F58722E00A6D490 /* GameViewController.swift */,
+				496AC8E51F58722E00A6D490 /* GameScene.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,8 +178,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496AC9071F5880F800A6D490 /* grama.jpg in Resources */,
 				496AC8EB1F58722E00A6D490 /* Main.storyboard in Resources */,
 				496AC8ED1F58722E00A6D490 /* Assets.xcassets in Resources */,
+				496AC9051F58808A00A6D490 /* photo.jpg in Resources */,
 				496AC8F01F58722E00A6D490 /* LaunchScreen.storyboard in Resources */,
 				496AC8E41F58722E00A6D490 /* Actions.sks in Resources */,
 			);
@@ -145,7 +195,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				496AC8E61F58722E00A6D490 /* GameScene.swift in Sources */,
+				496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */,
+				496AC9031F587F0C00A6D490 /* Obstacles.swift in Sources */,
+				496AC8FB1F58762B00A6D490 /* Epoch.swift in Sources */,
+				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
+				496AC9091F58834B00A6D490 /* Background.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
+				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

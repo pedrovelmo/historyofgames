@@ -13,7 +13,17 @@ class GameScene: SKScene {
     
 
     override func didMove(to view: SKView) {
-
+        
+        var epoch = Epoch(whatEpochIsThis: 1)
+        var floor = epoch.floors?[0]
+        floor?.position = CGPoint(x: (floor?.size.width)! / 2, y: (floor?.size.height)! / 2)
+        floor?.zPosition = 2
+        self.addChild(floor!)
+        
+        var background = epoch.background?[0]
+        background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        background?.zPosition = 1
+        self.addChild(background!)
  
            }
     
@@ -31,5 +41,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    
+       
     }
 }
