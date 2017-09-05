@@ -25,7 +25,6 @@ class Background: SKSpriteNode {
         
         let texture = SKTexture(imageNamed: imageName!)
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-        
     }
     
     required init(coder aDecoder: NSCoder) {

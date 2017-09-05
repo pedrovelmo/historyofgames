@@ -21,6 +21,8 @@ class Epoch {
     //TO-DO: Set timer when call init
     init(whatEpochIsThis: Int) {
         
+        self.whatEpochIsThis = whatEpochIsThis
+        
         switch whatEpochIsThis {
         case 1:
             background = [Background(epochId: whatEpochIsThis)]

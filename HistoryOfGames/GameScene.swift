@@ -11,21 +11,16 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-
+    var epoch = Epoch(whatEpochIsThis: 1)
+    var currentFloors: [Floor] = []
+    
     override func didMove(to view: SKView) {
-        
-        var epoch = Epoch(whatEpochIsThis: 1)
-        var floor = epoch.floors?[0]
-        floor?.position = CGPoint(x: (floor?.size.width)! / 2, y: (floor?.size.height)! / 2)
-        floor?.zPosition = 2
-        self.addChild(floor!)
         
         var background = epoch.background?[0]
         background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-        background?.zPosition = 1
+        background?.zPosition = -1
         self.addChild(background!)
- 
-           }
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -38,10 +33,45 @@ class GameScene: SKScene {
         
     }
     
+    func floorManager(){
+        
+        for f in currentFloors{
+            
+            f.position.x -= 2
+        }
+        
+        if(currentFloors.count <= 1){
+                
+            let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!)
+                
+            newFloor.position = CGPoint(x: (CGFloat(currentFloors.count) * newFloor.size.width) + newFloor.size.width / 2, y: newFloor.size.height / 2)
+            
+            newFloor.physicsBody = SKPhysicsBody(rectangleOf: newFloor.size)
+            newFloor.physicsBody?.isDynamic = false
+            newFloor.physicsBody?.categoryBitMask = 1
+            
+            print("Posição X:" + String(describing: newFloor.position.x))
+            
+            self.scene?.addChild(newFloor)
+            currentFloors.append(newFloor)
+        }
+            
+        if(currentFloors[0].position.x + currentFloors[0].size.width / 2 <= 0){
+                
+            self.removeChildren(in: [currentFloors[0]])
+            currentFloors.remove(at: 0)
+        }
+            
+        
+    }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
     
-       
+        // Cheap trick - Change this. How to instantiate epoch first.
+        
+        if(self.epoch.whatEpochIsThis != nil){
+            
+            floorManager()
+        }
     }
 }
