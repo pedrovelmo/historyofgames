@@ -18,10 +18,11 @@
 		496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FC1F5876C800A6D490 /* Ability.swift */; };
 		496AC8FF1F5876D900A6D490 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FE1F5876D900A6D490 /* Player.swift */; };
 		496AC9011F587C6400A6D490 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9001F587C6400A6D490 /* Floor.swift */; };
-		496AC9031F587F0C00A6D490 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9021F587F0C00A6D490 /* Obstacles.swift */; };
+		496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9021F587F0C00A6D490 /* Obstacle.swift */; };
 		496AC9051F58808A00A6D490 /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 496AC9041F58808A00A6D490 /* photo.jpg */; };
 		496AC9071F5880F800A6D490 /* grama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 496AC9061F5880F800A6D490 /* grama.jpg */; };
 		496AC9091F58834B00A6D490 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9081F58834B00A6D490 /* Background.swift */; };
+		C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +39,11 @@
 		496AC8FC1F5876C800A6D490 /* Ability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
 		496AC8FE1F5876D900A6D490 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		496AC9001F587C6400A6D490 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
-		496AC9021F587F0C00A6D490 /* Obstacles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
+		496AC9021F587F0C00A6D490 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		496AC9041F58808A00A6D490 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo.jpg; sourceTree = "<group>"; };
 		496AC9061F5880F800A6D490 /* grama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grama.jpg; sourceTree = "<group>"; };
 		496AC9081F58834B00A6D490 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,9 @@
 				496AC8FC1F5876C800A6D490 /* Ability.swift */,
 				496AC8FE1F5876D900A6D490 /* Player.swift */,
 				496AC9001F587C6400A6D490 /* Floor.swift */,
-				496AC9021F587F0C00A6D490 /* Obstacles.swift */,
+				496AC9021F587F0C00A6D490 /* Obstacle.swift */,
 				496AC9081F58834B00A6D490 /* Background.swift */,
+				C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -196,10 +199,11 @@
 			files = (
 				496AC8E61F58722E00A6D490 /* GameScene.swift in Sources */,
 				496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */,
-				496AC9031F587F0C00A6D490 /* Obstacles.swift in Sources */,
+				496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */,
 				496AC8FB1F58762B00A6D490 /* Epoch.swift in Sources */,
 				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
 				496AC9091F58834B00A6D490 /* Background.swift in Sources */,
+				C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
@@ -368,6 +372,7 @@
 				496AC8F61F58722E00A6D490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

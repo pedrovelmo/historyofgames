@@ -12,7 +12,9 @@ import SpriteKit
 class Floor: SKSpriteNode {
     
     init(epochId: Int) {
+        
         var imageName: String?
+        
         switch epochId {
         case 1:
             imageName = "grama.jpg"

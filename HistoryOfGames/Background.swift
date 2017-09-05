@@ -12,7 +12,9 @@ import SpriteKit
 class Background: SKSpriteNode {
     
     init(epochId: Int) {
+        
         var imageName: String?
+        
         switch epochId {
         case 1:
             imageName = "photo.jpg"
