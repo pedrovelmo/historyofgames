@@ -21,7 +21,9 @@ class Floor: SKSpriteNode {
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
-//        Floor.floorsArray.append(self)
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.categoryBitMask = 1
     }
     
     func setFloorImage(epochId: Int){

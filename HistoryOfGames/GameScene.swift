@@ -12,9 +12,12 @@ import GameplayKit
 class GameScene: SKScene {
     
     var epoch = Epoch(whatEpochIsThis: 0)
-//    var currentFloors: [Floor] = []
+    
+    var movingSpeed: CGFloat = 0
     
     override func didMove(to view: SKView) {
+        
+        self.movingSpeed = (self.scene?.size.width)! / 100
         
         var background = epoch.background?[0]
         background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -37,32 +40,30 @@ class GameScene: SKScene {
         
         for f in Floor.floorsArray{
             
-            f.position.x -= 2
+            f.position.x -= speed
         }
         
-        if(Floor.floorsArray.count <= 1){
+        // Generates new Floors
+        if(Floor.floorsArray.count <= Floor.maxFloors){
                 
             let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!)
-                
-            newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * newFloor.size.width) + newFloor.size.width / 2, y: newFloor.size.height / 2)
             
-            newFloor.physicsBody = SKPhysicsBody(rectangleOf: newFloor.size)
-            newFloor.physicsBody?.isDynamic = false
-            newFloor.physicsBody?.categoryBitMask = 1
-            
-            print("Posição X:" + String(describing: newFloor.position.x))
+            // Width + 2 to compensate for the small space beetween floors.
+            newFloor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 4)
+            newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: newFloor.size.height / 2)
             
             self.scene?.addChild(newFloor)
             Floor.floorsArray.append(newFloor)
         }
-            
-        if(Floor.floorsArray[0].position.x + Floor.floorsArray[0].size.width / 2 <= 0){
-                
-            self.removeChildren(in: [Floor.floorsArray[0]])
-            Floor.floorsArray.remove(at: 0)
-        }
-            
         
+        // Respositions floors and sets their image according to the current epoch
+        if(Floor.floorsArray[0].position.x + Floor.floorsArray[0].size.width / 2 <= 0){
+            
+           Floor.floorsArray[0].position = CGPoint(x: (CGFloat(Floor.floorsArray.count - 1) * (self.scene?.size.width)!), y: Floor.floorsArray[0].size.height / 2)
+            Floor.floorsArray[0].setFloorImage(epochId: self.epoch.whatEpochIsThis!)
+            
+            Floor.floorsArray.rearrange(from: 0, to: Floor.floorsArray.lastIndex)
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {

@@ -23,6 +23,7 @@
 		496AC9071F5880F800A6D490 /* grama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 496AC9061F5880F800A6D490 /* grama.jpg */; };
 		496AC9091F58834B00A6D490 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9081F58834B00A6D490 /* Background.swift */; };
 		C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */; };
+		C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		496AC9061F5880F800A6D490 /* grama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grama.jpg; sourceTree = "<group>"; };
 		496AC9081F58834B00A6D490 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
+		C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				496AC8F91F5875C100A6D490 /* Controller */,
 				496AC8F81F5875BD00A6D490 /* View */,
 				496AC8F71F5875B900A6D490 /* Model */,
+				C1E38CD61F5F9B6300DC1E34 /* Others */,
 				496AC8DF1F58722E00A6D490 /* AppDelegate.swift */,
 				496AC8E31F58722E00A6D490 /* Actions.sks */,
 				496AC8EC1F58722E00A6D490 /* Assets.xcassets */,
@@ -119,6 +122,14 @@
 				496AC8E51F58722E00A6D490 /* GameScene.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		C1E38CD61F5F9B6300DC1E34 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */,
+			);
+			name = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +217,7 @@
 				C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
+				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
