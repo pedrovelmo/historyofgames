@@ -11,8 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var epoch = Epoch(whatEpochIsThis: 1)
-    var currentFloors: [Floor] = []
+    var epoch = Epoch(whatEpochIsThis: 0)
+//    var currentFloors: [Floor] = []
     
     override func didMove(to view: SKView) {
         
@@ -35,16 +35,16 @@ class GameScene: SKScene {
     
     func floorManager(){
         
-        for f in currentFloors{
+        for f in Floor.floorsArray{
             
             f.position.x -= 2
         }
         
-        if(currentFloors.count <= 1){
+        if(Floor.floorsArray.count <= 1){
                 
             let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!)
                 
-            newFloor.position = CGPoint(x: (CGFloat(currentFloors.count) * newFloor.size.width) + newFloor.size.width / 2, y: newFloor.size.height / 2)
+            newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * newFloor.size.width) + newFloor.size.width / 2, y: newFloor.size.height / 2)
             
             newFloor.physicsBody = SKPhysicsBody(rectangleOf: newFloor.size)
             newFloor.physicsBody?.isDynamic = false
@@ -53,13 +53,13 @@ class GameScene: SKScene {
             print("Posição X:" + String(describing: newFloor.position.x))
             
             self.scene?.addChild(newFloor)
-            currentFloors.append(newFloor)
+            Floor.floorsArray.append(newFloor)
         }
             
-        if(currentFloors[0].position.x + currentFloors[0].size.width / 2 <= 0){
+        if(Floor.floorsArray[0].position.x + Floor.floorsArray[0].size.width / 2 <= 0){
                 
-            self.removeChildren(in: [currentFloors[0]])
-            currentFloors.remove(at: 0)
+            self.removeChildren(in: [Floor.floorsArray[0]])
+            Floor.floorsArray.remove(at: 0)
         }
             
         

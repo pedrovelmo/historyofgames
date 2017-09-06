@@ -11,26 +11,25 @@ import SpriteKit
 
 class Floor: SKSpriteNode {
     
+    static var floorsArray: [Floor] = []
+    static let maxFloors = 2
+    static let imagesForEpochs = ["grama.jpg"]
+    
     init(epochId: Int) {
         
-        var imageName: String?
+        let texture = SKTexture(imageNamed: Floor.imagesForEpochs[epochId])
         
-        switch epochId {
-        case 1:
-            imageName = "grama.jpg"
-        default:
-            break
-        }
-        
-        
-        let texture = SKTexture(imageNamed: imageName!)
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
+//        Floor.floorsArray.append(self)
+    }
+    
+    func setFloorImage(epochId: Int){
+        
+        self.texture = SKTexture(imageNamed: Floor.imagesForEpochs[epochId])
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
 }

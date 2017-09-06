@@ -16,7 +16,7 @@ class Background: SKSpriteNode {
         var imageName: String?
         
         switch epochId {
-        case 1:
+        case 0:
             imageName = "photo.jpg"
         default:
             break

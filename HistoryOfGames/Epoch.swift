@@ -24,7 +24,9 @@ class Epoch {
         self.whatEpochIsThis = whatEpochIsThis
         
         switch whatEpochIsThis {
-        case 1:
+            
+        case 0:
+            
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
 
