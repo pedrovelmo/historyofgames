@@ -21,14 +21,27 @@ class Player: SKSpriteNode {
     var state: Int
     var imageVector: [Int : UIImage] = [ : ]
     var ability : Ability?
+    var maxJumps = 2
     
     // TO-DO: Define image name pattern and update init
     init(name: String) {
         self.characterName = name
         self.state = stateTypes.running.rawValue
         let texture = SKTexture(imageNamed: name)
+        
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
+        
         setAbility()
+        
+        self.physicsBody = SKPhysicsBody(texture: texture,
+                                         size: texture.size())
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Player
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Floor
+      
+        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -43,6 +56,11 @@ class Player: SKSpriteNode {
     
     func setAbility() {
         ability = Ability(name: characterName)
-        
     }
+    
+    func jump() {
+       self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
+
+    }
+
 }

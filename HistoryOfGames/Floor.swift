@@ -23,7 +23,11 @@ class Floor: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = 1
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Floor
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Player
+        
     }
     
     func setFloorImage(epochId: Int){
