@@ -20,6 +20,7 @@ class Player: SKSpriteNode {
     var characterName: String
     var state: Int
     var imageVector: [Int : UIImage] = [ : ]
+    var texturesArray =  [SKTexture]()
     var ability : Ability?
     var maxJumps = 2
     
@@ -27,21 +28,27 @@ class Player: SKSpriteNode {
     init(name: String) {
         self.characterName = name
         self.state = stateTypes.running.rawValue
+        for i in 0...23{
+            
+            var textureName = ""
+            
+            if i<=9{
+                textureName = "running 2_00\(i)"
+            } else {
+                textureName = "running 2_0\(i)"
+            }
+            
+            texturesArray.append(SKTexture(imageNamed: textureName))
+            
+        }
+        print(texturesArray.count)
+
         let texture = SKTexture(imageNamed: name)
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
         setAbility()
-        
-        self.physicsBody = SKPhysicsBody(texture: texture,
-                                         size: texture.size())
-        self.physicsBody?.isDynamic = true
-        self.physicsBody?.affectedByGravity = true
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Floor
-      
-        
+
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -53,13 +60,38 @@ class Player: SKSpriteNode {
         
         
     }
+   // TO-DO: Define imageVector name patter and make loop to complete it, replacing textureArray
+    func animate(epoch: Int) {
+        if (state == stateTypes.running.rawValue) {
+            for element in imageVector {
+                
+                if (element.key == epoch) {
+                    
+                    
+                    
+                }
+                
+            }
+ 
+        }
+        
+    }
     
     func setAbility() {
         ability = Ability(name: characterName)
     }
     
+    func setPhysicsBody() {
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Player
+        
+    }
+    
     func jump() {
-       self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
+       self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 300))
 
     }
 

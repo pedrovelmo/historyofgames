@@ -19,10 +19,8 @@
 		496AC8FF1F5876D900A6D490 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FE1F5876D900A6D490 /* Player.swift */; };
 		496AC9011F587C6400A6D490 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9001F587C6400A6D490 /* Floor.swift */; };
 		496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9021F587F0C00A6D490 /* Obstacle.swift */; };
-		496AC9051F58808A00A6D490 /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 496AC9041F58808A00A6D490 /* photo.jpg */; };
 		496AC9071F5880F800A6D490 /* grama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 496AC9061F5880F800A6D490 /* grama.jpg */; };
 		496AC9091F58834B00A6D490 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9081F58834B00A6D490 /* Background.swift */; };
-		49847B9D1F61DD3C00D59E64 /* pennywise.png in Resources */ = {isa = PBXBuildFile; fileRef = 49847B9C1F61DD3C00D59E64 /* pennywise.png */; };
 		49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49847B9E1F61DDED00D59E64 /* PhysicsCategory.swift */; };
 		49847BA21F61EC3C00D59E64 /* CarminaBurana.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BA11F61EC3C00D59E64 /* CarminaBurana.mp3 */; };
 		49847BA41F61EC4400D59E64 /* AnotherDayOfSun.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BA31F61EC4400D59E64 /* AnotherDayOfSun.mp3 */; };
@@ -31,6 +29,7 @@
 		49847BAC1F61ED2200D59E64 /* spin_jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */; };
 		49847BAE1F61ED5400D59E64 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49847BAD1F61ED5400D59E64 /* BackgroundMusic.swift */; };
 		49847BB01F61EDDA00D59E64 /* HappyFunk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */; };
+		49847BB21F6310BB00D59E64 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB11F6310BB00D59E64 /* photo.png */; };
 		C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */; };
 		C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -50,10 +49,8 @@
 		496AC8FE1F5876D900A6D490 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		496AC9001F587C6400A6D490 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		496AC9021F587F0C00A6D490 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
-		496AC9041F58808A00A6D490 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo.jpg; sourceTree = "<group>"; };
 		496AC9061F5880F800A6D490 /* grama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grama.jpg; sourceTree = "<group>"; };
 		496AC9081F58834B00A6D490 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		49847B9C1F61DD3C00D59E64 /* pennywise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pennywise.png; sourceTree = "<group>"; };
 		49847B9E1F61DDED00D59E64 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		49847BA11F61EC3C00D59E64 /* CarminaBurana.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CarminaBurana.mp3; sourceTree = "<group>"; };
 		49847BA31F61EC4400D59E64 /* AnotherDayOfSun.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AnotherDayOfSun.mp3; sourceTree = "<group>"; };
@@ -62,6 +59,7 @@
 		49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin_jump.mp3; sourceTree = "<group>"; };
 		49847BAD1F61ED5400D59E64 /* BackgroundMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HappyFunk.mp3; sourceTree = "<group>"; };
+		49847BB11F6310BB00D59E64 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,9 +102,8 @@
 				496AC8DF1F58722E00A6D490 /* AppDelegate.swift */,
 				496AC8E31F58722E00A6D490 /* Actions.sks */,
 				496AC8EC1F58722E00A6D490 /* Assets.xcassets */,
-				49847B9C1F61DD3C00D59E64 /* pennywise.png */,
-				496AC9041F58808A00A6D490 /* photo.jpg */,
 				496AC9061F5880F800A6D490 /* grama.jpg */,
+				49847BB11F6310BB00D59E64 /* photo.png */,
 				496AC8F11F58722E00A6D490 /* Info.plist */,
 			);
 			path = HistoryOfGames;
@@ -229,13 +226,12 @@
 			files = (
 				496AC9071F5880F800A6D490 /* grama.jpg in Resources */,
 				496AC8EB1F58722E00A6D490 /* Main.storyboard in Resources */,
+				49847BB21F6310BB00D59E64 /* photo.png in Resources */,
 				496AC8ED1F58722E00A6D490 /* Assets.xcassets in Resources */,
 				49847BA21F61EC3C00D59E64 /* CarminaBurana.mp3 in Resources */,
 				49847BA41F61EC4400D59E64 /* AnotherDayOfSun.mp3 in Resources */,
 				49847BA61F61EC8B00D59E64 /* AdventureTune.mp3 in Resources */,
-				496AC9051F58808A00A6D490 /* photo.jpg in Resources */,
 				49847BAC1F61ED2200D59E64 /* spin_jump.mp3 in Resources */,
-				49847B9D1F61DD3C00D59E64 /* pennywise.png in Resources */,
 				496AC8F01F58722E00A6D490 /* LaunchScreen.storyboard in Resources */,
 				496AC8E41F58722E00A6D490 /* Actions.sks in Resources */,
 				49847BAA1F61EC9B00D59E64 /* SpaceGroove.mp3 in Resources */,

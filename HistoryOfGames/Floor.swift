@@ -21,18 +21,20 @@ class Floor: SKSpriteNode {
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Floor
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Player
+
         
     }
     
     func setFloorImage(epochId: Int){
         
         self.texture = SKTexture(imageNamed: Floor.imagesForEpochs[epochId])
+    }
+    
+    func setPhysicsBody() {
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Floor
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Player
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -13,7 +13,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var epoch = Epoch(whatEpochIsThis: 0)
     
-    var player = Player(name: "pennywise")
+    var player = Player(name: "running 2_022")
+    
     
     var movingSpeed: CGFloat = 0
     
@@ -27,7 +28,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -30)
         
-        self.movingSpeed = (self.scene?.size.width)! / 100
+        self.movingSpeed = (self.scene?.size.width)! / 10
+        
         
         var background = epoch.background?[0]
         background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -39,12 +41,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Width + 2 to compensate for the small space beetween floors.
         floor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 4)
         floor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: floor.size.height / 2)
+        floor.setPhysicsBody()
         
         self.scene?.addChild(floor)
         Floor.floorsArray.append(floor)
         
+        player.size = CGSize(width: 100, height: 100)
         player.position.x = (self.scene?.size.width)! / 50 + player.size.width / 2
-        player.position.y = floor.size.height 
+        player.position.y = floor.size.height + player.size.height / 2
+        
+        self.player.setPhysicsBody()
         self.scene?.addChild(player)
         
         // Background Music configuration
@@ -66,11 +72,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let backgroundMusic = SKAudioNode(fileNamed: fileName!)
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
+        
+        startAnimation()
 
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         jumpCounter = jumpCounter + 1
  
         if (jumpCounter <= player.maxJumps) {
@@ -82,6 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else {
             jumpCounter = 0
         }
+  
     }
 
     
@@ -105,6 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newFloor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 4)
             newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: newFloor.size.height / 2)
             
+            newFloor.setPhysicsBody()
             self.scene?.addChild(newFloor)
             Floor.floorsArray.append(newFloor)
         }
@@ -117,6 +128,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             Floor.floorsArray.rearrange(from: 0, to: Floor.floorsArray.lastIndex)
         }
+    }
+    
+    func startAnimation() {
+        player.run(SKAction.repeatForever(SKAction.animate(with: player.texturesArray, timePerFrame: 0.03)))
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
