@@ -24,6 +24,7 @@ class Player: SKSpriteNode {
     var ability : Ability?
     var maxJumps = 2
     
+    
     // TO-DO: Define image name pattern and update init
     init(name: String) {
         self.characterName = name
@@ -59,7 +60,10 @@ class Player: SKSpriteNode {
     func stateManager() {
         
         
+        
+        
     }
+    
    // TO-DO: Define imageVector name patter and make loop to complete it, replacing textureArray
     func animate(epoch: Int) {
         if (state == stateTypes.running.rawValue) {
@@ -87,12 +91,24 @@ class Player: SKSpriteNode {
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
+//        self.physicsBody?.collisionBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Floor
+//        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle
+       
+
         
     }
     
     func jump() {
-       self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 300))
+       self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
 
     }
+    
+    func startAnimation() {
+        self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.03)))
+        
+    }
+    
+
+
 
 }

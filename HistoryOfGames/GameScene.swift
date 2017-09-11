@@ -21,6 +21,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var backgroundSound : BackgroundMusic = .CarminaBurana
     
+    var soundPlayed: ExplosionSound = .SuperSlapSound
+    
      let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     override func didMove(to view: SKView) {
@@ -28,7 +30,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -30)
         
         self.movingSpeed = (self.scene?.size.width)! / 10
-        
         
         var background = epoch.background?[0]
         background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -45,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scene?.addChild(floor)
         Floor.floorsArray.append(floor)
         
-        player.size = CGSize(width: 100, height: 100)
+        player.size = CGSize(width: 50, height: 50)
         player.position.x = (self.scene?.size.width)! / 50 + player.size.width / 2
         player.position.y = floor.size.height + player.size.height / 2
         
@@ -74,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setCeiling()
         
-        startAnimation()
+        player.startAnimation()
         startSpawningObstacles()
     }
     
@@ -88,11 +89,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.run(SKAction.playSoundFileNamed("spin_jump.mp3", waitForCompletion: false))
             
         }
-        
-        else {
-            jumpCounter = 0
-        }
-  
     }
 
     
@@ -141,12 +137,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let newObstacle = Obstacle(name: (self.epoch.obstacles?[0])!)
             
+            
             let randomPosition = arc4random_uniform(UInt32(UIScreen.main.bounds.height))
             
             newObstacle.position = CGPoint(x: UIScreen.main.bounds.width + 20, y: CGFloat(randomPosition))
             
             self.scene?.addChild(newObstacle)
             Obstacle.obstaclesArray.append(newObstacle)
+            
+            print("BitMask do Obstacle:", newObstacle.physicsBody?.categoryBitMask)
             
             newObstacle.pattern?.startMoving()
         })
@@ -168,10 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func startAnimation() {
-        player.run(SKAction.repeatForever(SKAction.animate(with: player.texturesArray, timePerFrame: 0.03)))
-        
-    }
+    
     
     func setCeiling(){
         
@@ -191,5 +187,60 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
             floorManager()
             obstacleManager()
+    }
+    
+    // Function to configure contact between bodies
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("Body A", contact.bodyA.categoryBitMask)
+        print("Body B",contact.bodyB.categoryBitMask)
+        // If else statement checks if the bodies in touch are ball and enemy and respond accordingly
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Floor && contact.bodyB.categoryBitMask == PhysicsCategory.Player   {
+            jumpCounter = 0
+        }
+            
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Floor   {
+            jumpCounter = 0
+        }
+        
+        
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
+            
+            explosion((contact.bodyB.node?.position)!)
+            contact.bodyB.node?.removeFromParent()
+            contact.bodyA.node?.removeFromParent()
+        }
+        
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle {
+            
+            explosion((contact.bodyB.node?.position)!)
+            contact.bodyB.node?.removeFromParent()
+            contact.bodyA.node?.removeFromParent()
+        }
+    }
+    
+    
+    // Function to configure the explosion effect
+    func explosion(_ pos: CGPoint) {
+        let emitterNode = SKEmitterNode(fileNamed: "ExplosionParticles.sks")
+        emitterNode?.particlePosition = pos
+        emitterNode?.zPosition = 2
+        
+        self.addChild(emitterNode!)
+        self.run(SKAction.wait(forDuration: 0.1), completion: {
+            emitterNode?.removeFromParent()
+        })
+        
+        // Configuration of the explosion sound
+        var fileName: String?
+        
+        switch(soundPlayed) {
+        case .AwesomeExplosion:
+            fileName = "AwesomeExplosion"
+        case .WilhemScream:
+            fileName = "WilhemScream"
+        case .SuperSlapSound:
+            fileName = "SuperSlapSound"
+        }
+        self.run(SKAction.playSoundFileNamed(fileName!, waitForCompletion: false))
     }
 }

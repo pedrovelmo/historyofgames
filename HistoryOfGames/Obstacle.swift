@@ -35,7 +35,9 @@ class Obstacle: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
-        
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Player | PhysicsCategory.Floor
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player 
+
         setPattern()
     }
     
@@ -43,6 +45,7 @@ class Obstacle: SKSpriteNode {
     func stateManager(){
         
     }
+    
     
     func setPattern(){
         

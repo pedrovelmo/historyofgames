@@ -35,6 +35,7 @@ class Floor: SKSpriteNode {
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Floor
         self.physicsBody?.collisionBitMask = PhysicsCategory.Player
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
     }
     
     required init(coder aDecoder: NSCoder) {
