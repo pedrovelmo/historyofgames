@@ -17,6 +17,8 @@ enum animationState: Int{
 class Obstacle: SKSpriteNode {
     
     // MUDAR NA MODELAGEM O NAME
+    static var obstaclesArray: [Obstacle] = []
+    
     var obstacleName: String
     var pattern: Pattern?
     var state: Int
@@ -27,9 +29,12 @@ class Obstacle: SKSpriteNode {
         self.obstacleName = name
         self.state = animationState.standard.rawValue
         
-        let texture = SKTexture(imageNamed: self.obstacleName)
+        let texture = SKTexture(imageNamed: self.obstacleName + ".jpg")
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
         
         setPattern()
     }
@@ -37,12 +42,11 @@ class Obstacle: SKSpriteNode {
     //TO-DO: COmplete function
     func stateManager(){
         
-        
     }
     
     func setPattern(){
         
-        self.pattern = Pattern(name: self.obstacleName)
+        self.pattern = Pattern(name: self.obstacleName, obstacle: self)
     }
     
     required init?(coder aDecoder: NSCoder) {

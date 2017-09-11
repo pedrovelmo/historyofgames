@@ -17,6 +17,7 @@ class Epoch {
     var timeInEpoch: Timer?
     var floors: [Floor]?
     var whatEpochIsThis: Int?
+    var obstacles: [String]?
     
     //TO-DO: Set timer when call init
     init(whatEpochIsThis: Int) {
@@ -29,6 +30,7 @@ class Epoch {
             
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
+            obstacles = ["pongBall"]
 
         default: break
             

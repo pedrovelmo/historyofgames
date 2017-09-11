@@ -15,7 +15,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player = Player(name: "running 2_022")
     
-    
     var movingSpeed: CGFloat = 0
     
     var jumpCounter = 0
@@ -73,8 +72,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
         
+        setCeiling()
+        
         startAnimation()
-
+        startSpawningObstacles()
     }
     
     
@@ -130,14 +131,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func startSpawningObstacles(){
+        
+        let wait = SKAction.wait(forDuration: 4)
+        
+        let spawnEnemy = SKAction.run({
+            
+            // TO-DO: Generate random obstacle
+            
+            let newObstacle = Obstacle(name: (self.epoch.obstacles?[0])!)
+            
+            let randomPosition = arc4random_uniform(UInt32(UIScreen.main.bounds.height))
+            
+            newObstacle.position = CGPoint(x: UIScreen.main.bounds.width + 20, y: CGFloat(randomPosition))
+            
+            self.scene?.addChild(newObstacle)
+            Obstacle.obstaclesArray.append(newObstacle)
+            
+            newObstacle.pattern?.startMoving()
+        })
+        
+        let waitAndSpawnSequence = SKAction.sequence([wait, spawnEnemy])
+        
+        run(SKAction.repeatForever(waitAndSpawnSequence), withKey: "spawningEnemy")
+    }
+    
+    func obstacleManager(){
+        
+        for o in Obstacle.obstaclesArray{
+            
+            if(o.position.x + o.size.width / 2 <= 0){
+                
+                scene?.removeChildren(in: [o])
+                Obstacle.obstaclesArray.remove(at: Obstacle.obstaclesArray.index(of: o)!)
+            }
+        }
+    }
+    
     func startAnimation() {
         player.run(SKAction.repeatForever(SKAction.animate(with: player.texturesArray, timePerFrame: 0.03)))
         
     }
     
+    func setCeiling(){
+        
+        let sceneSize = self.scene?.size
+        
+        let ceiling = SKSpriteNode(color: UIColor.blue, size: CGSize(width: UIScreen.main.bounds.width, height: 1.0))
+        
+        ceiling.position = CGPoint(x: 0 + ceiling.size.width / 2, y: (sceneSize?.height)!)
+        ceiling.physicsBody = SKPhysicsBody(rectangleOf: ceiling.size)
+        ceiling.physicsBody?.isDynamic = false
+        ceiling.physicsBody?.categoryBitMask = PhysicsCategory.Floor
+        
+        self.scene?.addChild(ceiling)
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         
             floorManager()
-
+            obstacleManager()
     }
 }
