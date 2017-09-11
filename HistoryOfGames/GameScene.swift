@@ -202,17 +202,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             jumpCounter = 0
         }
         
-        
+//        if contact.bodyB.categoryBitMask == PhysicsCategory.Player || contact.bodyA.categoryBitMask == PhysicsCategory.Player {
+//            print("Carinha Body A", contact.bodyA.categoryBitMask, "Body B",contact.bodyB.categoryBitMask)
+//        }
+//        
         if contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
             
             explosion((contact.bodyB.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
+     
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle {
             
-            explosion((contact.bodyB.node?.position)!)
+            explosion((contact.bodyA.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
         }

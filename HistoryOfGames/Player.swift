@@ -91,6 +91,8 @@ class Player: SKSpriteNode {
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
+        
 //        self.physicsBody?.collisionBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Floor
 //        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle
        

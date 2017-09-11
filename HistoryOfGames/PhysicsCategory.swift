@@ -12,7 +12,7 @@ import Foundation
 public enum PhysicsCategory {
     static let None     : UInt32 = 0
     static let Player   : UInt32 = 0b010
-    static let Obstacle : UInt32 = 0b011
+    static let Obstacle : UInt32 = 0b001
     static let Floor    : UInt32 = 0b100
 
 }

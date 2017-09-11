@@ -33,7 +33,7 @@ class Pattern{
                 obstacle.physicsBody?.friction = 0.0
                 obstacle.physicsBody?.restitution = 1.0
                 obstacle.physicsBody?.allowsRotation = false
-                obstacle.physicsBody?.categoryBitMask = 2
+                obstacle.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
                 obstacle.physicsBody?.angularDamping = 0.0
                 obstacle.physicsBody?.linearDamping = 0.0
             
