@@ -27,13 +27,12 @@ class Pattern{
             case "pongBall":
                 
                 // TO-DO: Rearrange this size setting
-                obstacle.size = CGSize(width: 20, height: 20)
+                obstacle.size = CGSize(width: 10, height: 10)
                 
                 obstacle.physicsBody?.affectedByGravity = false
                 obstacle.physicsBody?.friction = 0.0
                 obstacle.physicsBody?.restitution = 1.0
                 obstacle.physicsBody?.allowsRotation = false
-                obstacle.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
                 obstacle.physicsBody?.angularDamping = 0.0
                 obstacle.physicsBody?.linearDamping = 0.0
             

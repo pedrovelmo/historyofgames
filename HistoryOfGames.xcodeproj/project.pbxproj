@@ -27,14 +27,14 @@
 		49847BA61F61EC8B00D59E64 /* AdventureTune.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BA51F61EC8B00D59E64 /* AdventureTune.mp3 */; };
 		49847BAA1F61EC9B00D59E64 /* SpaceGroove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BA91F61EC9B00D59E64 /* SpaceGroove.mp3 */; };
 		49847BAC1F61ED2200D59E64 /* spin_jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */; };
-		49847BAE1F61ED5400D59E64 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49847BAD1F61ED5400D59E64 /* BackgroundMusic.swift */; };
 		49847BB01F61EDDA00D59E64 /* HappyFunk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */; };
 		49847BB21F6310BB00D59E64 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB11F6310BB00D59E64 /* photo.png */; };
-		49847BB61F682DF700D59E64 /* SuperSlapSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB51F682DF700D59E64 /* SuperSlapSound.mp3 */; };
 		49847BBA1F682E1200D59E64 /* AwesomeExplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */; };
 		49847BBC1F68310700D59E64 /* WilhemScream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BBB1F68310700D59E64 /* WilhemScream.wav */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
-		C1D07D361F67146F000B768F /* ExplosionSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D351F67146F000B768F /* ExplosionSound.swift */; };
+		C1D07D381F685407000B768F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D371F685407000B768F /* AudioManager.swift */; };
+		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
+		C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D3B1F686991000B768F /* CoinManager.swift */; };
 		C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */; };
 		C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -62,14 +62,14 @@
 		49847BA51F61EC8B00D59E64 /* AdventureTune.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AdventureTune.mp3; sourceTree = "<group>"; };
 		49847BA91F61EC9B00D59E64 /* SpaceGroove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SpaceGroove.mp3; sourceTree = "<group>"; };
 		49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin_jump.mp3; sourceTree = "<group>"; };
-		49847BAD1F61ED5400D59E64 /* BackgroundMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HappyFunk.mp3; sourceTree = "<group>"; };
 		49847BB11F6310BB00D59E64 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
-		49847BB51F682DF700D59E64 /* SuperSlapSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SuperSlapSound.mp3; path = "../../../../Downloads/Shoot Them Up!.playgroundbook/Contents/Resources/SuperSlapSound.mp3"; sourceTree = "<group>"; };
 		49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AwesomeExplosion.wav; sourceTree = "<group>"; };
 		49847BBB1F68310700D59E64 /* WilhemScream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WilhemScream.wav; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
-		C1D07D351F67146F000B768F /* ExplosionSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosionSound.swift; sourceTree = "<group>"; };
+		C1D07D371F685407000B768F /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		C1D07D3B1F686991000B768F /* CoinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
 		C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,8 +131,9 @@
 				C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */,
 				C1D07D331F6713C2000B768F /* ExplosionParticles.sks */,
 				49847B9E1F61DDED00D59E64 /* PhysicsCategory.swift */,
-				C1D07D351F67146F000B768F /* ExplosionSound.swift */,
-				49847BAD1F61ED5400D59E64 /* BackgroundMusic.swift */,
+				C1D07D371F685407000B768F /* AudioManager.swift */,
+				C1D07D391F686926000B768F /* Coin.swift */,
+				C1D07D3B1F686991000B768F /* CoinManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -165,7 +166,6 @@
 				49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */,
 				49847BBB1F68310700D59E64 /* WilhemScream.wav */,
 				49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */,
-				49847BB51F682DF700D59E64 /* SuperSlapSound.mp3 */,
 				49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */,
 			);
 			name = SoundFiles;
@@ -211,7 +211,7 @@
 				TargetAttributes = {
 					496AC8DB1F58722E00A6D490 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8U8G8793TY;
+						DevelopmentTeam = T5T826RV5P;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -239,7 +239,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49847BB61F682DF700D59E64 /* SuperSlapSound.mp3 in Resources */,
 				496AC9071F5880F800A6D490 /* grama.jpg in Resources */,
 				49847BBA1F682E1200D59E64 /* AwesomeExplosion.wav in Resources */,
 				C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */,
@@ -268,17 +267,18 @@
 				496AC8E61F58722E00A6D490 /* GameScene.swift in Sources */,
 				496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */,
 				496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */,
+				C1D07D381F685407000B768F /* AudioManager.swift in Sources */,
 				496AC8FB1F58762B00A6D490 /* Epoch.swift in Sources */,
 				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
+				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
 				496AC9091F58834B00A6D490 /* Background.swift in Sources */,
 				C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */,
-				C1D07D361F67146F000B768F /* ExplosionSound.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */,
 				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
-				49847BAE1F61ED5400D59E64 /* BackgroundMusic.swift in Sources */,
+				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8U8G8793TY;
+				DEVELOPMENT_TEAM = T5T826RV5P;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -417,7 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8U8G8793TY;
+				DEVELOPMENT_TEAM = T5T826RV5P;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

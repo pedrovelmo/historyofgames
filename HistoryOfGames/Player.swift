@@ -88,7 +88,7 @@ class Player: SKSpriteNode {
     func setPhysicsBody() {
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
         self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
@@ -105,16 +105,27 @@ class Player: SKSpriteNode {
 
     }
     
-    func jumpAction() {
+    func jumpAction(floorPosition: CGFloat, jumpCount: Int) {
+        
+        if (jumpCount <= self.maxJumps) {
         // move up 20
-        let jumpUpAction = SKAction.moveBy(x: 0, y:200, duration:0.3)
+//        let jumpUpAction = SKAction.moveBy(x: 0, y:200, duration:0.3)
+        let jumpUpAction = SKAction.moveTo(y: self.position.y + 100, duration: 0.3)
         // move down 20
-       // let jumpDownAction = SKAction.moveBy(x: 0, y:-20, duration:0.2)
+        let jumpDownAction = SKAction.moveTo(y: floorPosition + self.size.height / 2, duration:0.3)
         // sequence of move yup then down
-        //let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
+        let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
         
         // make player run sequence
-        self.run(jumpUpAction)
+        self.run(jumpSequence)
+        self.run(AudioManager.sharedInstance.jumpSound)
+            
+        }
+            
+        else {
+            
+            return
+        }
 
         
     }

@@ -18,16 +18,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var movingSpeed: CGFloat = 0
     
     var jumpCounter = 0
-    
+
     var backgroundSound : BackgroundMusic = .CarminaBurana
     
-    var soundPlayed: ExplosionSound = .SuperSlapSound
+    var soundPlayed: ExplosionSound = .WilhemScream
     
      let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
+        CoinManager.sharedInstance.scene = self
         
         self.movingSpeed = (self.scene?.size.width)! / 10
         
@@ -47,31 +48,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Floor.floorsArray.append(floor)
         
         player.size = CGSize(width: 50, height: 50)
-        player.position.x = (self.scene?.size.width)! / 50 + player.size.width / 2
+        player.position.x = (self.scene?.size.width)! / 10 + player.size.width / 2
         player.position.y = floor.size.height + player.size.height / 2
         
         self.player.setPhysicsBody()
         self.scene?.addChild(player)
         
         // Background Music configuration
-        var fileName: String?
         
-        switch(backgroundSound) {
-        case .HappyFunk:
-            fileName = "HappyFunk.mp3"
-            
-        case .CarminaBurana:
-            fileName = "CarminaBurana.mp3"
-            
-        case .SpaceGroove:
-            fileName = "SpaceGroove.mp3"
-            
-        case .AdventureTune:
-            fileName = "AdventureTune.mp3"
-        }
-        let backgroundMusic = SKAudioNode(fileNamed: fileName!)
-        backgroundMusic.autoplayLooped = true
-        addChild(backgroundMusic)
+        AudioManager.sharedInstance.playBackgroundMusic()
         
         setCeiling()
         
@@ -84,17 +69,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         jumpCounter = jumpCounter + 1
         
- 
-        if (jumpCounter < player.maxJumps) {
-            player.jumpAction()
-            self.run(SKAction.playSoundFileNamed("spin_jump.mp3", waitForCompletion: false))
-            
-        }
+        player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
+           
         
-        else {
-            
-            jumpCounter = 0
-        }
         print("jumpCounter", jumpCounter)
     }
 
@@ -237,16 +214,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         // Configuration of the explosion sound
-        var fileName: String?
         
-        switch(soundPlayed) {
-        case .AwesomeExplosion:
-            fileName = "AwesomeExplosion"
-        case .WilhemScream:
-            fileName = "WilhemScream"
-        case .SuperSlapSound:
-            fileName = "SuperSlapSound"
-        }
-        self.run(SKAction.playSoundFileNamed(fileName!, waitForCompletion: false))
+        self.run(AudioManager.sharedInstance.explosionSound)
     }
 }
