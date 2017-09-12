@@ -105,6 +105,20 @@ class Player: SKSpriteNode {
 
     }
     
+    func jumpAction() {
+        // move up 20
+        let jumpUpAction = SKAction.moveBy(x: 0, y:200, duration:0.3)
+        // move down 20
+       // let jumpDownAction = SKAction.moveBy(x: 0, y:-20, duration:0.2)
+        // sequence of move yup then down
+        //let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
+        
+        // make player run sequence
+        self.run(jumpUpAction)
+
+        
+    }
+    
     func startAnimation() {
         self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.03)))
         

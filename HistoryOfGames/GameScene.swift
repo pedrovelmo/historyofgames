@@ -27,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: -30)
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         
         self.movingSpeed = (self.scene?.size.width)! / 10
         
@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Add first floor
         var floor = Floor(epochId: self.epoch.whatEpochIsThis!)
         // Width + 2 to compensate for the small space beetween floors.
-        floor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 4)
+        floor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 8)
         floor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: floor.size.height / 2)
         floor.setPhysicsBody()
         
@@ -83,12 +83,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         jumpCounter = jumpCounter + 1
+        
  
-        if (jumpCounter <= player.maxJumps) {
-        player.jump()
-        self.run(SKAction.playSoundFileNamed("spin_jump.mp3", waitForCompletion: false))
+        if (jumpCounter < player.maxJumps) {
+            player.jumpAction()
+            self.run(SKAction.playSoundFileNamed("spin_jump.mp3", waitForCompletion: false))
             
         }
+        
+        else {
+            
+            jumpCounter = 0
+        }
+        print("jumpCounter", jumpCounter)
     }
 
     
@@ -109,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!)
             
             // Width + 2 to compensate for the small space beetween floors.
-            newFloor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 4)
+            newFloor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 8)
             newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: newFloor.size.height / 2)
             
             newFloor.setPhysicsBody()
@@ -145,7 +152,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.scene?.addChild(newObstacle)
             Obstacle.obstaclesArray.append(newObstacle)
             
-            print("BitMask do Obstacle:", newObstacle.physicsBody?.categoryBitMask)
             
             newObstacle.pattern?.startMoving()
         })
@@ -191,8 +197,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Function to configure contact between bodies
     func didBegin(_ contact: SKPhysicsContact) {
-        print("Body A", contact.bodyA.categoryBitMask)
-        print("Body B",contact.bodyB.categoryBitMask)
+
         // If else statement checks if the bodies in touch are ball and enemy and respond accordingly
         if contact.bodyA.categoryBitMask == PhysicsCategory.Floor && contact.bodyB.categoryBitMask == PhysicsCategory.Player   {
             jumpCounter = 0
@@ -202,10 +207,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             jumpCounter = 0
         }
         
-//        if contact.bodyB.categoryBitMask == PhysicsCategory.Player || contact.bodyA.categoryBitMask == PhysicsCategory.Player {
-//            print("Carinha Body A", contact.bodyA.categoryBitMask, "Body B",contact.bodyB.categoryBitMask)
-//        }
-//        
         if contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
             
             explosion((contact.bodyB.node?.position)!)
@@ -220,6 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
         }
+        print("jumpCounter", jumpCounter)
     }
     
     

@@ -30,6 +30,9 @@
 		49847BAE1F61ED5400D59E64 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49847BAD1F61ED5400D59E64 /* BackgroundMusic.swift */; };
 		49847BB01F61EDDA00D59E64 /* HappyFunk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */; };
 		49847BB21F6310BB00D59E64 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB11F6310BB00D59E64 /* photo.png */; };
+		49847BB61F682DF700D59E64 /* SuperSlapSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB51F682DF700D59E64 /* SuperSlapSound.mp3 */; };
+		49847BBA1F682E1200D59E64 /* AwesomeExplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */; };
+		49847BBC1F68310700D59E64 /* WilhemScream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BBB1F68310700D59E64 /* WilhemScream.wav */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
 		C1D07D361F67146F000B768F /* ExplosionSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D351F67146F000B768F /* ExplosionSound.swift */; };
 		C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */; };
@@ -62,6 +65,9 @@
 		49847BAD1F61ED5400D59E64 /* BackgroundMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HappyFunk.mp3; sourceTree = "<group>"; };
 		49847BB11F6310BB00D59E64 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		49847BB51F682DF700D59E64 /* SuperSlapSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SuperSlapSound.mp3; path = "../../../../Downloads/Shoot Them Up!.playgroundbook/Contents/Resources/SuperSlapSound.mp3"; sourceTree = "<group>"; };
+		49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AwesomeExplosion.wav; sourceTree = "<group>"; };
+		49847BBB1F68310700D59E64 /* WilhemScream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WilhemScream.wav; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
 		C1D07D351F67146F000B768F /* ExplosionSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosionSound.swift; sourceTree = "<group>"; };
 		C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
@@ -157,6 +163,9 @@
 				49847BA51F61EC8B00D59E64 /* AdventureTune.mp3 */,
 				49847BA91F61EC9B00D59E64 /* SpaceGroove.mp3 */,
 				49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */,
+				49847BBB1F68310700D59E64 /* WilhemScream.wav */,
+				49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */,
+				49847BB51F682DF700D59E64 /* SuperSlapSound.mp3 */,
 				49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */,
 			);
 			name = SoundFiles;
@@ -230,7 +239,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49847BB61F682DF700D59E64 /* SuperSlapSound.mp3 in Resources */,
 				496AC9071F5880F800A6D490 /* grama.jpg in Resources */,
+				49847BBA1F682E1200D59E64 /* AwesomeExplosion.wav in Resources */,
 				C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */,
 				496AC8EB1F58722E00A6D490 /* Main.storyboard in Resources */,
 				49847BB21F6310BB00D59E64 /* photo.png in Resources */,
@@ -241,6 +252,7 @@
 				49847BAC1F61ED2200D59E64 /* spin_jump.mp3 in Resources */,
 				496AC8F01F58722E00A6D490 /* LaunchScreen.storyboard in Resources */,
 				496AC8E41F58722E00A6D490 /* Actions.sks in Resources */,
+				49847BBC1F68310700D59E64 /* WilhemScream.wav in Resources */,
 				49847BAA1F61EC9B00D59E64 /* SpaceGroove.mp3 in Resources */,
 				49847BB01F61EDDA00D59E64 /* HappyFunk.mp3 in Resources */,
 			);
