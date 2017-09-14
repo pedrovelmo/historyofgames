@@ -31,6 +31,8 @@
 		49847BB21F6310BB00D59E64 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB11F6310BB00D59E64 /* photo.png */; };
 		49847BBA1F682E1200D59E64 /* AwesomeExplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */; };
 		49847BBC1F68310700D59E64 /* WilhemScream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BBB1F68310700D59E64 /* WilhemScream.wav */; };
+		49AC07F51F6B05B6006E0F41 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AC07F41F6B05B6006E0F41 /* coin.png */; };
+		49FC59AC1F6B0893005680A1 /* MatrixRevolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FC59AB1F6B0893005680A1 /* MatrixRevolutions.swift */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
 		C1D07D381F685407000B768F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D371F685407000B768F /* AudioManager.swift */; };
 		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
@@ -66,6 +68,8 @@
 		49847BB11F6310BB00D59E64 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AwesomeExplosion.wav; sourceTree = "<group>"; };
 		49847BBB1F68310700D59E64 /* WilhemScream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WilhemScream.wav; sourceTree = "<group>"; };
+		49AC07F41F6B05B6006E0F41 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
+		49FC59AB1F6B0893005680A1 /* MatrixRevolutions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixRevolutions.swift; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
 		C1D07D371F685407000B768F /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 				496AC8DF1F58722E00A6D490 /* AppDelegate.swift */,
 				496AC8E31F58722E00A6D490 /* Actions.sks */,
 				496AC8EC1F58722E00A6D490 /* Assets.xcassets */,
+				49AC07F41F6B05B6006E0F41 /* coin.png */,
 				496AC9061F5880F800A6D490 /* grama.jpg */,
 				49847BB11F6310BB00D59E64 /* photo.png */,
 				496AC8F11F58722E00A6D490 /* Info.plist */,
@@ -134,6 +139,7 @@
 				C1D07D371F685407000B768F /* AudioManager.swift */,
 				C1D07D391F686926000B768F /* Coin.swift */,
 				C1D07D3B1F686991000B768F /* CoinManager.swift */,
+				49FC59AB1F6B0893005680A1 /* MatrixRevolutions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 				49847BBA1F682E1200D59E64 /* AwesomeExplosion.wav in Resources */,
 				C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */,
 				496AC8EB1F58722E00A6D490 /* Main.storyboard in Resources */,
+				49AC07F51F6B05B6006E0F41 /* coin.png in Resources */,
 				49847BB21F6310BB00D59E64 /* photo.png in Resources */,
 				496AC8ED1F58722E00A6D490 /* Assets.xcassets in Resources */,
 				49847BA21F61EC3C00D59E64 /* CarminaBurana.mp3 in Resources */,
@@ -265,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				496AC8E61F58722E00A6D490 /* GameScene.swift in Sources */,
+				49FC59AC1F6B0893005680A1 /* MatrixRevolutions.swift in Sources */,
 				496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */,
 				496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */,
 				C1D07D381F685407000B768F /* AudioManager.swift in Sources */,

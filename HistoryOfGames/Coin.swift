@@ -11,5 +11,15 @@ import SpriteKit
 
 class Coin: SKSpriteNode{
     
+    init() {
+        
+        
+        let texture = SKTexture(imageNamed: "coin.png")
+        super.init(texture: texture, color: UIColor.clear, size: texture.size())
+    }
     
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }

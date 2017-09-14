@@ -13,6 +13,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var epoch = Epoch(whatEpochIsThis: 0)
     
+    var coinVector: [Coin] = []
+    
     var player = Player(name: "running 2_022")
     
     var movingSpeed: CGFloat = 0
@@ -32,13 +34,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.movingSpeed = (self.scene?.size.width)! / 10
         
-        var background = epoch.background?[0]
+        let background = epoch.background?[0]
         background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         background?.zPosition = -1
         self.addChild(background!)
         
         // Add first floor
-        var floor = Floor(epochId: self.epoch.whatEpochIsThis!)
+        let floor = Floor(epochId: self.epoch.whatEpochIsThis!)
         // Width + 2 to compensate for the small space beetween floors.
         floor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 8)
         floor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: floor.size.height / 2)
@@ -62,6 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player.startAnimation()
         startSpawningObstacles()
+        coinManager()
     }
     
     
@@ -150,6 +153,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func coinManager() {
+        
+        
+       coinVector = CoinManager.sharedInstance.instantiateCoinPattern(pattern: 0, scene: self)
+            
+        for coin in coinVector {
+                self.addChild(coin)
+                
+            }
+  
+    
+        
+    }
+    
+    
     
     
     func setCeiling(){
@@ -170,6 +188,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
             floorManager()
             obstacleManager()
+        for coin in coinVector {
+            coin.position.x -= speed
+        }
+        
+        
     }
     
     // Function to configure contact between bodies
