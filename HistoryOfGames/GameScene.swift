@@ -154,17 +154,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func coinManager() {
-        
-        
        coinVector = CoinManager.sharedInstance.instantiateCoinPattern(pattern: 0, scene: self)
             
         for coin in coinVector {
                 self.addChild(coin)
-                
+                coin.startAnimation()
             }
-  
-    
-        
     }
     
     func setCeiling(){
@@ -187,7 +182,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             obstacleManager()
         for coin in coinVector {
             coin.position.x -= speed
+            if coin.position.x + coin.size.width / 2 <= 0 {
+                coin.removeFromParent()
+                
+            }
         }
+        
+        
+        
+
         
         
     }
@@ -218,7 +221,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
         }
-        print("jumpCounter", jumpCounter)
+        //print("jumpCounter", jumpCounter)
+        
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
+            
+            contact.bodyB.node?.removeFromParent()
+            let sound = SKAudioNode(fileNamed: "pickle_rick.mp3")
+            sound.autoplayLooped = false
+            addChild(sound)
+
+        }
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
+            
+            contact.bodyA.node?.removeFromParent()
+            let sound = SKAudioNode(fileNamed: "pickle_rick.mp3")
+            sound.autoplayLooped = false
+            addChild(sound)
+            
+            
+            
+        }
     }
     
     

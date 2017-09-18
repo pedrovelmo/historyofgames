@@ -11,7 +11,7 @@ import SpriteKit
 
 public enum CoinPatterns: Int{
     
-    case threeByFour = 0
+    case threeBySeven = 0
 }
 
 let coinManager = CoinManager()
@@ -29,19 +29,19 @@ class CoinManager{
         let sceneWidth = scene.size.width
         let sceneHeight = scene.size.height
         var coinVector: [Coin] = []
+        let spaceBetweenCoins: CGFloat = 5
         
         switch pattern{
-            case CoinPatterns.threeByFour.rawValue:
-                //let matrix = Matrix(rows: 3, columns: 4)
+            case CoinPatterns.threeBySeven.rawValue:
                
                 for row in 0...2 {
-                    for col in 0...3 {
+                    for col in 0...6 {
                         
                         let coin = Coin()
-                        coin.position.x = sceneWidth + coin.size.width * CGFloat(col)
-                        //coin.position.x = coin.position.x + coin.size.height * CGFloat(col) + coin.size.width / 2
-                        coin.position.y = sceneHeight / 2 + coin.size.height * CGFloat(row)
-                        //coin.position.y = coin.position.y + coin.size.height * CGFloat(col) + coin.size.height / 2
+ 
+                        coin.size = CGSize(width: scene.size.height * 0.06, height: scene.size.height * 0.06)
+                        coin.position.x = sceneWidth + (coin.size.width + spaceBetweenCoins) * CGFloat(col)
+                        coin.position.y = sceneHeight / 2 + (coin.size.height + spaceBetweenCoins) * CGFloat(row)
                         coinVector.append(coin)
                         
                     }
