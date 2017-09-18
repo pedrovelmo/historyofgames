@@ -167,9 +167,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
-    
-    
     func setCeiling(){
         
         let sceneSize = self.scene?.size

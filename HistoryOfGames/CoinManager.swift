@@ -24,12 +24,10 @@ class CoinManager{
     
     var scene: SKScene?
     
-    
     func instantiateCoinPattern(pattern: Int, scene: SKScene) -> [Coin] {
         
-     
-        
         let sceneWidth = scene.size.width
+        let sceneHeight = scene.size.height
         var coinVector: [Coin] = []
         
         switch pattern{
@@ -40,20 +38,19 @@ class CoinManager{
                     for col in 0...3 {
                         
                         let coin = Coin()
-                        coin.position.x = sceneWidth + coin.size.width * CGFloat(row)
-                        coin.position.x = coin.position.x + coin.size.height * CGFloat(col) + coin.size.width / 2
-                        coin.position.y = coin.size.width * CGFloat(row)
-                        coin.position.y = coin.position.y + coin.size.height * CGFloat(col) + coin.size.height / 2
+                        coin.position.x = sceneWidth + coin.size.width * CGFloat(col)
+                        //coin.position.x = coin.position.x + coin.size.height * CGFloat(col) + coin.size.width / 2
+                        coin.position.y = sceneHeight / 2 + coin.size.height * CGFloat(row)
+                        //coin.position.y = coin.position.y + coin.size.height * CGFloat(col) + coin.size.height / 2
                         coinVector.append(coin)
-                        
                         
                     }
             }
-        
             
         default:
             break
         }
+        
      return coinVector
     }
 }

@@ -108,12 +108,11 @@ class Player: SKSpriteNode {
     func jumpAction(floorPosition: CGFloat, jumpCount: Int) {
         
         if (jumpCount <= self.maxJumps) {
-        // move up 20
-//        let jumpUpAction = SKAction.moveBy(x: 0, y:200, duration:0.3)
-        let jumpUpAction = SKAction.moveTo(y: self.position.y + 100, duration: 0.3)
-        // move down 20
-        let jumpDownAction = SKAction.moveTo(y: floorPosition + self.size.height / 2, duration:0.3)
-        // sequence of move yup then down
+        // move up 100
+        let jumpUpAction = SKAction.moveTo(y: self.position.y + 120, duration: 0.4)
+        // move down 100
+        let jumpDownAction = SKAction.moveTo(y: floorPosition + self.size.height / 2, duration:0.5)
+        // sequence of moving up then down
         let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
         
         // make player run sequence
