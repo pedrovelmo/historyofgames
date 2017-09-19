@@ -42,6 +42,7 @@ class CoinManager{
                         coin.size = CGSize(width: scene.size.height * 0.06, height: scene.size.height * 0.06)
                         coin.position.x = sceneWidth + (coin.size.width + spaceBetweenCoins) * CGFloat(col)
                         coin.position.y = sceneHeight / 2 + (coin.size.height + spaceBetweenCoins) * CGFloat(row)
+                        coin.setPhysicsBody()
                         coinVector.append(coin)
                         
                     }

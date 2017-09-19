@@ -86,7 +86,6 @@ class Player: SKSpriteNode {
                 if (element.key == epoch) {
                     
                     
-                    
                 }
                 
             }
@@ -100,7 +99,10 @@ class Player: SKSpriteNode {
     }
     
     func setPhysicsBody() {
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        
+        let hitbox = CGSize(width: self.size.width * 0.7, height: self.size.height)
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: hitbox)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
@@ -135,13 +137,10 @@ class Player: SKSpriteNode {
         self.run(AudioManager.sharedInstance.jumpSound)
             
         }
-            
         else {
             
             return
         }
-
-        
     }
     
     func startAnimation() {

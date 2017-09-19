@@ -22,10 +22,7 @@ class Coin: SKSpriteNode{
             
         }
         super.init(texture: texturesArray[0], color: UIColor.clear, size: texturesArray[0].size())
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
-        self.physicsBody?.isDynamic = false
+
         
     }
     
@@ -35,6 +32,14 @@ class Coin: SKSpriteNode{
     
     func startAnimation() {
               self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.1)))
+    }
+    
+    func setPhysicsBody() {
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        self.physicsBody?.isDynamic = false
     }
 
 }

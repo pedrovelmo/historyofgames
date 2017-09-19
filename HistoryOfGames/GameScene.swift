@@ -266,7 +266,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Function to update text of scoreLabel
     func coinLabelUpdate() {
       
-        hudView?.coinLabel?.text = String(format: "Score: %04u", coins)
+        hudView?.coinLabel?.text = String(format: "Coin: %04u", coins)
     }
     
     
