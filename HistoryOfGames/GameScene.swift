@@ -25,12 +25,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var soundPlayed: ExplosionSound = .WilhemScream
     
+    var hudView: HudView?
+    
      let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
+        
+        
+        hudView = HudView(frame: self.frame)
+        self.view?.addSubview(hudView!)
         
         self.movingSpeed = (self.scene?.size.width)! / 10
         
@@ -226,19 +232,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
             
             contact.bodyB.node?.removeFromParent()
-            let sound = SKAudioNode(fileNamed: "pickle_rick.mp3")
-            sound.autoplayLooped = false
-            addChild(sound)
 
         }
         if contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
             
             contact.bodyA.node?.removeFromParent()
-            let sound = SKAudioNode(fileNamed: "pickle_rick.mp3")
-            sound.autoplayLooped = false
-            addChild(sound)
-            
-            
             
         }
     }
@@ -248,7 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func explosion(_ pos: CGPoint) {
         let emitterNode = SKEmitterNode(fileNamed: "ExplosionParticles.sks")
         emitterNode?.particlePosition = pos
-        emitterNode?.zPosition = 2
+        emitterNode?.zPosition = 1
         
         self.addChild(emitterNode!)
         self.run(SKAction.wait(forDuration: 0.1), completion: {
