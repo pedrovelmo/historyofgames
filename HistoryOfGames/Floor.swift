@@ -13,7 +13,7 @@ class Floor: SKSpriteNode {
     
     static var floorsArray: [Floor] = []
     static let maxFloors = 2
-    static let imagesForEpochs = ["grama.jpg"]
+    static let imagesForEpochs = ["pongFloor"]
     
     init(epochId: Int) {
         

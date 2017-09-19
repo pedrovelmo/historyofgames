@@ -29,6 +29,8 @@ class Player: SKSpriteNode {
     init(name: String) {
         self.characterName = name
         self.state = stateTypes.running.rawValue
+        
+        /*
         for i in 0...23{
             
             var textureName = ""
@@ -45,6 +47,18 @@ class Player: SKSpriteNode {
         print(texturesArray.count)
 
         let texture = SKTexture(imageNamed: name)
+        */
+        
+        for i in 1...3{
+            
+            var textureName = ""
+            
+            textureName = "sanic\(i)"
+            
+            texturesArray.append(SKTexture(imageNamed: textureName))
+        }
+        
+        let texture = SKTexture(imageNamed: "sanic1")
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
@@ -92,6 +106,7 @@ class Player: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
         self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
+
         
 //        self.physicsBody?.collisionBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Floor
 //        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle
@@ -130,7 +145,7 @@ class Player: SKSpriteNode {
     }
     
     func startAnimation() {
-        self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.03)))
+        self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.2)))
         
     }
     

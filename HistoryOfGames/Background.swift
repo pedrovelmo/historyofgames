@@ -17,7 +17,7 @@ class Background: SKSpriteNode {
         
         switch epochId {
         case 0:
-            imageName = "photo.png"
+            imageName = "pongBackground.png"
         default:
             break
         }
