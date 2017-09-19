@@ -27,6 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var hudView: HudView?
     
+    var coins: Int = 0
+    
      let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     override func didMove(to view: SKView) {
@@ -232,11 +234,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
             
             contact.bodyB.node?.removeFromParent()
-
+            self.coins += 50
+            coinLabelUpdate()
         }
         if contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
             
             contact.bodyA.node?.removeFromParent()
+            self.coins += 50
+            coinLabelUpdate()
             
         }
     }
@@ -257,4 +262,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.run(AudioManager.sharedInstance.explosionSound)
     }
+    
+    // Function to update text of scoreLabel
+    func coinLabelUpdate() {
+      
+        hudView?.coinLabel?.text = String(format: "Score: %04u", coins)
+    }
+    
+    
 }
