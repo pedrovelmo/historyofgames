@@ -40,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
         
-        self.movingSpeed = (self.scene?.size.width)! / 10
+        self.movingSpeed = (self.scene?.size.width)! / 200
         
         let background = epoch.background?[0]
         background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -95,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         for f in Floor.floorsArray{
             
-            f.position.x -= speed
+            f.position.x -= movingSpeed
         }
         
         // Generates new Floors
@@ -133,21 +133,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let obstacleNumber = Int(arc4random_uniform(2))
             print("Obstacle", obstacleNumber)
 
-            
-            let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!)
-            
-            
-            let randomPosition = arc4random_uniform(UInt32(UIScreen.main.bounds.height))
-            
-            newObstacle.position = CGPoint(x: UIScreen.main.bounds.width + 20, y: CGFloat(CGFloat(randomPosition) + Floor.floorsArray[0].size.height))
-            
+            let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, movementSpeed: self.movingSpeed)
+    
             self.scene?.addChild(newObstacle)
             Obstacle.obstaclesArray.append(newObstacle)
             
-            
-            newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, sceneHeight: self.size.height)
-                
- 
+            newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, scene: self.scene!)
         })
         
         let waitAndSpawnSequence = SKAction.sequence([wait, spawnEnemy])
@@ -158,7 +149,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func obstacleManager(){
 
         for o in Obstacle.obstaclesArray{
-                        
+            
+            if(o.obstacleName == "pongBar"){
+                
+                o.position.x -= self.movingSpeed
+                print("Posicao da barra: \(o.position.x)")
+            }
+            
             if(o.position.x + o.size.width / 2 <= 0){
                 
                 scene?.removeChildren(in: [o])
@@ -169,7 +166,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func coinManager() {
         
-
        coinVector = CoinManager.sharedInstance.instantiateCoinPattern(pattern: 0, scene: self)
             
         for coin in coinVector {
@@ -177,7 +173,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.startAnimation()
             }
         }
-    
     
     func setCeiling(){
         
@@ -198,10 +193,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             floorManager()
             obstacleManager()
         for coin in coinVector {
-            coin.position.x -= speed
+            coin.position.x -= movingSpeed
             if coin.position.x + coin.size.width / 2 <= 0 {
                 coin.removeFromParent()
-                
             }
         }
 

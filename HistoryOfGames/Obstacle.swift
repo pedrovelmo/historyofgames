@@ -23,20 +23,19 @@ class Obstacle: SKSpriteNode {
     var pattern: Pattern?
     var state: Int
     var animationFrames: [Int : UIImage] = [ : ]
+    var movementSpeed: CGFloat
     
-    init(name: String) {
+    init(name: String, movementSpeed: CGFloat) {
         
         self.obstacleName = name
         self.state = animationState.standard.rawValue
+        self.movementSpeed = movementSpeed
         
         let texture = SKTexture(imageNamed: self.obstacleName)
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player 
+ 
 
         setPattern()
     }
@@ -46,10 +45,17 @@ class Obstacle: SKSpriteNode {
         
     }
     
-    
     func setPattern(){
         
         self.pattern = Pattern(name: self.obstacleName, obstacle: self)
+    }
+    
+    func configPhysicsBody(){
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player 
     }
     
     required init?(coder aDecoder: NSCoder) {
