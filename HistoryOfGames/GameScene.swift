@@ -66,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Background Music configuration
         
-        AudioManager.sharedInstance.playBackgroundMusic()
+        //AudioManager.sharedInstance.playBackgroundMusic()
         
         setCeiling()
         
@@ -130,18 +130,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // TO-DO: Generate random obstacle
             
-            let newObstacle = Obstacle(name: (self.epoch.obstacles?[0])!)
+            let obstacleNumber = Int(arc4random_uniform(2))
+            print("Obstacle", obstacleNumber)
+
+            
+            let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!)
             
             
             let randomPosition = arc4random_uniform(UInt32(UIScreen.main.bounds.height))
             
-            newObstacle.position = CGPoint(x: UIScreen.main.bounds.width + 20, y: CGFloat(randomPosition))
+            newObstacle.position = CGPoint(x: UIScreen.main.bounds.width + 20, y: CGFloat(CGFloat(randomPosition) + Floor.floorsArray[0].size.height))
             
             self.scene?.addChild(newObstacle)
             Obstacle.obstaclesArray.append(newObstacle)
             
             
-            newObstacle.pattern?.startMoving()
+            newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, sceneHeight: self.size.height)
+                
+ 
         })
         
         let waitAndSpawnSequence = SKAction.sequence([wait, spawnEnemy])
@@ -150,9 +156,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func obstacleManager(){
-        
+
         for o in Obstacle.obstaclesArray{
-            
+                        
             if(o.position.x + o.size.width / 2 <= 0){
                 
                 scene?.removeChildren(in: [o])
@@ -162,13 +168,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func coinManager() {
+        
+
        coinVector = CoinManager.sharedInstance.instantiateCoinPattern(pattern: 0, scene: self)
             
         for coin in coinVector {
                 self.addChild(coin)
                 coin.startAnimation()
             }
-    }
+        }
+    
     
     func setCeiling(){
         
@@ -195,12 +204,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
         }
-        
-        
-        
 
-        
-        
     }
     
     // Function to configure contact between bodies

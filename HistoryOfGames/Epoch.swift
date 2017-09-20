@@ -30,7 +30,7 @@ class Epoch {
             
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
-            obstacles = ["pongBall"]
+            obstacles = ["pongBall", "pongBar"]
 
         default: break
             

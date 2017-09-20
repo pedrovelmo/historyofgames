@@ -29,7 +29,7 @@ class Obstacle: SKSpriteNode {
         self.obstacleName = name
         self.state = animationState.standard.rawValue
         
-        let texture = SKTexture(imageNamed: self.obstacleName + ".jpg")
+        let texture = SKTexture(imageNamed: self.obstacleName)
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
