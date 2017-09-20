@@ -37,11 +37,11 @@ class HudView: UIView {
         coinLabel?.textColor = UIColor.redB
         coinLabel?.frame = CGRect(x: self.frame.size.width - labelSize.width * 2, y: self.frame.size.height * 0.05 , width: labelSize.width * 2, height: labelSize.height)
         
-        scoreLabel?.text = String(format: "Score: %04u", 0000)
+        scoreLabel?.text = String(format: "Score: %08u", 0000)
         scoreLabel?.font = UIFont(name: "Arial Bold", size: labelSize.width)
         scoreLabel?.alpha = 1.0
         scoreLabel?.textColor = UIColor.blueB
-        scoreLabel?.frame = CGRect(x: labelSize.width * 0.5, y: self.frame.size.height * 0.05 , width: labelSize.width * 2, height: labelSize.height)
+        scoreLabel?.frame = CGRect(x: labelSize.width * 0.5, y: self.frame.size.height * 0.05 , width: labelSize.width * 4, height: labelSize.height)
 
         self.addSubview(coinLabel!)
         self.addSubview(scoreLabel!)

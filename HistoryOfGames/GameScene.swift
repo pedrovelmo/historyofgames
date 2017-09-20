@@ -29,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var coins: Int = 0
     
+    var score = 0
+    
      let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     override func didMove(to view: SKView) {
@@ -72,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player.startAnimation()
         startSpawningObstacles()
-        coinManager()
+        startSpawningCoins()
     }
     
     
@@ -124,7 +126,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningObstacles(){
         
-        let wait = SKAction.wait(forDuration: 4)
+        let randomTime = arc4random_uniform(5) + 2
+        
+        let wait = SKAction.wait(forDuration: TimeInterval(randomTime))
         
         let spawnEnemy = SKAction.run({
             
@@ -153,7 +157,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if(o.obstacleName == "pongBar"){
                 
                 o.position.x -= self.movingSpeed
-                print("Posicao da barra: \(o.position.x)")
             }
             
             if(o.position.x + o.size.width / 2 <= 0){
@@ -164,15 +167,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func coinManager() {
+    func startSpawningCoins() {
         
-       coinVector = CoinManager.sharedInstance.instantiateCoinPattern(pattern: 0, scene: self)
+        let spawnCoin = SKAction.run{
             
-        for coin in coinVector {
-                self.addChild(coin)
-                coin.startAnimation()
+            let randomPattern = arc4random_uniform(2)
+            
+            CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern), scene: self)
+            
+        }
+        
+        let randomTime = arc4random_uniform(5) + 2
+        print("Tempo aleatorio da moeda: \(randomTime)")
+        
+        let wait = SKAction.wait(forDuration: TimeInterval(randomTime))
+        
+        let spawnSequence = SKAction.sequence([wait, spawnCoin])
+        
+        run(SKAction.repeatForever(spawnSequence))
+    }
+    
+    func coinManager(){
+        
+        for pattern in CoinManager.sharedInstance.patternVector {
+            for coin in pattern{
+                coin.position.x -= movingSpeed
+                if coin.position.x + coin.size.width / 2 <= 0 {
+                    coin.removeFromParent()
+                }
             }
         }
+    }
     
     func setCeiling(){
         
@@ -186,19 +211,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ceiling.physicsBody?.categoryBitMask = PhysicsCategory.Floor
         
         self.scene?.addChild(ceiling)
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        
-            floorManager()
-            obstacleManager()
-        for coin in coinVector {
-            coin.position.x -= movingSpeed
-            if coin.position.x + coin.size.width / 2 <= 0 {
-                coin.removeFromParent()
-            }
-        }
-
     }
     
     // Function to configure contact between bodies
@@ -267,5 +279,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hudView?.coinLabel?.text = String(format: "Coin: %04u", coins)
     }
     
+    func scoreLabelUpdate(){
+        
+        score += 1
+        
+        hudView?.scoreLabel?.text = String(format: "Score: %08u", score)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        floorManager()
+        obstacleManager()
+        coinManager()
+        scoreLabelUpdate()
+    }
     
 }
