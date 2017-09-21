@@ -21,6 +21,9 @@ class Background: SKSpriteNode {
         
         case 1:
             imageName = "pongBackground.png"
+            
+        case 2:
+            imageName = "marioBackground"
         default:
             break
         }

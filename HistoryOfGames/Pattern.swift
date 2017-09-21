@@ -63,7 +63,15 @@ class Pattern{
                 setObstaclePhysicsBody(obstacle: obstacle)
 
                 obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
+        case "superBlock":
+
+            obstacle.size = CGSize(width: 100, height: 40)
             
+            obstacle.position.y = CGFloat(arc4random_uniform(UInt32(scene.size.height - obstacle.size.height / 2))) + floorPosition + obstacle.size.height / 2
+            
+            obstacle.position.x = scene.size.width + 20
+            
+            setObstaclePhysicsBody(obstacle: obstacle)
         case "pacmanBlock":
             
             let width = Int(arc4random_uniform(40)) + 10

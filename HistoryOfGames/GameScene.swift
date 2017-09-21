@@ -154,7 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         for o in Obstacle.obstaclesArray{
             
-            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1"){
+            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "superBlock"){
                 
                 o.position.x -= self.movingSpeed
             }
