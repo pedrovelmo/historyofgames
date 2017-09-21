@@ -31,6 +31,11 @@ class Epoch {
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
             obstacles = ["pongBall", "pongBar"]
+            
+        case 1:
+            background = [Background(epochId: whatEpochIsThis)]
+            floors = [Floor(epochId: whatEpochIsThis)]
+            obstacles = ["pacmanBlock", "pacmanBlock1","blueGhost", "redGhost", "greenGhost", "greenishGhost", "yellowGhost"]
 
         default: break
             

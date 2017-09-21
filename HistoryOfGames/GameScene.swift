@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 0)
+    var epoch = Epoch(whatEpochIsThis: 1)
     
     var coinVector: [Coin] = []
     
@@ -133,8 +133,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let spawnEnemy = SKAction.run({
             
             // TO-DO: Generate random obstacle
-            
-            let obstacleNumber = Int(arc4random_uniform(2))
+            let numberOfObstaclesInEpoch = UInt32(CGFloat((self.epoch.obstacles?.count)!))
+            let obstacleNumber = Int(arc4random_uniform(numberOfObstaclesInEpoch))
             print("Obstacle", obstacleNumber)
 
             let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, movementSpeed: self.movingSpeed)
@@ -154,9 +154,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         for o in Obstacle.obstaclesArray{
             
-            if(o.obstacleName == "pongBar"){
+            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1"){
                 
                 o.position.x -= self.movingSpeed
+            }
+            
+            if (o.obstacleName == "redGhost" || o.obstacleName == "blueGhost" || o.obstacleName == "greenGhost" || o.obstacleName == "greenishGhost" || o.obstacleName == "yellowGhost"  ) {
+                
+                o.position.x -= self.movingSpeed * 1.5
             }
             
             if(o.position.x + o.size.width / 2 <= 0){

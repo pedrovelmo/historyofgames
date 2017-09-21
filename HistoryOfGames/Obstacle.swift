@@ -31,11 +31,10 @@ class Obstacle: SKSpriteNode {
         self.state = animationState.standard.rawValue
         self.movementSpeed = movementSpeed
         
+        
         let texture = SKTexture(imageNamed: self.obstacleName)
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-        
- 
 
         setPattern()
     }
