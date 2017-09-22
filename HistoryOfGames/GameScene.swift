@@ -31,6 +31,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var score = 0
     
+    var timer = Timer()
+    
+    var coinTimerIsRunning = false
+    var obstacleTimerIsRunning = false
+    
      let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     override func didMove(to view: SKView) {
@@ -74,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player.startAnimation()
         startSpawningObstacles()
-        startSpawningCoins()
+       
     }
     
     
@@ -91,6 +96,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+    }
+    
+    func runTimer() {
+    
+    
+    if (!coinTimerIsRunning) {
+            let coinSeconds = Double(arc4random_uniform(5)) + 3.0
+            timer = Timer.scheduledTimer(timeInterval: coinSeconds, target: self, selector: (#selector(startSpawningCoins)), userInfo: nil, repeats: false)
+        coinTimerIsRunning = true
+    
+        }
+    if (!obstacleTimerIsRunning) {
+        let obstacleSeconds = Double(arc4random_uniform(4)) + 2.0
+         timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObstacles)), userInfo: nil, repeats: false)
+        obstacleTimerIsRunning = true
+        }
     }
     
     func floorManager(){
@@ -126,9 +147,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningObstacles(){
         
-        let randomTime = arc4random_uniform(5) + 2
-        
-        let wait = SKAction.wait(forDuration: TimeInterval(randomTime))
+        // Comment to generate awesome trippy effect
+        obstacleTimerIsRunning = false
         
         let spawnEnemy = SKAction.run({
             
@@ -144,10 +164,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, scene: self.scene!)
         })
-        
-        let waitAndSpawnSequence = SKAction.sequence([wait, spawnEnemy])
-        
-        run(SKAction.repeatForever(waitAndSpawnSequence), withKey: "spawningEnemy")
+
+        run(spawnEnemy)
     }
     
     func obstacleManager(){
@@ -174,6 +192,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningCoins() {
         
+        coinTimerIsRunning = false
+        
         let spawnCoin = SKAction.run{
             
             let randomPattern = arc4random_uniform(2)
@@ -181,16 +201,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern), scene: self)
             
         }
-        
-        let randomTime = arc4random_uniform(5) + 2
-        print("Tempo aleatorio da moeda: \(randomTime)")
-        
-        let wait = SKAction.wait(forDuration: TimeInterval(randomTime))
-        
-        let spawnSequence = SKAction.sequence([wait, spawnCoin])
-        
-        run(SKAction.repeatForever(spawnSequence))
-    }
+        run(spawnCoin)
+    
+ }
     
     func coinManager(){
         
@@ -295,6 +308,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         floorManager()
         obstacleManager()
+        runTimer()
         coinManager()
         scoreLabelUpdate()
     }
