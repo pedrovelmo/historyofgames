@@ -26,6 +26,13 @@ class Epoch {
         
         switch whatEpochIsThis {
             
+        // Transition epoch
+        case -1:
+            
+            background = [Background(epochId: whatEpochIsThis)]
+            floors = [Floor(epochId: whatEpochIsThis)]
+            obstacles = []
+            
         case 0:
             
             background = [Background(epochId: whatEpochIsThis)]
@@ -41,8 +48,6 @@ class Epoch {
             floors = [Floor(epochId: whatEpochIsThis)]
             obstacles = ["superBlock"]
             
-            
-
         default: break
             
         }

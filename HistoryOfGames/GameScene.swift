@@ -11,7 +11,9 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 1)
+    var epoch = Epoch(whatEpochIsThis: 0)
+    
+    var background: Background = Background(epochId: 0)
     
     var coinVector: [Coin] = []
     
@@ -49,10 +51,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.movingSpeed = (self.scene?.size.width)! / 200
         
-        let background = epoch.background?[0]
-        background?.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-        background?.zPosition = -1
-        self.addChild(background!)
+        background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        background.zPosition = -1
+        self.addChild(background)
         
         // Add first floor
         let floor = Floor(epochId: self.epoch.whatEpochIsThis!)
@@ -304,6 +305,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hudView?.scoreLabel?.text = String(format: "Score: %08u", score)
     }
     
+    func epochManager(){
+        
+        // Switch case ou if?
+        
+//        switch epoch.whatEpochIsThis{
+//
+//        case 0?:
+//            if(coins >= 500){
+//                epoch = Epoch(whatEpochIsThis: epoch.whatEpochIsThis! + 1)
+//            }
+//
+//        case 1?:
+//            if(coins >= 1000){
+//                epoch = Epoch(whatEpochIsThis: epoch.whatEpochIsThis! + 1)
+//            }
+//
+//        default:
+//            break
+//        }
+        
+        if((epoch.whatEpochIsThis == 0 && coins >= 1000) ||
+            epoch.whatEpochIsThis == 1 && coins >= 4000){
+            
+            epoch = Epoch(whatEpochIsThis: epoch.whatEpochIsThis! + 1)
+            
+            // How to improve this, make transition smoother.
+            background.removeFromParent()
+            background = Background(epochId: epoch.whatEpochIsThis!)
+            background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+            background.zPosition = -1
+            self.addChild(background)
+        }
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         
         floorManager()
@@ -311,6 +346,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         runTimer()
         coinManager()
         scoreLabelUpdate()
+        epochManager()
     }
     
 }
