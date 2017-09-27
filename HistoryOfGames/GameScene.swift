@@ -314,32 +314,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func scoreLabelUpdate(){
         
         if(!isTransitioning){
-            
             score += 1
-            
             hudView?.scoreLabel?.text = String(format: "Score: %08u", score)
         }
     }
     
     func epochManager(){
         
-        // Switch case ou if?
-        
-//        switch epoch.whatEpochIsThis{
-//
-//        case 0?:
-//            if(coins >= 500){
-//                epoch = Epoch(whatEpochIsThis: epoch.whatEpochIsThis! + 1)
-//            }
-//
-//        case 1?:
-//            if(coins >= 1000){
-//                epoch = Epoch(whatEpochIsThis: epoch.whatEpochIsThis! + 1)
-//            }
-//
-//        default:
-//            break
-//        }
         
         if((epoch.whatEpochIsThis == 0 && coins >= 1000) ||
             epoch.whatEpochIsThis == 1 && coins >= 4000){
@@ -356,9 +337,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 self.background.removeFromParent()
                 self.background = Background(epochId: self.epoch.whatEpochIsThis!)
+                self.background.alpha = 0.0
                 self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
                 self.background.zPosition = -1
                 self.addChild(self.background)
+                self.background.run(SKAction.fadeIn(withDuration: 2))
+                
             }
             let timeInTransition = SKAction.wait(forDuration: 10)
             
@@ -366,12 +350,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1)
                 self.isTransitioning = false
-                
-                self.background.removeFromParent()
+                let lastBackground = self.background
+                lastBackground.alpha = 1.0
+                lastBackground.run(SKAction.fadeOut(withDuration: 2.0), completion: lastBackground.removeFromParent)
+                //self.background.removeFromParent()
                 self.background = Background(epochId: self.epoch.whatEpochIsThis!)
                 self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
                 self.background.zPosition = -1
+                self.background.alpha = 0.0
                 self.addChild(self.background)
+                self.background.run(SKAction.fadeIn(withDuration: 2.0))
                 
             }
             
