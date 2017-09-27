@@ -16,6 +16,10 @@ class Background: SKSpriteNode {
         var imageName: String?
         
         switch epochId {
+            
+        case -1:
+            imageName = "cosmos"
+            
         case 0:
             imageName = "pongBackground.png"
         

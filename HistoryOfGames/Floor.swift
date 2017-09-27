@@ -17,17 +17,30 @@ class Floor: SKSpriteNode {
     
     init(epochId: Int) {
         
-        let texture = SKTexture(imageNamed: Floor.imagesForEpochs[epochId])
+        let texture: SKTexture
+        
+        if(epochId == -1){
+            
+            texture = SKTexture(imageNamed: "placeholderFloor")
+        }
+        else{
+            
+            texture = SKTexture(imageNamed: Floor.imagesForEpochs[epochId])
+        }
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-        
-
-        
     }
     
     func setFloorImage(epochId: Int){
         
-        self.texture = SKTexture(imageNamed: Floor.imagesForEpochs[epochId])
+        if(epochId == -1){
+            
+            self.texture = SKTexture(imageNamed: "placeholderFloor")
+        }
+        else{
+            
+            self.texture = SKTexture(imageNamed: Floor.imagesForEpochs[epochId])
+        }
     }
     
     func setPhysicsBody() {

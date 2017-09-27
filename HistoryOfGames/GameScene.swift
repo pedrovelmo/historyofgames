@@ -37,8 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var coinTimerIsRunning = false
     var obstacleTimerIsRunning = false
+    var isTransitioning = false
     
-     let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
+    let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -148,10 +149,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningObstacles(){
         
-        // Comment to generate awesome trippy effect
-        obstacleTimerIsRunning = false
-        
-        let spawnEnemy = SKAction.run({
+        if(!isTransitioning){
+            // Comment to generate awesome trippy effect
+            obstacleTimerIsRunning = false
+            
+            print("Entered obstacle")
+       
+            let spawnEnemy = SKAction.run({
             
             // TO-DO: Generate random obstacle
             let numberOfObstaclesInEpoch = UInt32(CGFloat((self.epoch.obstacles?.count)!))
@@ -164,9 +168,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Obstacle.obstaclesArray.append(newObstacle)
             
             newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, scene: self.scene!)
-        })
+            })
 
-        run(spawnEnemy)
+            run(spawnEnemy)
+        }
     }
     
     func obstacleManager(){
@@ -193,17 +198,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningCoins() {
         
-        coinTimerIsRunning = false
-        
-        let spawnCoin = SKAction.run{
+        if(!isTransitioning){
             
-            let randomPattern = arc4random_uniform(2)
+            coinTimerIsRunning = false
             
-            CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern), scene: self)
-            
+            let spawnCoin = SKAction.run{
+                
+                let randomPattern = arc4random_uniform(2)
+                
+                CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern), scene: self)
+                
+            }
+            run(spawnCoin)
         }
-        run(spawnCoin)
-    
  }
     
     func coinManager(){
@@ -258,7 +265,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
         }
-        //print("jumpCounter", jumpCounter)
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
             
@@ -275,9 +281,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
     // Function to configure the explosion effect
     func explosion(_ pos: CGPoint) {
+        
         let emitterNode = SKEmitterNode(fileNamed: "ExplosionParticles.sks")
         emitterNode?.particlePosition = pos
         emitterNode?.zPosition = 1
@@ -300,9 +306,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func scoreLabelUpdate(){
         
-        score += 1
-        
-        hudView?.scoreLabel?.text = String(format: "Score: %08u", score)
+        if(!isTransitioning){
+            
+            score += 1
+            
+            hudView?.scoreLabel?.text = String(format: "Score: %08u", score)
+        }
     }
     
     func epochManager(){
@@ -328,14 +337,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if((epoch.whatEpochIsThis == 0 && coins >= 1000) ||
             epoch.whatEpochIsThis == 1 && coins >= 4000){
             
-            epoch = Epoch(whatEpochIsThis: epoch.whatEpochIsThis! + 1)
+            let lastEpoch = epoch.whatEpochIsThis
+            
+            epoch = Epoch(whatEpochIsThis: -1)
+            
+            isTransitioning = true
+            
+            let waitTimeBeforeTransition = SKAction.wait(forDuration: 5)
+            
+            let enterTransition = SKAction.run {
+                
+                self.background.removeFromParent()
+                self.background = Background(epochId: self.epoch.whatEpochIsThis!)
+                self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+                self.background.zPosition = -1
+                self.addChild(self.background)
+            }
+            let timeInTransition = SKAction.wait(forDuration: 10)
+            
+            let exitTransition = SKAction.run {
+                
+                self.epoch = Epoch(whatEpochIsThis: lastEpoch! + 1)
+                self.isTransitioning = false
+                
+                self.background.removeFromParent()
+                self.background = Background(epochId: self.epoch.whatEpochIsThis!)
+                self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+                self.background.zPosition = -1
+                self.addChild(self.background)
+                
+            }
+            
+            let timeBeforeResumeSpawning = SKAction.wait(forDuration: 3)
+            
+            let resumeSpawning = SKAction.run {
+                
+                self.startSpawningObstacles()
+                self.startSpawningCoins()
+            }
+            
+            let executeTransition = SKAction.sequence([waitTimeBeforeTransition, enterTransition, timeInTransition, exitTransition, timeBeforeResumeSpawning, resumeSpawning])
+            
+            self.run(executeTransition)
             
             // How to improve this, make transition smoother.
-            background.removeFromParent()
-            background = Background(epochId: epoch.whatEpochIsThis!)
-            background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-            background.zPosition = -1
-            self.addChild(background)
+            
         }
     }
     
@@ -346,7 +392,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         runTimer()
         coinManager()
         scoreLabelUpdate()
+        
         epochManager()
     }
-    
 }
