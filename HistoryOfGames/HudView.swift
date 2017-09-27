@@ -31,11 +31,11 @@ class HudView: UIView {
         let labelSize =  CGSize(width: self.frame.width * 0.1, height: self.frame.height * 0.1)
         self.coinLabel = UILabel()
         self.scoreLabel = UILabel()
-        coinLabel?.text = String(format: "Coin: %04u", 0000)
+        coinLabel?.text = String(format: "Coin: %04u / 1000", 0000)
         coinLabel?.font = UIFont(name: "Arial Bold", size: labelSize.width)
         coinLabel?.alpha = 1.0
         coinLabel?.textColor = UIColor.redB
-        coinLabel?.frame = CGRect(x: self.frame.size.width - labelSize.width * 2, y: self.frame.size.height * 0.05 , width: labelSize.width * 2, height: labelSize.height)
+        coinLabel?.frame = CGRect(x: self.frame.size.width - labelSize.width * 3, y: self.frame.size.height * 0.05 , width: labelSize.width * 10, height: labelSize.height)
         
         scoreLabel?.text = String(format: "Score: %08u", 0000)
         scoreLabel?.font = UIFont(name: "Arial Bold", size: labelSize.width)

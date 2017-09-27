@@ -18,6 +18,7 @@ class Epoch {
     var floors: [Floor]?
     var whatEpochIsThis: Int?
     var obstacles: [String]?
+    var numberOfCoins: Int?
     
     //TO-DO: Set timer when call init
     init(whatEpochIsThis: Int) {
@@ -38,15 +39,18 @@ class Epoch {
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
             obstacles = ["pongBall", "pongBar"]
+            numberOfCoins = 1000
             
         case 1:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
             obstacles = ["pacmanBlock", "pacmanBlock1","blueGhost", "redGhost", "greenGhost", "greenishGhost", "yellowGhost"]
+            numberOfCoins = 4000
         case 2:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
             obstacles = ["superBlock"]
+            numberOfCoins = 1000000
             
         default: break
             

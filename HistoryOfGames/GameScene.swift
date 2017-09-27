@@ -13,6 +13,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var epoch = Epoch(whatEpochIsThis: 0)
     
+    var lastEpoch: Epoch?
+    
     var background: Background = Background(epochId: 0)
     
     var coinVector: [Coin] = []
@@ -300,8 +302,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Function to update text of scoreLabel
     func coinLabelUpdate() {
-      
-        hudView?.coinLabel?.text = String(format: "Coin: %04u", coins)
+        if(!isTransitioning){
+        hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
+        }
+        
+        else if (isTransitioning) {
+            hudView?.coinLabel?.text = String(format: "Coin: %04u / \((self.lastEpoch?.numberOfCoins!)!)", coins)
+        }
     }
     
     func scoreLabelUpdate(){
@@ -337,7 +344,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if((epoch.whatEpochIsThis == 0 && coins >= 1000) ||
             epoch.whatEpochIsThis == 1 && coins >= 4000){
             
-            let lastEpoch = epoch.whatEpochIsThis
+            lastEpoch = epoch
             
             epoch = Epoch(whatEpochIsThis: -1)
             
@@ -357,7 +364,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let exitTransition = SKAction.run {
                 
-                self.epoch = Epoch(whatEpochIsThis: lastEpoch! + 1)
+                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1)
                 self.isTransitioning = false
                 
                 self.background.removeFromParent()
@@ -392,7 +399,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         runTimer()
         coinManager()
         scoreLabelUpdate()
-        
         epochManager()
     }
 }
