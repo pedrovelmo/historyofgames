@@ -11,11 +11,11 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 0)
+    var epoch = Epoch(whatEpochIsThis: 1)
     
     var lastEpoch: Epoch?
     
-    var background: Background = Background(epochId: 0)
+    var background: Background = Background(epochId: 1)
     
     var coinVector: [Coin] = []
     
@@ -54,9 +54,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.movingSpeed = (self.scene?.size.width)! / 200
         
-        background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        background.size.width = (self.scene?.size.width)!
+        background.size.height = (self.scene?.size.height)!
+        background.position = CGPoint(x: (self.scene?.size.width)! / 2, y: (self.scene?.size.height)! / 2)
         background.zPosition = -1
         self.addChild(background)
+        Background.backgroundsArray.append(background)
         
         // Add first floor
         let floor = Floor(epochId: self.epoch.whatEpochIsThis!)
@@ -132,7 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Width + 2 to compensate for the small space beetween floors.
             newFloor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 8)
-            newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: newFloor.size.height / 2)
+            newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!) , y: newFloor.size.height / 2)
             
             newFloor.setPhysicsBody()
             self.scene?.addChild(newFloor)
@@ -142,10 +145,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Respositions floors and sets their image according to the current epoch
         if(Floor.floorsArray[0].position.x + Floor.floorsArray[0].size.width / 2 <= 0){
             
-           Floor.floorsArray[0].position = CGPoint(x: (CGFloat(Floor.floorsArray.count - 1) * (self.scene?.size.width)!), y: Floor.floorsArray[0].size.height / 2)
+           Floor.floorsArray[0].position = CGPoint(x: ((CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!)) - Floor.floorsArray[0].size.width / 2 + 2, y: Floor.floorsArray[0].size.height / 2)
             Floor.floorsArray[0].setFloorImage(epochId: self.epoch.whatEpochIsThis!)
             
             Floor.floorsArray.rearrange(from: 0, to: Floor.floorsArray.lastIndex)
+        }
+    }
+    
+    func backgroundManager(){
+        
+        for b in Background.backgroundsArray {
+            
+            b.position.x -= movingSpeed * 0.3
+        }
+        
+        // Generates new Backgrounds
+        if(Background.backgroundsArray.count <= Background.maxBackgrounds){
+            
+            let newBackground = Background(epochId: self.epoch.whatEpochIsThis!)
+            
+            newBackground.size.width = (self.scene?.size.width)!
+            newBackground.size.height = (self.scene?.size.height)!
+            newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
+            
+            newBackground.zPosition = -1
+            
+            self.scene?.addChild(newBackground)
+            Background.backgroundsArray.append(newBackground)
+        }
+        
+        // Respositions backgrounds and sets their image according to the current epoch
+        if(Background.backgroundsArray[0].position.x + Background.backgroundsArray[0].size.width / 2 <= 0){
+            
+            Background.backgroundsArray[0].position =  CGPoint(x: CGFloat(Background.backgroundsArray.count - 1) * (self.scene?.size.width)!, y: Background.backgroundsArray[0].size.height / 2)
+            
+           Background.backgroundsArray.rearrange(from: 0, to: Background.backgroundsArray.lastIndex)
         }
     }
     
@@ -338,6 +372,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.background.removeFromParent()
                 self.background = Background(epochId: self.epoch.whatEpochIsThis!)
                 self.background.alpha = 0.0
+                self.background.size.height = self.size.height
                 self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
                 self.background.zPosition = -1
                 self.addChild(self.background)
@@ -388,5 +423,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinManager()
         scoreLabelUpdate()
         epochManager()
+        backgroundManager()
     }
 }

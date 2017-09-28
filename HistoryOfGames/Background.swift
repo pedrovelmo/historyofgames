@@ -11,6 +11,9 @@ import SpriteKit
 
 class Background: SKSpriteNode {
     
+    static var backgroundsArray: [Background] = []
+    static let maxBackgrounds = 2
+    
     init(epochId: Int) {
         
         var imageName: String?
@@ -18,13 +21,13 @@ class Background: SKSpriteNode {
         switch epochId {
             
         case -1:
-            imageName = "cosmos"
+            imageName = "transitionBackground.png"
             
         case 0:
             imageName = "pongBackground.png"
         
         case 1:
-            imageName = "pongBackground.png"
+            imageName = "pacmanBackground"
             
         case 2:
             imageName = "marioBackground"
