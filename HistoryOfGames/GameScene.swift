@@ -306,7 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Function to configure the explosion effect
     func explosion(_ pos: CGPoint) {
         
-        let emitterNode = SKEmitterNode(fileNamed: "ExplosionParticles.sks")
+        let emitterNode = SKEmitterNode(fileNamed: "MyParticle.sks")
         emitterNode?.particlePosition = pos
         emitterNode?.zPosition = 1
         
