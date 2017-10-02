@@ -37,8 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var timer = Timer()
     
-    var coinTimerIsRunning = false
-    var obstacleTimerIsRunning = false
+    var objectTimerIsRunning = false
     var isTransitioning = false
     
     let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
@@ -47,7 +46,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
-        
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
@@ -85,10 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setCeiling()
         
         player.startAnimation()
-        startSpawningObstacles()
-       
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -107,17 +102,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func runTimer() {
     
-    
-    if (!coinTimerIsRunning) {
-            let coinSeconds = Double(arc4random_uniform(5)) + 3.0
-            timer = Timer.scheduledTimer(timeInterval: coinSeconds, target: self, selector: (#selector(startSpawningCoins)), userInfo: nil, repeats: false)
-        coinTimerIsRunning = true
-    
-        }
-    if (!obstacleTimerIsRunning) {
-        let obstacleSeconds = Double(arc4random_uniform(4)) + 2.0
-         timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObstacles)), userInfo: nil, repeats: false)
-        obstacleTimerIsRunning = true
+        if (!objectTimerIsRunning) {
+            
+            let obstacleSeconds = Double(arc4random_uniform(4)) + 2.0
+            timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
+            objectTimerIsRunning = true
         }
     }
     
@@ -183,30 +172,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func startSpawningObstacles(){
+    func startSpawningObjects(){
         
         if(!isTransitioning){
             // Comment to generate awesome trippy effect
-            obstacleTimerIsRunning = false
+            objectTimerIsRunning = false
             
-            print("Entered obstacle")
-       
-            let spawnEnemy = SKAction.run({
+            let whichObjectToSpawn = arc4random_uniform(2)
             
-            // TO-DO: Generate random obstacle
-            let numberOfObstaclesInEpoch = UInt32(CGFloat((self.epoch.obstacles?.count)!))
-            let obstacleNumber = Int(arc4random_uniform(numberOfObstaclesInEpoch))
-            print("Obstacle", obstacleNumber)
-
-            let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, movementSpeed: self.movingSpeed)
-    
-            self.scene?.addChild(newObstacle)
-            Obstacle.obstaclesArray.append(newObstacle)
-            
-            newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, scene: self.scene!)
-            })
-
-            run(spawnEnemy)
+            if(whichObjectToSpawn == 0){
+                
+                let spawnCoin = SKAction.run{
+                    
+                    let randomPattern = arc4random_uniform(2)
+                    
+                    CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern), scene: self)
+                }
+                
+                run(spawnCoin)
+            }
+                
+            else{
+                
+                let spawnEnemy = SKAction.run({
+                    
+                    // TO-DO: Generate random obstacle
+                    let numberOfObstaclesInEpoch = UInt32(CGFloat((self.epoch.obstacles?.count)!))
+                    let obstacleNumber = Int(arc4random_uniform(numberOfObstaclesInEpoch))
+                    print("Obstacle", obstacleNumber)
+                    
+                    let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, movementSpeed: self.movingSpeed)
+                    
+                    self.scene?.addChild(newObstacle)
+                    Obstacle.obstaclesArray.append(newObstacle)
+                    
+                    newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, scene: self.scene!)
+                })
+                
+                run(spawnEnemy)
+            }
         }
     }
     
@@ -231,23 +235,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
-    func startSpawningCoins() {
-        
-        if(!isTransitioning){
-            
-            coinTimerIsRunning = false
-            
-            let spawnCoin = SKAction.run{
-                
-                let randomPattern = arc4random_uniform(2)
-                
-                CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern), scene: self)
-                
-            }
-            run(spawnCoin)
-        }
- }
     
     func coinManager(){
         
@@ -292,7 +279,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion((contact.bodyB.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
-     
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle {
@@ -355,7 +341,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func epochManager(){
         
-        
         if((epoch.whatEpochIsThis == 0 && coins >= 1000) ||
             epoch.whatEpochIsThis == 1 && coins >= 4000){
             
@@ -402,8 +387,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let resumeSpawning = SKAction.run {
                 
-                self.startSpawningObstacles()
-                self.startSpawningCoins()
+                self.startSpawningObjects()
             }
             
             let executeTransition = SKAction.sequence([waitTimeBeforeTransition, enterTransition, timeInTransition, exitTransition, timeBeforeResumeSpawning, resumeSpawning])
@@ -411,7 +395,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.run(executeTransition)
             
             // How to improve this, make transition smoother.
-            
         }
     }
     
