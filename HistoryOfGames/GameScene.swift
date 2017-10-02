@@ -71,7 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scene?.addChild(floor)
         Floor.floorsArray.append(floor)
         
-        player.size = CGSize(width: 50, height: 50)
+//        player.size = CGSize(width: 50, height: 50)
         player.position.x = (self.scene?.size.width)! / 10 + player.size.width / 2
         player.position.y = floor.size.height + player.size.height / 2
         

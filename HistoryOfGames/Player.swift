@@ -49,19 +49,22 @@ class Player: SKSpriteNode {
         let texture = SKTexture(imageNamed: name)
         */
         
-        for i in 1...3{
+        for i in 1...7{
             
             var textureName = ""
             
-            textureName = "sanic\(i)"
+            textureName = "dido\(i)"
+            
+            let texture = SKTexture(imageNamed: textureName)
             
             texturesArray.append(SKTexture(imageNamed: textureName))
         }
         
-        let texture = SKTexture(imageNamed: "sanic1")
+        let texture = SKTexture(imageNamed: "dido1")
+        
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-        
+        self.setScale(0.15)
         setAbility()
 
     }
@@ -144,7 +147,8 @@ class Player: SKSpriteNode {
     }
     
     func startAnimation() {
-        self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.2)))
+        self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.1, resize: true, restore: false)))
+        
         
     }
     

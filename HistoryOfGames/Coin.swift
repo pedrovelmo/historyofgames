@@ -31,7 +31,7 @@ class Coin: SKSpriteNode{
     }
     
     func startAnimation() {
-              self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.1)))
+        self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.1)))
     }
     
     func setPhysicsBody() {
