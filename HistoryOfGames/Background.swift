@@ -13,35 +13,39 @@ class Background: SKSpriteNode {
     
     static var backgroundsArray: [Background] = []
     static let maxBackgrounds = 2
+    var imageName: String?
     
     init(epochId: Int) {
-        
-        var imageName: String?
         
         switch epochId {
             
         case -1:
-            imageName = "transitionBackground.png"
+            self.imageName = "transitionBackground.png"
             
         case 0:
-            imageName = "pongBackground.png"
+            self.imageName = "pongBackground.png"
         
         case 1:
-            imageName = "pacmanBackground"
+            self.imageName = "pacmanBackground"
             
         case 2:
-            imageName = "marioBackground"
+            self.imageName = "marioBackground"
         default:
             break
         }
         
         
-        let texture = SKTexture(imageNamed: imageName!)
+        let texture = SKTexture(imageNamed: self.imageName!)
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    func setBackgroundImage(epochId: Int){
+
+            self.texture = SKTexture(imageNamed: self.imageName!)
+        
     }
 
 }

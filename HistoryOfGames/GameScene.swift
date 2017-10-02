@@ -11,11 +11,11 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 1)
+    var epoch = Epoch(whatEpochIsThis: 0)
     
     var lastEpoch: Epoch?
     
-    var background: Background = Background(epochId: 1)
+    var background: Background = Background(epochId: 0)
     
     var coinVector: [Coin] = []
     
@@ -143,6 +143,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func backgroundManager(){
         
+        if (!isTransitioning) {
+        
         for b in Background.backgroundsArray {
             
             b.position.x -= movingSpeed * 0.3
@@ -167,8 +169,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(Background.backgroundsArray[0].position.x + Background.backgroundsArray[0].size.width / 2 <= 0){
             
             Background.backgroundsArray[0].position =  CGPoint(x: CGFloat(Background.backgroundsArray.count - 1) * (self.scene?.size.width)!, y: Background.backgroundsArray[0].size.height / 2)
+            Background.backgroundsArray[0].setBackgroundImage(epochId: self.epoch.whatEpochIsThis!)
             
            Background.backgroundsArray.rearrange(from: 0, to: Background.backgroundsArray.lastIndex)
+        }
         }
     }
     
@@ -354,7 +358,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let enterTransition = SKAction.run {
                 
-                self.background.removeFromParent()
                 self.background = Background(epochId: self.epoch.whatEpochIsThis!)
                 self.background.alpha = 0.0
                 self.background.size.height = self.size.height
@@ -369,24 +372,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let exitTransition = SKAction.run {
                 
                 self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1)
-                self.isTransitioning = false
+                
+                
+                // Fade out transition background
                 let lastBackground = self.background
                 lastBackground.alpha = 1.0
                 lastBackground.run(SKAction.fadeOut(withDuration: 2.0), completion: lastBackground.removeFromParent)
-                //self.background.removeFromParent()
+
                 self.background = Background(epochId: self.epoch.whatEpochIsThis!)
-                self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+                self.background.size.width = (self.scene?.size.width)!
+                self.background.size.height = (self.scene?.size.height)!
+                self.background.position =  CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
                 self.background.zPosition = -1
                 self.background.alpha = 0.0
                 self.addChild(self.background)
+                Background.backgroundsArray.append(self.background)
                 self.background.run(SKAction.fadeIn(withDuration: 2.0))
-                
             }
-            
             let timeBeforeResumeSpawning = SKAction.wait(forDuration: 3)
             
             let resumeSpawning = SKAction.run {
-                
+                self.isTransitioning = false
                 self.startSpawningObjects()
             }
             
