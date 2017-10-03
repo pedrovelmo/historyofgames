@@ -302,7 +302,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyA.node?.removeFromParent()
             self.coins += 50
             coinLabelUpdate()
-            
         }
     }
     

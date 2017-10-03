@@ -13,30 +13,22 @@ class Background: SKSpriteNode {
     
     static var backgroundsArray: [Background] = []
     static let maxBackgrounds = 2
-    var imageName: String?
     let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground"]
     
     init(epochId: Int) {
         
-        switch epochId {
-            
-        case -1:
-            self.imageName = "transitionBackground.png"
-            
-        case 0:
-            self.imageName = "pongBackground.png"
+        let texture: SKTexture
         
-        case 1:
-            self.imageName = "pacmanBackground"
+        if(epochId == -1){
             
-        case 2:
-            self.imageName = "marioBackground"
-        default:
-            break
+            texture = SKTexture(imageNamed: "transitionBackground")
         }
         
+        else{
+            
+            texture = SKTexture(imageNamed: imagesForEpochs[epochId])
+        }
         
-        let texture = SKTexture(imageNamed: self.imageName!)
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
     }
     
