@@ -31,6 +31,20 @@ class Floor: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
     }
     
+    static func setFirstFloor(scene: SKScene){
+        
+        let floor = Floor(epochId: 0)
+        
+        // Width + 2 to compensate for the small space beetween floors.
+        floor.size = CGSize(width: (scene.size.width) + 2, height: (scene.size.height) / 8)
+        floor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (scene.size.width)),
+                                 y: floor.size.height / 2)
+        floor.setPhysicsBody()
+        
+        scene.addChild(floor)
+        Floor.floorsArray.append(floor)
+    }
+    
     func setFloorImage(epochId: Int){
         
         if(epochId == -1){

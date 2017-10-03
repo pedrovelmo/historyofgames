@@ -17,7 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var coinVector: [Coin] = []
     
-    var player = Player(name: "running 2_022")
+    var player = Player(name: "dido")
     
     var movingSpeed: CGFloat = 0
     
@@ -52,30 +52,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.movingSpeed = (self.scene?.size.width)! / 200
         
-        
         // Add first background
-        let firstBackground = Background(epochId: 0)
-        
-        firstBackground.size.width = (self.scene?.size.width)!
-        firstBackground.size.height = (self.scene?.size.height)!
-        firstBackground.position = CGPoint(x: (self.scene?.size.width)! / 2, y: (self.scene?.size.height)! / 2)
-        firstBackground.zPosition = -3
-        self.addChild(firstBackground)
-        Background.backgroundsArray.append(firstBackground)
+        Background.setFirstBackground(scene: self)
         
         // Add first floor
-        let floor = Floor(epochId: self.epoch.whatEpochIsThis!)
-        // Width + 2 to compensate for the small space beetween floors.
-        floor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 8)
-        floor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!), y: floor.size.height / 2)
-        floor.setPhysicsBody()
-        
-        self.scene?.addChild(floor)
-        Floor.floorsArray.append(floor)
+        Floor.setFirstFloor(scene: self)
         
 //        player.size = CGSize(width: 50, height: 50)
         player.position.x = (self.scene?.size.width)! / 10 + player.size.width / 2
-        player.position.y = floor.size.height + player.size.height / 2
+        player.position.y = Floor.floorsArray[0].size.height + player.size.height / 2
         
         self.player.setPhysicsBody()
         self.scene?.addChild(player)

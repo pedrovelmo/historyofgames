@@ -34,14 +34,6 @@ class Background: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
     }
     
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    func setBackgroundImage(epochId: Int){
-
-            self.texture = SKTexture(imageNamed: imagesForEpochs[epochId])
-    }
-    
     static func setTransitionBackground(scene: SKScene){
         
         transitionBackground.alpha = 0.0
@@ -56,5 +48,27 @@ class Background: SKSpriteNode {
         
         transitionBackground.alpha = 1.0
         transitionBackground.run(SKAction.fadeOut(withDuration: 4.0), completion: transitionBackground.removeFromParent)
+    }
+    
+    static func setFirstBackground(scene: SKScene){
+        
+        let firstBackground = Background(epochId: 0)
+        
+        firstBackground.size.width = (scene.size.width)
+        firstBackground.size.height = (scene.size.height)
+        firstBackground.position = CGPoint(x: (scene.size.width) / 2,
+                                           y: (scene.size.height) / 2)
+        firstBackground.zPosition = -3
+        scene.addChild(firstBackground)
+        Background.backgroundsArray.append(firstBackground)
+    }
+    
+    func setBackgroundImage(epochId: Int){
+
+            self.texture = SKTexture(imageNamed: imagesForEpochs[epochId])
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
