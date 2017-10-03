@@ -145,34 +145,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!isTransitioning) {
         
-        for b in Background.backgroundsArray {
+            for b in Background.backgroundsArray {
             
-            b.position.x -= movingSpeed * 0.3
-        }
+                b.position.x -= movingSpeed * 0.3
+            }
         
-        // Generates new Backgrounds
-        if(Background.backgroundsArray.count <= Background.maxBackgrounds){
+            // Generates new Backgrounds
+            if(Background.backgroundsArray.count <= Background.maxBackgrounds){
             
-            let newBackground = Background(epochId: self.epoch.whatEpochIsThis!)
+                let newBackground = Background(epochId: self.epoch.whatEpochIsThis!)
             
-            newBackground.size.width = (self.scene?.size.width)!
-            newBackground.size.height = (self.scene?.size.height)!
-            newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
+                newBackground.size.width = (self.scene?.size.width)!
+                newBackground.size.height = (self.scene?.size.height)!
+                newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
             
-            newBackground.zPosition = -1
+                newBackground.zPosition = -1
             
-            self.scene?.addChild(newBackground)
-            Background.backgroundsArray.append(newBackground)
-        }
+                self.scene?.addChild(newBackground)
+                Background.backgroundsArray.append(newBackground)
+            }
         
-        // Respositions backgrounds and sets their image according to the current epoch
-        if(Background.backgroundsArray[0].position.x + Background.backgroundsArray[0].size.width / 2 <= 0){
+            // Respositions backgrounds and sets their image according to the current epoch
+            if(Background.backgroundsArray[0].position.x + Background.backgroundsArray[0].size.width / 2 <= 0){
             
-            Background.backgroundsArray[0].position =  CGPoint(x: CGFloat(Background.backgroundsArray.count - 1) * (self.scene?.size.width)!, y: Background.backgroundsArray[0].size.height / 2)
-            Background.backgroundsArray[0].setBackgroundImage(epochId: self.epoch.whatEpochIsThis!)
+                Background.backgroundsArray[0].position = CGPoint(x: CGFloat(Background.backgroundsArray.count - 1) * (self.scene?.size.width)!, y: Background.backgroundsArray[0].size.height / 2)
             
-           Background.backgroundsArray.rearrange(from: 0, to: Background.backgroundsArray.lastIndex)
-        }
+                Background.backgroundsArray.rearrange(from: 0, to: Background.backgroundsArray.lastIndex)
+            }
         }
     }
     
@@ -358,14 +357,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let enterTransition = SKAction.run {
                 
-                self.background = Background(epochId: self.epoch.whatEpochIsThis!)
+                self.background = self.epoch.background![0]
                 self.background.alpha = 0.0
                 self.background.size.height = self.size.height
                 self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-                self.background.zPosition = -1
+                self.background.zPosition = 0
                 self.addChild(self.background)
                 self.background.run(SKAction.fadeIn(withDuration: 2))
-                
             }
             let timeInTransition = SKAction.wait(forDuration: 10)
             
@@ -373,22 +371,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1)
                 
+                for b in Background.backgroundsArray{
+                    
+                    b.setBackgroundImage(epochId: self.epoch.whatEpochIsThis!)
+                }
                 
                 // Fade out transition background
                 let lastBackground = self.background
                 lastBackground.alpha = 1.0
                 lastBackground.run(SKAction.fadeOut(withDuration: 2.0), completion: lastBackground.removeFromParent)
-
-                self.background = Background(epochId: self.epoch.whatEpochIsThis!)
-                self.background.size.width = (self.scene?.size.width)!
-                self.background.size.height = (self.scene?.size.height)!
-                self.background.position =  CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
-                self.background.zPosition = -1
-                self.background.alpha = 0.0
-                self.addChild(self.background)
-                Background.backgroundsArray.append(self.background)
-                self.background.run(SKAction.fadeIn(withDuration: 2.0))
             }
+            
             let timeBeforeResumeSpawning = SKAction.wait(forDuration: 3)
             
             let resumeSpawning = SKAction.run {
@@ -399,8 +392,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let executeTransition = SKAction.sequence([waitTimeBeforeTransition, enterTransition, timeInTransition, exitTransition, timeBeforeResumeSpawning, resumeSpawning])
             
             self.run(executeTransition)
-            
-            // How to improve this, make transition smoother.
         }
     }
     

@@ -14,6 +14,7 @@ class Background: SKSpriteNode {
     static var backgroundsArray: [Background] = []
     static let maxBackgrounds = 2
     var imageName: String?
+    let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground"]
     
     init(epochId: Int) {
         
@@ -44,8 +45,6 @@ class Background: SKSpriteNode {
     }
     func setBackgroundImage(epochId: Int){
 
-            self.texture = SKTexture(imageNamed: self.imageName!)
-        
+            self.texture = SKTexture(imageNamed: imagesForEpochs[epochId])
     }
-
 }
