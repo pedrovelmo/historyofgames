@@ -137,7 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
                 newBackground.size.width = (self.scene?.size.width)!
                 newBackground.size.height = (self.scene?.size.height)!
-                newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
+                newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!) + 2, y: (self.scene?.size.height)! / 2)
             
                 newBackground.zPosition = -3
             
