@@ -13,6 +13,8 @@ class Background: SKSpriteNode {
     
     static var backgroundsArray: [Background] = []
     static let maxBackgrounds = 2
+    static let transitionBackground = Background(epochId: -1)
+    
     let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground"]
     
     init(epochId: Int) {
@@ -38,5 +40,21 @@ class Background: SKSpriteNode {
     func setBackgroundImage(epochId: Int){
 
             self.texture = SKTexture(imageNamed: imagesForEpochs[epochId])
+    }
+    
+    static func setTransitionBackground(scene: SKScene){
+        
+        transitionBackground.alpha = 0.0
+        transitionBackground.size.height = scene.size.height
+        transitionBackground.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
+        transitionBackground.zPosition = -2
+        scene.addChild(transitionBackground)
+        transitionBackground.run(SKAction.fadeIn(withDuration: 2))
+    }
+    
+    static func removeTransitionBackground(scene: SKScene){
+        
+        transitionBackground.alpha = 1.0
+        transitionBackground.run(SKAction.fadeOut(withDuration: 4.0), completion: transitionBackground.removeFromParent)
     }
 }
