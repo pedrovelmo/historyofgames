@@ -53,9 +53,6 @@ class Epoch {
             numberOfCoins = 1000000
             
         default: break
-            
         }
-        
     }
-    
 }

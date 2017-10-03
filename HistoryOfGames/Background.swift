@@ -13,29 +13,24 @@ class Background: SKSpriteNode {
     
     static var backgroundsArray: [Background] = []
     static let maxBackgrounds = 2
-    var imageName: String?
+    static let transitionBackground = Background(epochId: -1)
+    
+    let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground"]
     
     init(epochId: Int) {
         
-        switch epochId {
-            
-        case -1:
-            self.imageName = "transitionBackground.png"
-            
-        case 0:
-            self.imageName = "pongBackground.png"
+        let texture: SKTexture
         
-        case 1:
-            self.imageName = "pacmanBackground"
+        if(epochId == -1){
             
-        case 2:
-            self.imageName = "marioBackground"
-        default:
-            break
+            texture = SKTexture(imageNamed: "transitionBackground")
         }
         
+        else{
+            
+            texture = SKTexture(imageNamed: imagesForEpochs[epochId])
+        }
         
-        let texture = SKTexture(imageNamed: self.imageName!)
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
     }
     
@@ -44,8 +39,22 @@ class Background: SKSpriteNode {
     }
     func setBackgroundImage(epochId: Int){
 
-            self.texture = SKTexture(imageNamed: self.imageName!)
-        
+            self.texture = SKTexture(imageNamed: imagesForEpochs[epochId])
     }
-
+    
+    static func setTransitionBackground(scene: SKScene){
+        
+        transitionBackground.alpha = 0.0
+        transitionBackground.size.height = scene.size.height
+        transitionBackground.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
+        transitionBackground.zPosition = -2
+        scene.addChild(transitionBackground)
+        transitionBackground.run(SKAction.fadeIn(withDuration: 2))
+    }
+    
+    static func removeTransitionBackground(scene: SKScene){
+        
+        transitionBackground.alpha = 1.0
+        transitionBackground.run(SKAction.fadeOut(withDuration: 4.0), completion: transitionBackground.removeFromParent)
+    }
 }

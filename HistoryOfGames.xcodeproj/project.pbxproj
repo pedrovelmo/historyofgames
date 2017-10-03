@@ -220,7 +220,7 @@
 				TargetAttributes = {
 					496AC8DB1F58722E00A6D490 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8U8G8793TY;
+						DevelopmentTeam = T5T826RV5P;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -415,7 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8U8G8793TY;
+				DEVELOPMENT_TEAM = T5T826RV5P;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -429,7 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8U8G8793TY;
+				DEVELOPMENT_TEAM = T5T826RV5P;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
