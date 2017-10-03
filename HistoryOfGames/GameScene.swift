@@ -11,11 +11,9 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 2)
+    var epoch = Epoch(whatEpochIsThis: 0)
     
     var lastEpoch: Epoch?
-    
-    var background: Background = Background(epochId: 2)
     
     var coinVector: [Coin] = []
     
@@ -42,11 +40,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundObjectTimerIsRunning = false
     var isTransitioning = false
     
+    let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
-        NodeManager.sharedInstance.scene = self
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
@@ -73,7 +72,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.scene?.addChild(floor)
         Floor.floorsArray.append(floor)
-
+        
+//        player.size = CGSize(width: 50, height: 50)
         player.position.x = (self.scene?.size.width)! / 10 + player.size.width / 2
         player.position.y = floor.size.height + player.size.height / 2
         
@@ -104,22 +104,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func runTimer() {
-    
-        if (!objectTimerIsRunning) {
-            
-            let obstacleSeconds = Double(arc4random_uniform(4)) + 2.0
-            timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
-            objectTimerIsRunning = true
-        }
-        
-        if (!backgroundObjectTimerIsRunning) {
-            
-            let backgroundObjectSeconds = Double(arc4random_uniform(2)) + 0.5
-            backgroundTimer = Timer.scheduledTimer(timeInterval: backgroundObjectSeconds, target: self, selector: (#selector(startSpawningBackgroundNodes)), userInfo: nil, repeats: false)
-            backgroundObjectTimerIsRunning = true
-        }
-    }
     
     func floorManager(){
         
@@ -164,13 +148,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Generates new Backgrounds
             if(Background.backgroundsArray.count <= Background.maxBackgrounds){
             
-            let newBackground = Background(epochId: self.epoch.whatEpochIsThis!)
-            newBackground.zPosition = -2
-            newBackground.size.width = (self.scene?.size.width)!
-            newBackground.size.height = (self.scene?.size.height)!
-            newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
+                let newBackground = Background(epochId: self.epoch.whatEpochIsThis!)
             
-            //newBackground.zPosition = -1
+                newBackground.size.width = (self.scene?.size.width)!
+                newBackground.size.height = (self.scene?.size.height)!
+                newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
+            
+                newBackground.zPosition = -3
             
                 self.scene?.addChild(newBackground)
                 Background.backgroundsArray.append(newBackground)
@@ -367,14 +351,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let enterTransition = SKAction.run {
                 
-                self.background = Background(epochId: self.epoch.whatEpochIsThis!)
-                self.background.alpha = 0.0
-                self.background.size.height = self.size.height
-                self.background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-                self.background.zPosition = -2
-                self.addChild(self.background)
-                self.background.run(SKAction.fadeIn(withDuration: 2))
-                
+                Background.setTransitionBackground(scene: self)
             }
             
             let timeInTransition = SKAction.wait(forDuration: 10)
@@ -389,19 +366,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
                 // Fade out transition background
-                let lastBackground = self.background
-                lastBackground.alpha = 1.0
-                lastBackground.run(SKAction.fadeOut(withDuration: 2.0), completion: lastBackground.removeFromParent)
-
-                self.background = Background(epochId: self.epoch.whatEpochIsThis!)
-                self.background.size.width = (self.scene?.size.width)!
-                self.background.size.height = (self.scene?.size.height)!
-                self.background.position =  CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
-                self.background.zPosition = -2
-                self.background.alpha = 0.0
-                self.addChild(self.background)
-                Background.backgroundsArray.append(self.background)
-                self.background.run(SKAction.fadeIn(withDuration: 2.0))
+                
+                Background.removeTransitionBackground(scene: self)
             }
             
             let timeBeforeResumeSpawning = SKAction.wait(forDuration: 3)
@@ -426,17 +392,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func backgroundNodeManager() {
         if (!isTransitioning) {
-        
-        for pattern in NodeManager.sharedInstance.backgroundNodesPatternVector {
-            for node in pattern{
-                node.position.x -= movingSpeed
-                if node.position.x + node.size.width / 2 <= 0 {
-                    node.removeFromParent()
+            
+            for pattern in NodeManager.sharedInstance.backgroundNodesPatternVector {
+                for node in pattern{
+                    node.position.x -= movingSpeed
+                    if node.position.x + node.size.width / 2 <= 0 {
+                        node.removeFromParent()
+                    }
                 }
             }
         }
+        
+    }
+    
+    func runTimer() {
+        
+        if (!objectTimerIsRunning) {
+            
+            let obstacleSeconds = Double(arc4random_uniform(4)) + 2.0
+            timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
+            objectTimerIsRunning = true
         }
         
+        if (!backgroundObjectTimerIsRunning) {
+            
+            let backgroundObjectSeconds = Double(arc4random_uniform(2)) + 0.5
+            backgroundTimer = Timer.scheduledTimer(timeInterval: backgroundObjectSeconds, target: self, selector: (#selector(startSpawningBackgroundNodes)), userInfo: nil, repeats: false)
+            backgroundObjectTimerIsRunning = true
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {

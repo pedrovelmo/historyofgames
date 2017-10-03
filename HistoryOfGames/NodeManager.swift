@@ -30,6 +30,7 @@ class NodeManager{
     func createBackgroundNodes(epochId: Int, scene: SKScene, floor: Floor) {
         
         backgroundNodes = []
+        self.scene = scene
         self.floor = floor
         
         
