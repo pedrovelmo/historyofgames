@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4945C1C51F83F207004246BC /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1C41F83F207004246BC /* NodeManager.swift */; };
 		496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8DF1F58722E00A6D490 /* AppDelegate.swift */; };
 		496AC8E41F58722E00A6D490 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 496AC8E31F58722E00A6D490 /* Actions.sks */; };
 		496AC8E61F58722E00A6D490 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8E51F58722E00A6D490 /* GameScene.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4945C1C41F83F207004246BC /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
 		496AC8DC1F58722E00A6D490 /* HistoryOfGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistoryOfGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496AC8DF1F58722E00A6D490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		496AC8E31F58722E00A6D490 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				C1D07D371F685407000B768F /* AudioManager.swift */,
 				C1D07D391F686926000B768F /* Coin.swift */,
 				C1D07D3B1F686991000B768F /* CoinManager.swift */,
+				4945C1C41F83F207004246BC /* NodeManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */,
 				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
+				4945C1C51F83F207004246BC /* NodeManager.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
 			);
