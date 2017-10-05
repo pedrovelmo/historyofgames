@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 0)
+    var epoch = Epoch(whatEpochIsThis: 2)
     
     var lastEpoch: Epoch?
     
@@ -24,7 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var jumpCounter = 0
 
     var backgroundSound : BackgroundMusic = .CarminaBurana
-    
+
     var soundPlayed: ExplosionSound = .WilhemScream
     
     var hudView: HudView?
@@ -201,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         for o in Obstacle.obstaclesArray{
             
-            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "superBlock"){
+            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "block1" || o.obstacleName == "block2" || o.obstacleName == "block3" || o.obstacleName == "block4" || o.obstacleName == "superblock1" || o.obstacleName == "superblock2" || o.obstacleName == "superblock3" || o.obstacleName == "superblock4"){
                 
                 o.position.x -= self.movingSpeed
             }
@@ -209,6 +209,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (o.obstacleName == "redGhost" || o.obstacleName == "blueGhost" || o.obstacleName == "greenGhost" || o.obstacleName == "greenishGhost" || o.obstacleName == "yellowGhost"  ) {
                 
                 o.position.x -= self.movingSpeed * 1.5
+            }
+            
+            if(o.obstacleName == "turtle"){
+                
+                o.position.x -= 2 * self.movingSpeed
             }
             
             if(o.position.x + o.size.width / 2 <= 0){
