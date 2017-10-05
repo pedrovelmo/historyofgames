@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 2)
+    var epoch = Epoch(whatEpochIsThis: 0)
     
     var lastEpoch: Epoch?
     
@@ -78,8 +78,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         jumpCounter = jumpCounter + 1
         
-        player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
-           
+        //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
+        
+        player.jump(jumpCount: jumpCounter)
         
         print("jumpCounter", jumpCounter)
     }

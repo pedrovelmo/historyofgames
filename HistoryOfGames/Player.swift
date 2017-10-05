@@ -107,7 +107,7 @@ class Player: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(rectangleOf: hitbox)
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
         self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
@@ -148,11 +148,14 @@ class Player: SKSpriteNode {
     
     func startAnimation() {
         self.run(SKAction.repeatForever(SKAction.animate(with: self.texturesArray, timePerFrame: 0.1, resize: true, restore: false)))
-        
-        
     }
     
-
-
-
+    func jump(jumpCount: Int){
+        
+        if(jumpCount <= self.maxJumps){
+         
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
+        }
+    }
 }
