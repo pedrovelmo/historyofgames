@@ -19,7 +19,7 @@ class Floor: SKSpriteNode {
             return floorsArray.first?.position.x ?? 0.0
         }
         set {
-            for i in 0...maxFloors {
+            for i in 0..<floorsArray.count {
                 floorsArray[i].position.x =
                     i == 0 ? newValue
                            : floorsArray[i-1].position.x + floorsArray[i-1].size.width
@@ -27,9 +27,24 @@ class Floor: SKSpriteNode {
             if isOutOfScene {
                 floorsArray.first!.position.x = floorsArray.last!.position.x + floorsArray.last!.size.width
                 floorsArray.rearrange(from: 0, to: floorsArray.lastIndex)
+                floorsArray.last!.texture = floorsArray.first!.texture
             }
         }
         
+    }
+    static var allImages: Int {
+        get {
+            return -1
+            
+        }
+        
+        set {
+            for i in 1..<floorsArray.count {
+                floorsArray[i].setFloorImage(epochId: newValue)
+            }
+            
+        }
+
     }
     static var isOutOfScene: Bool {
         if floorsArray.count == 0 { return false}
@@ -50,15 +65,16 @@ class Floor: SKSpriteNode {
         }
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-        self.size.width = screenSize.width
-        self.size.height = screenSize.height / 8
-        
-        self.position.x = CGFloat(Floor.floorsArray.count) * screenSize.width
-        self.position.y = self.size.height / 2
-        
-        self.setPhysicsBody()
-        //self.scene?.addChild(newFloor)
-        Floor.floorsArray.append(self)
+//        self.size.width = screenSize.width
+//        self.size.height = screenSize.height / 8
+//
+//        self.position.x = CGFloat(Floor.floorsArray.count) * screenSize.width
+//        self.position.y = screenSize.height / 2
+//        print("Position y: ", self.position.y)
+//        
+//        
+//        self.scene?.addChild(newFloor)
+//        Floor.floorsArray.append(self)
 
     }
     
@@ -70,7 +86,9 @@ class Floor: SKSpriteNode {
         // Width + 2 to compensate for the small space beetween floors.
         floor.size = CGSize(width: (scene.size.width) + 2, height: (scene.size.height) / 8)
         floor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (scene.size.width)),
-                                 y: floor.size.height / 2)
+                                 y: floor.size.height  / 2)
+        print("Position y: ", floor.position.y)
+        print("Scene size: ", scene.size)
         floor.setPhysicsBody()
         
         scene.addChild(floor)
@@ -96,6 +114,8 @@ class Floor: SKSpriteNode {
         self.physicsBody?.collisionBitMask = PhysicsCategory.Player
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
     }
+    
+ 
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

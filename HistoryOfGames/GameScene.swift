@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var epoch = Epoch(whatEpochIsThis: 0)
+    var epoch: Epoch!
     
     var lastEpoch: Epoch?
     
@@ -47,6 +47,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
         
+        epoch = Epoch(whatEpochIsThis: 0, scene: self)
+        
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
         
@@ -57,6 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Add first floor
         Floor.setFirstFloor(scene: self)
+        Floor.floorsArray.first?.setPhysicsBody()
         
 //        player.size = CGSize(width: 50, height: 50)
         player.position.x = (self.scene?.size.width)! / 10 + player.size.width / 2
@@ -102,6 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newFloor.size = CGSize(width: (self.scene?.size.width)! , height: (self.scene?.size.height)! / 8)
             newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!) , y: newFloor.size.height / 2)
             
+            
             newFloor.setPhysicsBody()
             self.scene?.addChild(newFloor)
             Floor.floorsArray.append(newFloor)
@@ -123,6 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //
 //            Floor.floorsArray.rearrange(from: 0, to: Floor.floorsArray.lastIndex)
 //        }
+//    }
     }
     
     func backgroundManager(){
@@ -339,7 +344,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             lastEpoch = epoch
             
-            epoch = Epoch(whatEpochIsThis: -1)
+            epoch = Epoch(whatEpochIsThis: -1, scene: self)
+            
+            Floor.allImages = epoch.whatEpochIsThis!
             
             isTransitioning = true
             
@@ -354,7 +361,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let exitTransition = SKAction.run {
                 
-                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1)
+                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1, scene: self)
+                
+                Floor.allImages = self.epoch.whatEpochIsThis!
                 
                 for b in Background.backgroundsArray{
                     
