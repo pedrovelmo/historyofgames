@@ -14,8 +14,29 @@ class Floor: SKSpriteNode {
     static var floorsArray: [Floor] = []
     static let maxFloors = 2
     static let imagesForEpochs = ["pongFloor", "pacmanFloor", "marioFloor"]
+    static var positionX:CGFloat {
+        get {
+            return floorsArray.first?.position.x ?? 0.0
+        }
+        set {
+            for i in 0...maxFloors {
+                floorsArray[i].position.x =
+                    i == 0 ? newValue
+                           : floorsArray[i-1].position.x + floorsArray[i-1].size.width
+            }
+            if isOutOfScene {
+                floorsArray.first!.position.x = floorsArray.last!.position.x + floorsArray.last!.size.width
+                floorsArray.rearrange(from: 0, to: floorsArray.lastIndex)
+            }
+        }
+        
+    }
+    static var isOutOfScene: Bool {
+        if floorsArray.count == 0 { return false}
+        return (floorsArray.first?.position.x)! < -((floorsArray.first?.size.width)! / 2)
+    }
     
-    init(epochId: Int) {
+    init(epochId: Int, screenSize: CGSize) {
         
         let texture: SKTexture
         
@@ -29,11 +50,22 @@ class Floor: SKSpriteNode {
         }
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
+        self.size.width = screenSize.width
+        self.size.height = screenSize.height / 8
+        
+        self.position.x = CGFloat(Floor.floorsArray.count) * screenSize.width
+        self.position.y = self.size.height / 2
+        
+        self.setPhysicsBody()
+        //self.scene?.addChild(newFloor)
+        Floor.floorsArray.append(self)
+
     }
+    
     
     static func setFirstFloor(scene: SKScene){
         
-        let floor = Floor(epochId: 0)
+        let floor = Floor(epochId: 0, screenSize: scene.size)
         
         // Width + 2 to compensate for the small space beetween floors.
         floor.size = CGSize(width: (scene.size.width) + 2, height: (scene.size.height) / 8)
