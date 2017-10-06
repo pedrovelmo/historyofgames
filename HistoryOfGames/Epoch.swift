@@ -49,7 +49,7 @@ class Epoch {
         case 2:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis)]
-            obstacles = ["block1", "block2", "block3", "block4", "superblock", "superblock1", "superblock2", "superblock3"]
+            obstacles = ["block1", "block2", "block3", "block4", "turtle"]
             numberOfCoins = 1000000
             
         default: break

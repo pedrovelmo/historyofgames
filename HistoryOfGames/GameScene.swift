@@ -93,18 +93,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func floorManager(){
         
-        for f in Floor.floorsArray{
-            
-            f.position.x -= movingSpeed
-        }
-        
         // Generates new Floors
         if(Floor.floorsArray.count <= Floor.maxFloors){
                 
             let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!)
             
             // Width + 2 to compensate for the small space beetween floors.
-            newFloor.size = CGSize(width: (self.scene?.size.width)! + 2, height: (self.scene?.size.height)! / 8)
+            newFloor.size = CGSize(width: (self.scene?.size.width)! , height: (self.scene?.size.height)! / 8)
             newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!) , y: newFloor.size.height / 2)
             
             newFloor.setPhysicsBody()
@@ -112,10 +107,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Floor.floorsArray.append(newFloor)
         }
         
+        for f in Floor.floorsArray{
+            
+            f.position.x -= movingSpeed
+        }
+        
         // Respositions floors and sets their image according to the current epoch
+        print(Floor.floorsArray[0].position.x)
         if(Floor.floorsArray[0].position.x + Floor.floorsArray[0].size.width / 2 <= 0){
             
-           Floor.floorsArray[0].position = CGPoint(x: ((CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!)) - Floor.floorsArray[0].size.width / 2 + 2, y: Floor.floorsArray[0].size.height / 2)
+            Floor.floorsArray[0].position.x = CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)! - Floor.floorsArray[0].size.width / 2
             Floor.floorsArray[0].setFloorImage(epochId: self.epoch.whatEpochIsThis!)
             
             Floor.floorsArray.rearrange(from: 0, to: Floor.floorsArray.lastIndex)
@@ -126,10 +127,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!isTransitioning) {
         
-            for b in Background.backgroundsArray {
-            
-                b.position.x -= movingSpeed * 0.3
-            }
         
             // Generates new Backgrounds
             if(Background.backgroundsArray.count <= Background.maxBackgrounds){
@@ -138,12 +135,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
                 newBackground.size.width = (self.scene?.size.width)!
                 newBackground.size.height = (self.scene?.size.height)!
-                newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!) + 2, y: (self.scene?.size.height)! / 2)
+                newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
             
                 newBackground.zPosition = -3
             
                 self.scene?.addChild(newBackground)
                 Background.backgroundsArray.append(newBackground)
+            }
+            
+            
+            for b in Background.backgroundsArray {
+                
+                b.position.x -= movingSpeed * 0.3
             }
         
             // Respositions backgrounds and sets their image according to the current epoch
@@ -202,7 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         for o in Obstacle.obstaclesArray{
             
-            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "block1" || o.obstacleName == "block2" || o.obstacleName == "block3" || o.obstacleName == "block4" || o.obstacleName == "superblock1" || o.obstacleName == "superblock2" || o.obstacleName == "superblock3" || o.obstacleName == "superblock4"){
+            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "block1" || o.obstacleName == "block2" || o.obstacleName == "block3" || o.obstacleName == "block4"){
                 
                 o.position.x -= self.movingSpeed
             }
@@ -413,6 +416,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func updateFloorSpeed() {
+        
+        if (!isTransitioning) {
+        self.movingSpeed = 0.0007 + self.movingSpeed
+        
+        }
+        
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         
         floorManager()
@@ -423,5 +435,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         epochManager()
         backgroundManager()
         backgroundNodeManager()
+        updateFloorSpeed()
     }
 }
