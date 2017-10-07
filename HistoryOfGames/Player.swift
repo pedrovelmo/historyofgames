@@ -114,36 +114,7 @@ class Player: SKSpriteNode {
 
         
 //        self.physicsBody?.collisionBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Floor
-//        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle
-       
-
-        
-    }
-    
-    func jump() {
-       self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
-
-    }
-    
-    func jumpAction(floorPosition: CGFloat, jumpCount: Int) {
-        
-        if (jumpCount <= self.maxJumps) {
-        // move up 100
-        let jumpUpAction = SKAction.moveTo(y: self.position.y + 120, duration: 0.4)
-        // move down 100
-        let jumpDownAction = SKAction.moveTo(y: floorPosition + self.size.height / 2, duration:0.5)
-        // sequence of moving up then down
-        let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
-        
-        // make player run sequence
-        self.run(jumpSequence)
-        self.run(AudioManager.sharedInstance.jumpSound)
-            
-        }
-        else {
-            
-            return
-        }
+//        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle 
     }
     
     func startAnimation() {

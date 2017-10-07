@@ -93,7 +93,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
     func floorManager(){
         
         // Generates new Floors
@@ -101,7 +100,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!, screenSize: self.scene!.size)
             
-            // Width + 2 to compensate for the small space beetween floors.
             newFloor.size = CGSize(width: (self.scene?.size.width)! , height: (self.scene?.size.height)! / 8)
             newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!) , y: newFloor.size.height / 2)
             
@@ -112,28 +110,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         Floor.positionX -= movingSpeed
-//        for f in Floor.floorsArray{
-//
-//            f.position.x -= movingSpeed
-//        }
-//
-//        // Respositions floors and sets their image according to the current epoch
-//        print(Floor.floorsArray[0].position.x)
-//        if Floor.isOutOfScene {
-//        if(Floor.floorsArray[0].position.x + Floor.floorsArray[0].size.width / 2 <= 0){
-//
-//            Floor.floorsArray[0].position.x = CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)! - Floor.floorsArray[0].size.width / 2
-//            Floor.floorsArray[0].setFloorImage(epochId: self.epoch.whatEpochIsThis!)
-//
-//            Floor.floorsArray.rearrange(from: 0, to: Floor.floorsArray.lastIndex)
-//        }
-//    }
     }
     
     func backgroundManager(){
         
         if (!isTransitioning) {
-        
         
             // Generates new Backgrounds
             if(Background.backgroundsArray.count <= Background.maxBackgrounds){
@@ -150,19 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Background.backgroundsArray.append(newBackground)
             }
             
-            
-            for b in Background.backgroundsArray {
-                
-                b.position.x -= movingSpeed * 0.3
-            }
-        
-            // Respositions backgrounds and sets their image according to the current epoch
-            if(Background.backgroundsArray[0].position.x + Background.backgroundsArray[0].size.width / 2 <= 0){
-            
-                Background.backgroundsArray[0].position = CGPoint(x: CGFloat(Background.backgroundsArray.count - 1) * (self.scene?.size.width)!, y: Background.backgroundsArray[0].size.height / 2)
-            
-                Background.backgroundsArray.rearrange(from: 0, to: Background.backgroundsArray.lastIndex)
-            }
+            Background.positionX -= movingSpeed * 0.3
         }
     }
     
