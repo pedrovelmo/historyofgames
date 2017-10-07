@@ -350,14 +350,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             isTransitioning = true
             
-            let waitTimeBeforeTransition = SKAction.wait(forDuration: 5)
+            let waitTimeBeforeTransition = SKAction.wait(forDuration: 3)
             
             let enterTransition = SKAction.run {
                 
                 Background.setTransitionBackground(scene: self)
+                
+                self.createLoadingView()
+                
             }
             
-            let timeInTransition = SKAction.wait(forDuration: 10)
+            let timeInTransition = SKAction.wait(forDuration: 5)
             
             let exitTransition = SKAction.run {
                 
@@ -375,7 +378,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Background.removeTransitionBackground(scene: self)
             }
             
-            let timeBeforeResumeSpawning = SKAction.wait(forDuration: 3)
+            let timeBeforeResumeSpawning = SKAction.wait(forDuration: 2.5)
             
             let resumeSpawning = SKAction.run {
                 self.isTransitioning = false
@@ -447,5 +450,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundManager()
         backgroundNodeManager()
         updateFloorSpeed()
+    }
+    
+    
+    func createLoadingView() {
+        let loadingView = UIView(frame: CGRect(x: self.frame.width / 2 - 80, y: self.frame.height / 2 , width: 0, height: 40))
+        
+        UIView.animate(withDuration: 5.5,
+                       animations: {
+                        loadingView.frame.size = CGSize(width: 250, height: 40)
+                        loadingView.backgroundColor = UIColor.blue
+        },
+                       completion: { finished in
+                        if(finished) {
+                            loadingView.removeFromSuperview()
+                        }
+        }
+        )
+        
+        
+        self.view?.addSubview(loadingView)
+        
     }
 }
