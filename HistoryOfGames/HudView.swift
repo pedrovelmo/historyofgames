@@ -27,20 +27,20 @@ class HudView: UIView {
     }
     
     func setupHud() {
-        
-        let labelSize =  CGSize(width: self.frame.width * 0.1, height: self.frame.height * 0.1)
+
+        let labelSize =  CGSize(width: self.frame.width * 0.1, height: self.frame.height * 0.05)
         self.coinLabel = UILabel()
         self.scoreLabel = UILabel()
         coinLabel?.text = String(format: "Coin: %04u / 1000", 0000)
-        coinLabel?.font = UIFont(name: "Arial Bold", size: labelSize.width)
+        coinLabel?.font = UIFont(name: "chalkduster", size: 15)
         coinLabel?.alpha = 1.0
-        coinLabel?.textColor = UIColor.redB
-        coinLabel?.frame = CGRect(x: self.frame.size.width - labelSize.width * 3, y: self.frame.size.height * 0.05 , width: labelSize.width * 10, height: labelSize.height)
+        coinLabel?.textColor = UIColor.red
+        coinLabel?.frame = CGRect(x: self.frame.size.width - labelSize.width * 3.3, y: self.frame.size.height * 0.05 , width: labelSize.width * 3.0, height: labelSize.height)
         
         scoreLabel?.text = String(format: "Score: %08u", 0000)
-        scoreLabel?.font = UIFont(name: "Arial Bold", size: labelSize.width)
+        scoreLabel?.font = UIFont(name: "chalkduster", size: 15)
         scoreLabel?.alpha = 1.0
-        scoreLabel?.textColor = UIColor.blueB
+        scoreLabel?.textColor = UIColor.white
         scoreLabel?.frame = CGRect(x: labelSize.width * 0.5, y: self.frame.size.height * 0.05 , width: labelSize.width * 4, height: labelSize.height)
 
         self.addSubview(coinLabel!)

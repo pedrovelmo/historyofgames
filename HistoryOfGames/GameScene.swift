@@ -289,13 +289,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Function to update text of scoreLabel
     func coinLabelUpdate() {
-        if(!isTransitioning){
+        
+        if (!isTransitioning) {
         hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
         }
         
-        else if (isTransitioning) {
-            hudView?.coinLabel?.text = String(format: "Coin: %04u / \((self.lastEpoch?.numberOfCoins!)!)", coins)
-        }
+        
+
     }
     
     func scoreLabelUpdate(){
@@ -345,6 +345,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Fade out transition background
                 
                 Background.removeTransitionBackground(scene: self)
+                
             }
             
             let timeBeforeResumeSpawning = SKAction.wait(forDuration: 2.5)
@@ -352,6 +353,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let resumeSpawning = SKAction.run {
                 self.isTransitioning = false
                 self.startSpawningObjects()
+                self.coinLabelUpdate()
             }
             
             let executeTransition = SKAction.sequence([waitTimeBeforeTransition, enterTransition, timeInTransition, exitTransition, timeBeforeResumeSpawning, resumeSpawning])
@@ -432,7 +434,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         },
                        completion: { finished in
                         if(finished) {
-                            loadingView.removeFromSuperview()
+                            
+                            let wait = SKAction.wait(forDuration: 2.0)
+                            let removeView = SKAction.run {
+                                loadingView.removeFromSuperview()
+                            }
+                        
+                          self.run(SKAction.sequence([wait, removeView]))
+                            
                         }
         }
         )
