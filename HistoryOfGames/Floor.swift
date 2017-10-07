@@ -14,6 +14,7 @@ class Floor: SKSpriteNode {
     static var floorsArray: [Floor] = []
     static let maxFloors = 2
     static let imagesForEpochs = ["pongFloor", "pacmanFloor", "marioFloor"]
+    
     static var positionX:CGFloat {
         get {
             return floorsArray.first?.position.x ?? 0.0
@@ -30,22 +31,21 @@ class Floor: SKSpriteNode {
                 floorsArray.last!.texture = floorsArray.first!.texture
             }
         }
-        
     }
+    
     static var allImages: Int {
         get {
             return -1
-            
         }
         
         set {
+            print("Tamanho do array: \(floorsArray.count)")
             for i in 1..<floorsArray.count {
                 floorsArray[i].setFloorImage(epochId: newValue)
             }
-            
         }
-
     }
+    
     static var isOutOfScene: Bool {
         if floorsArray.count == 0 { return false}
         return (floorsArray.first?.position.x)! < -((floorsArray.first?.size.width)! / 2)
@@ -65,17 +65,6 @@ class Floor: SKSpriteNode {
         }
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-//        self.size.width = screenSize.width
-//        self.size.height = screenSize.height / 8
-//
-//        self.position.x = CGFloat(Floor.floorsArray.count) * screenSize.width
-//        self.position.y = screenSize.height / 2
-//        print("Position y: ", self.position.y)
-//        
-//        
-//        self.scene?.addChild(newFloor)
-//        Floor.floorsArray.append(self)
-
     }
     
     
@@ -114,9 +103,7 @@ class Floor: SKSpriteNode {
         self.physicsBody?.collisionBitMask = PhysicsCategory.Player
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
     }
-    
- 
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -15,7 +15,44 @@ class Background: SKSpriteNode {
     static let maxBackgrounds = 2
     static let transitionBackground = Background(epochId: -1)
     
-    let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground"]
+    static let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground"]
+    
+    static var positionX:CGFloat {
+        get {
+            return backgroundsArray.first?.position.x ?? 0.0
+        }
+        set {
+            for i in 0..<backgroundsArray.count {
+                backgroundsArray[i].position.x =
+                    i == 0 ? newValue
+                    : backgroundsArray[i-1].position.x + backgroundsArray[i-1].size.width
+            }
+            if isOutOfScene {
+                backgroundsArray.first!.position.x = backgroundsArray.last!.position.x + backgroundsArray.last!.size.width
+                backgroundsArray.rearrange(from: 0, to: backgroundsArray.lastIndex)
+                backgroundsArray.last!.texture = backgroundsArray.first!.texture
+            }
+        }
+    }
+    
+    static var allImages: Int {
+        get {
+            return -1
+        }
+        
+        set {
+            print("Tamanho do array: \(backgroundsArray.count)")
+            for i in 1..<backgroundsArray.count {
+                backgroundsArray[i].setBackgroundImage(epochId: newValue)
+            }
+        }
+    }
+    
+    static var isOutOfScene: Bool {
+        if backgroundsArray.count == 0 { return false}
+        return (backgroundsArray.first?.position.x)! <
+            -((backgroundsArray.first?.size.width)! / 2)
+    }
     
     init(epochId: Int) {
         
@@ -28,7 +65,7 @@ class Background: SKSpriteNode {
         
         else{
             
-            texture = SKTexture(imageNamed: imagesForEpochs[epochId])
+            texture = SKTexture(imageNamed: Background.imagesForEpochs[epochId])
         }
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
@@ -65,7 +102,7 @@ class Background: SKSpriteNode {
     
     func setBackgroundImage(epochId: Int){
 
-            self.texture = SKTexture(imageNamed: imagesForEpochs[epochId])
+        self.texture = SKTexture(imageNamed: Background.imagesForEpochs[epochId])
     }
     
     required init(coder aDecoder: NSCoder) {
