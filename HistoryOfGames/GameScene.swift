@@ -22,7 +22,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var movingSpeed: CGFloat = 0.0
     
     var jumpCounter = 0
-
     
     var hudView: HudView?
     var gameOverView: SKSpriteNode?
@@ -41,10 +40,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
     var gameMode: String!
-    
-    
-    
-    
     
     public init(size: CGSize, gameMode: String) {
         super.init(size: size)
