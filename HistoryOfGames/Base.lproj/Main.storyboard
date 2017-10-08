@@ -12,7 +12,7 @@
         <!--Menu View Controller-->
         <scene sceneID="0Nr-zA-8kf">
             <objects>
-                <viewController id="8hk-kb-v02" customClass="MenuViewController" customModule="HistoryOfGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8hk-kb-v02" customClass="MenuViewController" customModule="HistoryOfGames" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Kw-V6-ett"/>
                         <viewControllerLayoutGuide type="bottom" id="fVY-dg-KY6"/>

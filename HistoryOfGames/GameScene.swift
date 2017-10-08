@@ -24,8 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var jumpCounter = 0
 
     
-    
     var hudView: HudView?
+    var gameOverView: SKSpriteNode?
     
     var coins: Int = 0
     
@@ -33,7 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var timer = Timer()
     var backgroundTimer = Timer()
-    
+    var isGameOver = false
     var objectTimerIsRunning = false
     var backgroundObjectTimerIsRunning = false
     var isTransitioning = false
@@ -60,12 +60,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
+        isGameOver = false
         
         
         epoch = Epoch(whatEpochIsThis: 0, scene: self, gameMode: gameMode)
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
+        
+        
         coinLabelUpdate()
         print("gameMode", gameMode)
         switch(gameMode) {
@@ -104,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        if (!isGameOver) {
         jumpCounter = jumpCounter + 1
         
         //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
@@ -113,13 +116,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.run(AudioManager.sharedInstance.jumpSound)
         
         print("jumpCounter", jumpCounter)
+        }
+        
+        else {
+            
+            hudView?.removeFromSuperview()
+            gameOverView?.removeFromParent()
+            player.removeFromParent()
+            Floor.floorsArray.removeAll()
+            Background.backgroundsArray.removeAll()
+            self.didMove(to: self.view!)
+            
+        }
     }
 
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
     func floorManager(){
         
         // Generates new Floors
@@ -274,6 +284,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion((contact.bodyB.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
+            createGameOverScreen(imageNamed: "gameOver.png")
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle {
@@ -281,6 +292,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion((contact.bodyA.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
+            createGameOverScreen(imageNamed: "gameOver.png")
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
@@ -390,6 +402,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.run(executeTransition)
         }
+        
+        if (epoch.whatEpochIsThis == 2 && coins >= epoch.numberOfCoins!) {
+            createGameOverScreen(imageNamed: "completed.png")
+            
+        }
     }
     
     func startSpawningBackgroundNodes() {
@@ -441,7 +458,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
+        if (!isGameOver) {
         floorManager()
         obstacleManager()
         runTimer()
@@ -451,6 +468,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundManager()
         backgroundNodeManager()
         updateFloorSpeed()
+        }
     }
     
     
@@ -478,6 +496,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         self.view?.addSubview(loadingView)
+        
+    }
+    
+    func createGameOverScreen(imageNamed: String) {
+        isGameOver = true
+        coins = 0
+        score = 0
+        
+        gameOverView = SKSpriteNode(imageNamed: imageNamed)
+        gameOverView?.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
+        gameOverView?.zPosition = 10
+        gameOverView?.size = CGSize(width: (self.frame.size.width / 1.2), height: (self.frame.size.height / 1.1))
+        gameOverView?.alpha = 1.0
+        self.addChild(gameOverView!)
         
     }
 }

@@ -37,6 +37,7 @@
 		499417D01F82C9DD005F23D9 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 499417CF1F82C9DD005F23D9 /* MyParticle.sks */; };
 		49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F41F8AD38A00DB634F /* Coin.mp3 */; };
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
+		49E563FA1F8AD83000DB634F /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E563F91F8AD83000DB634F /* GameOverView.swift */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
 		C1D07D381F685407000B768F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D371F685407000B768F /* AudioManager.swift */; };
 		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
@@ -78,6 +79,7 @@
 		499417CF1F82C9DD005F23D9 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		49E563F41F8AD38A00DB634F /* Coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin.mp3; sourceTree = "<group>"; };
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
+		49E563F91F8AD83000DB634F /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
 		C1D07D371F685407000B768F /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				496AC8EE1F58722E00A6D490 /* LaunchScreen.storyboard */,
 				496AC8E91F58722E00A6D490 /* Main.storyboard */,
 				49904B801F7166EF005C0A6A /* HudView.swift */,
+				49E563F91F8AD83000DB634F /* GameOverView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
 				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
 				C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */,
+				49E563FA1F8AD83000DB634F /* GameOverView.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				4945C1C71F8410E9004246BC /* GameScene.swift in Sources */,
