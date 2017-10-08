@@ -35,6 +35,8 @@
 		49904B811F7166EF005C0A6A /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904B801F7166EF005C0A6A /* HudView.swift */; };
 		49904B831F7167D2005C0A6A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904B821F7167D2005C0A6A /* ColorExtension.swift */; };
 		499417D01F82C9DD005F23D9 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 499417CF1F82C9DD005F23D9 /* MyParticle.sks */; };
+		49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F41F8AD38A00DB634F /* Coin.mp3 */; };
+		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
 		C1D07D381F685407000B768F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D371F685407000B768F /* AudioManager.swift */; };
 		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
@@ -74,6 +76,8 @@
 		49904B801F7166EF005C0A6A /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		49904B821F7167D2005C0A6A /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		499417CF1F82C9DD005F23D9 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		49E563F41F8AD38A00DB634F /* Coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin.mp3; sourceTree = "<group>"; };
+		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
 		C1D07D371F685407000B768F /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -169,10 +173,12 @@
 				49847BA11F61EC3C00D59E64 /* CarminaBurana.mp3 */,
 				49847BA31F61EC4400D59E64 /* AnotherDayOfSun.mp3 */,
 				49847BA51F61EC8B00D59E64 /* AdventureTune.mp3 */,
+				49E563F41F8AD38A00DB634F /* Coin.mp3 */,
 				49904B7E1F705DF9005C0A6A /* pickle_rick.mp3 */,
 				49847BA91F61EC9B00D59E64 /* SpaceGroove.mp3 */,
 				49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */,
 				49847BBB1F68310700D59E64 /* WilhemScream.wav */,
+				49E563F61F8AD46700DB634F /* Jump.wav */,
 				49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */,
 				49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */,
 			);
@@ -262,10 +268,12 @@
 				49847BAC1F61ED2200D59E64 /* spin_jump.mp3 in Resources */,
 				496AC8F01F58722E00A6D490 /* LaunchScreen.storyboard in Resources */,
 				496AC8E41F58722E00A6D490 /* Actions.sks in Resources */,
+				49E563F71F8AD47E00DB634F /* Jump.wav in Resources */,
 				49847BBC1F68310700D59E64 /* WilhemScream.wav in Resources */,
 				49904B7F1F705DF9005C0A6A /* pickle_rick.mp3 in Resources */,
 				49847BAA1F61EC9B00D59E64 /* SpaceGroove.mp3 in Resources */,
 				49847BB01F61EDDA00D59E64 /* HappyFunk.mp3 in Resources */,
+				49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

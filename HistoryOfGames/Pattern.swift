@@ -36,8 +36,8 @@ class Pattern{
                 setObstaclePhysicsBody(obstacle: obstacle)
                 
                 obstacle.physicsBody?.mass = (obstacle.physicsBody?.mass)! * 8
-                let randomX = -Int(arc4random_uniform(20)) - 11
-                let randomY = -Int(arc4random_uniform(20)) - 20
+                let randomX = -Int(arc4random_uniform(10)) - 11
+                let randomY = -Int(arc4random_uniform(10)) - 20
                 obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
             
             case "pongBar":
@@ -90,8 +90,8 @@ class Pattern{
              obstacle.position.y = CGFloat(arc4random_uniform(UInt32(scene.size.height - obstacle.size.height / 2))) + floorPosition
             
             obstacle.position.x = scene.size.width + 20
-             let randomX = Int(arc4random_uniform(20)) + 5
-             let randomY = -Int(arc4random_uniform(20)) - 5
+             let randomX = Int(arc4random_uniform(10)) + 5
+             let randomY = -Int(arc4random_uniform(10)) - 5
             setObstaclePhysicsBody(obstacle: obstacle)
             obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
             obstacle.physicsBody?.restitution = 0.0

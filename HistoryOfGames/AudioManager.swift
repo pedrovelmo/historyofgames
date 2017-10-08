@@ -38,7 +38,9 @@ class AudioManager{
     
     internal let explosionSound = SKAction.playSoundFileNamed(ExplosionSound.WilhemScream.rawValue, waitForCompletion: false)
     
-    internal let jumpSound = SKAction.playSoundFileNamed("spin_jump.mp3", waitForCompletion: false)
+    internal let jumpSound = SKAction.playSoundFileNamed("Jump.wav", waitForCompletion: false)
+    
+    internal let coinSound = SKAction.playSoundFileNamed("Coin.mp3", waitForCompletion: false)
     
     func playBackgroundMusic(){
         
@@ -47,7 +49,7 @@ class AudioManager{
         switch epoch{
             
         case 0:
-            backgroundMusic = BackgroundMusic.CarminaBurana.rawValue
+            backgroundMusic = BackgroundMusic.AdventureTune.rawValue
             
         default:
             break

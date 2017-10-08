@@ -23,9 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var jumpCounter = 0
 
-    var backgroundSound : BackgroundMusic = .CarminaBurana
-
-    var soundPlayed: ExplosionSound = .WilhemScream
+    
     
     var hudView: HudView?
     
@@ -98,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Background Music configuration
         
-        //AudioManager.sharedInstance.playBackgroundMusic()
+        AudioManager.sharedInstance.playBackgroundMusic()
         
         setCeiling()
         
@@ -112,6 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
         
         player.jump(jumpCount: jumpCounter)
+        self.run(AudioManager.sharedInstance.jumpSound)
         
         print("jumpCounter", jumpCounter)
     }
@@ -287,14 +286,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
             
             contact.bodyB.node?.removeFromParent()
-            self.coins += 50
+            self.coins += 25
             coinLabelUpdate()
+            self.run(AudioManager.sharedInstance.coinSound)
         }
         if contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
             
             contact.bodyA.node?.removeFromParent()
-            self.coins += 50
+            self.coins += 25
             coinLabelUpdate()
+            self.run(AudioManager.sharedInstance.coinSound)
         }
     }
     
@@ -320,6 +321,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!isTransitioning) {
         hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
+         
         }
         
         
