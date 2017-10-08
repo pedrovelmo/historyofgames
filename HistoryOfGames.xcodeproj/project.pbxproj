@@ -10,6 +10,7 @@
 		4945C1C51F83F207004246BC /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1C41F83F207004246BC /* NodeManager.swift */; };
 		4945C1C71F8410E9004246BC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1C61F8410E9004246BC /* GameScene.swift */; };
 		4945C1C91F841118004246BC /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1C81F841117004246BC /* Background.swift */; };
+		4945C1E91F898664004246BC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1E81F898664004246BC /* MenuViewController.swift */; };
 		496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8DF1F58722E00A6D490 /* AppDelegate.swift */; };
 		496AC8E41F58722E00A6D490 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 496AC8E31F58722E00A6D490 /* Actions.sks */; };
 		496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8E71F58722E00A6D490 /* GameViewController.swift */; };
@@ -46,6 +47,7 @@
 		4945C1C41F83F207004246BC /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
 		4945C1C61F8410E9004246BC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		4945C1C81F841117004246BC /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		4945C1E81F898664004246BC /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		496AC8DC1F58722E00A6D490 /* HistoryOfGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistoryOfGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496AC8DF1F58722E00A6D490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		496AC8E31F58722E00A6D490 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				496AC8E71F58722E00A6D490 /* GameViewController.swift */,
 				4945C1C61F8410E9004246BC /* GameScene.swift */,
+				4945C1E81F898664004246BC /* MenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -220,7 +223,7 @@
 				TargetAttributes = {
 					496AC8DB1F58722E00A6D490 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = T5T826RV5P;
+						DevelopmentTeam = 8U8G8793TY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -287,6 +290,7 @@
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				4945C1C71F8410E9004246BC /* GameScene.swift in Sources */,
 				49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */,
+				4945C1E91F898664004246BC /* MenuViewController.swift in Sources */,
 				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
 				4945C1C51F83F207004246BC /* NodeManager.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
@@ -415,7 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T5T826RV5P;
+				DEVELOPMENT_TEAM = 8U8G8793TY;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -429,7 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T5T826RV5P;
+				DEVELOPMENT_TEAM = 8U8G8793TY;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -24,6 +24,7 @@ class Obstacle: SKSpriteNode {
     var state: Int
     var animationFrames: [Int : UIImage] = [ : ]
     var movementSpeed: CGFloat
+     var texturesArray =  [SKTexture]()
     
     init(name: String, movementSpeed: CGFloat) {
         
@@ -34,7 +35,8 @@ class Obstacle: SKSpriteNode {
         let texture = SKTexture(imageNamed: self.obstacleName)
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-
+        
+        
         setPattern()
     }
     

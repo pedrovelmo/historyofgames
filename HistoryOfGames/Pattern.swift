@@ -36,7 +36,9 @@ class Pattern{
                 setObstaclePhysicsBody(obstacle: obstacle)
                 
                 obstacle.physicsBody?.mass = (obstacle.physicsBody?.mass)! * 8
-                obstacle.physicsBody?.applyImpulse(CGVector(dx: -11, dy: -9))
+                let randomX = -Int(arc4random_uniform(20)) - 11
+                let randomY = -Int(arc4random_uniform(20)) - 20
+                obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
             
             case "pongBar":
                 obstacle.size = CGSize(width: 10, height: 50)
@@ -67,15 +69,34 @@ class Pattern{
         
             
             
-        case "turtle":
+        case "turtle0":
             
-            obstacle.size = CGSize(width: 40, height: 40)
+            for i in 0...8{
+                
+                var textureName = ""
+                
+                textureName = "turtle\(i)"
+                
+                let texture = SKTexture(imageNamed: textureName)
+                
+                obstacle.texturesArray.append(SKTexture(imageNamed: textureName))
+            }
             
-            obstacle.position.y = floorPosition + obstacle.size.height / 2
+            
+            
+            obstacle.run(SKAction.repeatForever(SKAction.animate(with: obstacle.texturesArray, timePerFrame: 0.06, resize: true, restore: false)))
+            //obstacle.size = CGSize(width: 40, height: 40)
+            obstacle.setScale(0.10)
+             obstacle.position.y = CGFloat(arc4random_uniform(UInt32(scene.size.height - obstacle.size.height / 2))) + floorPosition
             
             obstacle.position.x = scene.size.width + 20
-            
+             let randomX = Int(arc4random_uniform(20)) + 5
+             let randomY = -Int(arc4random_uniform(20)) - 5
             setObstaclePhysicsBody(obstacle: obstacle)
+            obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
+            obstacle.physicsBody?.restitution = 0.0
+           // obstacle.physicsBody?.affectedByGravity = true
+            
             
             
         case "block1":

@@ -58,6 +58,7 @@ class Player: SKSpriteNode {
             let texture = SKTexture(imageNamed: textureName)
             
             texturesArray.append(SKTexture(imageNamed: textureName))
+            
         }
         
         let texture = SKTexture(imageNamed: "dido1")

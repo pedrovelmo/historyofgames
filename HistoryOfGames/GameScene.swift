@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player = Player(name: "dido")
     
-    var movingSpeed: CGFloat = 0
+    var movingSpeed: CGFloat = 0.0
     
     var jumpCounter = 0
 
@@ -42,17 +42,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
     
+    var gameMode: String!
+    
+    
+    
+    
+    
+    public init(size: CGSize, gameMode: String) {
+        super.init(size: size)
+        self.gameMode = gameMode
+        print("Init")
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
         
-        epoch = Epoch(whatEpochIsThis: 0, scene: self)
+        
+        epoch = Epoch(whatEpochIsThis: 0, scene: self, gameMode: gameMode)
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
+        coinLabelUpdate()
+        print("gameMode", gameMode)
+        switch(gameMode) {
         
-        self.movingSpeed = (self.scene?.size.width)! / 200
+                case "easy":
+                    self.movingSpeed = (self.scene?.size.width)! / 200
+                case "medium":
+                    self.movingSpeed = (self.scene?.size.width)! / 150
+                case "hard":
+                    self.movingSpeed = (self.scene?.size.width)! / 100
+                default: break
+    }
+        
         
         // Add first background
         Background.setFirstBackground(scene: self)
@@ -191,9 +219,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 o.position.x -= self.movingSpeed * 1.5
             }
             
-            if(o.obstacleName == "turtle"){
+            if(o.obstacleName == "turtle0"){
                 
-                o.position.x -= 2 * self.movingSpeed
+                o.position.x -= 2.5 * self.movingSpeed
             }
             
             if(o.position.x + o.size.width / 2 <= 0){
@@ -308,12 +336,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func epochManager(){
         
-        if((epoch.whatEpochIsThis == 0 && coins >= 1000) ||
-            epoch.whatEpochIsThis == 1 && coins >= 4000){
+        if((epoch.whatEpochIsThis! == 0 && coins >= epoch.numberOfCoins!) ||
+            epoch.whatEpochIsThis! == 1 && coins >= epoch.numberOfCoins!){
             
             lastEpoch = epoch
             
-            epoch = Epoch(whatEpochIsThis: -1, scene: self)
+            epoch = Epoch(whatEpochIsThis: -1, scene: self, gameMode: gameMode)
             
             Floor.allImages = epoch.whatEpochIsThis!
             
@@ -333,7 +361,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let exitTransition = SKAction.run {
                 
-                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1, scene: self)
+                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1, scene: self, gameMode: self.gameMode)
                 
                 Floor.allImages = self.epoch.whatEpochIsThis!
                 

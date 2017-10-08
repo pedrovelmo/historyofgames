@@ -22,7 +22,7 @@ class Epoch {
     var scene: SKScene?
     
     //TO-DO: Set timer when call init
-    init(whatEpochIsThis: Int, scene: SKScene) {
+    init(whatEpochIsThis: Int, scene: SKScene, gameMode: String) {
         
         self.whatEpochIsThis = whatEpochIsThis
         self.scene = scene
@@ -41,18 +41,51 @@ class Epoch {
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["pongBall", "pongBar"]
+            if (gameMode == "easy") {
             numberOfCoins = 1000
+            }
+            else if (gameMode == "medium") {
+            numberOfCoins = 2000
+                
+            }
+            
+            else if (gameMode == "hard") {
+                numberOfCoins = 3000
+                
+            }
             
         case 1:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["pacmanBlock", "pacmanBlock1","blueGhost", "redGhost", "greenGhost", "greenishGhost", "yellowGhost"]
-            numberOfCoins = 4000
+            if (gameMode == "easy") {
+                numberOfCoins = 2000
+            }
+            else if (gameMode == "medium") {
+                numberOfCoins = 4000
+                
+            }
+                
+            else if (gameMode == "hard") {
+                numberOfCoins = 6000
+                
+            }
         case 2:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
-            obstacles = ["block1", "block2", "block3", "block4", "turtle"]
-            numberOfCoins = 1000000
+            obstacles = ["turtle0"]
+            if (gameMode == "easy") {
+                numberOfCoins = 4000
+            }
+            else if (gameMode == "medium") {
+                numberOfCoins = 8000
+                
+            }
+                
+            else if (gameMode == "hard") {
+                numberOfCoins = 12000
+                
+            }
             
         default: break
         }
