@@ -9,9 +9,15 @@
 import SpriteKit
 import GameplayKit
 
+    protocol GameDelegate {
+        func launchViewController(scene: SKScene)
+    }
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var epoch: Epoch!
+    
+    var gameDelegate: GameDelegate?
     
     var lastEpoch: Epoch?
     
@@ -120,12 +126,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         else {
             
-            hudView?.removeFromSuperview()
-            gameOverView?.removeFromParent()
-            player.removeFromParent()
-            Floor.floorsArray.removeAll()
-            Background.backgroundsArray.removeAll()
-            self.didMove(to: self.view!)
+           hudView?.removeFromSuperview()
+           gameOverView?.removeFromParent()
+           player.removeFromParent()
+           Floor.floorsArray.removeAll()
+           Background.backgroundsArray.removeAll()
+           self.didMove(to: self.view!)
+         //   gameDelegate?.launchViewController(scene: self)
             
         }
     }

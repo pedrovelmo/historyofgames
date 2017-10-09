@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GameDelegate {
   
     var gameMode: String!
   
@@ -61,6 +61,7 @@ class GameViewController: UIViewController {
         let scene = GameScene(size: view.bounds.size, gameMode: gameMode)
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
+        scene.gameDelegate = self
         
         // Present the scene
         view.presentScene(scene)
@@ -95,5 +96,17 @@ class GameViewController: UIViewController {
         self.view?.addSubview(loadingView)
         
     }
+    
+    func launchViewController(scene: SKScene) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let menuVC: MenuViewController = storyboard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
+        
+        scene.removeFromParent()
+        self.present(menuVC, animated: false,
+                     completion: self.removeFromParentViewController)
+        
+    }
+    
     }
 
