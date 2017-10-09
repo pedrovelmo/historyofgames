@@ -9,12 +9,15 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    var gameVC: GameViewController!
 
     @IBAction func easyButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let gameVC: GameViewController = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
+         gameVC  = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         gameVC.gameMode = "easy"
+        gameVC.menu = self
         gameVC.view.backgroundColor = UIColor.black
         
         self.present(gameVC, animated: false,
@@ -23,8 +26,9 @@ class MenuViewController: UIViewController {
     @IBAction func mediumButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let gameVC: GameViewController = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
+         gameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         gameVC.gameMode = "medium"
+        gameVC.menu = self
         gameVC.view.backgroundColor = UIColor.black
         
         self.present(gameVC, animated: false,
@@ -35,8 +39,9 @@ class MenuViewController: UIViewController {
     @IBAction func hardButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let gameVC: GameViewController = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
+         gameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         gameVC.gameMode = "hard"
+        gameVC.menu = self
         gameVC.view.backgroundColor = UIColor.black
         
         self.present(gameVC, animated: false,
@@ -53,6 +58,12 @@ class MenuViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func killAll() {
+        gameVC.scene.view?.presentScene(nil)
+        gameVC.dismiss(animated: true, completion: nil)
+        
     }
     
 

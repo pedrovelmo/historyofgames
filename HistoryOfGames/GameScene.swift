@@ -9,11 +9,13 @@
 import SpriteKit
 import GameplayKit
 
-    protocol GameDelegate {
-        func launchViewController(scene: SKScene)
-    }
+protocol GameDelegate {
+    func launchViewController(scene: SKScene)
+}
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var menu: MenuViewController!
     
     var epoch: Epoch!
     
@@ -51,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         super.init(size: size)
         self.gameMode = gameMode
         print("Init")
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,15 +75,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabelUpdate()
         print("gameMode", gameMode)
         switch(gameMode) {
-        
-                case "easy":
-                    self.movingSpeed = (self.scene?.size.width)! / 200
-                case "medium":
-                    self.movingSpeed = (self.scene?.size.width)! / 150
-                case "hard":
-                    self.movingSpeed = (self.scene?.size.width)! / 100
-                default: break
-    }
+            
+        case "easy":
+            self.movingSpeed = (self.scene?.size.width)! / 200
+        case "medium":
+            self.movingSpeed = (self.scene?.size.width)! / 150
+        case "hard":
+            self.movingSpeed = (self.scene?.size.width)! / 100
+        default: break
+        }
         
         
         // Add first background
@@ -91,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Floor.setFirstFloor(scene: self)
         Floor.floorsArray.first?.setPhysicsBody()
         
-//        player.size = CGSize(width: 50, height: 50)
+        //        player.size = CGSize(width: 50, height: 50)
         player.position.x = (self.scene?.size.width)! / 10 + player.size.width / 2
         player.position.y = Floor.floorsArray[0].size.height + player.size.height / 2
         
@@ -100,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Background Music configuration
         
-       // AudioManager.sharedInstance.playBackgroundMusic()
+        // AudioManager.sharedInstance.playBackgroundMusic()
         
         setCeiling()
         
@@ -109,35 +111,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (!isGameOver) {
-        jumpCounter = jumpCounter + 1
-        
-        //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
-        
-        player.jump(jumpCount: jumpCounter)
-        //self.run(AudioManager.sharedInstance.jumpSound)
-        
-        print("jumpCounter", jumpCounter)
+            jumpCounter = jumpCounter + 1
+            
+            //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
+            
+            player.jump(jumpCount: jumpCounter)
+            //self.run(AudioManager.sharedInstance.jumpSound)
+            
+            print("jumpCounter", jumpCounter)
         }
-        
+            
         else {
             
-//           hudView?.removeFromSuperview()
-//           gameOverView?.removeFromParent()
-//           player.removeFromParent()
-//           Floor.floorsArray.removeAll()
-//           Background.backgroundsArray.removeAll()
-//           self.didMove(to: self.view!)
+            //           hudView?.removeFromSuperview()
+            //           gameOverView?.removeFromParent()
+            //           player.removeFromParent()
+            Floor.floorsArray.removeAll()
+            Background.backgroundsArray.removeAll()
+            NodeManager.sharedInstance.clearAll()
+            //           self.didMove(to: self.view!)
             
-           gameDelegate?.launchViewController(scene: self)
+            // gameDelegate?.launchViewController(scene: self)
+            
+            menu.killAll()
             
         }
     }
-
+    
     func floorManager(){
         
         // Generates new Floors
         if(Floor.floorsArray.count <= Floor.maxFloors){
-                
+            
             let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!, screenSize: self.scene!.size)
             
             newFloor.size = CGSize(width: (self.scene?.size.width)! , height: (self.scene?.size.height)! / 8)
@@ -155,18 +160,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func backgroundManager(){
         
         if (!isTransitioning) {
-        
+            
             // Generates new Backgrounds
             if(Background.backgroundsArray.count <= Background.maxBackgrounds){
-            
+                
                 let newBackground = Background(epochId: self.epoch.whatEpochIsThis!)
-            
+                
                 newBackground.size.width = (self.scene?.size.width)!
                 newBackground.size.height = (self.scene?.size.height)!
                 newBackground.position = CGPoint(x: (CGFloat(Background.backgroundsArray.count) * (self.scene?.size.width)!), y: (self.scene?.size.height)! / 2)
-            
+                
                 newBackground.zPosition = -3
-            
+                
                 self.scene?.addChild(newBackground)
                 Background.backgroundsArray.append(newBackground)
             }
@@ -218,7 +223,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func obstacleManager(){
-
+        
         for o in Obstacle.obstaclesArray{
             
             if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "block1" || o.obstacleName == "block2" || o.obstacleName == "block3" || o.obstacleName == "block4"){
@@ -272,12 +277,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Function to configure contact between bodies
     func didBegin(_ contact: SKPhysicsContact) {
-
+        
         // If else statement checks if the bodies in touch are ball and enemy and respond accordingly
         if contact.bodyA.categoryBitMask == PhysicsCategory.Floor && contact.bodyB.categoryBitMask == PhysicsCategory.Player   {
             jumpCounter = 0
         }
-            
+        
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Floor   {
             jumpCounter = 0
         }
@@ -335,12 +340,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func coinLabelUpdate() {
         
         if (!isTransitioning) {
-        hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
-         
+            hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
+            
         }
         
         
-
+        
     }
     
     func scoreLabelUpdate(){
@@ -413,9 +418,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startSpawningBackgroundNodes() {
-        backgroundObjectTimerIsRunning = false
-        NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.whatEpochIsThis!, scene: self, floor: Floor.floorsArray[0])
-        print("Spawning Background Nodes")
+        
+        if (epoch.whatEpochIsThis == 2) {
+            
+            
+            backgroundObjectTimerIsRunning = false
+            NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.whatEpochIsThis!, scene: self, floor: Floor.floorsArray[0])
+            print("Spawning Background Nodes")
+        }
+        
         
     }
     
@@ -454,23 +465,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateFloorSpeed() {
         
         if (!isTransitioning) {
-        self.movingSpeed = 0.0007 + self.movingSpeed
-        
+            self.movingSpeed = 0.0007 + self.movingSpeed
+            
         }
         
     }
     
     override func update(_ currentTime: TimeInterval) {
         if (!isGameOver) {
-        floorManager()
-        obstacleManager()
-        runTimer()
-        coinManager()
-        scoreLabelUpdate()
-        epochManager()
-        backgroundManager()
-        backgroundNodeManager()
-        updateFloorSpeed()
+            floorManager()
+            obstacleManager()
+            runTimer()
+            coinManager()
+            scoreLabelUpdate()
+            epochManager()
+            backgroundManager()
+            backgroundNodeManager()
+            updateFloorSpeed()
         }
     }
     
@@ -490,8 +501,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             let removeView = SKAction.run {
                                 loadingView.removeFromSuperview()
                             }
-                        
-                          self.run(SKAction.sequence([wait, removeView]))
+                            
+                            self.run(SKAction.sequence([wait, removeView]))
                             
                         }
         }
@@ -516,3 +527,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
 }
+

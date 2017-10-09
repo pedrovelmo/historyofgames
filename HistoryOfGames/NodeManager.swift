@@ -83,4 +83,12 @@ class NodeManager{
         }
         backgroundNodesPatternVector.append(backgroundNodes)
     }
+    
+    func clearAll() {
+        
+        backgroundNodes = []
+        backgroundNodesPatternVector = [[]]
+        floorBackgroundNodes = []
+        skyBackgroundNodes = []
+    }
 }
