@@ -100,6 +100,7 @@ class GameViewController: UIViewController, GameDelegate {
         let menuVC: MenuViewController = storyboard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
         
         scene.removeFromParent()
+        
         self.present(menuVC, animated: false,
                      completion: self.removeFromParentViewController)
         

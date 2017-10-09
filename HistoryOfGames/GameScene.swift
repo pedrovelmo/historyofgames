@@ -121,13 +121,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         else {
             
-           hudView?.removeFromSuperview()
-           gameOverView?.removeFromParent()
-           player.removeFromParent()
-           Floor.floorsArray.removeAll()
-           Background.backgroundsArray.removeAll()
-           self.didMove(to: self.view!)
-         //   gameDelegate?.launchViewController(scene: self)
+//           hudView?.removeFromSuperview()
+//           gameOverView?.removeFromParent()
+//           player.removeFromParent()
+//           Floor.floorsArray.removeAll()
+//           Background.backgroundsArray.removeAll()
+//           self.didMove(to: self.view!)
+            
+           gameDelegate?.launchViewController(scene: self)
             
         }
     }
