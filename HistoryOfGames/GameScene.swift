@@ -420,13 +420,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningBackgroundNodes() {
         
-        if (epoch.whatEpochIsThis == 2) {
+        print("Epoch = ", epoch.whatEpochIsThis)
+        
             
             
             backgroundObjectTimerIsRunning = false
             NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.whatEpochIsThis!, scene: self, floor: Floor.floorsArray[0])
             print("Spawning Background Nodes")
-        }
+        
         
         
     }
@@ -450,13 +451,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!objectTimerIsRunning) {
             
-            let obstacleSeconds = Double(arc4random_uniform(4)) + 2.0
+            let obstacleSeconds = Double(arc4random_uniform(2)) + 1.0
             timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
             objectTimerIsRunning = true
         }
         
-        if (!backgroundObjectTimerIsRunning) {
-            
+        if (!backgroundObjectTimerIsRunning && epoch.whatEpochIsThis == 2) {
+            print("Entrou")
             let backgroundObjectSeconds = Double(arc4random_uniform(2)) + 0.5
             backgroundTimer = Timer.scheduledTimer(timeInterval: backgroundObjectSeconds, target: self, selector: (#selector(startSpawningBackgroundNodes)), userInfo: nil, repeats: false)
             backgroundObjectTimerIsRunning = true
