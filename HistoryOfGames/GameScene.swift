@@ -77,7 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch(gameMode) {
             
         case "easy":
-            self.movingSpeed = (self.scene?.size.width)! / 200
+            self.movingSpeed = (self.scene?.size.width)! / 180
         case "medium":
             self.movingSpeed = (self.scene?.size.width)! / 150
         case "hard":
