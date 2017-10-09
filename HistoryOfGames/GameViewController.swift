@@ -23,14 +23,10 @@ class GameViewController: UIViewController, GameDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-      
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         
     }
 
@@ -74,6 +70,7 @@ class GameViewController: UIViewController, GameDelegate {
         view.showsPhysics = false
             }
         }
+    
     func createLoadingView() {
         let loadingView = UIView(frame: CGRect(x: self.view.frame.width / 2 - 120, y: self.view.frame.height / 2 - 20 , width: 0, height: 40))
         
