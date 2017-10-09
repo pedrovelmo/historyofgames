@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,30 +22,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MenuScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Zkt-2y-sTU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MenuScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Zkt-2y-sTU">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-tv-xWT">
-                                <rect key="frame" x="374" y="45" width="153" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-tv-xWT">
+                                <rect key="frame" x="311" y="44" width="153" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="0T4-6d-hzh"/>
+                                    <constraint firstAttribute="height" constant="38" id="Qz6-ES-pno"/>
+                                </constraints>
                                 <state key="normal" image="EasyBtn"/>
                                 <connections>
                                     <action selector="easyButton:" destination="YI0-jh-j1g" eventType="touchUpInside" id="1uW-hP-G9d"/>
                                     <action selector="easyButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="vFO-PT-djG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82F-iB-6mB">
-                                <rect key="frame" x="374" y="105" width="153" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82F-iB-6mB">
+                                <rect key="frame" x="311" y="104" width="153" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="dSG-Nn-MGj"/>
+                                </constraints>
                                 <state key="normal" image="MediumBtn"/>
                                 <connections>
                                     <action selector="mediumButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="RhQ-u8-knO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfe-wV-y1h">
-                                <rect key="frame" x="374" y="168" width="153" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfe-wV-y1h">
+                                <rect key="frame" x="311" y="165" width="153" height="38"/>
                                 <state key="normal" image="HardBtn"/>
                                 <connections>
                                     <action selector="hardButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="ws7-Af-66b"/>
@@ -52,6 +56,21 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="82F-iB-6mB" firstAttribute="leading" secondItem="Yfe-wV-y1h" secondAttribute="leading" id="2id-06-aN5"/>
+                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="top" secondItem="6Kw-V6-ett" secondAttribute="bottom" id="3Nv-dT-ubn"/>
+                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="leading" secondItem="a8I-lm-gb9" secondAttribute="leading" id="4Pe-lg-f2G"/>
+                            <constraint firstItem="82F-iB-6mB" firstAttribute="trailing" secondItem="Yfe-wV-y1h" secondAttribute="trailing" id="91S-s4-ThS"/>
+                            <constraint firstItem="U3D-tv-xWT" firstAttribute="leading" secondItem="82F-iB-6mB" secondAttribute="leading" id="A42-cW-Ftb"/>
+                            <constraint firstItem="U3D-tv-xWT" firstAttribute="top" secondItem="6Kw-V6-ett" secondAttribute="bottom" constant="44" id="C3b-JO-HKx"/>
+                            <constraint firstAttribute="trailing" secondItem="Zkt-2y-sTU" secondAttribute="trailing" id="HAO-KG-VI5"/>
+                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="bottom" secondItem="fVY-dg-KY6" secondAttribute="top" id="LeZ-Oh-pDO"/>
+                            <constraint firstItem="82F-iB-6mB" firstAttribute="top" secondItem="U3D-tv-xWT" secondAttribute="bottom" constant="22" id="Xeo-rs-M64"/>
+                            <constraint firstItem="fVY-dg-KY6" firstAttribute="top" secondItem="Yfe-wV-y1h" secondAttribute="bottom" constant="117" id="Zsf-Jd-tkc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U3D-tv-xWT" secondAttribute="trailing" constant="84" id="jmt-PG-xOZ"/>
+                            <constraint firstItem="Yfe-wV-y1h" firstAttribute="top" secondItem="82F-iB-6mB" secondAttribute="bottom" constant="23" id="nY5-uU-fUw"/>
+                            <constraint firstItem="U3D-tv-xWT" firstAttribute="trailing" secondItem="82F-iB-6mB" secondAttribute="trailing" id="sH2-Rg-sZ5"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stY-68-8me" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,6 +100,6 @@
         <image name="EasyBtn" width="191" height="57"/>
         <image name="HardBtn" width="191" height="57"/>
         <image name="MediumBtn" width="191" height="57"/>
-        <image name="MenuScreen" width="742" height="474"/>
+        <image name="MenuScreen" width="736" height="414"/>
     </resources>
 </document>
