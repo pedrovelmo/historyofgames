@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "transitionFloor.png",
+      "filename" : "HardBtn.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "HardBtn@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "HardBtn@3x.png",
       "scale" : "3x"
     }
   ],
