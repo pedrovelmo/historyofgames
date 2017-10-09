@@ -57,7 +57,7 @@ class Floor: SKSpriteNode {
         
         if(epochId == -1){
             
-            texture = SKTexture(imageNamed: "placeholderFloor")
+            texture = SKTexture(imageNamed: "transitionFloor")
         }
         else{
             
@@ -88,7 +88,7 @@ class Floor: SKSpriteNode {
         
         if(epochId == -1){
             
-            self.texture = SKTexture(imageNamed: "placeholderFloor")
+            self.texture = SKTexture(imageNamed: "transitionFloor")
         }
         else{
             
