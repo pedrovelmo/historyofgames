@@ -102,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Background Music configuration
         
-        // AudioManager.sharedInstance.playBackgroundMusic()
+        AudioManager.sharedInstance.playBackgroundMusic()
         
         setCeiling()
         
@@ -116,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
             
             player.jump(jumpCount: jumpCounter)
-            //self.run(AudioManager.sharedInstance.jumpSound)
+            self.run(AudioManager.sharedInstance.jumpSound)
             
             print("jumpCounter", jumpCounter)
         }
@@ -134,6 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // gameDelegate?.launchViewController(scene: self)
             
             menu.killAll()
+            
             
         }
     }
@@ -308,14 +309,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             self.coins += 25
             coinLabelUpdate()
-            //self.run(AudioManager.sharedInstance.coinSound)
+            self.run(AudioManager.sharedInstance.coinSound)
         }
         if contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
             
             contact.bodyA.node?.removeFromParent()
             self.coins += 25
             coinLabelUpdate()
-            //self.run(AudioManager.sharedInstance.coinSound)
+            self.run(AudioManager.sharedInstance.coinSound)
         }
     }
     
@@ -333,7 +334,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Configuration of the explosion sound
         
-        //self.run(AudioManager.sharedInstance.explosionSound)
+        self.run(AudioManager.sharedInstance.explosionSound)
     }
     
     // Function to update text of scoreLabel

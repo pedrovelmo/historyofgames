@@ -27,7 +27,7 @@ class GameViewController: UIViewController, GameDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        AudioManager.sharedInstance.stopBackgroundMusic()
     }
     
     override func viewDidAppear(_ animated: Bool) {

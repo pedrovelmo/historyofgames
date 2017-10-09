@@ -15,6 +15,7 @@ public enum BackgroundMusic: String {
     case CarminaBurana = "CarminaBurana.mp3"
     case SpaceGroove = "SpaceGroove.mp3"
     case AdventureTune = "AdventureTune.mp3"
+    case BobbleBits = "BobbleBits.mp3"
 }
 
 public enum ExplosionSound: String {
@@ -42,9 +43,9 @@ class AudioManager{
     
     internal let coinSound = SKAction.playSoundFileNamed("Coin.mp3", waitForCompletion: false)
     
-    func playBackgroundMusic(){
+    func playBackgroundMusicMenu(){
         
-        var backgroundMusic: String?
+         var backgroundMusic: String?
         
         switch epoch{
             
@@ -65,5 +66,37 @@ class AudioManager{
         musicPlayer.prepareToPlay()
         musicPlayer.numberOfLoops = -1
         musicPlayer.play()
+    }
+    
+    func playBackgroundMusic(){
+        
+        var backgroundMusic: String?
+        
+        switch epoch{
+            
+        case 0:
+            backgroundMusic = BackgroundMusic.BobbleBits.rawValue
+            
+        default:
+            break
+        }
+        
+        do{
+            try musicPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: backgroundMusic, ofType: nil)!))
+            
+        } catch{
+            
+        }
+        
+        musicPlayer.prepareToPlay()
+        musicPlayer.numberOfLoops = -1
+        musicPlayer.play()
+    }
+    
+    func stopBackgroundMusic() {
+        if self.musicPlayer.isPlaying {
+            self.musicPlayer.stop()
+            
+        }
     }
 }

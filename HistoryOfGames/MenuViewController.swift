@@ -53,6 +53,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        AudioManager.sharedInstance.playBackgroundMusicMenu()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +64,8 @@ class MenuViewController: UIViewController {
     func killAll() {
         gameVC.scene.view?.presentScene(nil)
         gameVC.dismiss(animated: true, completion: nil)
+        AudioManager.sharedInstance.stopBackgroundMusic()
+        AudioManager.sharedInstance.playBackgroundMusicMenu()
         
     }
     
