@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8hk-kb-v02">
-    <device id="retina4_0" orientation="landscape">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,17 +18,38 @@
                         <viewControllerLayoutGuide type="bottom" id="fVY-dg-KY6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a8I-lm-gb9">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MenuScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Zkt-2y-sTU">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-tv-xWT">
-                                <rect key="frame" x="311" y="44" width="153" height="38"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82F-iB-6mB">
+                                <rect key="frame" x="399" y="113" width="153" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="153" id="0T4-6d-hzh"/>
-                                    <constraint firstAttribute="height" constant="38" id="Qz6-ES-pno"/>
+                                    <constraint firstAttribute="height" constant="40" id="mCD-aW-b0R"/>
+                                </constraints>
+                                <state key="normal" image="MediumBtn"/>
+                                <connections>
+                                    <action selector="mediumButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="RhQ-u8-knO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfe-wV-y1h">
+                                <rect key="frame" x="399" y="185" width="153" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="N9G-5g-f1N"/>
+                                    <constraint firstAttribute="width" constant="153" id="iDa-Uy-9gw"/>
+                                </constraints>
+                                <state key="normal" image="HardBtn"/>
+                                <connections>
+                                    <action selector="hardButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="ws7-Af-66b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-tv-xWT">
+                                <rect key="frame" x="399" y="40" width="153" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="I9f-pe-I9o"/>
+                                    <constraint firstAttribute="width" constant="153" id="ytT-dN-qEb"/>
                                 </constraints>
                                 <state key="normal" image="EasyBtn"/>
                                 <connections>
@@ -37,46 +57,27 @@
                                     <action selector="easyButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="vFO-PT-djG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82F-iB-6mB">
-                                <rect key="frame" x="311" y="104" width="153" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="dSG-Nn-MGj"/>
-                                </constraints>
-                                <state key="normal" image="MediumBtn"/>
-                                <connections>
-                                    <action selector="mediumButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="RhQ-u8-knO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfe-wV-y1h">
-                                <rect key="frame" x="311" y="165" width="153" height="38"/>
-                                <state key="normal" image="HardBtn"/>
-                                <connections>
-                                    <action selector="hardButton:" destination="8hk-kb-v02" eventType="touchUpInside" id="ws7-Af-66b"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="82F-iB-6mB" firstAttribute="leading" secondItem="Yfe-wV-y1h" secondAttribute="leading" id="2id-06-aN5"/>
-                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="top" secondItem="6Kw-V6-ett" secondAttribute="bottom" id="3Nv-dT-ubn"/>
-                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="leading" secondItem="a8I-lm-gb9" secondAttribute="leading" id="4Pe-lg-f2G"/>
-                            <constraint firstItem="82F-iB-6mB" firstAttribute="trailing" secondItem="Yfe-wV-y1h" secondAttribute="trailing" id="91S-s4-ThS"/>
-                            <constraint firstItem="U3D-tv-xWT" firstAttribute="leading" secondItem="82F-iB-6mB" secondAttribute="leading" id="A42-cW-Ftb"/>
-                            <constraint firstItem="U3D-tv-xWT" firstAttribute="top" secondItem="6Kw-V6-ett" secondAttribute="bottom" constant="44" id="C3b-JO-HKx"/>
-                            <constraint firstAttribute="trailing" secondItem="Zkt-2y-sTU" secondAttribute="trailing" id="HAO-KG-VI5"/>
-                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="bottom" secondItem="fVY-dg-KY6" secondAttribute="top" id="LeZ-Oh-pDO"/>
-                            <constraint firstItem="82F-iB-6mB" firstAttribute="top" secondItem="U3D-tv-xWT" secondAttribute="bottom" constant="22" id="Xeo-rs-M64"/>
-                            <constraint firstItem="fVY-dg-KY6" firstAttribute="top" secondItem="Yfe-wV-y1h" secondAttribute="bottom" constant="117" id="Zsf-Jd-tkc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="U3D-tv-xWT" secondAttribute="trailing" constant="84" id="jmt-PG-xOZ"/>
-                            <constraint firstItem="Yfe-wV-y1h" firstAttribute="top" secondItem="82F-iB-6mB" secondAttribute="bottom" constant="23" id="nY5-uU-fUw"/>
-                            <constraint firstItem="U3D-tv-xWT" firstAttribute="trailing" secondItem="82F-iB-6mB" secondAttribute="trailing" id="sH2-Rg-sZ5"/>
+                            <constraint firstAttribute="trailing" secondItem="U3D-tv-xWT" secondAttribute="trailing" constant="115" id="9su-fh-6SC"/>
+                            <constraint firstItem="82F-iB-6mB" firstAttribute="top" secondItem="U3D-tv-xWT" secondAttribute="bottom" constant="33" id="AR5-I7-iGC"/>
+                            <constraint firstItem="U3D-tv-xWT" firstAttribute="top" secondItem="6Kw-V6-ett" secondAttribute="bottom" constant="40" id="BKe-zh-IYE"/>
+                            <constraint firstItem="U3D-tv-xWT" firstAttribute="leading" secondItem="82F-iB-6mB" secondAttribute="leading" id="JXD-cS-0TR"/>
+                            <constraint firstItem="U3D-tv-xWT" firstAttribute="trailing" secondItem="82F-iB-6mB" secondAttribute="trailing" id="KON-lV-kxZ"/>
+                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="leading" secondItem="a8I-lm-gb9" secondAttribute="leading" id="V6f-VF-Gwc"/>
+                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="width" secondItem="a8I-lm-gb9" secondAttribute="width" id="YXq-3k-hLm"/>
+                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="height" secondItem="a8I-lm-gb9" secondAttribute="height" id="ZD6-Ow-NH5"/>
+                            <constraint firstItem="Yfe-wV-y1h" firstAttribute="top" secondItem="82F-iB-6mB" secondAttribute="bottom" constant="32" id="nTa-hx-rwh"/>
+                            <constraint firstItem="U3D-tv-xWT" firstAttribute="leading" secondItem="Yfe-wV-y1h" secondAttribute="leading" id="yNi-pu-LLQ"/>
+                            <constraint firstItem="Zkt-2y-sTU" firstAttribute="top" secondItem="6Kw-V6-ett" secondAttribute="bottom" id="ygE-39-TAN"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stY-68-8me" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YI0-jh-j1g" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-563.02816901408448" y="103.125"/>
+            <point key="canvasLocation" x="-563.56821589205401" y="101.59999999999999"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -87,7 +88,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                 </viewController>

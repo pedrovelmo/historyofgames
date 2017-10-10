@@ -36,18 +36,27 @@ class Pattern{
                 setObstaclePhysicsBody(obstacle: obstacle)
                 
                 obstacle.physicsBody?.mass = (obstacle.physicsBody?.mass)! * 8
-                let randomX = -Int(arc4random_uniform(10)) - 10
-                let randomY = -Int(arc4random_uniform(6)) - 7
+                let randomX = -Double(arc4random_uniform(UInt32(obstacle.movementSpeed * 2.8))) - 7.0
+                var randomY: Double!
+                let yType = arc4random_uniform(2)
+                if (yType == 0) {
+                 randomY = -randomX
+                }
+                
+                else {
+                    randomY = randomX
+                    
+                }
                 obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
             
             case "pongBar":
                 obstacle.size = CGSize(width: 10, height: 50)
                 
                 let randomPosition = Int(arc4random_uniform(2))
-                
-                let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.5)
+                let randomDuration = Double(arc4random_uniform(UInt32(1.5))) + 1.2
+                let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: TimeInterval(randomDuration))
                 // move down 100
-                let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.5)
+                let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration: TimeInterval(randomDuration))
                 // sequence of moving up then down
                 var jumpSequence: SKAction!
                 

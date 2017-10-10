@@ -111,6 +111,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (!isGameOver) {
+            
+            if (jumpCounter < player.maxJumps) {
             jumpCounter = jumpCounter + 1
             
             //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
@@ -119,6 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.run(AudioManager.sharedInstance.jumpSound)
             
             print("jumpCounter", jumpCounter)
+            }
         }
             
         else {
@@ -187,9 +190,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Comment to generate awesome trippy effect
             objectTimerIsRunning = false
             
-            let whichObjectToSpawn = arc4random_uniform(3)
+            let whichObjectToSpawn = arc4random_uniform(5)
             
-            if(whichObjectToSpawn == 0){
+            if(whichObjectToSpawn == 2){
                 
                 let spawnCoin = SKAction.run{
                     
@@ -421,12 +424,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func startSpawningBackgroundNodes() {
         
         print("Epoch = ", epoch.whatEpochIsThis)
+        print("Count Floor", Floor.floorsArray.count)
         
-            
-            
+        if (Floor.floorsArray.count != 0) {
             backgroundObjectTimerIsRunning = false
             NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.whatEpochIsThis!, scene: self, floor: Floor.floorsArray[0])
             print("Spawning Background Nodes")
+        }
         
         
         
@@ -451,7 +455,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!objectTimerIsRunning) {
             
-            let obstacleSeconds = Double(arc4random_uniform(2)) + 1.0
+            let obstacleSeconds = Double(arc4random_uniform(2)) + 1.2
             timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
             objectTimerIsRunning = true
         }
