@@ -104,23 +104,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         AudioManager.sharedInstance.playBackgroundMusic()
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(sender:)))
+        
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
+        
+        self.view?.addGestureRecognizer(tapRecognizer)
+        self.view?.addGestureRecognizer(swipeRecognizer)
+        
         setCeiling()
         
         player.startAnimation()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    func tapHandler(sender: UITapGestureRecognizer){
+        
         if (!isGameOver) {
             
             if (jumpCounter < player.maxJumps) {
-            jumpCounter = jumpCounter + 1
-            
-            //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
-            
-            player.jump(jumpCount: jumpCounter)
-            self.run(AudioManager.sharedInstance.jumpSound)
-            
-            print("jumpCounter", jumpCounter)
+                jumpCounter = jumpCounter + 1
+                
+                //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
+                
+                player.jump(jumpCount: jumpCounter)
+                self.run(AudioManager.sharedInstance.jumpSound)
+                
+                print("jumpCounter", jumpCounter)
             }
         }
             
@@ -137,9 +149,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // gameDelegate?.launchViewController(scene: self)
             
             menu.killAll()
-            
-            
         }
+    }
+    
+    func swipeHandler(sender: UISwipeGestureRecognizer){
+        
+        print("Pegou swipe")
     }
     
     func floorManager(){
