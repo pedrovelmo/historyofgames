@@ -93,8 +93,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Floor.setFirstFloor(scene: self)
         Floor.floorsArray.first?.setPhysicsBody()
         
-        //        player.size = CGSize(width: 50, height: 50)
-        player.position.x = (self.scene?.size.width)! / 10 + player.size.width / 2
+        player.setDefaultX(scene: self.scene!)
+        player.position.x = player.defaultPlayerX
         player.position.y = Floor.floorsArray[0].size.height + player.size.height / 2
         
         self.player.setPhysicsBody()
@@ -106,10 +106,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(sender:)))
         
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
+//        let panRecognizer = UIPanGestureRecognizer(target: self, action : #selector(self.panHandler(sender:)))
+//        panRecognizer.maximumNumberOfTouches = 1
+        
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
+        swipeRightRecognizer.direction = UISwipeGestureRecognizerDirection.right
+
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
+        swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.left
         
         self.view?.addGestureRecognizer(tapRecognizer)
-        self.view?.addGestureRecognizer(swipeRecognizer)
+//        self.view?.addGestureRecognizer(panRecognizer)
+        self.view?.addGestureRecognizer(swipeRightRecognizer)
+        self.view?.addGestureRecognizer(swipeLeftRecognizer)
         
         setCeiling()
         
@@ -152,9 +161,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func panHandler(sender: UIPanGestureRecognizer){
+        
+        print("Pegou pan")
+        print(sender.velocity(in: self.scene?.view))
+        print(sender.translation(in: self.scene?.view))
+        
+        if(sender.velocity(in: self.scene?.view).x > 0 &&
+            player.position.x > player.defaultPlayerX - player.size.width &&
+            player.position.x < player.defaultPlayerX + player.size.width){
+            
+            player.position.x += sender.translation(in: self.scene?.view).x
+        }
+        
+        if(sender.velocity(in: self.scene?.view).x < 0 &&
+            player.position.x < player.defaultPlayerX + player.size.width &&
+            player.position.x > player.defaultPlayerX - player.size.width){
+            
+            player.position.x += sender.translation(in: self.scene?.view).x
+        }
+    }
+    
     func swipeHandler(sender: UISwipeGestureRecognizer){
         
-        print("Pegou swipe")
+        // Player is in default position
+        if(!player.toTheLeft && !player.toTheRight){
+            
+            if(sender.direction == .right){
+                
+                player.position.x += player.size.width
+                player.toTheRight = true
+            }
+            
+            if(sender.direction == .left){
+                
+                player.position.x -= player.size.width
+                player.toTheLeft = true
+            }
+        }
+        
+        if((player.toTheRight && sender.direction == .left) ||
+            (player.toTheLeft && sender.direction == .right)){
+            
+            player.position.x = player.defaultPlayerX
+            player.toTheRight = false
+            player.toTheLeft = false
+        }
     }
     
     func floorManager(){

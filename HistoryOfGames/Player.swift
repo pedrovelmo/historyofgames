@@ -24,6 +24,9 @@ class Player: SKSpriteNode {
     var ability : Ability?
     var maxJumps = 2
     
+    var defaultPlayerX: CGFloat = 0
+    var toTheRight = false
+    var toTheLeft = false
     
     // TO-DO: Define image name pattern and update init
     init(name: String) {
@@ -74,11 +77,13 @@ class Player: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setDefaultX(scene: SKScene){
+        
+        self.defaultPlayerX = (scene.size.width) / 8 + self.size.width / 2
+    }
+    
     //TO-DO: Complete function
     func stateManager() {
-        
-        
-        
         
     }
     
