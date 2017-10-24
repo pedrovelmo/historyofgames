@@ -161,26 +161,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func panHandler(sender: UIPanGestureRecognizer){
-        
-        print("Pegou pan")
-        print(sender.velocity(in: self.scene?.view))
-        print(sender.translation(in: self.scene?.view))
-        
-        if(sender.velocity(in: self.scene?.view).x > 0 &&
-            player.position.x > player.defaultPlayerX - player.size.width &&
-            player.position.x < player.defaultPlayerX + player.size.width){
-            
-            player.position.x += sender.translation(in: self.scene?.view).x
-        }
-        
-        if(sender.velocity(in: self.scene?.view).x < 0 &&
-            player.position.x < player.defaultPlayerX + player.size.width &&
-            player.position.x > player.defaultPlayerX - player.size.width){
-            
-            player.position.x += sender.translation(in: self.scene?.view).x
-        }
-    }
+//    func panHandler(sender: UIPanGestureRecognizer){
+//
+//        print("Pegou pan")
+//        print(sender.velocity(in: self.scene?.view))
+//        print(sender.translation(in: self.scene?.view))
+//
+//        if(sender.velocity(in: self.scene?.view).x > 0 &&
+//            player.position.x > player.defaultPlayerX - player.size.width &&
+//            player.position.x < player.defaultPlayerX + player.size.width){
+//
+//            player.position.x += sender.translation(in: self.scene?.view).x
+//        }
+//
+//        if(sender.velocity(in: self.scene?.view).x < 0 &&
+//            player.position.x < player.defaultPlayerX + player.size.width &&
+//            player.position.x > player.defaultPlayerX - player.size.width){
+//
+//            player.position.x += sender.translation(in: self.scene?.view).x
+//        }
+//    }
     
     func swipeHandler(sender: UISwipeGestureRecognizer){
         
@@ -189,13 +189,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if(sender.direction == .right){
                 
-                player.position.x += player.size.width
+//                player.position.x += player.size.width
+                player.run(SKAction.move(to: CGPoint(x: player.position.x + player.size.width,
+                                                   y: player.position.y), duration: 0.2))
+                
                 player.toTheRight = true
             }
             
             if(sender.direction == .left){
                 
-                player.position.x -= player.size.width
+//                player.position.x -= player.size.width
+                player.run(SKAction.move(to: CGPoint(x: player.position.x - player.size.width,
+                                                   y: player.position.y), duration: 0.1))
                 player.toTheLeft = true
             }
         }
@@ -203,7 +208,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if((player.toTheRight && sender.direction == .left) ||
             (player.toTheLeft && sender.direction == .right)){
             
-            player.position.x = player.defaultPlayerX
+//            player.position.x = player.defaultPlayerX
+            
+            player.run(SKAction.move(to: CGPoint(x: player.defaultPlayerX,
+                                                 y: player.position.y), duration: 0.1))
+            
             player.toTheRight = false
             player.toTheLeft = false
         }
