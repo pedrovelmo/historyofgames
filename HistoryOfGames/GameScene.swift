@@ -53,7 +53,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         super.init(size: size)
         self.gameMode = gameMode
         print("Init")
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -326,18 +325,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func coinManager(){
-        
-        for pattern in CoinManager.sharedInstance.patternVector {
-            for coin in pattern{
-                coin.position.x -= movingSpeed
-                if coin.position.x + coin.size.width / 2 <= 0 {
-                    coin.removeFromParent()
-                }
-            }
-        }
-    }
-    
     func setCeiling(){
         
         let sceneSize = self.scene?.size
@@ -548,7 +535,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             floorManager()
             obstacleManager()
             runTimer()
-            coinManager()
+            CoinManager.sharedInstance.manageCoins(speed: self.movingSpeed)
             scoreLabelUpdate()
             epochManager()
             backgroundManager()
@@ -556,7 +543,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             updateFloorSpeed()
         }
     }
-    
     
     func createLoadingView() {
         let loadingView = UIView(frame: CGRect(x: self.frame.width / 2 - 80, y: self.frame.height / 2 , width: 0, height: 40))

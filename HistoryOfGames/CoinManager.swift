@@ -74,4 +74,18 @@ class CoinManager{
         
         patternVector.append(coinVector)
     }
+    
+    func manageCoins(speed: CGFloat){
+        
+        for pattern in CoinManager.sharedInstance.patternVector {
+            
+            for coin in pattern{
+                
+                coin.position.x -= speed
+                if coin.position.x + coin.size.width / 2 <= 0 {
+                    coin.removeFromParent()
+                }
+            }
+        }
+    }
 }
