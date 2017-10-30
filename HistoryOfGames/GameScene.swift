@@ -65,15 +65,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         CoinManager.sharedInstance.scene = self
         isGameOver = false
         
-        
         epoch = Epoch(whatEpochIsThis: 0, scene: self, gameMode: gameMode)
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
         
-        
         coinLabelUpdate()
         print("gameMode", gameMode)
+        
         switch(gameMode) {
             
         case "easy":
@@ -135,8 +134,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if (jumpCounter < player.maxJumps) {
                 jumpCounter = jumpCounter + 1
-                
-                //player.jumpAction(floorPosition: Floor.floorsArray[0].size.height, jumpCount: jumpCounter)
                 
                 player.jump(jumpCount: jumpCounter)
                 self.run(AudioManager.sharedInstance.jumpSound)
@@ -423,9 +420,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
             
         }
-        
-        
-        
     }
     
     func scoreLabelUpdate(){
@@ -445,6 +439,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             epoch = Epoch(whatEpochIsThis: -1, scene: self, gameMode: gameMode)
             
+            // Can this be delayed?
             Floor.allImages = epoch.whatEpochIsThis!
             
             isTransitioning = true
@@ -475,7 +470,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Fade out transition background
                 
                 Background.removeTransitionBackground(scene: self)
-                
             }
             
             let timeBeforeResumeSpawning = SKAction.wait(forDuration: 2.5)
@@ -507,9 +501,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.whatEpochIsThis!, scene: self, floor: Floor.floorsArray[0])
             print("Spawning Background Nodes")
         }
-        
-        
-        
     }
     
     func backgroundNodeManager() {
@@ -524,7 +515,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
     }
     
     func runTimer() {
@@ -537,7 +527,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (!backgroundObjectTimerIsRunning && epoch.whatEpochIsThis == 2) {
-            print("Entrou")
+            
             let backgroundObjectSeconds = Double(arc4random_uniform(2)) + 0.5
             backgroundTimer = Timer.scheduledTimer(timeInterval: backgroundObjectSeconds, target: self, selector: (#selector(startSpawningBackgroundNodes)), userInfo: nil, repeats: false)
             backgroundObjectTimerIsRunning = true
@@ -550,10 +540,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.movingSpeed = 0.0007 + self.movingSpeed
             
         }
-        
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
         if (!isGameOver) {
             floorManager()
             obstacleManager()
@@ -587,9 +577,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             self.run(SKAction.sequence([wait, removeView]))
                             
                         }
-        }
-        )
-        
+        })
         
         self.view?.addSubview(loadingView)
         
