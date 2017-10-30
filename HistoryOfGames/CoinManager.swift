@@ -77,7 +77,7 @@ class CoinManager{
     
     func manageCoins(speed: CGFloat){
         
-        for pattern in CoinManager.sharedInstance.patternVector {
+        for pattern in patternVector {
             
             for coin in pattern{
                 

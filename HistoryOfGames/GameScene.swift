@@ -224,7 +224,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newFloor.size = CGSize(width: (self.scene?.size.width)! , height: (self.scene?.size.height)! / 8)
             newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!) , y: newFloor.size.height / 2)
             
-            
             newFloor.setPhysicsBody()
             self.scene?.addChild(newFloor)
             Floor.floorsArray.append(newFloor)
@@ -405,7 +404,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!isTransitioning) {
             hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
-            
         }
     }
     
