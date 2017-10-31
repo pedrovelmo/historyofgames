@@ -36,7 +36,7 @@ class Pattern{
                 setObstaclePhysicsBody(obstacle: obstacle)
                 
                 obstacle.physicsBody?.mass = (obstacle.physicsBody?.mass)! * 8
-                let randomX = -Double(arc4random_uniform(UInt32(obstacle.movementSpeed * 2.8))) - 7.0
+                let randomX = -Double(arc4random_uniform(UInt32(obstacle.movementSpeed * 1.7))) - 6.0
                 var randomY: Double!
                 let yType = arc4random_uniform(2)
                 if (yType == 0) {
@@ -44,9 +44,10 @@ class Pattern{
                 }
                 
                 else {
-                    randomY = randomX
                     
+                    randomY = randomX
                 }
+                
                 obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
             
             case "pongBar":

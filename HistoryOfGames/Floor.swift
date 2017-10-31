@@ -16,16 +16,21 @@ class Floor: SKSpriteNode {
     static let imagesForEpochs = ["pongFloor", "pacmanFloor", "marioFloor"]
     
     static var positionX:CGFloat {
+        
         get {
             return floorsArray.first?.position.x ?? 0.0
         }
+        
         set {
             for i in 0..<floorsArray.count {
+                
                 floorsArray[i].position.x =
                     i == 0 ? newValue
                            : floorsArray[i-1].position.x + floorsArray[i-1].size.width
             }
+            
             if isOutOfScene {
+                
                 floorsArray.first!.position.x = floorsArray.last!.position.x + floorsArray.last!.size.width
                 floorsArray.rearrange(from: 0, to: floorsArray.lastIndex)
                 floorsArray.last!.texture = floorsArray.first!.texture
@@ -47,6 +52,7 @@ class Floor: SKSpriteNode {
     }
     
     static var isOutOfScene: Bool {
+        
         if floorsArray.count == 0 { return false}
         return (floorsArray.first?.position.x)! < -((floorsArray.first?.size.width)! / 2)
     }
