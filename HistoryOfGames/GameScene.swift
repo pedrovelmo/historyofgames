@@ -64,7 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         CoinManager.sharedInstance.scene = self
         isGameOver = false
         
-        epoch = Epoch(whatEpochIsThis: 2, scene: self, gameMode: gameMode)
+        epoch = Epoch(whatEpochIsThis: 0, scene: self, gameMode: gameMode)
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
