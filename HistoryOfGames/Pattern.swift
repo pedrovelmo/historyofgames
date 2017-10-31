@@ -268,8 +268,8 @@ class Pattern{
             
         case "pacmanBlock1":
             
-            let width = Int(arc4random_uniform(40)) + 10
-            let height = Int(arc4random_uniform(40)) + 10
+            let width = Int(arc4random_uniform(30)) + 50
+            let height = Int(arc4random_uniform(10)) + 40
             obstacle.size = CGSize(width: width, height: height)
             
             obstacle.position.y = CGFloat(arc4random_uniform(UInt32(scene.size.height - obstacle.size.height / 2))) + floorPosition + obstacle.size.height / 2
@@ -286,12 +286,12 @@ class Pattern{
             
             let randomPosition = Int(arc4random_uniform(2))
             
-            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.5)
+            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 2.3)
             
             // move down 100
-            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.5)
+            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.8)
             
-            let moveSidewaysAction = SKAction.moveTo(x: -30, duration: 1.5)
+            let moveSidewaysAction = SKAction.moveTo(x: -30, duration: 1.8)
             
             // sequence of moving up then down
             var jumpSequence: SKAction!
@@ -316,9 +316,9 @@ class Pattern{
             
             let randomPosition = Int(arc4random_uniform(2))
             
-            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.5)
+            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.8)
             // move down 100
-            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.5)
+            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:2.3)
             
             let moveSidewaysAction = SKAction.moveTo(x: -30, duration: 1.5)
             // sequence of moving up then down
@@ -344,9 +344,9 @@ class Pattern{
             
             let randomPosition = Int(arc4random_uniform(2))
             
-            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.5)
+            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 2)
             // move down 100
-            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.5)
+            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration: 2)
             
             let moveSidewaysAction = SKAction.moveTo(x: -30, duration: 1.5)
             // sequence of moving up then down
@@ -372,9 +372,9 @@ class Pattern{
             
             let randomPosition = Int(arc4random_uniform(2))
             
-            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.5)
+            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 2.3)
             // move down 100
-            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.5)
+            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:2.3)
             
             let moveSidewaysAction = SKAction.moveTo(x: -30, duration: 1.5)
             // sequence of moving up then down
@@ -400,9 +400,9 @@ class Pattern{
             
             let randomPosition = Int(arc4random_uniform(2))
             
-            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.5)
+            let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 1.9)
             // move down 100
-            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.5)
+            let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.9)
             
             let moveSidewaysAction = SKAction.moveTo(x: -30, duration: 1.5)
             // sequence of moving up then down
