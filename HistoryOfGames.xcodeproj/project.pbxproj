@@ -38,11 +38,22 @@
 		499417D01F82C9DD005F23D9 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 499417CF1F82C9DD005F23D9 /* MyParticle.sks */; };
 		49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F41F8AD38A00DB634F /* Coin.mp3 */; };
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
+		C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */; };
+		C1072E7B1FAFAFC10022551A /* PacmanRedGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7A1FAFAFC10022551A /* PacmanRedGhostPattern.swift */; };
+		C1072E7D1FAFB0DD0022551A /* PacManBlueGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7C1FAFB0DD0022551A /* PacManBlueGhostPattern.swift */; };
+		C1072E7F1FAFB15E0022551A /* PacManYellowGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7E1FAFB15E0022551A /* PacManYellowGhostPattern.swift */; };
+		C1072E811FAFB1E80022551A /* PacManGreenGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E801FAFB1E80022551A /* PacManGreenGhostPattern.swift */; };
+		C1072E831FAFB25B0022551A /* PacManGreenishGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E821FAFB25B0022551A /* PacManGreenishGhostPattern.swift */; };
+		C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */; };
+		C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
 		C1D07D381F685407000B768F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D371F685407000B768F /* AudioManager.swift */; };
 		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
 		C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D3B1F686991000B768F /* CoinManager.swift */; };
-		C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */; };
+		C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */; };
+		C1D998481FAFA76A00F81CBA /* PongBarPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */; };
+		C1D9984A1FAFA8D400F81CBA /* MarioTurtlePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */; };
+		C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* EnemyPattern.swift */; };
 		C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,11 +91,22 @@
 		499417CF1F82C9DD005F23D9 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		49E563F41F8AD38A00DB634F /* Coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin.mp3; sourceTree = "<group>"; };
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
+		C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanBlockPattern.swift; sourceTree = "<group>"; };
+		C1072E7A1FAFAFC10022551A /* PacmanRedGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanRedGhostPattern.swift; sourceTree = "<group>"; };
+		C1072E7C1FAFB0DD0022551A /* PacManBlueGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManBlueGhostPattern.swift; sourceTree = "<group>"; };
+		C1072E7E1FAFB15E0022551A /* PacManYellowGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManYellowGhostPattern.swift; sourceTree = "<group>"; };
+		C1072E801FAFB1E80022551A /* PacManGreenGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManGreenGhostPattern.swift; sourceTree = "<group>"; };
+		C1072E821FAFB25B0022551A /* PacManGreenishGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManGreenishGhostPattern.swift; sourceTree = "<group>"; };
+		C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioBlockPattern.swift; sourceTree = "<group>"; };
+		C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioSuperBlockPattern.swift; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
 		C1D07D371F685407000B768F /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		C1D07D3B1F686991000B768F /* CoinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
-		C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
+		C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBallPattern.swift; sourceTree = "<group>"; };
+		C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBarPattern.swift; sourceTree = "<group>"; };
+		C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioTurtlePattern.swift; sourceTree = "<group>"; };
+		C1E38CD41F5E46DF00DC1E34 /* EnemyPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPattern.swift; sourceTree = "<group>"; };
 		C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,13 +156,13 @@
 		496AC8F71F5875B900A6D490 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C1D998441FAF9D6D00F81CBA /* Enemy Patterns */,
 				496AC8FA1F58762B00A6D490 /* Epoch.swift */,
 				496AC8FC1F5876C800A6D490 /* Ability.swift */,
 				496AC8FE1F5876D900A6D490 /* Player.swift */,
 				496AC9001F587C6400A6D490 /* Floor.swift */,
 				4945C1C81F841117004246BC /* Background.swift */,
 				496AC9021F587F0C00A6D490 /* Obstacle.swift */,
-				C1E38CD41F5E46DF00DC1E34 /* Pattern.swift */,
 				C1D07D371F685407000B768F /* AudioManager.swift */,
 				C1D07D391F686926000B768F /* Coin.swift */,
 				C1D07D3B1F686991000B768F /* CoinManager.swift */,
@@ -188,6 +210,25 @@
 			name = SoundFiles;
 			sourceTree = "<group>";
 		};
+		C1D998441FAF9D6D00F81CBA /* Enemy Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				C1E38CD41F5E46DF00DC1E34 /* EnemyPattern.swift */,
+				C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */,
+				C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */,
+				C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */,
+				C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */,
+				C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */,
+				C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */,
+				C1072E7A1FAFAFC10022551A /* PacmanRedGhostPattern.swift */,
+				C1072E7C1FAFB0DD0022551A /* PacManBlueGhostPattern.swift */,
+				C1072E7E1FAFB15E0022551A /* PacManYellowGhostPattern.swift */,
+				C1072E801FAFB1E80022551A /* PacManGreenGhostPattern.swift */,
+				C1072E821FAFB25B0022551A /* PacManGreenishGhostPattern.swift */,
+			);
+			name = "Enemy Patterns";
+			sourceTree = "<group>";
+		};
 		C1E38CD61F5F9B6300DC1E34 /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +273,7 @@
 				TargetAttributes = {
 					496AC8DB1F58722E00A6D490 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8U8G8793TY;
+						DevelopmentTeam = T5T826RV5P;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -290,23 +331,34 @@
 			files = (
 				496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */,
 				496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */,
+				C1D9984A1FAFA8D400F81CBA /* MarioTurtlePattern.swift in Sources */,
 				C1D07D381F685407000B768F /* AudioManager.swift in Sources */,
 				49904B811F7166EF005C0A6A /* HudView.swift in Sources */,
 				496AC8FB1F58762B00A6D490 /* Epoch.swift in Sources */,
 				4945C1C91F841118004246BC /* Background.swift in Sources */,
+				C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */,
 				49904B831F7167D2005C0A6A /* ColorExtension.swift in Sources */,
 				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
 				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
-				C1E38CD51F5E46DF00DC1E34 /* Pattern.swift in Sources */,
+				C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
+				C1072E7D1FAFB0DD0022551A /* PacManBlueGhostPattern.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				4945C1C71F8410E9004246BC /* GameScene.swift in Sources */,
+				C1072E831FAFB25B0022551A /* PacManGreenishGhostPattern.swift in Sources */,
+				C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */,
 				49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */,
 				4945C1E91F898664004246BC /* MenuViewController.swift in Sources */,
 				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
+				C1072E7F1FAFB15E0022551A /* PacManYellowGhostPattern.swift in Sources */,
 				4945C1C51F83F207004246BC /* NodeManager.swift in Sources */,
+				C1D998481FAFA76A00F81CBA /* PongBarPattern.swift in Sources */,
+				C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */,
+				C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
+				C1072E7B1FAFAFC10022551A /* PacmanRedGhostPattern.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
+				C1072E811FAFB1E80022551A /* PacManGreenGhostPattern.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,12 +483,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8U8G8793TY;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5T826RV5P;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ada.HistoryOfGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -445,12 +500,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8U8G8793TY;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5T826RV5P;
 				INFOPLIST_FILE = HistoryOfGames/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ada.HistoryOfGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
