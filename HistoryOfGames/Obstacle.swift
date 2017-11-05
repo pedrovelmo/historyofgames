@@ -20,7 +20,7 @@ class Obstacle: SKSpriteNode {
     static var obstaclesArray: [Obstacle] = []
     
     var obstacleName: String
-    var pattern: Pattern?
+    var pattern: EnemyPattern?
     var state: Int
     var animationFrames: [Int : UIImage] = [ : ]
     var movementSpeed: CGFloat
@@ -36,7 +36,6 @@ class Obstacle: SKSpriteNode {
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
-        
         setPattern()
     }
     
@@ -47,7 +46,44 @@ class Obstacle: SKSpriteNode {
     
     func setPattern(){
         
-        self.pattern = Pattern(name: self.obstacleName, obstacle: self)
+        switch self.obstacleName{
+            
+         case "pongBall":
+            self.pattern = PongBallPattern(obstacle: self)
+            
+        case "pongBar":
+            self.pattern = PongBarPattern(obstacle: self)
+            
+        case "turtle0":
+            self.pattern = MarioTurtlePattern(obstacle: self)
+            
+        case "block1":
+            self.pattern = MarioBlockPattern(obstacle: self)
+            
+        case "superblock":
+            self.pattern = MarioSuperBlockPattern(obstacle: self)
+            
+        case "pacmanBlock":
+            self.pattern = PacmanBlockPattern(obstacle: self)
+            
+        case "redGhost":
+            self.pattern = PacmanRedGhostPattern(obstacle: self)
+            
+        case "blueGhost":
+            self.pattern = PacmanBlueGhostPattern(obstacle: self)
+            
+        case "yellowGhost":
+            self.pattern = PacmmanYellowGhostPattern(obstacle: self)
+            
+        case "greenGhost":
+            self.pattern = PacManGreenGhostPattern(obstacle: self)
+            
+        case "greenishGhost":
+            self.pattern = PacManGreenishGhostPattern(obstacle: self)
+            
+        default:
+            break
+        }
     }
     
     func configPhysicsBody(){
