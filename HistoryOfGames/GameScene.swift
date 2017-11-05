@@ -102,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         AudioManager.sharedInstance.playBackgroundMusic()
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(sender:)))
+       // let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(sender:)))
         
 //        let panRecognizer = UIPanGestureRecognizer(target: self, action : #selector(self.panHandler(sender:)))
 //        panRecognizer.maximumNumberOfTouches = 1
@@ -113,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
         swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.left
         
-        self.view?.addGestureRecognizer(tapRecognizer)
+        //self.view?.addGestureRecognizer(tapRecognizer)
 //        self.view?.addGestureRecognizer(panRecognizer)
         self.view?.addGestureRecognizer(swipeRightRecognizer)
         self.view?.addGestureRecognizer(swipeLeftRecognizer)
@@ -125,9 +125,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        for touch in touches {
+            let location = touch.location(in: self)
+            if(location.x < self.size.width / 2){
+                print("Left, no jump executed")
+            }
+            else {
+                print("Right, jump")
+                tapHandler()
+            }
+        }
+        
+        
     }
     
-    func tapHandler(sender: UITapGestureRecognizer){
+    func tapHandler(){
         
         if (!isGameOver) {
             
@@ -184,20 +196,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(!player.toTheLeft && !player.toTheRight){
             
             if(sender.direction == .right){
+                if (sender.location(in: self.view).x < (self.view?.scene?.size.width)! / 2) {
                 
 //                player.position.x += player.size.width
                 player.run(SKAction.move(to: CGPoint(x: player.position.x + player.size.width,
                                                    y: player.position.y), duration: 0.2))
                 
                 player.toTheRight = true
+                }
             }
             
             if(sender.direction == .left){
+                 if (sender.location(in: self.view).x < (self.view?.scene?.size.width)! / 2) {
                 
 //                player.position.x -= player.size.width
                 player.run(SKAction.move(to: CGPoint(x: player.position.x - player.size.width,
                                                    y: player.position.y), duration: 0.1))
                 player.toTheLeft = true
+                }
             }
         }
         
