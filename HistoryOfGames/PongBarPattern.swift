@@ -10,31 +10,39 @@ import SpriteKit
 
 class PongBarPattern: EnemyPattern{
     
-    override func startMoving(floorPosition: CGFloat, scene: SKScene) {
+    override init(obstacle: Obstacle) {
         
         obstacle.size = CGSize(width: 10, height: 50)
         
+        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
+        
+        super.init(obstacle: obstacle)
+        
         let randomPosition = Int(arc4random_uniform(2))
         let randomDuration = Double(arc4random_uniform(UInt32(1.5))) + 1.2
-        let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: TimeInterval(randomDuration))
+        let moveUpAction = SKAction.moveTo(y: (obstacle.gameScene?.size.height)! - obstacle.size.height / 2, duration: TimeInterval(randomDuration))
         // move down 100
-        let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration: TimeInterval(randomDuration))
+        let moveDownAction = SKAction.moveTo(y: (obstacle.gameScene?.floorPosition)! + obstacle.size.height / 2, duration: TimeInterval(randomDuration))
         // sequence of moving up then down
         var jumpSequence: SKAction!
         
         if(randomPosition == 0){
             
-            obstacle.position.y = floorPosition + obstacle.size.height / 2
+            obstacle.position.y = (obstacle.gameScene?.floorPosition)! + obstacle.size.height / 2
             jumpSequence = SKAction.sequence([moveUpAction, moveDownAction])
         }
         else{
-            obstacle.position.y = scene.size.height - obstacle.size.height / 2
+            obstacle.position.y = (obstacle.gameScene?.size.height)! - obstacle.size.height / 2
             jumpSequence = SKAction.sequence([moveDownAction, moveUpAction])
         }
         
-        obstacle.position.x = scene.size.width + 20
-        setObstaclePhysicsBody(obstacle: obstacle)
-        
         obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
+        
+        setObstaclePhysicsBody(obstacle: obstacle)
+    }
+    
+    override func move() {
+        
+        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
     }
 }

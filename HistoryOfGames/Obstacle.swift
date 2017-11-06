@@ -23,14 +23,14 @@ class Obstacle: SKSpriteNode {
     var pattern: EnemyPattern?
     var state: Int
     var animationFrames: [Int : UIImage] = [ : ]
-    var movementSpeed: CGFloat
-     var texturesArray =  [SKTexture]()
+    var texturesArray =  [SKTexture]()
+    var gameScene: GameScene?
     
-    init(name: String, movementSpeed: CGFloat) {
+    init(name: String, scene: GameScene) {
         
         self.obstacleName = name
         self.state = animationState.standard.rawValue
-        self.movementSpeed = movementSpeed
+        self.gameScene = scene
         
         let texture = SKTexture(imageNamed: self.obstacleName)
         
@@ -63,7 +63,7 @@ class Obstacle: SKSpriteNode {
         case "superblock":
             self.pattern = MarioSuperBlockPattern(obstacle: self)
             
-        case "pacmanBlock":
+        case "pacmanBlock0":
             self.pattern = PacmanBlockPattern(obstacle: self)
             
         case "redGhost":

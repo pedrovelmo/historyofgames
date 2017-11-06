@@ -16,29 +16,32 @@ class PacmanRedGhostPattern: EnemyPattern{
         
         let randomPosition = Int(arc4random_uniform(2))
         
-        let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: 2.3)
+        let height = scene.size.height  - obstacle.size.height / 2
         
-        // move down 100
-        let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration:1.8)
+        let moveDiagonalUpActionFast = SKAction.moveTo(y: height * 0.8, duration: 0.5)
         
-        let moveSidewaysAction = SKAction.moveTo(x: -30, duration: 1.8)
+        let moveDiagonalUpActionSlow = SKAction.moveTo(y: height * 0.9, duration: 0.9)
+        
+        
+        let moveDiagonalDownAction = SKAction.moveTo(y: floorPosition * 1.5 + obstacle.size.height / 2 , duration: 0.75)
+        
         
         // sequence of moving up then down
-        var jumpSequence: SKAction!
+        var moveSequence: SKAction!
         
         if(randomPosition == 0){
             
             obstacle.position.y = floorPosition + obstacle.size.height / 2
-            jumpSequence = SKAction.sequence([moveUpAction, moveDownAction])
+            moveSequence = SKAction.sequence([moveDiagonalUpActionFast, moveDiagonalUpActionSlow, moveDiagonalDownAction])
         }
         else{
             obstacle.position.y = scene.size.height - obstacle.size.height / 2
-            jumpSequence = SKAction.sequence([moveDownAction, moveUpAction])
+            moveSequence = SKAction.sequence([moveDiagonalDownAction, moveDiagonalUpActionFast, moveDiagonalUpActionSlow])
         }
         
         obstacle.position.x = scene.size.width + 20
         setObstaclePhysicsBody(obstacle: obstacle)
         
-        obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
+        obstacle.run(SKAction.repeatForever(SKAction.sequence([moveSequence])))
     }
 }

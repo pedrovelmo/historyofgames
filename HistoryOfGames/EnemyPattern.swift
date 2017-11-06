@@ -143,6 +143,11 @@ class EnemyPattern{
 //        }
     }
     
+    func move(){
+        
+        
+    }
+    
     
     func setObstaclePhysicsBody(obstacle: Obstacle) {
         obstacle.configPhysicsBody()

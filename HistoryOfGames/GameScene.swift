@@ -51,6 +51,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var gameMode: String!
     
+    var floorPosition: CGFloat?
+    
     public init(size: CGSize, gameMode: String) {
         super.init(size: size)
         self.gameMode = gameMode
@@ -85,13 +87,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default: break
         }
         
-        
         // Add first background
         Background.setFirstBackground(scene: self)
         
         // Add first floor
         Floor.setFirstFloor(scene: self)
         Floor.floorsArray.first?.setPhysicsBody()
+        self.floorPosition = Floor.floorsArray[0].size.height
         
         player.setDefaultX(scene: self.scene!)
         player.position.x = player.defaultPlayerX
@@ -191,8 +193,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                       y:player.position.y + translation.y)
 
             sender.setTranslation(CGPoint.zero, in: self.view)
-            
-
         }
     
     func swipeHandler(sender: UISwipeGestureRecognizer){
@@ -305,7 +305,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     let obstacleNumber = Int(arc4random_uniform(numberOfObstaclesInEpoch))
                     print("Obstacle", obstacleNumber)
                     
-                    let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, movementSpeed: self.movingSpeed)
+                    let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, scene: self)
                     
                     self.scene?.addChild(newObstacle)
                     Obstacle.obstaclesArray.append(newObstacle)
@@ -322,26 +322,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         for o in Obstacle.obstaclesArray{
             
-            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "block1" || o.obstacleName == "block2" || o.obstacleName == "block3" || o.obstacleName == "block4"){
-                
-                o.position.x -= self.movingSpeed
-            }
+            o.pattern?.move()
             
-            if (o.obstacleName == "redGhost" || o.obstacleName == "blueGhost" || o.obstacleName == "greenGhost" || o.obstacleName == "greenishGhost" || o.obstacleName == "yellowGhost"  ) {
-                
-                o.position.x -= self.movingSpeed * 1.5
-            }
-            
-            if(o.obstacleName == "turtle0"){
-                
-                o.position.x -= 2.5 * self.movingSpeed
-            }
-            
-            if(o.position.x + o.size.width / 2 <= 0){
-                
-                scene?.removeChildren(in: [o])
-                Obstacle.obstaclesArray.remove(at: Obstacle.obstaclesArray.index(of: o)!)
-            }
+//            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "block1" || o.obstacleName == "block2" || o.obstacleName == "block3" || o.obstacleName == "block4"){
+//
+//                o.position.x -= self.movingSpeed
+//            }
+//
+//            if (o.obstacleName == "redGhost" || o.obstacleName == "blueGhost" || o.obstacleName == "greenGhost" || o.obstacleName == "greenishGhost" || o.obstacleName == "yellowGhost"  ) {
+//
+//                o.position.x -= self.movingSpeed * 1.5
+//            }
+//
+//            if(o.obstacleName == "turtle0"){
+//
+//                
+//            }
+//
+//            if(o.position.x + o.size.width / 2 <= 0){
+//
+//                scene?.removeChildren(in: [o])
+//                Obstacle.obstaclesArray.remove(at: Obstacle.obstaclesArray.index(of: o)!)
+//            }
         }
     }
     

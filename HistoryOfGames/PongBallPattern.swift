@@ -10,29 +10,41 @@ import SpriteKit
 
 class PongBallPattern: EnemyPattern{
     
-    override func startMoving(floorPosition: CGFloat, scene: SKScene) {
+    var didStartMoving = false
+    
+    override init(obstacle: Obstacle) {
         
         obstacle.size = CGSize(width: 10, height: 10)
         
-        let randomPosition = arc4random_uniform(UInt32(scene.size.height))
+        super.init(obstacle: obstacle)
         
-        obstacle.position = CGPoint(x: scene.size.width + 20, y: CGFloat(CGFloat(randomPosition) + floorPosition))
+        let randomPosition = arc4random_uniform(UInt32((obstacle.gameScene?.size.height)!))
+        
+        obstacle.position = CGPoint(x: obstacle.gameScene!.size.width + 20, y: CGFloat(CGFloat(randomPosition) +  (obstacle.gameScene?.floorPosition)!))
         
         setObstaclePhysicsBody(obstacle: obstacle)
         
         obstacle.physicsBody?.mass = (obstacle.physicsBody?.mass)! * 8
-        let randomX = -Double(arc4random_uniform(UInt32(obstacle.movementSpeed * 1.7))) - 6.0
-        var randomY: Double!
-        let yType = arc4random_uniform(2)
-        if (yType == 0) {
-            randomY = -randomX
-        }
-            
-        else {
-            
-            randomY = randomX
-        }
+    }
+    
+    override func move() {
         
-        obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
+        if(!didStartMoving){
+            
+            let randomX = -Double(arc4random_uniform(UInt32((obstacle.gameScene?.movingSpeed)! * 1.7))) - 6.0
+            var randomY: Double!
+            let yType = arc4random_uniform(2)
+            if (yType == 0) {
+                randomY = -randomX
+            }
+                
+            else {
+                
+                randomY = randomX
+            }
+            
+            obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
+            didStartMoving = true
+        }
     }
 }

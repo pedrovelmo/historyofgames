@@ -10,7 +10,9 @@ import SpriteKit
 
 class MarioBlockPattern: EnemyPattern{
     
-    override func startMoving(floorPosition: CGFloat, scene: SKScene) {
+    override init(obstacle: Obstacle) {
+        
+        super.init(obstacle: obstacle)
         
         let randomImage = arc4random_uniform(4) + 1
         
@@ -18,17 +20,17 @@ class MarioBlockPattern: EnemyPattern{
         
         obstacle.size = CGSize(width: 40, height: 40)
         
-        obstacle.position.y = CGFloat(arc4random_uniform(UInt32(scene.size.height - obstacle.size.height / 2))) + floorPosition + obstacle.size.height / 2
+        obstacle.position.y = CGFloat(arc4random_uniform(UInt32((obstacle.gameScene?.size.height)! - obstacle.size.height / 2))) + (obstacle.gameScene?.floorPosition)! + obstacle.size.height / 2
         
-        obstacle.position.x = scene.size.width + 20
+        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
         
         let randomMoveUp = Double(arc4random_uniform(UInt32(0.5))) + 0.5
         let randomMoveDown = Double(arc4random_uniform(UInt32(0.5))) + 0.5
         let randomMoveSideways = Double(arc4random_uniform(UInt32(0.5))) + 0.7
         
-        let moveUpAction = SKAction.moveTo(y: scene.size.height - obstacle.size.height / 2, duration: randomMoveUp)
+        let moveUpAction = SKAction.moveTo(y: (obstacle.gameScene?.size.height)! - obstacle.size.height / 2, duration: randomMoveUp)
         // move down 100
-        let moveDownAction = SKAction.moveTo(y: floorPosition + obstacle.size.height / 2, duration: randomMoveDown)
+        let moveDownAction = SKAction.moveTo(y: (obstacle.gameScene?.floorPosition!)! + obstacle.size.height / 2, duration: randomMoveDown)
         
         let moveSidewaysAction = SKAction.moveBy(x: -40, y: 0, duration: randomMoveSideways)
         // sequence of moving up then down
@@ -39,5 +41,10 @@ class MarioBlockPattern: EnemyPattern{
         setObstaclePhysicsBody(obstacle: obstacle)
         
         obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
+    }
+    
+    override func move() {
+        
+        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
     }
 }
