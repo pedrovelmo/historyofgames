@@ -12,6 +12,10 @@ class MarioBlockPattern: EnemyPattern{
     
     override func startMoving(floorPosition: CGFloat, scene: SKScene) {
         
+        let randomImage = arc4random_uniform(4) + 1
+        
+        obstacle.texture = SKTexture(imageNamed: "block" + String(randomImage))
+        
         obstacle.size = CGSize(width: 40, height: 40)
         
         obstacle.position.y = CGFloat(arc4random_uniform(UInt32(scene.size.height - obstacle.size.height / 2))) + floorPosition + obstacle.size.height / 2
