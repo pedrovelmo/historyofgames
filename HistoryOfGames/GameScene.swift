@@ -333,7 +333,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion((contact.bodyB.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
-            createGameOverScreen(imageNamed: "gameOver.png")
+            hudView?.createGameOverView(scene: self)
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle {
@@ -341,7 +341,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion((contact.bodyA.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
-            createGameOverScreen(imageNamed: "gameOver.png")
+            hudView?.createGameOverView(scene: self)
         }
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
@@ -449,8 +449,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (epoch.whatEpochIsThis == 2 && coins >= epoch.numberOfCoins!) {
-            createGameOverScreen(imageNamed: "completed.png")
-            
+            hudView?.createGameOverView(scene: self)
         }
     }
     
@@ -543,19 +542,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.view?.addSubview(loadingView)
         
-    }
-    
-    func createGameOverScreen(imageNamed: String) {
-        isGameOver = true
-        coins = 0
-        score = 0
-        
-        gameOverView = SKSpriteNode(imageNamed: imageNamed)
-        gameOverView?.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
-        gameOverView?.zPosition = 10
-        gameOverView?.size = CGSize(width: (self.frame.size.width / 1.2), height: (self.frame.size.height / 1.1))
-        gameOverView?.alpha = 1.0
-        self.addChild(gameOverView!)
     }
     
     func createTutorial() {
