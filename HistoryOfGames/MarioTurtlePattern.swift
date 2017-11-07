@@ -14,11 +14,13 @@ class MarioTurtlePattern: EnemyPattern{
         
         super.init(obstacle: obstacle)
         
-        obstacle.position.y = (obstacle.gameScene?.floorPosition)! + CGFloat(arc4random_uniform(UInt32((obstacle.gameScene?.size.height)! - obstacle.size.height / 2)))
+        let randomPositionY = CGFloat(arc4random_uniform(UInt32((obstacle.gameScene?.size.height)!)))
+        
+        obstacle.position = CGPoint(x: (obstacle.gameScene?.size.width)! + 20,
+                                    y: randomPositionY + (obstacle.gameScene?.floorPosition)!)
+        
         print("Position turtle: ", obstacle.position.y)
-        
-        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
-        
+     
         let hitbox = CGSize(width: obstacle.size.width * 0.8, height: obstacle.size.height * 0.8)
         
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: hitbox)
