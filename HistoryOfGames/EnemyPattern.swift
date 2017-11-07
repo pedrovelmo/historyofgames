@@ -151,7 +151,6 @@ class EnemyPattern{
     
     func setObstaclePhysicsBody(obstacle: Obstacle) {
         obstacle.configPhysicsBody()
-        
         obstacle.physicsBody?.affectedByGravity = false
         obstacle.physicsBody?.friction = 0.0
         obstacle.physicsBody?.restitution = 1.0
