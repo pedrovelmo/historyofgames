@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 
-class GameViewController: UIViewController, GameDelegate {
+class GameViewController: UIViewController {
     
     var gameMode: String!
     

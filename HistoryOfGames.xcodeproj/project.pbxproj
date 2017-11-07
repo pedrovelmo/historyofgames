@@ -39,11 +39,7 @@
 		49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F41F8AD38A00DB634F /* Coin.mp3 */; };
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
 		C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */; };
-		C1072E7B1FAFAFC10022551A /* PacmanRedGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7A1FAFAFC10022551A /* PacmanRedGhostPattern.swift */; };
-		C1072E7D1FAFB0DD0022551A /* PacManBlueGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7C1FAFB0DD0022551A /* PacManBlueGhostPattern.swift */; };
-		C1072E7F1FAFB15E0022551A /* PacManYellowGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7E1FAFB15E0022551A /* PacManYellowGhostPattern.swift */; };
-		C1072E811FAFB1E80022551A /* PacManGreenGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E801FAFB1E80022551A /* PacManGreenGhostPattern.swift */; };
-		C1072E831FAFB25B0022551A /* PacManGreenishGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E821FAFB25B0022551A /* PacManGreenishGhostPattern.swift */; };
+		C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */; };
 		C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */; };
 		C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
@@ -92,11 +88,7 @@
 		49E563F41F8AD38A00DB634F /* Coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin.mp3; sourceTree = "<group>"; };
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanBlockPattern.swift; sourceTree = "<group>"; };
-		C1072E7A1FAFAFC10022551A /* PacmanRedGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanRedGhostPattern.swift; sourceTree = "<group>"; };
-		C1072E7C1FAFB0DD0022551A /* PacManBlueGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManBlueGhostPattern.swift; sourceTree = "<group>"; };
-		C1072E7E1FAFB15E0022551A /* PacManYellowGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManYellowGhostPattern.swift; sourceTree = "<group>"; };
-		C1072E801FAFB1E80022551A /* PacManGreenGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManGreenGhostPattern.swift; sourceTree = "<group>"; };
-		C1072E821FAFB25B0022551A /* PacManGreenishGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManGreenishGhostPattern.swift; sourceTree = "<group>"; };
+		C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanGhostPattern.swift; sourceTree = "<group>"; };
 		C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioBlockPattern.swift; sourceTree = "<group>"; };
 		C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioSuperBlockPattern.swift; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
@@ -220,11 +212,7 @@
 				C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */,
 				C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */,
 				C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */,
-				C1072E7A1FAFAFC10022551A /* PacmanRedGhostPattern.swift */,
-				C1072E7C1FAFB0DD0022551A /* PacManBlueGhostPattern.swift */,
-				C1072E7E1FAFB15E0022551A /* PacManYellowGhostPattern.swift */,
-				C1072E801FAFB1E80022551A /* PacManGreenGhostPattern.swift */,
-				C1072E821FAFB25B0022551A /* PacManGreenishGhostPattern.swift */,
+				C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */,
 			);
 			name = "Enemy Patterns";
 			sourceTree = "<group>";
@@ -342,23 +330,19 @@
 				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
 				C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
-				C1072E7D1FAFB0DD0022551A /* PacManBlueGhostPattern.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				4945C1C71F8410E9004246BC /* GameScene.swift in Sources */,
-				C1072E831FAFB25B0022551A /* PacManGreenishGhostPattern.swift in Sources */,
 				C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */,
 				49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */,
 				4945C1E91F898664004246BC /* MenuViewController.swift in Sources */,
 				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
-				C1072E7F1FAFB15E0022551A /* PacManYellowGhostPattern.swift in Sources */,
 				4945C1C51F83F207004246BC /* NodeManager.swift in Sources */,
 				C1D998481FAFA76A00F81CBA /* PongBarPattern.swift in Sources */,
 				C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */,
 				C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
-				C1072E7B1FAFAFC10022551A /* PacmanRedGhostPattern.swift in Sources */,
+				C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
-				C1072E811FAFB1E80022551A /* PacManGreenGhostPattern.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

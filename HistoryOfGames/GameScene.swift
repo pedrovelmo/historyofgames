@@ -9,17 +9,11 @@
 import SpriteKit
 import GameplayKit
 
-protocol GameDelegate {
-    func launchViewController(scene: SKScene)
-}
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var menu: MenuViewController!
     
     var epoch: Epoch!
-    
-    var gameDelegate: GameDelegate?
     
     var lastEpoch: Epoch?
     
@@ -101,29 +95,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.player.setPhysicsBody()
         self.scene?.addChild(player)
-
+        
         // Background Music configuration
         
         AudioManager.sharedInstance.playBackgroundMusic()
         
-        // let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(sender:)))
         
-        //        let panRecognizer = UIPanGestureRecognizer(target: self, action : #selector(self.panHandler(sender:)))
-        //        panRecognizer.maximumNumberOfTouches = 1
         
         if (isGameModeSwipe) {
-        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
-        swipeRightRecognizer.direction = UISwipeGestureRecognizerDirection.right
-        
-        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
-        swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.left
-        
-        //self.view?.addGestureRecognizer(tapRecognizer)
-        //        self.view?.addGestureRecognizer(panRecognizer)
-        self.view?.addGestureRecognizer(swipeRightRecognizer)
-        self.view?.addGestureRecognizer(swipeLeftRecognizer)
-            }
-        
+            let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
+            swipeRightRecognizer.direction = UISwipeGestureRecognizerDirection.right
+            
+            let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
+            swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.left
+            
+            self.view?.addGestureRecognizer(swipeRightRecognizer)
+            self.view?.addGestureRecognizer(swipeLeftRecognizer)
+        }
+            
         else {
             let panRecognizer = UIPanGestureRecognizer(target: self, action : #selector(self.panHandler(sender: )))
             self.view?.addGestureRecognizer(panRecognizer)
@@ -151,8 +140,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
         }
-        
-        
     }
     
     func tapHandler(){
@@ -170,30 +157,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
             
         else {
-            
-            //           hudView?.removeFromSuperview()
-            //           gameOverView?.removeFromParent()
-            //           player.removeFromParent()
             Floor.floorsArray.removeAll()
             Background.backgroundsArray.removeAll()
             NodeManager.sharedInstance.clearAll()
-            //           self.didMove(to: self.view!)
-            
-            // gameDelegate?.launchViewController(scene: self)
-            
             menu.killAll()
         }
     }
     
-        func panHandler(sender: UIPanGestureRecognizer){
-           
-            let translation = sender.translation(in: self.view)
-
-            player.position = CGPoint(x:player.position.x + translation.x,
-                                      y:player.position.y + translation.y)
-
-            sender.setTranslation(CGPoint.zero, in: self.view)
-        }
+    func panHandler(sender: UIPanGestureRecognizer){
+        
+        let translation = sender.translation(in: self.view)
+        
+        player.position = CGPoint(x:player.position.x + translation.x,
+                                  y:player.position.y + translation.y)
+        
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
     
     func swipeHandler(sender: UISwipeGestureRecognizer){
         
@@ -225,11 +204,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if((player.toTheRight && sender.direction == .left) ||
             (player.toTheLeft && sender.direction == .right)){
             
-            //            player.position.x = player.defaultPlayerX
-            
             player.run(SKAction.move(to: CGPoint(x: player.defaultPlayerX,
                                                  y: player.position.y), duration: 0.1))
-            
             player.toTheRight = false
             player.toTheLeft = false
         }
@@ -323,27 +299,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for o in Obstacle.obstaclesArray{
             
             o.pattern?.move()
-            
-//            if(o.obstacleName == "pongBar" || o.obstacleName == "pacmanBlock" || o.obstacleName == "pacmanBlock1" || o.obstacleName == "block1" || o.obstacleName == "block2" || o.obstacleName == "block3" || o.obstacleName == "block4"){
-//
-//                o.position.x -= self.movingSpeed
-//            }
-//
-//            if (o.obstacleName == "redGhost" || o.obstacleName == "blueGhost" || o.obstacleName == "greenGhost" || o.obstacleName == "greenishGhost" || o.obstacleName == "yellowGhost"  ) {
-//
-//                o.position.x -= self.movingSpeed * 1.5
-//            }
-//
-//            if(o.obstacleName == "turtle0"){
-//
-//                
-//            }
-//
-//            if(o.position.x + o.size.width / 2 <= 0){
-//
-//                scene?.removeChildren(in: [o])
-//                Obstacle.obstaclesArray.remove(at: Obstacle.obstaclesArray.index(of: o)!)
-//            }
         }
     }
     
@@ -529,8 +484,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!objectTimerIsRunning) {
             
-            let obstacleSeconds = Double(arc4random_uniform(2)) + 1.2
-            timer = Timer.scheduledTimer(timeInterval: obstacleSeconds, target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
+            let obstacleSeconds = randomBetweenNumbers(firstNum: 0.7, secondNum: 1.5)
+            timer = Timer.scheduledTimer(timeInterval: TimeInterval(obstacleSeconds), target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
             objectTimerIsRunning = true
         }
         
@@ -601,7 +556,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverView?.size = CGSize(width: (self.frame.size.width / 1.2), height: (self.frame.size.height / 1.1))
         gameOverView?.alpha = 1.0
         self.addChild(gameOverView!)
-        
     }
     
     func createTutorial() {
@@ -612,12 +566,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var handMoveRight = SKAction.moveTo(x: hand.size.width / 2 + player.position.x + 50, duration: 1.5)
         var handMoveLeft = SKAction.moveTo(x: hand.size.width / 2 + player.position.x - 50, duration: 1.5)
         var handMove = SKAction.sequence([handMoveRight, handMoveLeft])
-
+        
         var handSequence = SKAction.repeatForever(SKAction.sequence([handMove]))
         self.scene?.addChild(hand)
         hand.run(SKAction.sequence([handSequence]))
         
-//        isInTutorial = false
+        //        isInTutorial = false
         
     }
 }

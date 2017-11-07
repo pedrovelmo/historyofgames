@@ -66,20 +66,9 @@ class Obstacle: SKSpriteNode {
         case "pacmanBlock0":
             self.pattern = PacmanBlockPattern(obstacle: self)
             
-        case "redGhost":
-            self.pattern = PacmanRedGhostPattern(obstacle: self)
-            
-        case "blueGhost":
-            self.pattern = PacmanBlueGhostPattern(obstacle: self)
-            
-        case "yellowGhost":
-            self.pattern = PacmmanYellowGhostPattern(obstacle: self)
-            
-        case "greenGhost":
-            self.pattern = PacManGreenGhostPattern(obstacle: self)
-            
-        case "greenishGhost":
-            self.pattern = PacManGreenishGhostPattern(obstacle: self)
+        case "ghost0":
+            self.pattern = PacmanGhostPattern(obstacle: self)
+
             
         default:
             break
