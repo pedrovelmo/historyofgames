@@ -12,26 +12,16 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var menu: MenuViewController!
-    
     var epoch: Epoch!
-    
     var lastEpoch: Epoch?
-    
     var coinVector: [Coin] = []
-    
     var player = Player(name: "dido")
-    
     var movingSpeed: CGFloat = 0.0
-    
     var jumpCounter = 0
-    
     var hudView: HudView?
     var gameOverView: SKSpriteNode?
-    
     var coins: Int = 0
-    
     var score = 0
-    
     var timer = Timer()
     var backgroundTimer = Timer()
     var isGameOver = false
@@ -40,11 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isTransitioning = false
     var isGameModeSwipe = true
     var isInTutorial = false
-    
-    let jumpMusic = SKAudioNode(fileNamed: "spin_jump.mp3")
-    
     var gameMode: String!
-    
     var floorPosition: CGFloat?
     
     public init(size: CGSize, gameMode: String) {
@@ -373,7 +359,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         // Configuration of the explosion sound
-        
         self.run(AudioManager.sharedInstance.explosionSound)
     }
     
@@ -468,7 +453,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func backgroundNodeManager() {
         if (!isTransitioning) {
-            
             for pattern in NodeManager.sharedInstance.backgroundNodesPatternVector {
                 for node in pattern{
                     node.position.x -= movingSpeed
