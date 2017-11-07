@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SpriteKit
 
 class HudView: UIView {
     
@@ -45,8 +45,19 @@ class HudView: UIView {
 
         self.addSubview(coinLabel!)
         self.addSubview(scoreLabel!)
-        
     }
     
-
+    func createGameOverView(scene: GameScene){
+        
+        scene.isGameOver = true
+        scene.coins = 0
+        scene.score = 0
+        
+        let gameOverView = SKSpriteNode(imageNamed: "gameOver.png")
+        gameOverView.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
+        gameOverView.zPosition = 10
+        gameOverView.size = CGSize(width: (self.frame.size.width / 1.2), height: (self.frame.size.height / 1.1))
+        gameOverView.alpha = 1.0
+        scene.addChild(gameOverView)
+    }
 }
