@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         CoinManager.sharedInstance.scene = self
         isGameOver = false
         
-        epoch = Epoch(whatEpochIsThis: 1, scene: self, gameMode: gameMode)
+        epoch = Epoch(whatEpochIsThis: 2, scene: self, gameMode: gameMode)
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
@@ -271,8 +271,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     self.scene?.addChild(newObstacle)
                     Obstacle.obstaclesArray.append(newObstacle)
-                    
-                    newObstacle.pattern?.startMoving(floorPosition: Floor.floorsArray[0].size.height, scene: self.scene!)
                 })
                 
                 run(spawnEnemy)

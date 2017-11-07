@@ -25,7 +25,7 @@ class PacmanGhostPattern: EnemyPattern{
         obstacle.size = CGSize(width: 30, height: 30)
         
         obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
-        setObstaclePhysicsBody(obstacle: obstacle)
+        obstacle.configPhysicsBody()
         
         randomWidth = CGFloat((UInt32(arc4random_uniform(8))) + 3)
         randomHeight = randomBetweenNumbers(firstNum: 0.25, secondNum: 0.3)

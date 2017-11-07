@@ -60,8 +60,8 @@ class Obstacle: SKSpriteNode {
         case "block1":
             self.pattern = MarioBlockPattern(obstacle: self)
             
-        case "superblock":
-            self.pattern = MarioSuperBlockPattern(obstacle: self)
+//        case "superblock":
+//            self.pattern = MarioSuperBlockPattern(obstacle: self)
             
         case "pacmanBlock0":
             self.pattern = PacmanBlockPattern(obstacle: self)
@@ -76,11 +76,16 @@ class Obstacle: SKSpriteNode {
     }
     
     func configPhysicsBody(){
-        
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
         self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player 
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.friction = 0.0
+        self.physicsBody?.restitution = 1.0
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.angularDamping = 0.0
+        self.physicsBody?.linearDamping = 0.0
     }
     
     required init?(coder aDecoder: NSCoder) {

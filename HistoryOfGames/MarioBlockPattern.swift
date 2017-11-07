@@ -35,10 +35,18 @@ class MarioBlockPattern: EnemyPattern{
         let moveSidewaysAction = SKAction.moveBy(x: -40, y: 0, duration: randomMoveSideways)
         // sequence of moving up then down
         var jumpSequence: SKAction!
+        let randomSequence = arc4random_uniform(2)
+        if (randomSequence == 0) {
         
         jumpSequence = SKAction.sequence([moveDownAction, moveSidewaysAction, moveUpAction, moveSidewaysAction])
+            
+        }
         
-        setObstaclePhysicsBody(obstacle: obstacle)
+        else {
+                    jumpSequence = SKAction.sequence([moveUpAction, moveSidewaysAction, moveDownAction, moveSidewaysAction])
+        }
+        
+        obstacle.configPhysicsBody()
         
         obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
     }

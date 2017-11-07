@@ -22,7 +22,7 @@ class PongBallPattern: EnemyPattern{
         
         obstacle.position = CGPoint(x: obstacle.gameScene!.size.width + 20, y: CGFloat(CGFloat(randomPosition) +  (obstacle.gameScene?.floorPosition)!))
         
-        setObstaclePhysicsBody(obstacle: obstacle)
+        obstacle.configPhysicsBody()
         
         obstacle.physicsBody?.mass = (obstacle.physicsBody?.mass)! * 8
     }

@@ -109,18 +109,15 @@ class Player: SKSpriteNode {
     
     func setPhysicsBody() {
         
-        let hitbox = CGSize(width: self.size.width * 0.7, height: self.size.height)
-        
+        let hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.9)
         self.physicsBody = SKPhysicsBody(rectangleOf: hitbox)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
         self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
+        self.physicsBody?.mass *= 1.3
 
-        
-//        self.physicsBody?.collisionBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Floor
-//        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle 
     }
     
     func startAnimation() {

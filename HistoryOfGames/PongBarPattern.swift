@@ -38,7 +38,7 @@ class PongBarPattern: EnemyPattern{
         
         obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
         
-        setObstaclePhysicsBody(obstacle: obstacle)
+       obstacle.configPhysicsBody()
     }
     
     override func move() {
