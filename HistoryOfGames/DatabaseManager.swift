@@ -20,4 +20,29 @@ class DatabaseManager{
         
         FirebaseApp.configure()
     }
+    
+    func anonymousLogin(){
+        
+        if(Auth.auth().currentUser == nil){
+            
+            Auth.auth().signInAnonymously() { (user, error) in
+                
+                if let error = error {
+                    
+                    print("Sign in failed:", error.localizedDescription)
+                }
+                
+                else{
+                    
+                    let uid = user!.uid
+                    print("ID gerado para o usuário: " + user!.uid)
+                }
+            }
+        }
+        
+        else{
+            
+            print("Usuário já logado: " + (Auth.auth().currentUser?.uid)!)
+        }
+    }
 }
