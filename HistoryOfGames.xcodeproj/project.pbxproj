@@ -40,20 +40,25 @@
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
 		C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */; };
 		C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */; };
+		C1574E381FB92194005A3EA8 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1574E371FB92193005A3EA8 /* DatabaseManager.swift */; };
 		C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */; };
 		C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */; };
 		C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1D07D331F6713C2000B768F /* ExplosionParticles.sks */; };
 		C1D07D381F685407000B768F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D371F685407000B768F /* AudioManager.swift */; };
 		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
 		C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D3B1F686991000B768F /* CoinManager.swift */; };
+		C1D52B261FB91FBE000526D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */; };
 		C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */; };
 		C1D998481FAFA76A00F81CBA /* PongBarPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */; };
 		C1D9984A1FAFA8D400F81CBA /* MarioTurtlePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */; };
 		C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* EnemyPattern.swift */; };
 		C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */; };
+		C7E7C833885FC4AEE9033A8A /* Pods_HistoryOfGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C1A58F70AB4FA74AA6D971 /* Pods_HistoryOfGames.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32C1A58F70AB4FA74AA6D971 /* Pods_HistoryOfGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistoryOfGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36D31F96A6F3E54C28350683 /* Pods-HistoryOfGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistoryOfGames.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames.debug.xcconfig"; sourceTree = "<group>"; };
 		4939C3C31F8C203A00BD5C88 /* BobbleBits.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BobbleBits.mp3; sourceTree = "<group>"; };
 		4945C1C41F83F207004246BC /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
 		4945C1C61F8410E9004246BC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -89,17 +94,20 @@
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanBlockPattern.swift; sourceTree = "<group>"; };
 		C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanGhostPattern.swift; sourceTree = "<group>"; };
+		C1574E371FB92193005A3EA8 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioBlockPattern.swift; sourceTree = "<group>"; };
 		C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioSuperBlockPattern.swift; sourceTree = "<group>"; };
 		C1D07D331F6713C2000B768F /* ExplosionParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticles.sks; sourceTree = "<group>"; };
 		C1D07D371F685407000B768F /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		C1D07D3B1F686991000B768F /* CoinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
+		C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBallPattern.swift; sourceTree = "<group>"; };
 		C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBarPattern.swift; sourceTree = "<group>"; };
 		C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioTurtlePattern.swift; sourceTree = "<group>"; };
 		C1E38CD41F5E46DF00DC1E34 /* EnemyPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPattern.swift; sourceTree = "<group>"; };
 		C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E1E79911117E920D7AD0EC90 /* Pods-HistoryOfGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistoryOfGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,17 +115,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E7C833885FC4AEE9033A8A /* Pods_HistoryOfGames.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0358DA80C4CCEF76C66FC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36D31F96A6F3E54C28350683 /* Pods-HistoryOfGames.debug.xcconfig */,
+				E1E79911117E920D7AD0EC90 /* Pods-HistoryOfGames.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2A21EC80F81635FF701F5EFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32C1A58F70AB4FA74AA6D971 /* Pods_HistoryOfGames.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		496AC8D31F58722E00A6D490 = {
 			isa = PBXGroup;
 			children = (
 				496AC8DE1F58722E00A6D490 /* HistoryOfGames */,
 				496AC8DD1F58722E00A6D490 /* Products */,
+				0D0358DA80C4CCEF76C66FC2 /* Pods */,
+				2A21EC80F81635FF701F5EFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +169,7 @@
 				496AC8E31F58722E00A6D490 /* Actions.sks */,
 				496AC8EC1F58722E00A6D490 /* Assets.xcassets */,
 				496AC8F11F58722E00A6D490 /* Info.plist */,
+				C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */,
 			);
 			path = HistoryOfGames;
 			sourceTree = "<group>";
@@ -225,6 +254,7 @@
 				49847B9E1F61DDED00D59E64 /* PhysicsCategory.swift */,
 				C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */,
 				49904B821F7167D2005C0A6A /* ColorExtension.swift */,
+				C1574E371FB92193005A3EA8 /* DatabaseManager.swift */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -236,9 +266,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 496AC8F41F58722E00A6D490 /* Build configuration list for PBXNativeTarget "HistoryOfGames" */;
 			buildPhases = (
+				CADD43C46B6CC0B969DAC4FD /* [CP] Check Pods Manifest.lock */,
 				496AC8D81F58722E00A6D490 /* Sources */,
 				496AC8D91F58722E00A6D490 /* Frameworks */,
 				496AC8DA1F58722E00A6D490 /* Resources */,
+				B155DF9179565F640DBF80FB /* [CP] Embed Pods Frameworks */,
+				5D9CA0C17B4AD67E503E4FF1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -300,6 +333,7 @@
 				49847BA61F61EC8B00D59E64 /* AdventureTune.mp3 in Resources */,
 				49847BAC1F61ED2200D59E64 /* spin_jump.mp3 in Resources */,
 				496AC8F01F58722E00A6D490 /* LaunchScreen.storyboard in Resources */,
+				C1D52B261FB91FBE000526D3 /* GoogleService-Info.plist in Resources */,
 				496AC8E41F58722E00A6D490 /* Actions.sks in Resources */,
 				49E563F71F8AD47E00DB634F /* Jump.wav in Resources */,
 				49847BBC1F68310700D59E64 /* WilhemScream.wav in Resources */,
@@ -311,6 +345,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D9CA0C17B4AD67E503E4FF1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B155DF9179565F640DBF80FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CADD43C46B6CC0B969DAC4FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		496AC8D81F58722E00A6D490 /* Sources */ = {
@@ -343,6 +425,7 @@
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
 				C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
+				C1574E381FB92194005A3EA8 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +548,7 @@
 		};
 		496AC8F51F58722E00A6D490 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36D31F96A6F3E54C28350683 /* Pods-HistoryOfGames.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -482,6 +566,7 @@
 		};
 		496AC8F61F58722E00A6D490 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1E79911117E920D7AD0EC90 /* Pods-HistoryOfGames.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
