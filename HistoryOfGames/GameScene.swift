@@ -312,7 +312,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             jumpCounter = 0
         }
         
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
+        if (contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player)
+        || (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle){
             
             explosion((contact.bodyB.node?.position)!)
             contact.bodyB.node?.removeFromParent()
@@ -322,26 +323,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hudView?.createGameOverView(scene: self)
         }
         
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle {
-            
-            explosion((contact.bodyA.node?.position)!)
-            contact.bodyB.node?.removeFromParent()
-            contact.bodyA.node?.removeFromParent()
-            UserProfile.sharedInstance.updateUserData(coins: self.coins, highScore: self.score)
-            DatabaseManager.sharedInstance.updateUserData()
-            hudView?.createGameOverView(scene: self)
-        }
-        
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
+        if (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin)
+        || (contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player){
             
             contact.bodyB.node?.removeFromParent()
-            self.coins += 25
-            coinLabelUpdate()
-            self.run(AudioManager.sharedInstance.coinSound)
-        }
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
-            
-            contact.bodyA.node?.removeFromParent()
             self.coins += 25
             coinLabelUpdate()
             self.run(AudioManager.sharedInstance.coinSound)
