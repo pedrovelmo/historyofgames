@@ -317,6 +317,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion((contact.bodyB.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
+            UserProfile.sharedInstance.updateUserData(coins: self.coins, highScore: self.score)
+            DatabaseManager.sharedInstance.updateUserData()
             hudView?.createGameOverView(scene: self)
         }
         
@@ -325,6 +327,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion((contact.bodyA.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
+            UserProfile.sharedInstance.updateUserData(coins: self.coins, highScore: self.score)
+            DatabaseManager.sharedInstance.updateUserData()
             hudView?.createGameOverView(scene: self)
         }
         
@@ -364,7 +368,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func coinLabelUpdate() {
         
         if (!isTransitioning) {
-            hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
+            hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", self.coins)
         }
     }
     

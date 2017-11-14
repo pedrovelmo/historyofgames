@@ -13,14 +13,16 @@ let instance = DatabaseManager()
 class DatabaseManager{
     
     class var sharedInstance: DatabaseManager{
+        
         return instance
     }
     
-//    var ref: DatabaseReference = Database.database().reference()
+    var ref: DatabaseReference?
     
     func firebaseInit(){
         
         FirebaseApp.configure()
+        ref = Database.database().reference()
     }
     
     func anonymousLogin(){
@@ -54,16 +56,27 @@ class DatabaseManager{
     
     func setupNewUser(){
         
-        
+        self.ref?.child("users").child(UserProfile.sharedInstance.id).setValue(["highScore": 0, "coinsTotal": 0])
     }
     
     func getUserData(){
         
-        
+        ref?.child("users").child(UserProfile.sharedInstance.id).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            
+            UserProfile.sharedInstance.coinsTotal = value?.value(forKey: "coinsTotal") as! Int
+            UserProfile.sharedInstance.highScores[0] = value?.value(forKey: "highScore") as! Int
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
-    func addCoinsToDatabase(coins: Int){
+    func updateUserData(){
         
-        
+        self.ref?.child("users").child(UserProfile.sharedInstance.id)
+            .updateChildValues(["coinsTotal": UserProfile.sharedInstance.coinsTotal,
+                                "highScore": UserProfile.sharedInstance.highScores[0]])
     }
 }
