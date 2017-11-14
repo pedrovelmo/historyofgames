@@ -16,6 +16,8 @@ class DatabaseManager{
         return instance
     }
     
+//    var ref: DatabaseReference = Database.database().reference()
+    
     func firebaseInit(){
         
         FirebaseApp.configure()
@@ -34,8 +36,10 @@ class DatabaseManager{
                 
                 else{
                     
-                    let uid = user!.uid
-                    print("ID gerado para o usuário: " + user!.uid)
+                    UserProfile.sharedInstance.id = (user?.uid)!
+                    UserProfile.sharedInstance.coinsTotal = 0
+                    UserProfile.sharedInstance.highScores = []
+                    self.setupNewUser()
                 }
             }
         }
@@ -43,6 +47,23 @@ class DatabaseManager{
         else{
             
             print("Usuário já logado: " + (Auth.auth().currentUser?.uid)!)
+            UserProfile.sharedInstance.id = (Auth.auth().currentUser?.uid)!
+            getUserData()
         }
+    }
+    
+    func setupNewUser(){
+        
+        
+    }
+    
+    func getUserData(){
+        
+        
+    }
+    
+    func addCoinsToDatabase(coins: Int){
+        
+        
     }
 }

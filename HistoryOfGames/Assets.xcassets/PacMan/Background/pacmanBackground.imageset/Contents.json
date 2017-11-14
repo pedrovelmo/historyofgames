@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "pacmanFundo.jpg",
+      "filename" : "FundoTetrisPacManTeste.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "FundoTetrisPacManTeste-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "FundoTetrisPacManTeste-2.png",
       "scale" : "3x"
     }
   ],

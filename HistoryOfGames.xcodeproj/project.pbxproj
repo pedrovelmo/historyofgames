@@ -40,6 +40,7 @@
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
 		C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */; };
 		C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */; };
+		C15326561FBA3A75000A581B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15326551FBA3A75000A581B /* UserProfile.swift */; };
 		C1574E381FB92194005A3EA8 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1574E371FB92193005A3EA8 /* DatabaseManager.swift */; };
 		C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */; };
 		C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */; };
@@ -94,6 +95,7 @@
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanBlockPattern.swift; sourceTree = "<group>"; };
 		C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanGhostPattern.swift; sourceTree = "<group>"; };
+		C15326551FBA3A75000A581B /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		C1574E371FB92193005A3EA8 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C187C30B1FAFAC9E0014E628 /* MarioBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioBlockPattern.swift; sourceTree = "<group>"; };
 		C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioSuperBlockPattern.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				496AC8EC1F58722E00A6D490 /* Assets.xcassets */,
 				496AC8F11F58722E00A6D490 /* Info.plist */,
 				C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */,
+				C15326551FBA3A75000A581B /* UserProfile.swift */,
 			);
 			path = HistoryOfGames;
 			sourceTree = "<group>";
@@ -368,9 +371,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -383,13 +395,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HistoryOfGames-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -415,6 +430,7 @@
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				4945C1C71F8410E9004246BC /* GameScene.swift in Sources */,
 				C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */,
+				C15326561FBA3A75000A581B /* UserProfile.swift in Sources */,
 				49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */,
 				4945C1E91F898664004246BC /* MenuViewController.swift in Sources */,
 				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
