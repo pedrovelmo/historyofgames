@@ -32,7 +32,14 @@ class MarioBlockPattern: EnemyPattern{
         // move down 100
         let moveDownAction = SKAction.moveTo(y: (obstacle.gameScene?.floorPosition!)! + obstacle.size.height / 2, duration: randomMoveDown)
         
-        let moveSidewaysAction = SKAction.moveBy(x: -40, y: 0, duration: randomMoveSideways)
+            
+
+        let shakeAction = SKAction.rotate(byAngle: CGFloat(3.14/4), duration: 0.2)
+        let shakeAction1 = SKAction.rotate(toAngle: CGFloat(0), duration: 0.2)
+        let moveSidewaysAction = SKAction.sequence([SKAction.moveBy(x: -40, y: 0, duration: randomMoveSideways),shakeAction,shakeAction.reversed(), shakeAction1])
+        
+
+        
         // sequence of moving up then down
         var jumpSequence: SKAction!
         let randomSequence = arc4random_uniform(2)
@@ -47,6 +54,7 @@ class MarioBlockPattern: EnemyPattern{
         }
         
         obstacle.configPhysicsBody()
+        obstacle.physicsBody?.allowsRotation = true
         
         obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
     }

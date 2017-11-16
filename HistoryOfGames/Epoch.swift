@@ -73,7 +73,7 @@ class Epoch {
         case 2:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
-            obstacles = ["turtle0", "block1"]
+            obstacles = ["block1"]
             if (gameMode == "easy") {
                 numberOfCoins = 4000
             }

@@ -23,6 +23,10 @@ class DatabaseManager{
         
         FirebaseApp.configure()
         ref = Database.database().reference()
+//        do {
+//            try Auth.auth().signOut()
+//
+//        } catch {}
     }
     
     func anonymousLogin(){
@@ -41,7 +45,9 @@ class DatabaseManager{
                     UserProfile.sharedInstance.id = (user?.uid)!
                     UserProfile.sharedInstance.coinsTotal = 0
                     UserProfile.sharedInstance.highScores = []
+                    print("User ID", (user?.uid)!)
                     self.setupNewUser()
+                    
                 }
             }
         }
