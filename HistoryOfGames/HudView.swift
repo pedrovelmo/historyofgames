@@ -50,8 +50,6 @@ class HudView: UIView {
     func createGameOverView(scene: GameScene){
         
         scene.isGameOver = true
-        scene.coins = 0
-        scene.score = 0
         
         let gameOverView = SKSpriteNode(imageNamed: "gameOver.png")
         gameOverView.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)

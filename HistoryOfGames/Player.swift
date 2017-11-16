@@ -47,7 +47,6 @@ class Player: SKSpriteNode {
         
         let texture = SKTexture(imageNamed: "dido1")
         
-        
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         self.setScale(0.15)
 

@@ -304,40 +304,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         
         // If else statement checks if the bodies in touch are ball and enemy and respond accordingly
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Floor && contact.bodyB.categoryBitMask == PhysicsCategory.Player   {
+        if (contact.bodyA.categoryBitMask == PhysicsCategory.Floor && contact.bodyB.categoryBitMask == PhysicsCategory.Player)
+        || (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Floor) {
             jumpCounter = 0
         }
         
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Floor   {
-            jumpCounter = 0
-        }
-        
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
+        if (contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player)
+        || (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle){
             
             explosion((contact.bodyB.node?.position)!)
             contact.bodyB.node?.removeFromParent()
             contact.bodyA.node?.removeFromParent()
+            UserProfile.sharedInstance.updateUserData(coins: self.coins, highScore: self.score)
+            DatabaseManager.sharedInstance.updateUserData()
             hudView?.createGameOverView(scene: self)
         }
         
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle {
-            
-            explosion((contact.bodyA.node?.position)!)
-            contact.bodyB.node?.removeFromParent()
-            contact.bodyA.node?.removeFromParent()
-            hudView?.createGameOverView(scene: self)
-        }
-        
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin {
+        if (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin)
+        || (contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player){
             
             contact.bodyB.node?.removeFromParent()
-            self.coins += 25
-            coinLabelUpdate()
-            self.run(AudioManager.sharedInstance.coinSound)
-        }
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player {
-            
-            contact.bodyA.node?.removeFromParent()
             self.coins += 25
             coinLabelUpdate()
             self.run(AudioManager.sharedInstance.coinSound)
@@ -364,7 +350,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func coinLabelUpdate() {
         
         if (!isTransitioning) {
-            hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", coins)
+            hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", self.coins)
         }
     }
     

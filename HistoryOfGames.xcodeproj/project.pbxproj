@@ -174,7 +174,6 @@
 				496AC8EC1F58722E00A6D490 /* Assets.xcassets */,
 				496AC8F11F58722E00A6D490 /* Info.plist */,
 				C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */,
-				C15326551FBA3A75000A581B /* UserProfile.swift */,
 			);
 			path = HistoryOfGames;
 			sourceTree = "<group>";
@@ -182,6 +181,7 @@
 		496AC8F71F5875B900A6D490 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C15326551FBA3A75000A581B /* UserProfile.swift */,
 				C1D998441FAF9D6D00F81CBA /* Enemy Patterns */,
 				496AC8FA1F58762B00A6D490 /* Epoch.swift */,
 				496AC8FC1F5876C800A6D490 /* Ability.swift */,
