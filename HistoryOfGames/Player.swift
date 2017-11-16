@@ -32,26 +32,7 @@ class Player: SKSpriteNode {
     init(name: String) {
         self.characterName = name
         self.state = stateTypes.running.rawValue
-        
-        /*
-        for i in 0...23{
-            
-            var textureName = ""
-            
-            if i<=9{
-                textureName = "running 2_00\(i)"
-            } else {
-                textureName = "running 2_0\(i)"
-            }
-            
-            texturesArray.append(SKTexture(imageNamed: textureName))
-            
-        }
-        print(texturesArray.count)
 
-        let texture = SKTexture(imageNamed: name)
-        */
-        
         for i in 1...7{
             
             var textureName = ""
@@ -69,7 +50,6 @@ class Player: SKSpriteNode {
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         self.setScale(0.15)
-        setAbility()
 
     }
     
@@ -87,25 +67,6 @@ class Player: SKSpriteNode {
         
     }
     
-   // TO-DO: Define imageVector name patter and make loop to complete it, replacing textureArray
-    func animate(epoch: Int) {
-        if (state == stateTypes.running.rawValue) {
-            for element in imageVector {
-                
-                if (element.key == epoch) {
-                    
-                    
-                }
-                
-            }
- 
-        }
-        
-    }
-    
-    func setAbility() {
-        ability = Ability(name: characterName)
-    }
     
     func setPhysicsBody() {
         

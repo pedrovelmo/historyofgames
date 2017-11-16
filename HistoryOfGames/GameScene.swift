@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hudView: HudView?
     var gameOverView: SKSpriteNode?
     var coins: Int = 0
-    var score = 0
+    var score: Int = 0
     var timer = Timer()
     var backgroundTimer = Timer()
     var isGameOver = false

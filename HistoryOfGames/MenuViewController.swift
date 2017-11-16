@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, GADBannerViewDelegate {
     
     var gameVC: GameViewController!
+    var bannerView: GADBannerView!
 
     @IBAction func easyButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -54,6 +56,17 @@ class MenuViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         AudioManager.sharedInstance.playBackgroundMusicMenu()
+        
+        // In this case, we instantiate the banner with desired ad size.
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        
+        
+        bannerView.adUnitID = "ca-app-pub-3456908685378113/4905244576"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        addBannerViewToView(bannerView)
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,24 +82,63 @@ class MenuViewController: UIViewController {
         
     }
     
-
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        let gameVC = segue.destination as! GameViewController
-//         if segue.identifier == "easySegue" {
-//            gameVC.gameMode = "easy"
-//        }
-//        
-//         else if segue.identifier == "mediumSegue" {
-//           gameVC.gameMode = "medium"
-//            
-//    }
-//         else {
-//            gameVC.gameMode = "hard"
-//
-//            }
-//
-//    }
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
+        
+        
+        // MARK: GADBannerViewDelegate
+        /// Tells the delegate an ad request loaded an ad.
+        func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+            print("adViewDidReceiveAd")
+        }
+        
+        /// Tells the delegate an ad request failed.
+        func adView(_ bannerView: GADBannerView,
+                    didFailToReceiveAdWithError error: GADRequestError) {
+            print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        }
+        
+        /// Tells the delegate that a full screen view will be presented in response
+        /// to the user clicking on an ad.
+        func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+            print("adViewWillPresentScreen")
+        }
+        
+        /// Tells the delegate that the full screen view will be dismissed.
+        func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+            print("adViewWillDismissScreen")
+        }
+        
+        /// Tells the delegate that the full screen view has been dismissed.
+        func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+            print("adViewDidDismissScreen")
+        }
+        
+        /// Tells the delegate that a user click will open another app (such as
+        /// the App Store), backgrounding the current app.
+        func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+            print("adViewWillLeaveApplication")
+        }
+    }
     
-}
+
+
+

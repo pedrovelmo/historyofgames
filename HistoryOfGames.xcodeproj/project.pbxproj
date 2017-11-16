@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492CFF7E1FBB6937000205A7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492CFF7D1FBB6937000205A7 /* TestViewController.swift */; };
 		4939C3C41F8C222100BD5C88 /* BobbleBits.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4939C3C31F8C203A00BD5C88 /* BobbleBits.mp3 */; };
 		4945C1C51F83F207004246BC /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1C41F83F207004246BC /* NodeManager.swift */; };
 		4945C1C71F8410E9004246BC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1C61F8410E9004246BC /* GameScene.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		32C1A58F70AB4FA74AA6D971 /* Pods_HistoryOfGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistoryOfGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D31F96A6F3E54C28350683 /* Pods-HistoryOfGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistoryOfGames.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames.debug.xcconfig"; sourceTree = "<group>"; };
+		492CFF7D1FBB6937000205A7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		4939C3C31F8C203A00BD5C88 /* BobbleBits.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BobbleBits.mp3; sourceTree = "<group>"; };
 		4945C1C41F83F207004246BC /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
 		4945C1C61F8410E9004246BC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				496AC8E71F58722E00A6D490 /* GameViewController.swift */,
 				4945C1C61F8410E9004246BC /* GameScene.swift */,
 				4945C1E81F898664004246BC /* MenuViewController.swift */,
+				492CFF7D1FBB6937000205A7 /* TestViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */,
 				C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
+				492CFF7E1FBB6937000205A7 /* TestViewController.swift in Sources */,
 				C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
 				C1574E381FB92194005A3EA8 /* DatabaseManager.swift in Sources */,
