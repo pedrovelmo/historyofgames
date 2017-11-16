@@ -23,6 +23,12 @@ class DatabaseManager{
         
         FirebaseApp.configure()
         ref = Database.database().reference()
+        
+//        do{
+//            try Auth.auth().signOut()
+//        }
+//
+//        catch {}
     }
     
     func anonymousLogin(){

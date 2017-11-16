@@ -37,7 +37,7 @@ class UserProfile{
         for score in highScores{
             
             index += 1
-            if(highScore > score){
+            if(highScore >= score){
                 
                 if(highScores.count == 5){
                     
