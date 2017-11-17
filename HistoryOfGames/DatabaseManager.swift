@@ -71,7 +71,10 @@ class DatabaseManager{
             let value = snapshot.value as? NSDictionary
             
             UserProfile.sharedInstance.coinsTotal = value?.value(forKey: "coinsTotal") as! Int
+            print("User total coins: ",UserProfile.sharedInstance.coinsTotal)
             UserProfile.sharedInstance.highScores[0] = value?.value(forKey: "highScore") as! Int
+            print("User total score: ",UserProfile.sharedInstance.highScores[0])
+            
             
         }) { (error) in
             print(error.localizedDescription)

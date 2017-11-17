@@ -33,10 +33,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameMode: String!
     var floorPosition: CGFloat?
     
-    public init(size: CGSize, gameMode: String) {
+    public override init(size: CGSize) {
         super.init(size: size)
-        self.gameMode = gameMode
-        print("Init")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,24 +47,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         CoinManager.sharedInstance.scene = self
         isGameOver = false
         
-        epoch = Epoch(whatEpochIsThis: 1, scene: self, gameMode: gameMode)
+        epoch = Epoch(whatEpochIsThis: 0, scene: self)
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
         
         coinLabelUpdate()
-        print("gameMode", gameMode)
+
+        self.movingSpeed = (self.scene?.size.width)! / 120
         
-        switch(gameMode) {
-            
-        case "easy":
-            self.movingSpeed = (self.scene?.size.width)! / 180
-        case "medium":
-            self.movingSpeed = (self.scene?.size.width)! / 150
-        case "hard":
-            self.movingSpeed = (self.scene?.size.width)! / 100
-        default: break
-        }
+        
         
         // Add first background
         Background.setFirstBackground(scene: self)
@@ -385,7 +375,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             lastEpoch = epoch
             
-            epoch = Epoch(whatEpochIsThis: -1, scene: self, gameMode: gameMode)
+            epoch = Epoch(whatEpochIsThis: -1, scene: self)
             
             // Can this be delayed?
             Floor.allImages = epoch.whatEpochIsThis!
@@ -406,7 +396,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let exitTransition = SKAction.run {
                 
-                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1, scene: self, gameMode: self.gameMode)
+                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1, scene: self)
                 
                 Floor.allImages = self.epoch.whatEpochIsThis!
                 

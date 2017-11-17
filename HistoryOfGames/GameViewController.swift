@@ -13,7 +13,6 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
-    var gameMode: String!
     
     var menu: MenuViewController!
     
@@ -58,7 +57,7 @@ class GameViewController: UIViewController {
     func presentGameScene() {
         if let view = self.view as! SKView? {
             
-            scene = GameScene(size: view.bounds.size, gameMode: gameMode)
+            scene = GameScene(size: view.bounds.size)
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             scene.menu = menu
@@ -72,7 +71,7 @@ class GameViewController: UIViewController {
             
             view.showsFPS = false
             view.showsNodeCount = false
-            view.showsPhysics = true
+            view.showsPhysics = false
         }
     }
     

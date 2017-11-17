@@ -23,6 +23,8 @@ class UserProfile{
     
     var coinsTotal: Int = 0
     
+    var userDefaults = UserDefaults.standard
+
     func updateUserData(coins: Int, highScore: Int){
         
         print("Pontuação enviada: \(highScore)")
@@ -32,6 +34,8 @@ class UserProfile{
         
         self.coinsTotal += coins
         print("Moedas totais do jogador: \(self.coinsTotal)")
+        
+        userDefaults.set(self.coinsTotal, forKey: "coinsTotal")
         
         var index = -1
         
@@ -48,11 +52,13 @@ class UserProfile{
                 else{
                     
                     highScores.append(highScore)
-                    highScores = highScores.sorted(by: { $0 < $1 })
+                    highScores = highScores.sorted(by: { $0 > $1 })
                     break
                 }
             }
         }
+        
+        userDefaults.set(highScores[0], forKey: "highScore")
         
         for score in highScores{
             

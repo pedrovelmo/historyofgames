@@ -33,6 +33,7 @@
 		49847BB01F61EDDA00D59E64 /* HappyFunk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */; };
 		49847BBA1F682E1200D59E64 /* AwesomeExplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */; };
 		49847BBC1F68310700D59E64 /* WilhemScream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49847BBB1F68310700D59E64 /* WilhemScream.wav */; };
+		498B7B361FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498B7B351FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift */; };
 		49904B7F1F705DF9005C0A6A /* pickle_rick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49904B7E1F705DF9005C0A6A /* pickle_rick.mp3 */; };
 		49904B811F7166EF005C0A6A /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904B801F7166EF005C0A6A /* HudView.swift */; };
 		49904B831F7167D2005C0A6A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904B821F7167D2005C0A6A /* ColorExtension.swift */; };
@@ -50,7 +51,6 @@
 		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
 		C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D3B1F686991000B768F /* CoinManager.swift */; };
 		C1D52B261FB91FBE000526D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */; };
-		C1D66F641FBF32B200104D52 /* TetrisFallingBlockPatternBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D66F631FBF32B200104D52 /* TetrisFallingBlockPatternBottom.swift */; };
 		C1D66F661FBF337000104D52 /* TetrisFallingBlockPatternTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternTop.swift */; };
 		C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */; };
 		C1D998481FAFA76A00F81CBA /* PongBarPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */; };
@@ -91,6 +91,7 @@
 		49847BAF1F61EDDA00D59E64 /* HappyFunk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HappyFunk.mp3; sourceTree = "<group>"; };
 		49847BB91F682E1200D59E64 /* AwesomeExplosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AwesomeExplosion.wav; sourceTree = "<group>"; };
 		49847BBB1F68310700D59E64 /* WilhemScream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WilhemScream.wav; sourceTree = "<group>"; };
+		498B7B351FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisFallingBlockPatternBottom.swift; sourceTree = "<group>"; };
 		49904B7E1F705DF9005C0A6A /* pickle_rick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pickle_rick.mp3; sourceTree = "<group>"; };
 		49904B801F7166EF005C0A6A /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		49904B821F7167D2005C0A6A /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		C1D07D3B1F686991000B768F /* CoinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
 		C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C1D66F631FBF32B200104D52 /* TetrisFallingBlockPatternBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisFallingBlockPatternBottom.swift; sourceTree = "<group>"; };
 		C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisFallingBlockPatternTop.swift; sourceTree = "<group>"; };
 		C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBallPattern.swift; sourceTree = "<group>"; };
 		C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBarPattern.swift; sourceTree = "<group>"; };
@@ -252,8 +252,8 @@
 				C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */,
 				C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */,
 				C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */,
+				498B7B351FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift */,
 				C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternTop.swift */,
-				C1D66F631FBF32B200104D52 /* TetrisFallingBlockPatternBottom.swift */,
 			);
 			name = "Enemy Patterns";
 			sourceTree = "<group>";
@@ -437,6 +437,7 @@
 				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
 				C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
+				498B7B361FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				4945C1C71F8410E9004246BC /* GameScene.swift in Sources */,
 				C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */,
@@ -452,7 +453,6 @@
 				492CFF7E1FBB6937000205A7 /* TestViewController.swift in Sources */,
 				C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
-				C1D66F641FBF32B200104D52 /* TetrisFallingBlockPatternBottom.swift in Sources */,
 				C1574E381FB92194005A3EA8 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

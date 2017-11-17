@@ -9,40 +9,21 @@
 import UIKit
 import GoogleMobileAds
 
+
 class MenuViewController: UIViewController, GADBannerViewDelegate {
     
     var gameVC: GameViewController!
     var bannerView: GADBannerView!
 
-    @IBAction func easyButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-         gameVC  = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
-        gameVC.gameMode = "easy"
-        gameVC.menu = self
-        gameVC.view.backgroundColor = UIColor.black
-        
-        self.present(gameVC, animated: false,
-                     completion: nil)
-    }
-    @IBAction func mediumButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-         gameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
-        gameVC.gameMode = "medium"
-        gameVC.menu = self
-        gameVC.view.backgroundColor = UIColor.black
-        
-        self.present(gameVC, animated: false,
-                     completion: nil)
-        
-    }
+    @IBOutlet weak var highScoreLabel: UILabel!
     
-    @IBAction func hardButton(_ sender: Any) {
+    @IBOutlet weak var totalCoinsLabel: UILabel!
+    
+    
+    @IBAction func playButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-         gameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
-        gameVC.gameMode = "hard"
+        gameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         gameVC.menu = self
         gameVC.view.backgroundColor = UIColor.black
         
@@ -66,6 +47,10 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         bannerView.load(GADRequest())
         
         addBannerViewToView(bannerView)
+        
+       updateLabels()
+       
+        
     
     }
 
@@ -79,7 +64,29 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         gameVC.dismiss(animated: true, completion: nil)
         AudioManager.sharedInstance.stopBackgroundMusic()
         AudioManager.sharedInstance.playBackgroundMusicMenu()
+        updateLabels()
         
+    }
+    
+    func updateLabels() {
+        // Set labels
+        if let highscore = UserProfile.sharedInstance.userDefaults.value(forKey: "highScore") {
+            // do something here when a highscore exists
+            highScoreLabel.text = "High Score: \(UserProfile.sharedInstance.userDefaults.value(forKey: "highScore")!)"
+        }
+        else {
+            // no highscore exists
+            highScoreLabel.text = "High Score: 0"
+        }
+        
+        if let highscore = UserProfile.sharedInstance.userDefaults.value(forKey: "coinsTotal") {
+            // do something here when a highscore exists
+            totalCoinsLabel.text = "Total Coins: \(UserProfile.sharedInstance.userDefaults.value(forKey: "coinsTotal")!)"
+        }
+        else {
+            // no highscore exists
+            totalCoinsLabel.text = "Total Coins: 0"
+        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
