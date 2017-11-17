@@ -8,10 +8,17 @@
 
 import SpriteKit
 
-class TetrisFallingBlockPatternA: EnemyPattern{
+class TetrisFallingBlockPatternTop: EnemyPattern{
     
     override init(obstacle: Obstacle) {
         
         super.init(obstacle: obstacle)
+        
+        obstacle.position.y = (obstacle.gameScene?.size.height)! - obstacle.size.height / 2
+    }
+    
+    override func move() {
+        
+        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
     }
 }

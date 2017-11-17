@@ -49,7 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         CoinManager.sharedInstance.scene = self
         isGameOver = false
         
-        epoch = Epoch(whatEpochIsThis: 2, scene: self, gameMode: gameMode)
+        epoch = Epoch(whatEpochIsThis: 1, scene: self, gameMode: gameMode)
         
         hudView = HudView(frame: self.frame)
         self.view?.addSubview(hudView!)
@@ -270,8 +270,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, scene: self)
                     
-                    self.scene?.addChild(newObstacle)
-                    Obstacle.obstaclesArray.append(newObstacle)
+                    if(newObstacle.obstacleName == "tetrisTopBlockA"){
+                        
+                        let newObstacle2 = Obstacle(name: "tetrisBottomBlockA", scene: self)
+                        
+                        self.scene?.addChild(newObstacle)
+                        self.scene?.addChild(newObstacle2)
+                        Obstacle.obstaclesArray.append(newObstacle)
+                        Obstacle.obstaclesArray.append(newObstacle2)
+                    }
+                    else{
+                        
+                        self.scene?.addChild(newObstacle)
+                        Obstacle.obstaclesArray.append(newObstacle)
+                    }
                 })
                 
                 run(spawnEnemy)
