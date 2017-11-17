@@ -50,6 +50,8 @@
 		C1D07D3A1F686926000B768F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D391F686926000B768F /* Coin.swift */; };
 		C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D07D3B1F686991000B768F /* CoinManager.swift */; };
 		C1D52B261FB91FBE000526D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */; };
+		C1D66F641FBF32B200104D52 /* TetrisFallingBlockPatternB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D66F631FBF32B200104D52 /* TetrisFallingBlockPatternB.swift */; };
+		C1D66F661FBF337000104D52 /* TetrisFallingBlockPatternA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternA.swift */; };
 		C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */; };
 		C1D998481FAFA76A00F81CBA /* PongBarPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */; };
 		C1D9984A1FAFA8D400F81CBA /* MarioTurtlePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */; };
@@ -106,6 +108,8 @@
 		C1D07D391F686926000B768F /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		C1D07D3B1F686991000B768F /* CoinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
 		C1D52B251FB91FBE000526D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C1D66F631FBF32B200104D52 /* TetrisFallingBlockPatternB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisFallingBlockPatternB.swift; sourceTree = "<group>"; };
+		C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisFallingBlockPatternA.swift; sourceTree = "<group>"; };
 		C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBallPattern.swift; sourceTree = "<group>"; };
 		C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBarPattern.swift; sourceTree = "<group>"; };
 		C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioTurtlePattern.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				C187C30D1FAFAD210014E628 /* MarioSuperBlockPattern.swift */,
 				C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */,
 				C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */,
+				C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternA.swift */,
+				C1D66F631FBF32B200104D52 /* TetrisFallingBlockPatternB.swift */,
 			);
 			name = "Enemy Patterns";
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */,
 				49904B831F7167D2005C0A6A /* ColorExtension.swift in Sources */,
 				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
+				C1D66F661FBF337000104D52 /* TetrisFallingBlockPatternA.swift in Sources */,
 				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
 				C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
@@ -445,6 +452,7 @@
 				492CFF7E1FBB6937000205A7 /* TestViewController.swift in Sources */,
 				C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,
+				C1D66F641FBF32B200104D52 /* TetrisFallingBlockPatternB.swift in Sources */,
 				C1574E381FB92194005A3EA8 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

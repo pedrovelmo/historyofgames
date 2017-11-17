@@ -34,6 +34,7 @@ class UserProfile{
         print("Moedas totais do jogador: \(self.coinsTotal)")
         
         var index = -1
+        
         for score in highScores{
             
             index += 1
