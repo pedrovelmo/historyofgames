@@ -467,7 +467,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!objectTimerIsRunning) {
             
-            let obstacleSeconds = randomBetweenNumbers(firstNum: 0.7, secondNum: 1.5)
+            let obstacleSeconds = randomBetweenNumbers(firstNum: 0.9, secondNum: 1.5)
             timer = Timer.scheduledTimer(timeInterval: TimeInterval(obstacleSeconds), target: self, selector: (#selector(startSpawningObjects)), userInfo: nil, repeats: false)
             objectTimerIsRunning = true
         }
