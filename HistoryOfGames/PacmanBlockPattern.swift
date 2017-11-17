@@ -16,8 +16,8 @@ class PacmanBlockPattern: EnemyPattern{
         
         let randomImage = arc4random_uniform(2)
         obstacle.texture = SKTexture(imageNamed: "pacmanBlock" + String(randomImage))
-        let width = Int(arc4random_uniform(30)) + 40
-        let height = Int(arc4random_uniform(30)) + 40
+        let width = Int(arc4random_uniform(30)) + 30
+        let height = Int(arc4random_uniform(30)) + 30
         print("Width: ", width)
         print("Height: ", height)
         obstacle.size = CGSize(width: width, height: height)
@@ -45,8 +45,6 @@ class PacmanBlockPattern: EnemyPattern{
         obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
         print("Position x: ", obstacle.position.x)
         print("Position y: ", obstacle.position.y)
-        
-       
     }
 
     override func move() {
