@@ -69,10 +69,12 @@ class Obstacle: SKSpriteNode {
         case "ghost0":
             self.pattern = PacmanGhostPattern(obstacle: self)
             
-        case "tetrisTopBLockA":
+        case "tetrisTopBlockA":
             self.pattern = TetrisFallingBlockPatternTop(obstacle: self)
-
             
+        case "tetrisBottomBlockA":
+            self.pattern = TetrisFallingBlockPatternBottom(obstacle: self)
+        
         default:
             break
         }
