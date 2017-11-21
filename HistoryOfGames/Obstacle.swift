@@ -66,6 +66,9 @@ class Obstacle: SKSpriteNode {
         case "pacmanBlock0":
             self.pattern = PacmanBlockPattern(obstacle: self)
             
+        case "alien1-0":
+            self.pattern = SpaceInvadersAlienPattern(obstacle: self)
+            
         case "ghost0":
             self.pattern = PacmanGhostPattern(obstacle: self)
             
