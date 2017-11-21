@@ -40,6 +40,7 @@
 		499417D01F82C9DD005F23D9 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 499417CF1F82C9DD005F23D9 /* MyParticle.sks */; };
 		49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F41F8AD38A00DB634F /* Coin.mp3 */; };
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
+		49F59F891FC4985700A62096 /* SpaceInvadersAlienPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */; };
 		C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */; };
 		C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */; };
 		C15326561FBA3A75000A581B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15326551FBA3A75000A581B /* UserProfile.swift */; };
@@ -98,6 +99,7 @@
 		499417CF1F82C9DD005F23D9 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		49E563F41F8AD38A00DB634F /* Coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin.mp3; sourceTree = "<group>"; };
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
+		49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvadersAlienPattern.swift; sourceTree = "<group>"; };
 		C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanBlockPattern.swift; sourceTree = "<group>"; };
 		C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanGhostPattern.swift; sourceTree = "<group>"; };
 		C15326551FBA3A75000A581B /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */,
 				498B7B351FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift */,
 				C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternTop.swift */,
+				49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */,
 			);
 			name = "Enemy Patterns";
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				4945C1C91F841118004246BC /* Background.swift in Sources */,
 				C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */,
 				49904B831F7167D2005C0A6A /* ColorExtension.swift in Sources */,
+				49F59F891FC4985700A62096 /* SpaceInvadersAlienPattern.swift in Sources */,
 				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
 				C1D66F661FBF337000104D52 /* TetrisFallingBlockPatternTop.swift in Sources */,
 				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
