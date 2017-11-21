@@ -19,28 +19,28 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
     
     @IBOutlet weak var totalCoinsLabel: UILabel!
     
+    @IBOutlet weak var startButton: UIButton!
     
-    @IBAction func playButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    @IBAction func startButtonClicked(_ sender: Any) {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
         gameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         gameVC.menu = self
         gameVC.view.backgroundColor = UIColor.black
-        
+            
         self.present(gameVC, animated: false,
-                     completion: nil)
+                         completion: nil)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         AudioManager.sharedInstance.playBackgroundMusicMenu()
         
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        
         
         bannerView.adUnitID = "ca-app-pub-3456908685378113/4905244576"
         bannerView.rootViewController = self
@@ -48,10 +48,7 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         
         addBannerViewToView(bannerView)
         
-       updateLabels()
-       
-        
-    
+        updateLabels()
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,8 +106,6 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
                                 constant: 0)
             ])
     }
-        
-        
         // MARK: GADBannerViewDelegate
         /// Tells the delegate an ad request loaded an ad.
         func adViewDidReceiveAd(_ bannerView: GADBannerView) {
