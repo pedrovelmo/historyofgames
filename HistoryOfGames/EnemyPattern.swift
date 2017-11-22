@@ -22,4 +22,14 @@ class EnemyPattern{
         
     }
     
+    func checkPosition() {
+        
+        for o in Obstacle.obstaclesArray{
+            if o.position.x + o.size.width / 2 <= 0 {
+                o.removeFromParent()
+            }
+            
+        }
+    }
+    
 }

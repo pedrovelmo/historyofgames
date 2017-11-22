@@ -232,6 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func startSpawningObjects(){
         
         if(!isTransitioning){
+          
             // Comment to generate awesome trippy effect
             objectTimerIsRunning = false
             
@@ -289,7 +290,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for o in Obstacle.obstaclesArray{
             
             o.pattern?.move()
-        }
+            o.pattern?.checkPosition()
+            
+            }
+        
     }
     
     func setCeiling(){
@@ -323,7 +327,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for obstacle in Obstacle.obstaclesArray {
                 obstacle.removeFromParent()
             }
-            
+
             for pattern in CoinManager.sharedInstance.patternVector {
                 for coin in pattern {
                     coin.removeFromParent()
@@ -343,10 +347,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
             
-            
+            if (!isGameOver) {
             UserProfile.sharedInstance.updateUserData(coins: self.coins, highScore: self.score)
             DatabaseManager.sharedInstance.updateUserData()
             hudView?.createGameOverView()
+            }
         }
         
         if (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin)
