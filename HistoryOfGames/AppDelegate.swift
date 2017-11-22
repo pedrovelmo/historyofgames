@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         DatabaseManager.sharedInstance.firebaseInit()
-        DatabaseManager.sharedInstance.anonymousLogin()
-        
+//        DatabaseManager.sharedInstance.anonymousLogin()
         
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-3456908685378113~9370979484")

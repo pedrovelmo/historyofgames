@@ -19,52 +19,44 @@ class UserProfile{
     
     var id: String = ""
     
-    var highScores: [Int] = [0,0,0,0,0]
+    var highScore = 0
     
     var coinsTotal: Int = 0
     
     var userDefaults = UserDefaults.standard
 
-    func updateUserData(coins: Int, highScore: Int){
-        
-        print("Pontuação enviada: \(highScore)")
-        print("Moedas enviadas: \(coins)")
-        
-        var printIndex = -1
+    func updateUserData(coins: Int, score: Int){
         
         self.coinsTotal += coins
-        print("Moedas totais do jogador: \(self.coinsTotal)")
         
         userDefaults.set(self.coinsTotal, forKey: "coinsTotal")
         
-        var index = -1
+        if(score >= highScore){
+                    
+            highScore = score
+            userDefaults.set(highScore, forKey: "highScore")
+        }
+        // Atualizar o userDefault com um timestamp
+    }
+    
+    func loadUserData(){
         
-        for score in highScores{
+        if let highscore = UserProfile.sharedInstance.userDefaults.value(forKey: "coinsTotal") {
             
-            index += 1
-            if(highScore >= score){
-                
-                if(highScores.count == 5){
-                    
-                    highScores[index] = highScore
-                    break
-                }
-                else{
-                    
-                    highScores.append(highScore)
-                    highScores = highScores.sorted(by: { $0 > $1 })
-                    break
-                }
-            }
+            self.highScore = UserProfile.sharedInstance.userDefaults.value(forKey: "highScore") as! Int
+        }
+        else {
+            
+            userDefaults.set(0, forKey: "highScore")
         }
         
-        userDefaults.set(highScores[0], forKey: "highScore")
-        
-        for score in highScores{
+        if let coinsTotal = UserProfile.sharedInstance.userDefaults.value(forKey: "coinsTotal") {
             
-            printIndex += 1
+            self.coinsTotal = UserProfile.sharedInstance.userDefaults.value(forKey: "coinsTotal") as! Int
+        }
+        else {
             
-            print("Pontuação\(printIndex): \(score)")
+            userDefaults.set(0, forKey: "coinsTotal")
         }
     }
 }
