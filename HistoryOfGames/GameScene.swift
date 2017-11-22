@@ -50,11 +50,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
-        isGameOver = false
+      
         
         epoch = Epoch(whatEpochIsThis: 0, scene: self)
         
         hudView = HudView(frame: self.frame, scene: self)
+        print("Instanciou outra hud view")
         self.view?.addSubview(hudView!)
         
         coinLabelUpdate()
@@ -327,6 +328,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == PhysicsCategory.Obstacle && contact.bodyB.categoryBitMask == PhysicsCategory.Player)
         || (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle){
             
+            isGameOver = true
             explosion((contact.bodyB.node?.position)!)
             
             for obstacle in Obstacle.obstaclesArray {
@@ -350,10 +352,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 contact.bodyB.node?.alpha = 0.0
             }
             
-            if (!isGameOver) {
+            if (isGameOver) {
             UserProfile.sharedInstance.updateUserData(coins: self.coins, score: self.score)
 //            DatabaseManager.sharedInstance.updateUserData()
             hudView?.createGameOverView()
+            
             }
         }
         
@@ -364,6 +367,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.coins += 25
             coinLabelUpdate()
             self.run(AudioManager.sharedInstance.coinSound)
+            
         }
     }
     

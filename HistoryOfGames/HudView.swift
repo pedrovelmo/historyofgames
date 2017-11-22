@@ -113,11 +113,23 @@ class HudView: UIView  {
     // TO-DO: return to Menu
     func menuAction(sender:UIButton!) {
         // Kill Scene and return to Menu
+
+        self.gameOverView?.removeFromSuperview()
+        self.menuButton?.removeFromSuperview()
+        self.aButton?.removeFromSuperview()
+        self.removeFromSuperview()
+        scene?.isGameOver = false
         scene?.killAll()
         scene?.parentViewController?.launchViewController(scene: scene!)
     }
     
     func goToMenu() {
+        
+        self.gameOverView?.removeFromSuperview()
+        self.menuButton?.removeFromSuperview()
+        self.aButton?.removeFromSuperview()
+        self.removeFromSuperview()
+        scene?.isGameOver = false
         scene?.killAll()
         scene?.parentViewController?.launchViewController(scene: scene!)
     }
@@ -131,6 +143,7 @@ class HudView: UIView  {
         self.gameOverView?.removeFromSuperview()
         self.menuButton?.removeFromSuperview()
         self.aButton?.removeFromSuperview()
+        //self.removeFromSuperview()
         }
         else {
             let alert = UIAlertController(title: "Ops! Limite Esgotado", message: "Você tem direito a uma vida extra por jogada", preferredStyle: .alert)

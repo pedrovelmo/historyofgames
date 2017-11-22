@@ -22,6 +22,8 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     var rewardVideoAdPlayed = false
     
+    var rootVC: UIViewController?
+    
     override func viewWillAppear(_ animated: Bool) {
         // self.view.backgroundColor = UIColor.black
         if (!gameOverAlreadyHappened) {
@@ -31,6 +33,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         AudioManager.sharedInstance.stopBackgroundMusic()
         GADRewardBasedVideoAd.sharedInstance().delegate = self
@@ -41,6 +44,11 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         print("Game Over Happened: ", gameOverAlreadyHappened)
+        print(#function)
+        if (!gameOverAlreadyHappened) {
+        scene = GameScene(size: view.bounds.size)
+        }
+        
         
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID,                       // All simulators
@@ -126,13 +134,12 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     func launchViewController(scene: SKScene) {
         gameOverAlreadyHappened = false
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let menuVC: MenuViewController = storyboard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        let menuVC: MenuViewController = storyboard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
         
         scene.removeFromParent()
-        
-        self.present(menuVC, animated: false,
+        self.present(menu, animated: false,
                      completion: self.removeFromParentViewController)
         
     }

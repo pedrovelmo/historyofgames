@@ -14,7 +14,8 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
     
     var gameVC: GameViewController!
     var bannerView: GADBannerView!
-
+    var enteredFirst = false
+    
     @IBOutlet weak var highScoreLabel: UILabel!
     
     @IBOutlet weak var totalCoinsLabel: UILabel!
@@ -25,8 +26,9 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-        gameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
+        gameVC = gameVC ?? storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         gameVC.menu = self
+        print("Instanciada nova Game View Controller")
         gameVC.view.backgroundColor = UIColor.black
             
         self.present(gameVC, animated: false,
