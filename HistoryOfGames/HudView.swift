@@ -8,9 +8,9 @@
 
 import UIKit
 import SpriteKit
-import GoogleMobileAds
 
-class HudView: UIView, GADRewardBasedVideoAdDelegate  {
+
+class HudView: UIView  {
   
     var coinLabel : UILabel?
     var scoreLabel: UILabel?
@@ -26,7 +26,6 @@ class HudView: UIView, GADRewardBasedVideoAdDelegate  {
         self.scene = scene
         
         self.backgroundColor = UIColor.clear
-        GADRewardBasedVideoAd.sharedInstance().delegate = self
         setupHud()
     }
     
@@ -101,7 +100,7 @@ class HudView: UIView, GADRewardBasedVideoAdDelegate  {
             y: (menuButton?.frame.origin.y)! - (menuButton?.frame.size.height)! / CGFloat(2)
         )
         
-        menuButton?.setImage(UIImage(named: "playAdButton"), for: UIControlState.normal)
+        menuButton?.setImage(UIImage(named: "menu"), for: UIControlState.normal)
         menuButton?.alpha = 1.0
         menuButton?.addTarget(self, action: #selector(menuAction), for: UIControlEvents.touchUpInside)
         
@@ -119,66 +118,14 @@ class HudView: UIView, GADRewardBasedVideoAdDelegate  {
     
     func playAdAndReplay(sender: UIButton) {
         print("Play ad and replay button clicked")
-        //let viewController = UIViewController()
-//        root = getCurrentViewController()
-//
-//        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
-//            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: (scene?.parentViewController)!)
-//        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
         
-                print("Menu Button Clicked")
-                scene?.isGameOver = false
-                scene?.player.alpha = 1.0
+        scene?.isGameOver = false
+        scene?.player.alpha = 1.0
+        self.gameOverView?.removeFromSuperview()
+        self.menuButton?.removeFromSuperview()
+        self.aButton?.removeFromSuperview()
         
-                self.gameOverView?.removeFromSuperview()
-                self.menuButton?.removeFromSuperview()
-                self.aButton?.removeFromSuperview()
-        
-    }
-    
-    // MARK: Reward video ad delegate
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
-        print("Reward video played")
-//        scene?.isGameOver = false
-        
-        
-    }
-    
-    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
-        print("Reward based video ad is received.")
-    }
-    
-    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Opened reward based video ad.")
-    }
-    
-    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Reward based video ad started playing.")
-    }
-    
-    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Reward based video ad is closed.")
-    }
-    
-    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Reward based video ad will leave application.")
-    }
-    
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
-                            didFailToLoadWithError error: Error) {
-        print("Reward based video ad failed to load.")
-    }
-    
-    func getCurrentViewController() -> UIViewController? {
-        
-        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-            var currentController: UIViewController! = rootController
-            while( currentController.presentedViewController != nil ) {
-                currentController = currentController.presentedViewController
-            }
-            return currentController
-        }
-        return nil
     }
 
 }

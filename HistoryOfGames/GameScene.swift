@@ -338,13 +338,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (contact.bodyA.categoryBitMask == PhysicsCategory.Player){
                 contact.bodyB.node?.removeFromParent()
                 contact.bodyA.node?.alpha = 0.0
-
             }
             
             else {
                 contact.bodyA.node?.removeFromParent()
-                 contact.bodyB.node?.alpha = 0.0
-                
+                contact.bodyB.node?.alpha = 0.0
             }
             
             if (!isGameOver) {

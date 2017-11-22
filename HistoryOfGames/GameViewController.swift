@@ -9,9 +9,9 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
-
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     
     var menu: MenuViewController!
@@ -27,6 +27,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         AudioManager.sharedInstance.stopBackgroundMusic()
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +54,14 @@ class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func startVideoAd() {
+        //        scene?.isGameOver = false
+        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+        }
+        
     }
     
     func presentGameScene() {
@@ -109,6 +119,49 @@ class GameViewController: UIViewController {
         self.present(menuVC, animated: false,
                      completion: self.removeFromParentViewController)
         
+    }
+    
+    // MARK: Reward video ad delegate
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+        print("Reward video played")
+        
+    }
+    
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
+        print("Reward based video ad is received.")
+    }
+    
+    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Opened reward based video ad.")
+    }
+    
+    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad started playing.")
+    }
+    
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad is closed.")
+    }
+    
+    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad will leave application.")
+    }
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                            didFailToLoadWithError error: Error) {
+        print("Reward based video ad failed to load.")
+    }
+    
+    func getCurrentViewController() -> UIViewController? {
+        
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
     }
     
 }
