@@ -33,6 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameMode: String!
     var floorPosition: CGFloat?
     var parentViewController: GameViewController?
+    var numberOfDeaths = 0
     
     public override init(size: CGSize) {
         super.init(size: size)
@@ -43,6 +44,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
+        if (numberOfDeaths == 0) {
+        self.parentViewController?.gameOverAlreadyHappened = true
+       // self.parentViewController?.oldScene = self
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
@@ -96,6 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (isInTutorial) {
             createTutorial()
+        }
         }
     }
     

@@ -57,6 +57,7 @@ class HudView: UIView  {
     func createGameOverView(){
         
         scene?.isGameOver = true
+        scene?.numberOfDeaths = 1
         
         gameOverView = UIImageView(frame: CGRect(
             x: (self.frame.size.width)/2,
@@ -117,15 +118,20 @@ class HudView: UIView  {
     }
     
     func playAdAndReplay(sender: UIButton) {
-        print("Play ad and replay button clicked")
-       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+       // if ((scene?.numberOfDeaths)! < 1) {
         
-        scene?.isGameOver = false
-        scene?.player.alpha = 1.0
+        print("Play ad and replay button clicked")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+        
         self.gameOverView?.removeFromSuperview()
         self.menuButton?.removeFromSuperview()
         self.aButton?.removeFromSuperview()
+       // }
+        //else {
+//            scene?.killAll()
+//            scene?.parentViewController?.launchViewController(scene: scene!)
+        }
         
-    }
+   // }
 
 }
