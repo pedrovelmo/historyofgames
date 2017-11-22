@@ -143,6 +143,7 @@ class HudView: UIView  {
         self.gameOverView?.removeFromSuperview()
         self.menuButton?.removeFromSuperview()
         self.aButton?.removeFromSuperview()
+        scene?.isGameOver = false
         //self.removeFromSuperview()
         }
         else {

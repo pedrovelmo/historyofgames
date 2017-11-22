@@ -15,6 +15,7 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
     var gameVC: GameViewController!
     var bannerView: GADBannerView!
     var enteredFirst = false
+    var timer = Timer()
     
     @IBOutlet weak var highScoreLabel: UILabel!
     
@@ -53,6 +54,8 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         addBannerViewToView(bannerView)
         
         updateLabels()
+        
+        runTimer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,6 +131,29 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
             print("adViewWillLeaveApplication")
         }
+    func runTimer() {
+        
+        
+        let seconds = 0.5
+        timer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: (#selector(changeLabelAlpha)), userInfo: nil, repeats: true)
+        
+        
+    }
+    
+    func changeLabelAlpha() {
+        if (startButton.alpha == 1.0) {
+            startButton.alpha = 0.01001
+            
+        }
+        
+        else {
+        
+        startButton.alpha = 1.0
+  
+        }
+        
+    }
+    
     }
     
 

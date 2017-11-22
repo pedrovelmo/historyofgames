@@ -18,6 +18,8 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     var scene: GameScene!
     
+    var timer = Timer()
+    
     var gameOverAlreadyHappened = false
     
     var rewardVideoAdPlayed = false
@@ -183,6 +185,8 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
                             didFailToLoadWithError error: Error) {
         print("Reward based video ad failed to load.")
     }
+    
+
 
     
 }
