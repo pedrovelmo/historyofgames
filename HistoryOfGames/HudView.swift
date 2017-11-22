@@ -118,7 +118,7 @@ class HudView: UIView  {
     
     func playAdAndReplay(sender: UIButton) {
         print("Play ad and replay button clicked")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
         
         scene?.isGameOver = false
         scene?.player.alpha = 1.0
