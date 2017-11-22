@@ -51,20 +51,35 @@ class HudView: UIView {
         
         scene.isGameOver = true
         
-        let gameOverView = SKSpriteNode(imageNamed: "gameOver")
-        gameOverView.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
-        gameOverView.zPosition = 10
-        gameOverView.size = CGSize(width: (self.frame.size.width * 0.7), height: (self.frame.size.height * 0.6))
-        gameOverView.alpha = 1.0
+        let gameOverView = UIImageView(frame: CGRect(
+            x: (self.frame.size.width)/2,
+            y: (self.frame.size.height)/2,
+            width: self.frame.size.width * 0.7,
+            height: self.frame.size.height * 0.6)
+        )
         
-        let adButton = SKSpriteNode(imageNamed: "playAdButton")
-        adButton.position = CGPoint(x: 0, y: -gameOverView.frame.height * 0.29)
-        adButton.zPosition = 20
-        adButton.size = CGSize(width: gameOverView.frame.size.width / 4, height: gameOverView.frame.size.height / 5)
+        gameOverView.image = UIImage(named: "gameOver")
+        gameOverView.frame.origin = CGPoint(
+            x: gameOverView.frame.origin.x - gameOverView.frame.size.width / CGFloat(2),
+            y: gameOverView.frame.origin.y - gameOverView.frame.size.height / CGFloat(2)
+        )
         
-        gameOverView.addChild(adButton)
+        let adButton = UIButton(frame: CGRect(
+            x: self.frame.size.width / 2,
+            y: self.frame.size.height / 2,
+            width: gameOverView.frame.size.width / 4,
+            height: gameOverView.frame.size.height / 5)
+        )
         
+        adButton.frame.origin = CGPoint(
+            x: adButton.frame.origin.x - adButton.frame.size.width / CGFloat(2),
+            y: adButton.frame.origin.y - adButton.frame.size.height / CGFloat(2)
+        )
         
-        scene.addChild(gameOverView)
+        adButton.setImage(UIImage(named: "playAdButton"), for: UIControlState.normal)
+        adButton.alpha = 1.0
+        
+        scene.view?.addSubview(gameOverView)
+        scene.view?.addSubview(adButton)
     }
 }
