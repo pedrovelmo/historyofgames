@@ -57,7 +57,7 @@ class HudView: UIView  {
     func createGameOverView(){
         
         scene?.isGameOver = true
-        scene?.numberOfDeaths = 1
+        scene?.numberOfDeaths += 1
         
         gameOverView = UIImageView(frame: CGRect(
             x: (self.frame.size.width)/2,
@@ -117,8 +117,15 @@ class HudView: UIView  {
         scene?.parentViewController?.launchViewController(scene: scene!)
     }
     
+    func goToMenu() {
+        scene?.killAll()
+        scene?.numberOfDeaths = 0
+        scene?.parentViewController?.gameOverAlreadyHappened = false
+        scene?.parentViewController?.launchViewController(scene: scene!)
+    }
+    
     func playAdAndReplay(sender: UIButton) {
-       // if ((scene?.numberOfDeaths)! < 1) {
+        if ((scene?.numberOfDeaths)! <= 1) {
         
         print("Play ad and replay button clicked")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
@@ -126,12 +133,29 @@ class HudView: UIView  {
         self.gameOverView?.removeFromSuperview()
         self.menuButton?.removeFromSuperview()
         self.aButton?.removeFromSuperview()
-       // }
-        //else {
-//            scene?.killAll()
-//            scene?.parentViewController?.launchViewController(scene: scene!)
         }
+        else {
+            let alert = UIAlertController(title: "Ops! Limite Esgotado", message: "Você tem direito a uma vida extra por jogada", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Ir para menu", style: .default, handler: {(alert: UIAlertAction!) in self.goToMenu() }))
+            
+            let root = getCurrentViewController()
+            root!.present(alert, animated: true, completion: nil)
+
+        }
+    }
+    
+    
+    func getCurrentViewController() -> UIViewController? {
         
-   // }
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+    }
 
 }

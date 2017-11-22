@@ -37,12 +37,13 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         print("Instancia cena")
         AudioManager.sharedInstance.stopBackgroundMusic()
         GADRewardBasedVideoAd.sharedInstance().delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("Game Over Happened: ", gameOverAlreadyHappened)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
 
     }
     
@@ -172,18 +173,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
                             didFailToLoadWithError error: Error) {
         print("Reward based video ad failed to load.")
     }
-    
-    func getCurrentViewController() -> UIViewController? {
-        
-        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-            var currentController: UIViewController! = rootController
-            while( currentController.presentedViewController != nil ) {
-                currentController = currentController.presentedViewController
-            }
-            return currentController
-        }
-        return nil
-    }
+
     
 }
 
