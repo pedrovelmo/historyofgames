@@ -31,8 +31,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scene = GameScene(size: view.bounds.size)
-        print("Instancia cena")
+        
         AudioManager.sharedInstance.stopBackgroundMusic()
         GADRewardBasedVideoAd.sharedInstance().delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)

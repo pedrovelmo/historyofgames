@@ -46,7 +46,6 @@ class DatabaseManager{
                     UserProfile.sharedInstance.id = (user?.uid)!
                     print("User ID", (user?.uid)!)
                     self.setupNewUser()
-                    
                 }
             }
         }
@@ -72,8 +71,8 @@ class DatabaseManager{
             
             UserProfile.sharedInstance.coinsTotal = value?.value(forKey: "coinsTotal") as! Int
             print("User total coins: ",UserProfile.sharedInstance.coinsTotal)
-            UserProfile.sharedInstance.highScores[0] = value?.value(forKey: "highScore") as! Int
-            print("User total score: ",UserProfile.sharedInstance.highScores[0])
+            UserProfile.sharedInstance.highScore = value?.value(forKey: "highScore") as! Int
+            print("User total score: ",UserProfile.sharedInstance.highScore)
             
             
         }) { (error) in
@@ -85,6 +84,6 @@ class DatabaseManager{
         
         self.ref?.child("users").child(UserProfile.sharedInstance.id)
             .updateChildValues(["coinsTotal": UserProfile.sharedInstance.coinsTotal,
-                                "highScore": UserProfile.sharedInstance.highScores[0]])
+                                "highScore": UserProfile.sharedInstance.highScore])
     }
 }

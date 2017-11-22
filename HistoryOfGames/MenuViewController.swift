@@ -36,6 +36,8 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserProfile.sharedInstance.loadUserData()
+        
         // Do any additional setup after loading the view.
         AudioManager.sharedInstance.playBackgroundMusicMenu()
         
@@ -62,28 +64,13 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         AudioManager.sharedInstance.stopBackgroundMusic()
         AudioManager.sharedInstance.playBackgroundMusicMenu()
         updateLabels()
-        
     }
     
     func updateLabels() {
-        // Set labels
-        if let highscore = UserProfile.sharedInstance.userDefaults.value(forKey: "highScore") {
-            // do something here when a highscore exists
-            highScoreLabel.text = "High Score: \(UserProfile.sharedInstance.userDefaults.value(forKey: "highScore")!)"
-        }
-        else {
-            // no highscore exists
-            highScoreLabel.text = "High Score: 0"
-        }
         
-        if let highscore = UserProfile.sharedInstance.userDefaults.value(forKey: "coinsTotal") {
-            // do something here when a highscore exists
-            totalCoinsLabel.text = "Total Coins: \(UserProfile.sharedInstance.userDefaults.value(forKey: "coinsTotal")!)"
-        }
-        else {
-            // no highscore exists
-            totalCoinsLabel.text = "Total Coins: 0"
-        }
+        highScoreLabel.text = "High Score: \(UserProfile.sharedInstance.highScore)"
+    
+        totalCoinsLabel.text = "Total Coins: \(UserProfile.sharedInstance.coinsTotal)"
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {

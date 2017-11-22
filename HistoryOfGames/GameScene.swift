@@ -351,8 +351,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if (!isGameOver) {
-            UserProfile.sharedInstance.updateUserData(coins: self.coins, highScore: self.score)
-            DatabaseManager.sharedInstance.updateUserData()
+            UserProfile.sharedInstance.updateUserData(coins: self.coins, score: self.score)
+//            DatabaseManager.sharedInstance.updateUserData()
             hudView?.createGameOverView()
             }
         }
