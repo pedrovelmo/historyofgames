@@ -27,8 +27,6 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         if (!gameOverAlreadyHappened) {
         createLoadingView()
         }
-        
-        
     }
     
     override func viewDidLoad() {
@@ -37,13 +35,19 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         print("Instancia cena")
         AudioManager.sharedInstance.stopBackgroundMusic()
         GADRewardBasedVideoAd.sharedInstance().delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
 
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("Game Over Happened: ", gameOverAlreadyHappened)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID,                       // All simulators
+            "b0ef8c411b1165d1bdeb146215e061ed"];
+        GADRewardBasedVideoAd.sharedInstance().load(request,
+                                                    withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
 
     }
     
@@ -87,7 +91,6 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
             
             // Present the scene
             view.presentScene(scene)
-            
             
             view.ignoresSiblingOrder = true
             
@@ -161,6 +164,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
             scene?.isGameOver = false
             scene?.player.alpha = 1.0
             presentGameScene()
+            rewardVideoAdPlayed = false
             
         }
     }

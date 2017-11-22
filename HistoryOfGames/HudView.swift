@@ -119,8 +119,6 @@ class HudView: UIView  {
     
     func goToMenu() {
         scene?.killAll()
-        scene?.numberOfDeaths = 0
-        scene?.parentViewController?.gameOverAlreadyHappened = false
         scene?.parentViewController?.launchViewController(scene: scene!)
     }
     
