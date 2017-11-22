@@ -17,22 +17,24 @@ class SpaceInvadersAlienPattern: EnemyPattern{
         let randomImage = arc4random_uniform(2)
         self.animate(type: randomImage)
         
+        let randomY = CGFloat(arc4random_uniform(
+            UInt32((obstacle.gameScene?.size.height)! * 0.3))) + (obstacle.gameScene?.size.height)! * 0.7
         
-        obstacle.position.y = ((obstacle.gameScene?.size.height)! - obstacle.size.height / 2) - 30
+        
+        obstacle.position.y = randomY
         
         obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
         
-        let randomMoveDown = Double(arc4random_uniform(UInt32(0.3))) + 0.7
-        let randomMoveSideways = Double(arc4random_uniform(UInt32(0.3))) + 0.8
-        let randomQuantityDown = CGFloat(arc4random_uniform(UInt32(4))) + 1
-        let randomQuantitySide = Int(arc4random_uniform(UInt32(40))) + 20
+//        let randomMoveDown = Double(arc4random_uniform(UInt32(0.3))) + 0.7
+//        let randomMoveSideways = Double(arc4random_uniform(UInt32(0.3))) + 0.8
+//        let randomQuantityDown = CGFloat(arc4random_uniform(UInt32(4))) + 1
+//        let randomQuantitySide = Int(arc4random_uniform(UInt32(40))) + 20
 
         // move down 100
-        let moveDownAction = SKAction.moveBy(x: 0, y: -(obstacle.gameScene?.size.height)! / randomQuantityDown, duration: randomMoveDown)
+        let moveDownAction = SKAction.moveBy(x: 0, y: -((obstacle.gameScene?.size.height)! / 6) / 1, duration: 0.5)
 
-        let moveSidewaysAction = SKAction.moveBy(x: CGFloat(-randomQuantitySide), y: 0, duration: randomMoveSideways)
+        let moveSidewaysAction = SKAction.moveBy(x: CGFloat(-30), y: 0, duration: 0.5)
        
-        
         // sequence of moving up then down
         var jumpSequence: SKAction!
 
@@ -40,14 +42,12 @@ class SpaceInvadersAlienPattern: EnemyPattern{
         
         obstacle.configPhysicsBody()
         
-    
         obstacle.run(SKAction.repeatForever(SKAction.sequence([jumpSequence])))
-        
     }
     
     override func move() {
         
-        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
+        obstacle.position.x -= ((obstacle.gameScene?.movingSpeed)! * 0.9)
     }
     
     func animate(type: UInt32){
