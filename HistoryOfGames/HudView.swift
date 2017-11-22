@@ -56,6 +56,15 @@ class HudView: UIView {
         gameOverView.zPosition = 10
         gameOverView.size = CGSize(width: (self.frame.size.width * 0.7), height: (self.frame.size.height * 0.6))
         gameOverView.alpha = 1.0
+        
+        let adButton = SKSpriteNode(imageNamed: "playAdButton")
+        adButton.position = CGPoint(x: 0, y: -gameOverView.frame.height * 0.29)
+        adButton.zPosition = 20
+        adButton.size = CGSize(width: gameOverView.frame.size.width / 4, height: gameOverView.frame.size.height / 5)
+        
+        gameOverView.addChild(adButton)
+        
+        
         scene.addChild(gameOverView)
     }
 }
