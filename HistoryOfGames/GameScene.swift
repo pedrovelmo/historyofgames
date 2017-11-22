@@ -32,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isInTutorial = false
     var gameMode: String!
     var floorPosition: CGFloat?
+    var parentViewController: GameViewController?
     
     public override init(size: CGSize) {
         super.init(size: size)
@@ -49,13 +50,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         epoch = Epoch(whatEpochIsThis: 0, scene: self)
         
-        hudView = HudView(frame: self.frame)
+        hudView = HudView(frame: self.frame, scene: self)
         self.view?.addSubview(hudView!)
         
         coinLabelUpdate()
 
         self.movingSpeed = (self.scene?.size.width)! / 120
-        
         
         
         // Add first background
@@ -65,19 +65,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Floor.setFirstFloor(scene: self)
         Floor.floorsArray.first?.setPhysicsBody()
         self.floorPosition = Floor.floorsArray[0].size.height
-        
-        player.setDefaultX(scene: self.scene!)
-        player.position.x = player.defaultPlayerX
-        player.position.y = Floor.floorsArray[0].size.height + player.size.height / 2
-        
-        self.player.setPhysicsBody()
-        self.scene?.addChild(player)
+
         
         // Background Music configuration
         
         AudioManager.sharedInstance.playBackgroundMusic()
         
         
+        configureAndAddPlayer()
         
         if (isGameModeSwipe) {
             let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeHandler(sender:)))
@@ -97,11 +92,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         setCeiling()
         
-        player.startAnimation()
+        
         
         if (isInTutorial) {
             createTutorial()
         }
+    }
+    
+    func configureAndAddPlayer() {
+        
+        player.setDefaultX(scene: self.scene!)
+        player.position.x = player.defaultPlayerX
+        player.position.y = Floor.floorsArray[0].size.height + player.size.height / 2
+        player.zPosition = 5
+        self.player.setPhysicsBody()
+        player.startAnimation()
+        self.scene?.addChild(player)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -131,13 +138,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 print("jumpCounter", jumpCounter)
             }
-        }
-            
-        else {
-            Floor.floorsArray.removeAll()
-            Background.backgroundsArray.removeAll()
-            NodeManager.sharedInstance.clearAll()
-            menu.killAll()
         }
     }
     
@@ -319,11 +319,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         || (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Obstacle){
             
             explosion((contact.bodyB.node?.position)!)
-            contact.bodyB.node?.removeFromParent()
-            contact.bodyA.node?.removeFromParent()
+            
+            for obstacle in Obstacle.obstaclesArray {
+                obstacle.removeFromParent()
+            }
+            
+            for pattern in CoinManager.sharedInstance.patternVector {
+                for coin in pattern {
+                    coin.removeFromParent()
+                }
+                
+            }
+            
+            if (contact.bodyA.categoryBitMask == PhysicsCategory.Player){
+                contact.bodyB.node?.removeFromParent()
+                contact.bodyA.node?.alpha = 0.0
+
+            }
+            
+            else {
+                contact.bodyA.node?.removeFromParent()
+                 contact.bodyB.node?.alpha = 0.0
+                
+            }
+            
+            
             UserProfile.sharedInstance.updateUserData(coins: self.coins, highScore: self.score)
             DatabaseManager.sharedInstance.updateUserData()
-            hudView?.createGameOverView(scene: self)
+            hudView?.createGameOverView()
         }
         
         if (contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.Coin)
@@ -424,7 +447,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (epoch.whatEpochIsThis == 2 && coins >= epoch.numberOfCoins!) {
-            hudView?.createGameOverView(scene: self)
+            hudView?.createGameOverView()
         }
     }
     
@@ -533,6 +556,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //        isInTutorial = false
         
+    }
+    
+    func killAll() {
+        Floor.floorsArray.removeAll()
+        Background.backgroundsArray.removeAll()
+        NodeManager.sharedInstance.clearAll()
+        menu.killAll()
     }
 }
 

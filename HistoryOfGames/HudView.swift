@@ -8,17 +8,25 @@
 
 import UIKit
 import SpriteKit
+import GoogleMobileAds
 
-class HudView: UIView {
-    
+class HudView: UIView, GADRewardBasedVideoAdDelegate  {
+  
     var coinLabel : UILabel?
     var scoreLabel: UILabel?
+    var scene: GameScene?
+    var root: UIViewController?
+    var gameOverView: UIImageView?
+    var menuButton: UIButton?
+    var aButton: UIButton?
 
-    override init(frame: CGRect) {
+     init(frame: CGRect, scene: GameScene) {
         
         super.init(frame: frame)
+        self.scene = scene
         
         self.backgroundColor = UIColor.clear
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
         setupHud()
     }
     
@@ -47,39 +55,130 @@ class HudView: UIView {
         self.addSubview(scoreLabel!)
     }
     
-    func createGameOverView(scene: GameScene){
+    func createGameOverView(){
         
-        scene.isGameOver = true
+        scene?.isGameOver = true
         
-        let gameOverView = UIImageView(frame: CGRect(
+        gameOverView = UIImageView(frame: CGRect(
             x: (self.frame.size.width)/2,
             y: (self.frame.size.height)/2,
             width: self.frame.size.width * 0.7,
             height: self.frame.size.height * 0.6)
         )
         
-        gameOverView.image = UIImage(named: "gameOver")
-        gameOverView.frame.origin = CGPoint(
-            x: gameOverView.frame.origin.x - gameOverView.frame.size.width / CGFloat(2),
-            y: gameOverView.frame.origin.y - gameOverView.frame.size.height / CGFloat(2)
+        gameOverView?.image = UIImage(named: "gameOver")
+        gameOverView?.frame.origin = CGPoint(
+            x: (gameOverView?.frame.origin.x)! - (gameOverView?.frame.size.width)! / CGFloat(2),
+            y: (gameOverView?.frame.origin.y)! - (gameOverView?.frame.size.height)! / CGFloat(2)
         )
         
-        let adButton = UIButton(frame: CGRect(
+        aButton = UIButton(frame: CGRect(
             x: self.frame.size.width / 2,
             y: self.frame.size.height / 2,
-            width: gameOverView.frame.size.width / 4,
-            height: gameOverView.frame.size.height / 5)
+            width: (gameOverView?.frame.size.width)! / 4,
+            height: (gameOverView?.frame.size.height)! / 5)
         )
         
-        adButton.frame.origin = CGPoint(
-            x: adButton.frame.origin.x - adButton.frame.size.width / CGFloat(2),
-            y: adButton.frame.origin.y - adButton.frame.size.height / CGFloat(2)
+        aButton?.frame.origin = CGPoint(
+            x: (aButton?.frame.origin.x)! - (aButton?.frame.size.width)! / CGFloat(2),
+            y: (aButton?.frame.origin.y)! - (aButton?.frame.size.height)! / CGFloat(2)
         )
         
-        adButton.setImage(UIImage(named: "playAdButton"), for: UIControlState.normal)
-        adButton.alpha = 1.0
+        aButton?.setImage(UIImage(named: "playAdButton"), for: UIControlState.normal)
+        aButton?.alpha = 1.0
+        aButton?.addTarget(self, action: #selector(playAdAndReplay), for: UIControlEvents.touchUpInside)
         
-        scene.view?.addSubview(gameOverView)
-        scene.view?.addSubview(adButton)
+        
+        menuButton = UIButton(frame: CGRect(
+            x: self.frame.size.width / 2,
+            y: self.frame.size.height / 1.5,
+            width: (gameOverView?.frame.size.width)! / 4,
+            height: (gameOverView?.frame.size.height)! / 5)
+        )
+        
+        menuButton?.frame.origin = CGPoint(
+            x: (menuButton?.frame.origin.x)! - (menuButton?.frame.size.width)! / CGFloat(2),
+            y: (menuButton?.frame.origin.y)! - (menuButton?.frame.size.height)! / CGFloat(2)
+        )
+        
+        menuButton?.setImage(UIImage(named: "playAdButton"), for: UIControlState.normal)
+        menuButton?.alpha = 1.0
+        menuButton?.addTarget(self, action: #selector(menuAction), for: UIControlEvents.touchUpInside)
+        
+        scene?.view?.addSubview(gameOverView!)
+        scene?.view?.addSubview(aButton!)
+        scene?.view?.addSubview(menuButton!)
     }
+    
+    // TO-DO: return to Menu
+    func menuAction(sender:UIButton!) {
+        // Kill Scene and return to Menu
+        scene?.killAll()
+        scene?.parentViewController?.launchViewController(scene: scene!)
+    }
+    
+    func playAdAndReplay(sender: UIButton) {
+        print("Play ad and replay button clicked")
+        //let viewController = UIViewController()
+//        root = getCurrentViewController()
+//
+//        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+//            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: (scene?.parentViewController)!)
+//        }
+        
+                print("Menu Button Clicked")
+                scene?.isGameOver = false
+                scene?.player.alpha = 1.0
+        
+                self.gameOverView?.removeFromSuperview()
+                self.menuButton?.removeFromSuperview()
+                self.aButton?.removeFromSuperview()
+        
+    }
+    
+    // MARK: Reward video ad delegate
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+        print("Reward video played")
+//        scene?.isGameOver = false
+        
+        
+    }
+    
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
+        print("Reward based video ad is received.")
+    }
+    
+    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Opened reward based video ad.")
+    }
+    
+    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad started playing.")
+    }
+    
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad is closed.")
+    }
+    
+    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad will leave application.")
+    }
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                            didFailToLoadWithError error: Error) {
+        print("Reward based video ad failed to load.")
+    }
+    
+    func getCurrentViewController() -> UIViewController? {
+        
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+    }
+
 }

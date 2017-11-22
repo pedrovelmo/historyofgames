@@ -35,9 +35,6 @@
                                 <color key="textColor" red="0.027592543512582779" green="0.019214550033211708" blue="0.039926804602146149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuImage" translatesAutoresizingMaskIntoConstraints="NO" id="TE7-9v-Cou">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWn-pO-l1D">
                                 <rect key="frame" x="284" y="105" width="177" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,12 +45,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="TE7-9v-Cou" firstAttribute="centerY" secondItem="a8I-lm-gb9" secondAttribute="centerY" id="Etu-ay-nSx"/>
-                            <constraint firstItem="TE7-9v-Cou" firstAttribute="centerX" secondItem="a8I-lm-gb9" secondAttribute="centerX" id="KFi-tr-A5O"/>
-                            <constraint firstItem="TE7-9v-Cou" firstAttribute="height" secondItem="a8I-lm-gb9" secondAttribute="height" id="bxs-lW-vv0"/>
-                            <constraint firstItem="TE7-9v-Cou" firstAttribute="width" secondItem="a8I-lm-gb9" secondAttribute="width" id="yzj-Tf-riT"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="highScoreLabel" destination="s1j-ur-fZd" id="GSV-2b-QOI"/>
@@ -112,7 +103,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="menuImage" width="736" height="414"/>
         <image name="startButton" width="609" height="276"/>
     </resources>
 </document>
