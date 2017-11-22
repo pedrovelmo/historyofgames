@@ -18,9 +18,16 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     var scene: GameScene!
     
+    var gameOverAlreadyHappened = false
+    
+    var rewardVideoAdPlayed = false
+    
     override func viewWillAppear(_ animated: Bool) {
         // self.view.backgroundColor = UIColor.black
+        if (!gameOverAlreadyHappened) {
         createLoadingView()
+        }
+        
         
     }
     
@@ -29,11 +36,14 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         
         AudioManager.sharedInstance.stopBackgroundMusic()
         GADRewardBasedVideoAd.sharedInstance().delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        print("Game Over Happened: ", gameOverAlreadyHappened)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+
     }
     
     override var shouldAutorotate: Bool {
@@ -68,7 +78,6 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     func presentGameScene() {
         if let view = self.view as! SKView? {
             
-            scene = GameScene(size: view.bounds.size)
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             scene.menu = menu
@@ -86,6 +95,8 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
             view.showsPhysics = false
         }
     }
+    
+
     
     func createLoadingView() {
         let loadingView = UIView(frame: CGRect(x: self.view.frame.width / 2 - 120, y: self.view.frame.height / 2 - 20 , width: 0, height: 40))
@@ -111,6 +122,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     func launchViewController(scene: SKScene) {
+        gameOverAlreadyHappened = false
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let menuVC: MenuViewController = storyboard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
@@ -125,6 +137,8 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     // MARK: Reward video ad delegate
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         print("Reward video played")
+        rewardVideoAdPlayed = true
+        
         
     }
     
@@ -142,6 +156,12 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         print("Reward based video ad is closed.")
+        if (rewardVideoAdPlayed) {
+            scene?.isGameOver = false
+            scene?.player.alpha = 1.0
+            presentGameScene()
+            
+        }
     }
     
     func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
@@ -152,18 +172,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
                             didFailToLoadWithError error: Error) {
         print("Reward based video ad failed to load.")
     }
-    
-    func getCurrentViewController() -> UIViewController? {
-        
-        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-            var currentController: UIViewController! = rootController
-            while( currentController.presentedViewController != nil ) {
-                currentController = currentController.presentedViewController
-            }
-            return currentController
-        }
-        return nil
-    }
+
     
 }
 
