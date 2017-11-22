@@ -51,10 +51,10 @@ class HudView: UIView {
         
         scene.isGameOver = true
         
-        let gameOverView = SKSpriteNode(imageNamed: "gameOver.png")
+        let gameOverView = SKSpriteNode(imageNamed: "gameOver")
         gameOverView.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
         gameOverView.zPosition = 10
-        gameOverView.size = CGSize(width: (self.frame.size.width / 1.2), height: (self.frame.size.height / 1.1))
+        gameOverView.size = CGSize(width: (self.frame.size.width * 0.7), height: (self.frame.size.height * 0.6))
         gameOverView.alpha = 1.0
         scene.addChild(gameOverView)
     }

@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "gameOver.png",
+      "filename" : "GameOverLabel.png",
       "scale" : "1x"
     },
     {
