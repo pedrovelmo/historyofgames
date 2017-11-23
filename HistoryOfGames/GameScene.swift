@@ -58,8 +58,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabelUpdate()
 
         self.movingSpeed = (self.scene?.size.width)! / 120
-        print("Velocidade ao iniciar epoca: \(self.movingSpeed)")
-        
         
         // Add first background
         Background.setFirstBackground(scene: self)
@@ -68,7 +66,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Floor.setFirstFloor(scene: self)
         Floor.floorsArray.first?.setPhysicsBody()
         self.floorPosition = Floor.floorsArray[0].size.height
-
         
         // Background Music configuration
         
@@ -120,12 +117,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             if(location.x < self.size.width / 2){
-                print("Left, no jump executed")
             }
             else {
-                print("Right, jump")
-                tapHandler()
                 
+                tapHandler()
             }
         }
     }
@@ -268,9 +263,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if(newObstacle.obstacleName == "tetrisTopBlockA"){
                         
                         let newObstacle2 = Obstacle(name: "tetrisBottomBlockA", scene: self)
-                        
-                        print("Bloco de cima y: \(newObstacle.position.y)")
-                        print("Bloco de baixo y: \(newObstacle2.position.y)")
                         
                         self.scene?.addChild(newObstacle)
                         self.scene?.addChild(newObstacle2)
@@ -423,7 +415,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Background.setTransitionBackground(scene: self)
                 
                 self.createLoadingView()
-                
             }
             
             let timeInTransition = SKAction.wait(forDuration: 5)
@@ -464,13 +455,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningBackgroundNodes() {
         
-        print("Epoch = ", epoch.whatEpochIsThis)
-        print("Count Floor", Floor.floorsArray.count)
-        
         if (Floor.floorsArray.count != 0) {
             backgroundObjectTimerIsRunning = false
             NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.whatEpochIsThis!, scene: self, floor: Floor.floorsArray[0])
-            print("Spawning Background Nodes")
         }
     }
     
