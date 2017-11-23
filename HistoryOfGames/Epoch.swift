@@ -31,19 +31,15 @@ class Epoch {
             
         // Transition epoch
         case -1:
-            
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = []
             
         case 0:
-            
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["pongBall", "pongBar", "alien1-0"]
             numberOfCoins = 3000
-                
-            
             
         case 1:
             background = [Background(epochId: whatEpochIsThis)]

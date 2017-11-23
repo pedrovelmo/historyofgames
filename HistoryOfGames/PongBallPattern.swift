@@ -29,8 +29,6 @@ class PongBallPattern: EnemyPattern{
     
     override func move() {
         
-        
-        
         if(!didStartMoving){
             
             let randomX = -Double(arc4random_uniform(UInt32((obstacle.gameScene?.movingSpeed)! * 1.2))) - 8.0
