@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -92,33 +93,100 @@
             </objects>
             <point key="canvasLocation" x="-563.56821589205401" y="101.59999999999999"/>
         </scene>
-        <!--Test View Controller-->
-        <scene sceneID="hUe-Ur-QmG">
+        <!--Page View Controller-->
+        <scene sceneID="tVi-8X-tFj">
             <objects>
-                <viewController id="EA2-wn-n7H" customClass="TestViewController" customModule="HistoryOfGames" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ujk-4q-G2H" customClass="PageViewController" customModule="HistoryOfGames" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YiT-iz-AcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-483" y="901"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Drj-cX-Zel">
+            <objects>
+                <viewController storyboardIdentifier="pageView2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MT7-CT-EIK" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ULM-BF-2Il"/>
-                        <viewControllerLayoutGuide type="bottom" id="WqM-He-LrM"/>
+                        <viewControllerLayoutGuide type="top" id="HyR-k9-bZu"/>
+                        <viewControllerLayoutGuide type="bottom" id="kt3-tr-dxC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XdX-Dp-4st">
+                    <view key="view" contentMode="scaleToFill" id="nVH-Cw-6qw">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljZ-mH-ZIM">
-                                <rect key="frame" x="303" y="172" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show Ad"/>
-                                <connections>
-                                    <action selector="showAd:" destination="EA2-wn-n7H" eventType="touchUpInside" id="S40-ND-7aY"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matrixr" translatesAutoresizingMaskIntoConstraints="NO" id="rmi-dp-5dv">
+                                <rect key="frame" x="91" y="20" width="484" height="290"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rmi-dp-5dv" firstAttribute="centerX" secondItem="nVH-Cw-6qw" secondAttribute="centerX" id="3mY-Mw-iV6"/>
+                            <constraint firstItem="rmi-dp-5dv" firstAttribute="top" secondItem="nVH-Cw-6qw" secondAttribute="top" constant="20" symbolic="YES" id="RG7-TX-Rce"/>
+                            <constraint firstItem="kt3-tr-dxC" firstAttribute="top" secondItem="rmi-dp-5dv" secondAttribute="bottom" constant="65" id="U1b-Ta-YOj"/>
+                            <constraint firstItem="rmi-dp-5dv" firstAttribute="leading" secondItem="nVH-Cw-6qw" secondAttribute="leadingMargin" constant="71" id="lt1-Ci-5P6"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JDA-3c-5T7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sgs-GK-TYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-543.77811094452773" y="912.79999999999995"/>
+            <point key="canvasLocation" x="-454.72263868065971" y="1693.5999999999999"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2Fo-Jm-RhY">
+            <objects>
+                <viewController storyboardIdentifier="pageView3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CcC-CI-q5R" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nv6-5N-Ep2"/>
+                        <viewControllerLayoutGuide type="bottom" id="rq1-NA-7Op"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMD-Wk-ZA0">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matrixre" translatesAutoresizingMaskIntoConstraints="NO" id="1c5-g9-vTr">
+                                <rect key="frame" x="91" y="20" width="484" height="290"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1c5-g9-vTr" firstAttribute="centerX" secondItem="zMD-Wk-ZA0" secondAttribute="centerX" id="7jD-kF-gzX"/>
+                            <constraint firstItem="1c5-g9-vTr" firstAttribute="top" secondItem="zMD-Wk-ZA0" secondAttribute="top" constant="20" symbolic="YES" id="QOg-xC-94M"/>
+                            <constraint firstItem="1c5-g9-vTr" firstAttribute="leading" secondItem="zMD-Wk-ZA0" secondAttribute="leadingMargin" constant="71" id="Qxs-ZN-cCd"/>
+                            <constraint firstItem="rq1-NA-7Op" firstAttribute="top" secondItem="1c5-g9-vTr" secondAttribute="bottom" constant="65" id="VNM-RT-Smm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRc-uK-D14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194.75262368815595" y="1690.4000000000001"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-pn-yUY">
+            <objects>
+                <viewController storyboardIdentifier="pageView1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yb1-Zr-zIW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BEr-rw-LiO"/>
+                        <viewControllerLayoutGuide type="bottom" id="YXn-N7-zZH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r9k-RW-l4t">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matrix" translatesAutoresizingMaskIntoConstraints="NO" id="ciN-4F-qoc">
+                                <rect key="frame" x="91" y="20" width="484" height="290"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ciN-4F-qoc" firstAttribute="centerX" secondItem="r9k-RW-l4t" secondAttribute="centerX" id="1eY-9P-mE9"/>
+                            <constraint firstItem="YXn-N7-zZH" firstAttribute="top" secondItem="ciN-4F-qoc" secondAttribute="bottom" constant="65" id="J9m-bm-dnb"/>
+                            <constraint firstItem="ciN-4F-qoc" firstAttribute="leading" secondItem="r9k-RW-l4t" secondAttribute="leadingMargin" constant="71" id="wSi-c1-9IW"/>
+                            <constraint firstItem="ciN-4F-qoc" firstAttribute="top" secondItem="r9k-RW-l4t" secondAttribute="top" constant="20" symbolic="YES" id="yED-S1-SE1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NFS-fl-4ny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1086.2068965517242" y="1693.5999999999999"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -139,6 +207,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="matrix" width="665" height="1000"/>
+        <image name="matrixr" width="600" height="600"/>
+        <image name="matrixre" width="304" height="448"/>
         <image name="menuImage" width="736" height="414"/>
         <image name="settingsButton" width="219" height="219"/>
         <image name="startButton" width="609" height="276"/>
