@@ -55,6 +55,8 @@
 		C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */; };
 		C1D998481FAFA76A00F81CBA /* PongBarPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */; };
 		C1D9984A1FAFA8D400F81CBA /* MarioTurtlePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */; };
+		C1DC1B991FC739410088BE03 /* ZeldaCrazyLinkPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1B981FC739410088BE03 /* ZeldaCrazyLinkPattern.swift */; };
+		C1DC1B9B1FC73F850088BE03 /* ZeldaCrazyLinkSwordPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1B9A1FC73F850088BE03 /* ZeldaCrazyLinkSwordPattern.swift */; };
 		C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD41F5E46DF00DC1E34 /* EnemyPattern.swift */; };
 		C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */; };
 		C7E7C833885FC4AEE9033A8A /* Pods_HistoryOfGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C1A58F70AB4FA74AA6D971 /* Pods_HistoryOfGames.framework */; };
@@ -113,6 +115,8 @@
 		C1D998451FAF9EA500F81CBA /* PongBallPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBallPattern.swift; sourceTree = "<group>"; };
 		C1D998471FAFA76A00F81CBA /* PongBarPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongBarPattern.swift; sourceTree = "<group>"; };
 		C1D998491FAFA8D400F81CBA /* MarioTurtlePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarioTurtlePattern.swift; sourceTree = "<group>"; };
+		C1DC1B981FC739410088BE03 /* ZeldaCrazyLinkPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaCrazyLinkPattern.swift; sourceTree = "<group>"; };
+		C1DC1B9A1FC73F850088BE03 /* ZeldaCrazyLinkSwordPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaCrazyLinkSwordPattern.swift; sourceTree = "<group>"; };
 		C1E38CD41F5E46DF00DC1E34 /* EnemyPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPattern.swift; sourceTree = "<group>"; };
 		C1E38CD71F5F9B7B00DC1E34 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E1E79911117E920D7AD0EC90 /* Pods-HistoryOfGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistoryOfGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames.release.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				498B7B351FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift */,
 				C1D66F651FBF337000104D52 /* TetrisFallingBlockPatternTop.swift */,
 				49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */,
+				C1DC1B981FC739410088BE03 /* ZeldaCrazyLinkPattern.swift */,
+				C1DC1B9A1FC73F850088BE03 /* ZeldaCrazyLinkSwordPattern.swift */,
 			);
 			name = "Enemy Patterns";
 			sourceTree = "<group>";
@@ -437,6 +443,7 @@
 				C1D07D3A1F686926000B768F /* Coin.swift in Sources */,
 				C1E38CD51F5E46DF00DC1E34 /* EnemyPattern.swift in Sources */,
 				496AC8E81F58722E00A6D490 /* GameViewController.swift in Sources */,
+				C1DC1B9B1FC73F850088BE03 /* ZeldaCrazyLinkSwordPattern.swift in Sources */,
 				498B7B361FBF5F180071E043 /* TetrisFallingBlockPatternBottom.swift in Sources */,
 				496AC8FF1F5876D900A6D490 /* Player.swift in Sources */,
 				4945C1C71F8410E9004246BC /* GameScene.swift in Sources */,
@@ -450,6 +457,7 @@
 				C1D998461FAF9EA500F81CBA /* PongBallPattern.swift in Sources */,
 				C187C30C1FAFAC9E0014E628 /* MarioBlockPattern.swift in Sources */,
 				496AC8E01F58722E00A6D490 /* AppDelegate.swift in Sources */,
+				C1DC1B991FC739410088BE03 /* ZeldaCrazyLinkPattern.swift in Sources */,
 				492CFF7E1FBB6937000205A7 /* TestViewController.swift in Sources */,
 				C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */,
 				C1D07D3C1F686991000B768F /* CoinManager.swift in Sources */,

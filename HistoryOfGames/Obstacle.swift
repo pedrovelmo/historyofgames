@@ -69,7 +69,13 @@ class Obstacle: SKSpriteNode {
             
         case "tetrisBottomBlockA":
             self.pattern = TetrisFallingBlockPatternBottom(obstacle: self)
-        
+            
+        case "crazyAssLink":
+            self.pattern = ZeldaCrazyLinkPattern(obstacle: self)
+            
+        case "crazyAssLinkSword":
+            self.pattern = ZeldaCrazyLinkSwordPattern(obstacle: self)
+            
         default:
             break
         }

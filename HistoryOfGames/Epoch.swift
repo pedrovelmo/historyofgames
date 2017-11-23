@@ -31,19 +31,15 @@ class Epoch {
             
         // Transition epoch
         case -1:
-            
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = []
             
         case 0:
-            
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
-            obstacles = ["alien1-0"]
+            obstacles = ["pongBall", "pongBar", "alien1-0"]
             numberOfCoins = 3000
-                
-            
             
         case 1:
             background = [Background(epochId: whatEpochIsThis)]
@@ -54,11 +50,10 @@ class Epoch {
         case 2:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
-            obstacles = ["block1"]
+            //obstacles = ["block1"]
+            obstacles = ["crazyAssLink"]
             numberOfCoins = 12000
-                
-            
-            
+
         default: break
         }
     }

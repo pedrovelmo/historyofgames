@@ -23,24 +23,19 @@ class Player: SKSpriteNode {
     init(name: String) {
         self.characterName = name
        
-
         for i in 1...7{
             
             var textureName = ""
             
             textureName = "dido\(i)"
             
-            let texture = SKTexture(imageNamed: textureName)
-            
             texturesArray.append(SKTexture(imageNamed: textureName))
-            
         }
         
         let texture = SKTexture(imageNamed: "dido1")
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         self.setScale(0.15)
-
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -52,8 +47,6 @@ class Player: SKSpriteNode {
         self.defaultPlayerX = (scene.size.width) / 8 + self.size.width / 2
     }
     
-    
-    
     func setPhysicsBody() {
         
         let hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.9)
@@ -64,7 +57,6 @@ class Player: SKSpriteNode {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
         self.physicsBody?.collisionBitMask = PhysicsCategory.Floor
         self.physicsBody?.mass *= 1.3
-
     }
     
     func startAnimation() {
