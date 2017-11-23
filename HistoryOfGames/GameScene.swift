@@ -14,12 +14,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var menu: MenuViewController!
     var epoch: Epoch!
     var lastEpoch: Epoch?
-    var coinVector: [Coin] = []
     var player = Player(name: "dido")
     var movingSpeed: CGFloat = 0.0
     var jumpCounter = 0
     var hudView: HudView?
-    var gameOverView: SKSpriteNode?
     var coins: Int = 0
     var score: Int = 0
     var timer = Timer()
@@ -30,7 +28,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isTransitioning = false
     var isGameModeSwipe = true
     var isInTutorial = false
-    var gameMode: String!
     var floorPosition: CGFloat?
     var parentViewController: GameViewController?
     var numberOfDeaths = 0
@@ -250,7 +247,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     let randomPattern = arc4random_uniform(2)
                     
-                    CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern), scene: self)
+                    CoinManager.sharedInstance.instantiateCoinPattern(pattern: Int(randomPattern))
                 }
                 
                 run(spawnCoin)

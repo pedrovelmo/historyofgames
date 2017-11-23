@@ -23,14 +23,14 @@ class CoinManager{
         return coinManager
     }
     
-    var scene: SKScene?
+    var scene: GameScene?
     var coinVector: [Coin] = []
     var patternVector: [[Coin]] = [[]]
     
-    func instantiateCoinPattern(pattern: Int, scene: SKScene){
+    func instantiateCoinPattern(pattern: Int){
         
         coinVector = []
-        self.scene = scene
+        
         
         switch pattern{
             

@@ -73,6 +73,10 @@ class Floor: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
     }
     
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     static func setFirstFloor(scene: SKScene){
         
@@ -110,7 +114,5 @@ class Floor: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
     }
 
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
 }

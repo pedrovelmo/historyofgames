@@ -9,21 +9,12 @@
 import UIKit
 import SpriteKit
 
-enum stateTypes: Int {
-    case running = 0
-    case jumping = 1
-    case dying = 2
-}
 
 class Player: SKSpriteNode {
     
     var characterName: String
-    var state: Int
-    var imageVector: [Int : UIImage] = [ : ]
     var texturesArray =  [SKTexture]()
-    var ability : Ability?
     var maxJumps = 2
-    
     var defaultPlayerX: CGFloat = 0
     var toTheRight = false
     var toTheLeft = false
@@ -31,7 +22,7 @@ class Player: SKSpriteNode {
     // TO-DO: Define image name pattern and update init
     init(name: String) {
         self.characterName = name
-        self.state = stateTypes.running.rawValue
+       
 
         for i in 1...7{
             
@@ -61,10 +52,6 @@ class Player: SKSpriteNode {
         self.defaultPlayerX = (scene.size.width) / 8 + self.size.width / 2
     }
     
-    //TO-DO: Complete function
-    func stateManager() {
-        
-    }
     
     
     func setPhysicsBody() {

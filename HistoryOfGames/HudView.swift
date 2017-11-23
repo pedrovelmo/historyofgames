@@ -144,7 +144,6 @@ class HudView: UIView  {
         self.menuButton?.removeFromSuperview()
         self.aButton?.removeFromSuperview()
         scene?.isGameOver = false
-        //self.removeFromSuperview()
         }
         else {
             let alert = UIAlertController(title: "Ops! Limite Esgotado", message: "Você tem direito a uma vida extra por jogada", preferredStyle: .alert)

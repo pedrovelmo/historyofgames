@@ -20,7 +20,6 @@
 		496AC8ED1F58722E00A6D490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496AC8EC1F58722E00A6D490 /* Assets.xcassets */; };
 		496AC8F01F58722E00A6D490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496AC8EE1F58722E00A6D490 /* LaunchScreen.storyboard */; };
 		496AC8FB1F58762B00A6D490 /* Epoch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FA1F58762B00A6D490 /* Epoch.swift */; };
-		496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FC1F5876C800A6D490 /* Ability.swift */; };
 		496AC8FF1F5876D900A6D490 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC8FE1F5876D900A6D490 /* Player.swift */; };
 		496AC9011F587C6400A6D490 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9001F587C6400A6D490 /* Floor.swift */; };
 		496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496AC9021F587F0C00A6D490 /* Obstacle.swift */; };
@@ -79,7 +78,6 @@
 		496AC8EF1F58722E00A6D490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		496AC8F11F58722E00A6D490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		496AC8FA1F58762B00A6D490 /* Epoch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Epoch.swift; sourceTree = "<group>"; };
-		496AC8FC1F5876C800A6D490 /* Ability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
 		496AC8FE1F5876D900A6D490 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		496AC9001F587C6400A6D490 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		496AC9021F587F0C00A6D490 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 				C15326551FBA3A75000A581B /* UserProfile.swift */,
 				C1D998441FAF9D6D00F81CBA /* Enemy Patterns */,
 				496AC8FA1F58762B00A6D490 /* Epoch.swift */,
-				496AC8FC1F5876C800A6D490 /* Ability.swift */,
 				496AC8FE1F5876D900A6D490 /* Player.swift */,
 				496AC9001F587C6400A6D490 /* Floor.swift */,
 				4945C1C81F841117004246BC /* Background.swift */,
@@ -426,7 +423,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				496AC8FD1F5876C800A6D490 /* Ability.swift in Sources */,
 				496AC9031F587F0C00A6D490 /* Obstacle.swift in Sources */,
 				C1D9984A1FAFA8D400F81CBA /* MarioTurtlePattern.swift in Sources */,
 				C1D07D381F685407000B768F /* AudioManager.swift in Sources */,

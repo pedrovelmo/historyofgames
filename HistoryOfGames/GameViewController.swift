@@ -23,8 +23,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     var gameOverAlreadyHappened = false
     
     var rewardVideoAdPlayed = false
-    
-    var rootVC: UIViewController?
+
     
     override func viewWillAppear(_ animated: Bool) {
         // self.view.backgroundColor = UIColor.black

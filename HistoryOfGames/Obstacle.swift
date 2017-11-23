@@ -9,10 +9,6 @@
 import UIKit
 import SpriteKit
 
-enum animationState: Int{
-    
-    case standard = 0
-}
 
 class Obstacle: SKSpriteNode {
     
@@ -21,15 +17,12 @@ class Obstacle: SKSpriteNode {
     
     var obstacleName: String
     var pattern: EnemyPattern?
-    var state: Int
-    var animationFrames: [Int : UIImage] = [ : ]
     var texturesArray =  [SKTexture]()
     var gameScene: GameScene?
     
     init(name: String, scene: GameScene) {
         
         self.obstacleName = name
-        self.state = animationState.standard.rawValue
         self.gameScene = scene
         
         let texture = SKTexture(imageNamed: self.obstacleName)
@@ -39,9 +32,8 @@ class Obstacle: SKSpriteNode {
         setPattern()
     }
     
-    //TO-DO: COmplete function
-    func stateManager(){
-        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setPattern(){
@@ -96,7 +88,5 @@ class Obstacle: SKSpriteNode {
         self.physicsBody?.linearDamping = 0.0
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+ 
 }

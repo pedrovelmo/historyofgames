@@ -35,8 +35,6 @@ class AudioManager{
     
     private var musicPlayer = AVAudioPlayer()
     
-    var epoch: Int = 0
-    
     internal let explosionSound = SKAction.playSoundFileNamed(ExplosionSound.WilhemScream.rawValue, waitForCompletion: false)
     
     internal let jumpSound = SKAction.playSoundFileNamed("Jump.wav", waitForCompletion: false)
@@ -45,16 +43,8 @@ class AudioManager{
     
     func playBackgroundMusicMenu(){
         
-         var backgroundMusic: String?
+         var backgroundMusic: String? = BackgroundMusic.AdventureTune.rawValue
         
-        switch epoch{
-            
-        case 0:
-            backgroundMusic = BackgroundMusic.AdventureTune.rawValue
-            
-        default:
-            break
-        }
         
         do{
             try musicPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: backgroundMusic, ofType: nil)!))
@@ -70,16 +60,9 @@ class AudioManager{
     
     func playBackgroundMusic(){
         
-        var backgroundMusic: String?
-        
-        switch epoch{
+        var backgroundMusic: String? = BackgroundMusic.BobbleBits.rawValue
             
-        case 0:
-            backgroundMusic = BackgroundMusic.BobbleBits.rawValue
-            
-        default:
-            break
-        }
+
         
         do{
             try musicPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: backgroundMusic, ofType: nil)!))

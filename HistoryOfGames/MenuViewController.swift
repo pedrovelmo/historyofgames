@@ -135,12 +135,12 @@ class MenuViewController: UIViewController, GADBannerViewDelegate {
         
         
         let seconds = 0.5
-        timer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: (#selector(changeLabelAlpha)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: (#selector(changeButtonAlpha)), userInfo: nil, repeats: true)
         
         
     }
     
-    func changeLabelAlpha() {
+    func changeButtonAlpha() {
         if (startButton.alpha == 1.0) {
             startButton.alpha = 0.01001
             
