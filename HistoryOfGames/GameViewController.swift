@@ -192,7 +192,9 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         }
         
         else {
-            //self.launchViewController(scene: scene)
+            scene?.isGameOver = false
+            scene?.killAll()
+            scene?.parentViewController?.launchViewController(scene: scene!)
         }
     }
     

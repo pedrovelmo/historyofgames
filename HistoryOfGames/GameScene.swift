@@ -560,6 +560,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Floor.floorsArray.removeAll()
         Background.backgroundsArray.removeAll()
         NodeManager.sharedInstance.clearAll()
+        hudView?.removeFromSuperview()
         menu.killAll()
     }
 }
