@@ -31,7 +31,7 @@ class SpaceInvadersAlienPattern: EnemyPattern{
 //        let randomQuantitySide = Int(arc4random_uniform(UInt32(40))) + 20
 
         // move down 100
-        let moveDownAction = SKAction.moveBy(x: 0, y: -((obstacle.gameScene?.size.height)! / 6) / 1, duration: 0.5)
+        let moveDownAction = SKAction.moveBy(x: 0, y: -((obstacle.gameScene?.size.height)! / 5), duration: 0.5)
 
         let moveSidewaysAction = SKAction.moveBy(x: CGFloat(-30), y: 0, duration: 0.5)
        

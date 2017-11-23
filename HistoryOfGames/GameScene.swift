@@ -58,6 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabelUpdate()
 
         self.movingSpeed = (self.scene?.size.width)! / 120
+        print("Velocidade ao iniciar epoca: \(self.movingSpeed)")
         
         
         // Add first background
@@ -408,6 +409,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastEpoch = epoch
             
             epoch = Epoch(whatEpochIsThis: -1, scene: self)
+            self.movingSpeed -= 1
             
             // Can this be delayed?
             Floor.allImages = epoch.whatEpochIsThis!

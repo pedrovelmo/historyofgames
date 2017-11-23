@@ -47,11 +47,9 @@ class PacmanGhostPattern: EnemyPattern{
 
         obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.2
         
-        obstacle.position.y = CGFloat(sinSignal!) * sin(obstacle.position.x / width)
+        obstacle.position.y = CGFloat(sinSignal!) * sin(obstacle.position.x / width * 0.75)
         obstacle.position.y = obstacle.position.y * height + (obstacle.gameScene?.size.height)! / 2
-
     }
-   
 }
 
 
