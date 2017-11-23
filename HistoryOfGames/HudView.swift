@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 
 
+
 class HudView: UIView  {
   
     var coinLabel : UILabel?
@@ -135,15 +136,23 @@ class HudView: UIView  {
     }
     
     func playAdAndReplay(sender: UIButton) {
+      
+        let serialQueue = DispatchQueue(label: "queuename", qos: DispatchQoS.userInteractive)
+        serialQueue.sync {
+            self.gameOverView?.removeFromSuperview()
+            self.menuButton?.removeFromSuperview()
+            self.aButton?.removeFromSuperview()
+        }
+      
+        
+        print("Number of deaths when play button is clicked: ", scene?.numberOfDeaths)
         if ((scene?.numberOfDeaths)! <= 1) {
+ 
         
         print("Play ad and replay button clicked")
+        //sleep(UInt32(0.001))
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
-        
-        self.gameOverView?.removeFromSuperview()
-        self.menuButton?.removeFromSuperview()
-        self.aButton?.removeFromSuperview()
-        scene?.isGameOver = false
+       
         }
         else {
             let alert = UIAlertController(title: "Ops! Limite Esgotado", message: "Você tem direito a uma vida extra por jogada", preferredStyle: .alert)

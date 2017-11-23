@@ -40,7 +40,7 @@ class Epoch {
             
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
-            obstacles = ["pongBall", "pongBar", "alien1-0"]
+            obstacles = ["alien1-0"]
             numberOfCoins = 3000
                 
             

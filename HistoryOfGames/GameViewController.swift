@@ -50,6 +50,22 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         scene = GameScene(size: view.bounds.size)
         }
         
+        else {
+            scene.isGameOver = false
+            if let hudView = scene.hudView {
+                if let gameOver = hudView.gameOverView {
+                    gameOver.removeFromSuperview()
+                }
+                if let menuButton = hudView.menuButton {
+                    menuButton.removeFromSuperview()
+                }
+                if let adButton = hudView.aButton {
+                    adButton.removeFromSuperview()
+                }
+                
+            }
+        }
+        
         
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID,                       // All simulators
@@ -173,6 +189,10 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
             presentGameScene()
             rewardVideoAdPlayed = false
             
+        }
+        
+        else {
+            //self.launchViewController(scene: scene)
         }
     }
     
