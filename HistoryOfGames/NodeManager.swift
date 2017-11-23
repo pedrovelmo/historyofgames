@@ -36,8 +36,8 @@ class NodeManager{
         
         switch (epochId) {
             case 2:
-                floorBackgroundNodes = ["tree1", "tree2", "tree3", "tree4", "tree5", "tree6", "tree7", "tree8", "tree9", "tree10"]
-                skyBackgroundNodes = ["cloud1", "cloud2", "cloud3", "cloud4"]
+                floorBackgroundNodes = ["hill1", "hill2", "tree1", "tree2", "tree3", "house1", "house2"]
+                skyBackgroundNodes = ["cloud1", "cloud2", "cloud3", "cloud4", "cloud5"]
                 setBackgroundNodes()
             default:
                 break
@@ -54,16 +54,21 @@ class NodeManager{
         
         if (nodeKind == 0) {
  
-            let column = Int(arc4random_uniform(UInt32(3))) + 1
-            for c in 0...column - 1 {
                 let nodeType = Int(arc4random_uniform(UInt32(floorBackgroundNodes.count)))
                 let node = SKSpriteNode(imageNamed: floorBackgroundNodes[nodeType])
-                node.size = CGSize(width: (scene?.size.height)! * 0.3, height: (scene?.size.height)! * 0.6)
-                node.position.x = 1.1 * (scene?.size.width)! + (node.size.width) * CGFloat(c) 
-                node.position.y = (floor?.size.height)! + node.size.height / 2 - 10
-                node.zPosition = -1
-                backgroundNodes.append(node)
+            if (floorBackgroundNodes[nodeType] == "house1" || floorBackgroundNodes[nodeType] == "house2") {
+                node.size = CGSize(width: (scene?.size.height)! * 0.4, height: (scene?.size.height)! * 0.45)
             }
+            
+            
+            else {
+                 node.size = CGSize(width: (scene?.size.height)! * 0.4, height: (scene?.size.height)! * 0.6)
+                
+            }
+            node.position.x = 1.1 * (scene?.size.width)! + (node.size.width)
+            node.position.y = (floor?.size.height)! + node.size.height / 2 - 10
+            node.zPosition = -1
+            backgroundNodes.append(node)
     }
         else {
             

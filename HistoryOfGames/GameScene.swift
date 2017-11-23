@@ -381,7 +381,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func coinLabelUpdate() {
         
         if (!isTransitioning) {
+            if (epoch.whatEpochIsThis! < 3) {
             hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", self.coins)
+            }
+            
+            else {
+                    hudView?.coinLabel?.text = String(format: "Coin: %04u / ∞", self.coins)
+            }
         }
     }
     
@@ -396,7 +402,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func epochManager(){
         
         if((epoch.whatEpochIsThis! == 0 && coins >= epoch.numberOfCoins!) ||
-            epoch.whatEpochIsThis! == 1 && coins >= epoch.numberOfCoins!){
+            (epoch.whatEpochIsThis! == 1 && coins >= epoch.numberOfCoins!) ||
+            (epoch.whatEpochIsThis! == 2 && coins >= epoch.numberOfCoins!)){
             
             lastEpoch = epoch
             
@@ -411,6 +418,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let waitTimeBeforeTransition = SKAction.wait(forDuration: 3)
             
             let enterTransition = SKAction.run {
+                for pattern in NodeManager.sharedInstance.backgroundNodesPatternVector {
+                    for node in pattern{
+                       
+                            node.removeFromParent()
+                        
+                    }
+                }
                 
                 Background.setTransitionBackground(scene: self)
                 
@@ -448,9 +462,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.run(executeTransition)
         }
         
-        if (epoch.whatEpochIsThis == 2 && coins >= epoch.numberOfCoins!) {
-            hudView?.createGameOverView()
-        }
+//        if (epoch.whatEpochIsThis == 2 && coins >= epoch.numberOfCoins!) {
+//            hudView?.createGameOverView()
+//        }
     }
     
     func startSpawningBackgroundNodes() {
@@ -485,7 +499,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!backgroundObjectTimerIsRunning && epoch.whatEpochIsThis == 2) {
             
-            let backgroundObjectSeconds = Double(arc4random_uniform(2)) + 0.5
+            let backgroundObjectSeconds = Double(arc4random_uniform(1)) + 0.5
             backgroundTimer = Timer.scheduledTimer(timeInterval: backgroundObjectSeconds, target: self, selector: (#selector(startSpawningBackgroundNodes)), userInfo: nil, repeats: false)
             backgroundObjectTimerIsRunning = true
         }
@@ -551,8 +565,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var handSequence = SKAction.repeatForever(SKAction.sequence([handMove]))
         self.scene?.addChild(hand)
         hand.run(SKAction.sequence([handSequence]))
-        
-        //        isInTutorial = false
         
     }
     
