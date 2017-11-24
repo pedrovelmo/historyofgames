@@ -19,6 +19,8 @@ class UserProfile{
     
     var id: String = ""
     
+    var firstLogin: Bool = false
+    
     var highScore = 0
     
     var coinsTotal: Int = 0
@@ -57,6 +59,16 @@ class UserProfile{
         else {
             
             userDefaults.set(0, forKey: "coinsTotal")
+        }
+        
+        if let firstLogin = UserProfile.sharedInstance.userDefaults.value(forKey: "firstLogin") {
+            self.firstLogin = UserProfile.sharedInstance.userDefaults.value(forKey: "firstLogin") as! Bool
+            print("First Login", self.firstLogin)
+    }
+        else {
+            userDefaults.set(true, forKey: "firstLogin")
+            self.firstLogin = true
+            
         }
     }
 }

@@ -138,10 +138,25 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
                         if(finished) {
                             
                             loadingView.removeFromSuperview()
-                            self.presentGameScene()
+                            
+                            if (UserProfile.sharedInstance.firstLogin) {
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                
+                                let pageVC = storyboard.instantiateViewController(withIdentifier: "pageView") as! PageViewController
+                                pageVC.gameVC = self
+                               
+                                print("Instanciada nova Page View Controller")
+                               
+                                self.present(pageVC, animated: false,
+                                             completion: nil)
+                            }
+                            
+                            else {
+                                self.presentGameScene()
+                            }
                             
                         }
-        }
+            }
         )
         
         

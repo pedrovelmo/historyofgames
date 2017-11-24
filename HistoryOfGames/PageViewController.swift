@@ -9,6 +9,8 @@
 import UIKit
 
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource  {
+    
+    var gameVC: GameViewController!
 
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newViewController(id: "1"),
@@ -65,6 +67,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource  
         }
         
         let nextIndex = viewControllerIndex + 1
+        print("nextIndex: ", nextIndex)
+        if (nextIndex == 3) {
+            UserProfile.sharedInstance.userDefaults.set(false, forKey: "firstLogin")
+            UserProfile.sharedInstance.firstLogin = false
+            self.dismiss(animated: false, completion: nil)
+        }
         let orderedViewControllersCount = orderedViewControllers.count
         
         guard orderedViewControllersCount != nextIndex else {
