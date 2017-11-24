@@ -40,13 +40,13 @@ class HudView: UIView  {
         self.coinLabel = UILabel()
         self.scoreLabel = UILabel()
        // coinLabel?.text = String(format: "Coin: %04u / 1000", 0000)
-        coinLabel?.font = UIFont(name: "chalkduster", size: 15)
+        coinLabel?.font = UIFont(name: "Gameplay", size: 15)
         coinLabel?.alpha = 1.0
         coinLabel?.textColor = UIColor.red
         coinLabel?.frame = CGRect(x: self.frame.size.width - labelSize.width * 3.3, y: self.frame.size.height * 0.05 , width: labelSize.width * 3.0, height: labelSize.height)
         
         //scoreLabel?.text = String(format: "Score: %08u", 0000)
-        scoreLabel?.font = UIFont(name: "chalkduster", size: 15)
+        scoreLabel?.font = UIFont(name: "Gameplay", size: 15)
         scoreLabel?.alpha = 1.0
         scoreLabel?.textColor = UIColor.white
         scoreLabel?.frame = CGRect(x: labelSize.width * 0.5, y: self.frame.size.height * 0.05 , width: labelSize.width * 4, height: labelSize.height)
@@ -142,26 +142,41 @@ class HudView: UIView  {
             self.gameOverView?.removeFromSuperview()
             self.menuButton?.removeFromSuperview()
             self.aButton?.removeFromSuperview()
+            
         }
       
         
         print("Number of deaths when play button is clicked: ", scene?.numberOfDeaths)
         if ((scene?.numberOfDeaths)! <= 1) {
- 
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
         
         print("Play ad and replay button clicked")
-        //sleep(UInt32(0.001))
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
-       
+
+            if (!(scene?.parentViewController?.adFailedToLoad)!) {
+                print("Ad is playing")
+
+        }
+            else {
+                let alert = UIAlertController(title: "No ads available", message: "Go Back to the Menu and play another round!", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Go to Menu", style: .default, handler: {(alert: UIAlertAction!) in self.goToMenu() }))
+                
+                let root = getCurrentViewController()
+                root!.present(alert, animated: true, completion: nil)
+
+            }
+            
+        
+        
         }
         else {
-            let alert = UIAlertController(title: "Ops! Limite Esgotado", message: "Você tem direito a uma vida extra por jogada", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Ir para menu", style: .default, handler: {(alert: UIAlertAction!) in self.goToMenu() }))
+            let alert = UIAlertController(title: "Ops! Ad Bonus ended", message: "You can watch one add for an extra life per play", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Go to Menu", style: .default, handler: {(alert: UIAlertAction!) in self.goToMenu() }))
             
             let root = getCurrentViewController()
             root!.present(alert, animated: true, completion: nil)
-
         }
     }
     

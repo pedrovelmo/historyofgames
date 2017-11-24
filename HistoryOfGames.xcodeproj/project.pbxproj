@@ -42,6 +42,7 @@
 		49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F41F8AD38A00DB634F /* Coin.mp3 */; };
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
 		49F59F891FC4985700A62096 /* SpaceInvadersAlienPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */; };
+		49F8B7EF1FC87E5700BE57FE /* Gameplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F8B7EE1FC87E5700BE57FE /* Gameplay.ttf */; };
 		C1072E791FAFAEAC0022551A /* PacmanBlockPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */; };
 		C1072E7B1FAFAFC10022551A /* PacmanGhostPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */; };
 		C15326561FBA3A75000A581B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15326551FBA3A75000A581B /* UserProfile.swift */; };
@@ -104,6 +105,7 @@
 		49E563F41F8AD38A00DB634F /* Coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin.mp3; sourceTree = "<group>"; };
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvadersAlienPattern.swift; sourceTree = "<group>"; };
+		49F8B7EE1FC87E5700BE57FE /* Gameplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gameplay.ttf; sourceTree = "<group>"; };
 		C1072E781FAFAEAC0022551A /* PacmanBlockPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanBlockPattern.swift; sourceTree = "<group>"; };
 		C1072E7A1FAFAFC10022551A /* PacmanGhostPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanGhostPattern.swift; sourceTree = "<group>"; };
 		C15326551FBA3A75000A581B /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		496AC8DE1F58722E00A6D490 /* HistoryOfGames */ = {
 			isa = PBXGroup;
 			children = (
+				49F8B7ED1FC87E3700BE57FE /* Fonts */,
 				49847BA01F61EC1A00D59E64 /* SoundFiles */,
 				496AC8F91F5875C100A6D490 /* Controller */,
 				496AC8F81F5875BD00A6D490 /* View */,
@@ -248,6 +251,14 @@
 				49847BAB1F61ED2200D59E64 /* spin_jump.mp3 */,
 			);
 			name = SoundFiles;
+			sourceTree = "<group>";
+		};
+		49F8B7ED1FC87E3700BE57FE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				49F8B7EE1FC87E5700BE57FE /* Gameplay.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		C1D998441FAF9D6D00F81CBA /* Enemy Patterns */ = {
@@ -350,6 +361,7 @@
 				C1D07D341F6713C2000B768F /* ExplosionParticles.sks in Resources */,
 				496AC8EB1F58722E00A6D490 /* Main.storyboard in Resources */,
 				496AC8ED1F58722E00A6D490 /* Assets.xcassets in Resources */,
+				49F8B7EF1FC87E5700BE57FE /* Gameplay.ttf in Resources */,
 				499417D01F82C9DD005F23D9 /* MyParticle.sks in Resources */,
 				49847BA21F61EC3C00D59E64 /* CarminaBurana.mp3 in Resources */,
 				4939C3C41F8C222100BD5C88 /* BobbleBits.mp3 in Resources */,
