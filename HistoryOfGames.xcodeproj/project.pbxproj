@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49092D9D1FC85F1400B6505E /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49092D9C1FC85F1400B6505E /* StoreViewController.swift */; };
 		4930F4631FC74EDD00AD192F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4930F4621FC74EDD00AD192F /* PageViewController.swift */; };
 		4939C3C41F8C222100BD5C88 /* BobbleBits.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4939C3C31F8C203A00BD5C88 /* BobbleBits.mp3 */; };
 		4945C1C51F83F207004246BC /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945C1C41F83F207004246BC /* NodeManager.swift */; };
@@ -37,6 +38,7 @@
 		49904B811F7166EF005C0A6A /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904B801F7166EF005C0A6A /* HudView.swift */; };
 		49904B831F7167D2005C0A6A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904B821F7167D2005C0A6A /* ColorExtension.swift */; };
 		499417D01F82C9DD005F23D9 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 499417CF1F82C9DD005F23D9 /* MyParticle.sks */; };
+		49CC11731FC8608800E178C6 /* StoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC11721FC8608800E178C6 /* StoreCollectionViewCell.swift */; };
 		49E563F51F8AD3FB00DB634F /* Coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F41F8AD38A00DB634F /* Coin.mp3 */; };
 		49E563F71F8AD47E00DB634F /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49E563F61F8AD46700DB634F /* Jump.wav */; };
 		49F59F891FC4985700A62096 /* SpaceInvadersAlienPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */; };
@@ -65,6 +67,7 @@
 /* Begin PBXFileReference section */
 		32C1A58F70AB4FA74AA6D971 /* Pods_HistoryOfGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistoryOfGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D31F96A6F3E54C28350683 /* Pods-HistoryOfGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistoryOfGames.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HistoryOfGames/Pods-HistoryOfGames.debug.xcconfig"; sourceTree = "<group>"; };
+		49092D9C1FC85F1400B6505E /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		4930F4621FC74EDD00AD192F /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		4939C3C31F8C203A00BD5C88 /* BobbleBits.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BobbleBits.mp3; sourceTree = "<group>"; };
 		4945C1C41F83F207004246BC /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 		49904B801F7166EF005C0A6A /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		49904B821F7167D2005C0A6A /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		499417CF1F82C9DD005F23D9 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		49CC11721FC8608800E178C6 /* StoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		49E563F41F8AD38A00DB634F /* Coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin.mp3; sourceTree = "<group>"; };
 		49E563F61F8AD46700DB634F /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		49F59F881FC4985700A62096 /* SpaceInvadersAlienPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvadersAlienPattern.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 				4945C1C61F8410E9004246BC /* GameScene.swift */,
 				4945C1E81F898664004246BC /* MenuViewController.swift */,
 				4930F4621FC74EDD00AD192F /* PageViewController.swift */,
+				49092D9C1FC85F1400B6505E /* StoreViewController.swift */,
+				49CC11721FC8608800E178C6 /* StoreCollectionViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 				496AC8FB1F58762B00A6D490 /* Epoch.swift in Sources */,
 				4945C1C91F841118004246BC /* Background.swift in Sources */,
 				C187C30E1FAFAD210014E628 /* MarioSuperBlockPattern.swift in Sources */,
+				49CC11731FC8608800E178C6 /* StoreCollectionViewCell.swift in Sources */,
 				49904B831F7167D2005C0A6A /* ColorExtension.swift in Sources */,
 				49F59F891FC4985700A62096 /* SpaceInvadersAlienPattern.swift in Sources */,
 				496AC9011F587C6400A6D490 /* Floor.swift in Sources */,
@@ -451,6 +458,7 @@
 				C15326561FBA3A75000A581B /* UserProfile.swift in Sources */,
 				49847B9F1F61DDED00D59E64 /* PhysicsCategory.swift in Sources */,
 				4945C1E91F898664004246BC /* MenuViewController.swift in Sources */,
+				49092D9D1FC85F1400B6505E /* StoreViewController.swift in Sources */,
 				C1E38CD81F5F9B7B00DC1E34 /* Extensions.swift in Sources */,
 				4945C1C51F83F207004246BC /* NodeManager.swift in Sources */,
 				4930F4631FC74EDD00AD192F /* PageViewController.swift in Sources */,
