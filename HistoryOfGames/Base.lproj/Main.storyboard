@@ -111,8 +111,8 @@
                                     <constraint firstAttribute="height" constant="39" id="9Kf-Ad-eIE"/>
                                     <constraint firstAttribute="width" constant="90" id="gB3-YE-RZ3"/>
                                 </constraints>
-                                <state key="normal" image="menu">
-                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Menu">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="menuButton:" destination="K4a-5C-WnQ" eventType="touchUpInside" id="N4R-v7-OgJ"/>
@@ -357,7 +357,6 @@
         <image name="matrix" width="665" height="1000"/>
         <image name="matrixr" width="600" height="600"/>
         <image name="matrixre" width="304" height="448"/>
-        <image name="menu" width="145" height="57"/>
         <image name="menuImage" width="736" height="414"/>
         <image name="settingsButton" width="219" height="219"/>
         <image name="startButton" width="609" height="276"/>
