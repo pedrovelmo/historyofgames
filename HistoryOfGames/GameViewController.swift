@@ -143,8 +143,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 
                                 let pageVC = storyboard.instantiateViewController(withIdentifier: "pageView") as! PageViewController
-                                pageVC.gameVC = self
-                               
+
                                 print("Instanciada nova Page View Controller")
                                
                                 self.present(pageVC, animated: false,

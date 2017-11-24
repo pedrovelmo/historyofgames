@@ -9,8 +9,6 @@
 import UIKit
 
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource  {
-    
-    var gameVC: GameViewController!
 
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newViewController(id: "1"),

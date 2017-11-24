@@ -12,6 +12,17 @@ import GoogleMobileAds
 
 class MenuViewController: UIViewController, GADBannerViewDelegate {
     
+    @IBAction func settingsButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let pageVC = storyboard.instantiateViewController(withIdentifier: "pageView") as! PageViewController
+        
+        print("Instanciada nova Page View Controller")
+        
+        self.present(pageVC, animated: false,
+                     completion: nil)
+        
+    }
     var gameVC: GameViewController!
     var bannerView: GADBannerView!
     var enteredFirst = false
