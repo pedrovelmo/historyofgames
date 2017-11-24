@@ -27,24 +27,33 @@ class MarioTurtlePattern: EnemyPattern{
         obstacle.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
         obstacle.physicsBody?.collisionBitMask = PhysicsCategory.Floor
         obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.Player
-        obstacle.physicsBody?.affectedByGravity = false
+        obstacle.physicsBody?.affectedByGravity = true
         obstacle.physicsBody?.friction = 0.0
         obstacle.physicsBody?.restitution = 0.0
         obstacle.physicsBody?.allowsRotation = false
         obstacle.physicsBody?.angularDamping = 0.0
-        obstacle.physicsBody?.linearDamping = 0.0
-        obstacle.physicsBody?.mass += 1.3
+        obstacle.physicsBody?.linearDamping = 0.9
+        obstacle.physicsBody?.mass = 0.01
         
+//        let randomX = Int(arc4random_uniform(5)) + 5
+//        let randomY = -Int(arc4random_uniform(7)) - 5
+//        obstacle.physicsBody?.applyImpulse(CGVector(dx: -60, dy: 0))
         
-        let randomX = Int(arc4random_uniform(5)) + 5
-        let randomY = -Int(arc4random_uniform(7)) - 5
-        obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
+        var parableX: CGFloat = obstacle.position.x
+        var parableY: CGFloat = obstacle.position.y
+        
+        let parableMovement = SKAction.run {
+            
+            
+        }
+        
         self.animate()
     }
     
     override func move() {
         
-        obstacle.position.x -= 2.5 * (obstacle.gameScene?.movingSpeed)!
+//        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.5
+//        obstacle.position.y = -CGFloat(pow(Double((obstacle.gameScene?.movingSpeed)!), 4)) + obstacle.size.height / 2 + (obstacle.gameScene?.size.height)!
     }
     
     func animate(){
@@ -58,5 +67,4 @@ class MarioTurtlePattern: EnemyPattern{
             obstacle.setScale(0.10)
         }
     }
-
 }

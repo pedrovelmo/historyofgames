@@ -22,7 +22,7 @@ class ZeldaCrazyLinkPattern: EnemyPattern{
         
         obstacle.configPhysicsBody()
         
-        let waitBeforeThrowingSword = SKAction.wait(forDuration: 0.6)
+        let waitBeforeThrowingSword = SKAction.wait(forDuration: 0.3)
         
         let throwSword = SKAction.run {
             
@@ -44,6 +44,6 @@ class ZeldaCrazyLinkPattern: EnemyPattern{
     
     override func move() {
         
-        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 0.7
+        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
     }
 }
