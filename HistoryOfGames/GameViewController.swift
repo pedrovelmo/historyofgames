@@ -23,6 +23,8 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     var gameOverAlreadyHappened = false
     
     var rewardVideoAdPlayed = false
+    
+    var adFailedToLoad = false
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -185,10 +187,12 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     
     func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
         print("Reward based video ad is received.")
+        adFailedToLoad = false
     }
     
     func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         print("Opened reward based video ad.")
+        adFailedToLoad = false
     }
     
     func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
@@ -219,10 +223,13 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
                             didFailToLoadWithError error: Error) {
         print("Reward based video ad failed to load.")
+        adFailedToLoad = true
+    
+  
+        
     }
     
+ 
 
-
-    
 }
 
