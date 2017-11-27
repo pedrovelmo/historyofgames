@@ -18,7 +18,7 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
         self.dismiss(animated: true, completion: nil)
     }
     
-    var games = ["odessaRunframe1"]
+    var games = ["odessaRunframe1", "KingArth4"]
     var selectedCell: Int = 1
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +57,9 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
         switch(selectedCell){
         case 0:
             textView.text = "Odessa is an awesome game developed by Apple Developer Academy Rio! Click here to see more information"
+            
+        case 1:
+            textView.text = "King Arth game"
         default:
             textView.text = ""
             
