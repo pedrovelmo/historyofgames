@@ -16,8 +16,7 @@ class MarioTurtlePattern: EnemyPattern{
 
         let randomPositionY = CGFloat(arc4random_uniform(UInt32((obstacle.gameScene?.size.height)!)))
         
-        obstacle.position = CGPoint(x: (obstacle.gameScene?.size.width)! / 2,
-                                    y: 0
+        obstacle.position = CGPoint(x: (obstacle.gameScene?.size.width)! / 2 + obstacle.size.width / 6, y: 0
         )
         
         print("Position turtle: ", obstacle.position.y)
@@ -58,7 +57,7 @@ class MarioTurtlePattern: EnemyPattern{
         let moveArc = SKAction.follow(movePath.cgPath, asOffset: true,
                                       orientToPath: false, duration: 0.6)
         
-        let moveLeft = SKAction.move(to: CGPoint(x: -obstacle.gameScene!.size.width, y: obstacle.position.y), duration: 1.5)
+        let moveLeft = SKAction.move(to: CGPoint(x: -obstacle.gameScene!.size.width, y: obstacle.position.y), duration: 1.25)
         
         let moveActions = SKAction.sequence([moveArc, moveLeft])
         
