@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         CoinManager.sharedInstance.scene = self
       
-        epoch = Epoch(whatEpochIsThis: 2, scene: self)
+        epoch = Epoch(whatEpochIsThis: 0, scene: self)
         
         hudView = HudView(frame: self.frame, scene: self)
         print("Instanciou outra hud view")
