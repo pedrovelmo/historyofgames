@@ -59,7 +59,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CellBackground" translatesAutoresizingMaskIntoConstraints="NO" id="XTb-5e-PuL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XTb-5e-PuL">
                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-Vd-Hke">
@@ -80,6 +80,7 @@
                                             <constraint firstItem="tiB-Vd-Hke" firstAttribute="centerX" secondItem="w62-1s-vvB" secondAttribute="centerX" id="pGB-1I-7H6"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="backgroundImageView" destination="XTb-5e-PuL" id="cmL-LL-GoU"/>
                                             <outlet property="imageView" destination="tiB-Vd-Hke" id="7cd-aB-xYR"/>
                                         </connections>
                                     </collectionViewCell>
@@ -106,7 +107,6 @@
                                     <constraint firstAttribute="height" constant="66" id="Soa-dL-S0h"/>
                                     <constraint firstAttribute="width" constant="169" id="l7v-Vu-cuT"/>
                                 </constraints>
-                                <state key="normal" image="Soon"/>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MV8-J6-tr4">
                                 <rect key="frame" x="9" y="5" width="90" height="39"/>
@@ -143,6 +143,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buyButton" destination="FW0-MZ-BUX" id="PDh-VY-yQk"/>
                         <outlet property="collectionView" destination="Qi9-Qc-8iA" id="FbK-7c-bF6"/>
                         <outlet property="menuB" destination="MV8-J6-tr4" id="Qcc-os-8yU"/>
                         <outlet property="textView" destination="7M9-tC-PJ4" id="5h3-tJ-WxY"/>
@@ -369,7 +370,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial1" translatesAutoresizingMaskIntoConstraints="NO" id="JKp-fj-5tU">
-                                <rect key="frame" x="0.0" y="0.0" width="2208" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1104" height="320"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9y-RD-KNM">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
@@ -427,15 +428,13 @@
     </scenes>
     <resources>
         <image name="Background" width="1000" height="562"/>
-        <image name="CellBackground" width="252" height="252"/>
-        <image name="Soon" width="291" height="100"/>
         <image name="menu" width="145" height="57"/>
         <image name="menuImage" width="736" height="414"/>
         <image name="settingsButton" width="219" height="219"/>
         <image name="startButton" width="609" height="276"/>
         <image name="storeButton1" width="219" height="219"/>
-        <image name="tutorial1" width="2208" height="1242"/>
-        <image name="tutorial2" width="2208" height="1242"/>
-        <image name="tutorial3" width="2208" height="1242"/>
+        <image name="tutorial1" width="1104" height="621"/>
+        <image name="tutorial2" width="1104" height="621"/>
+        <image name="tutorial3" width="1104" height="621"/>
     </resources>
 </document>

@@ -73,7 +73,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         request.testDevices = [kGADSimulatorID,                       // All simulators
             "b0ef8c411b1165d1bdeb146215e061ed"];
         GADRewardBasedVideoAd.sharedInstance().load(request,
-                                                    withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+                                                    withAdUnitID: "ca-app-pub-3456908685378113/2356254230")
 
     }
     
