@@ -10,5 +10,6 @@ import UIKit
 
 class StoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
 }
