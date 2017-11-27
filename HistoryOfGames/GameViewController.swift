@@ -121,7 +121,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
             view.ignoresSiblingOrder = true
             
             view.showsFPS = false
-            view.showsNodeCount = true
+            view.showsNodeCount = false
             view.showsPhysics = false
         }
     }
