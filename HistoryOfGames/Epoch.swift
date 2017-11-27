@@ -19,10 +19,10 @@ class Epoch {
     var whatEpochIsThis: Int?
     var obstacles: [String]?
     var numberOfCoins: Int?
-    var scene: SKScene?
+    var scene: GameScene?
     
     //TO-DO: Set timer when call init
-    init(whatEpochIsThis: Int, scene: SKScene) {
+    init(whatEpochIsThis: Int, scene: GameScene) {
         
         self.whatEpochIsThis = whatEpochIsThis
         self.scene = scene
@@ -34,25 +34,26 @@ class Epoch {
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = []
+            //numberOfCoins = (scene.lastEpoch?.whatEpochIsThis)! + 1
             
         case 0:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["pongBall", "pongBar", "alien1-0"]
-            numberOfCoins = 3000
+            numberOfCoins = 400
             
         case 1:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["ghost0", "pacmanBlock0", "tetrisTopBlockA"]
-            numberOfCoins = 6000
+            numberOfCoins = 600
             
         case 2:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
 //            obstacles = ["turtle0","block1","crazyAssLink"]
             obstacles = ["turtle0", "block1"]
-            numberOfCoins = 12000
+            numberOfCoins = 800
             
         case 3:
             background = [Background(epochId: whatEpochIsThis)]

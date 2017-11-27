@@ -13,7 +13,7 @@ class Floor: SKSpriteNode {
     
     static var floorsArray: [Floor] = []
     static let maxFloors = 2
-    static let imagesForEpochs = ["pongFloor", "pacmanFloor", "marioFloor", "marioFloor"]
+    static let imagesForEpochs = ["pongFloor", "pacmanFloor", "marioFloor", "endlessFloor"]
     
     static var positionX:CGFloat {
         
