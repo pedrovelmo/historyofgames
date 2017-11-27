@@ -87,10 +87,22 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
         case 0:
             textView.text = "Dido is the main character of Game of Games. He was playing in an arcade machine and got stuck in it. Play the game and help him to survive!"
         case 1:
+           
             textView.text = "Odessa is an awesome iOS game that is coming soon to the AppStore! Soon, you will be able to play with the character!"
             
         case 2:
-            textView.text = "King Arth is an awesome iOS game, already available on the AppStore! Soon, you will be able to play with the character!"
+            // You must set the formatting of the link manually
+            let text = "King Arth is an awesome iOS game, already available on the AppStore! Soon, you will be able to play with the character!"
+            let linkAttributes = [
+                NSLinkAttributeName: NSURL(string: "https://itunes.apple.com/br/app/king-arth/id1257902286?mt=8")!,
+                NSForegroundColorAttributeName: UIColor.blue,
+                NSFontAttributeName:UIFont(name: "Gameplay", size: 14.0)!
+                ] as [String : Any]
+            let attributedString = NSMutableAttributedString(string: "King Arth is an awesome iOS game, already available on the AppStore! Soon, you will be able to play with the character. Click here to download the game", attributes:
+                [NSForegroundColorAttributeName: UIColor.white,
+                 NSFontAttributeName:UIFont(name: "Gameplay", size: 14.0)!])
+            attributedString.setAttributes(linkAttributes, range: NSMakeRange(120,31))
+            textView.attributedText =  attributedString
         default:
             textView.text = ""
             

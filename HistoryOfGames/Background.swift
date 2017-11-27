@@ -15,7 +15,7 @@ class Background: SKSpriteNode {
     static let maxBackgrounds = 2
     static let transitionBackground = Background(epochId: -1)
     
-    static let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground", "marioBackground"]
+    static let imagesForEpochs = ["pongBackground", "pacmanBackground", "marioBackground", "endlessBackground"]
     
     static var positionX:CGFloat {
         get {
