@@ -13,11 +13,12 @@ class MarioTurtlePattern: EnemyPattern{
     override init(obstacle: Obstacle) {
         
         super.init(obstacle: obstacle)
-        
+
         let randomPositionY = CGFloat(arc4random_uniform(UInt32((obstacle.gameScene?.size.height)!)))
         
-        obstacle.position = CGPoint(x: (obstacle.gameScene?.size.width)! + 20,
-                                    y: randomPositionY + (obstacle.gameScene?.floorPosition)!)
+        obstacle.position = CGPoint(x: (obstacle.gameScene?.size.width)! / 2,
+                                    y: 0
+        )
         
         print("Position turtle: ", obstacle.position.y)
      
@@ -32,19 +33,44 @@ class MarioTurtlePattern: EnemyPattern{
         obstacle.physicsBody?.restitution = 0.0
         obstacle.physicsBody?.allowsRotation = false
         obstacle.physicsBody?.angularDamping = 0.0
-        obstacle.physicsBody?.linearDamping = 0.0
-        obstacle.physicsBody?.mass += 1.3
+        obstacle.physicsBody?.linearDamping = 0.9
+        obstacle.physicsBody?.mass = 0.01
         
+//        let randomX = Int(arc4random_uniform(5)) + 5
+//        let randomY = -Int(arc4random_uniform(7)) - 5
+//        obstacle.physicsBody?.applyImpulse(CGVector(dx: -60, dy: 0))
         
-        let randomX = Int(arc4random_uniform(5)) + 5
-        let randomY = -Int(arc4random_uniform(7)) - 5
-        obstacle.physicsBody?.applyImpulse(CGVector(dx: randomX, dy: randomY))
+//        var parableX: CGFloat = obstacle.position.x
+//        var parableY: CGFloat = obstacle.position.y
+//
+//        let parableMovement = SKAction.run {
+//
+//        }
+        
+        let movePath = UIBezierPath(
+                        arcCenter: CGPoint(x:obstacle.gameScene!.size.width / 2,
+                        y:obstacle.gameScene!.floorPosition!),
+                        radius:  obstacle.gameScene!.size.height / 2,
+                        startAngle: CGFloat(Double.pi / 2),
+                        endAngle: CGFloat(Double.pi), clockwise: true
+        )
+        
+        let moveArc = SKAction.follow(movePath.cgPath, asOffset: true,
+                                      orientToPath: false, duration: 0.6)
+        
+        let moveLeft = SKAction.move(to: CGPoint(x: -obstacle.gameScene!.size.width, y: obstacle.position.y), duration: 1.5)
+        
+        let moveActions = SKAction.sequence([moveArc, moveLeft])
+        
+        obstacle.run(moveActions)
+        
         self.animate()
     }
     
     override func move() {
         
-        obstacle.position.x -= 2.5 * (obstacle.gameScene?.movingSpeed)!
+//        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.5
+//        obstacle.position.y = -CGFloat(pow(Double((obstacle.gameScene?.movingSpeed)!), 4)) + obstacle.size.height / 2 + (obstacle.gameScene?.size.height)!
     }
     
     func animate(){
@@ -58,5 +84,4 @@ class MarioTurtlePattern: EnemyPattern{
             obstacle.setScale(0.10)
         }
     }
-
 }

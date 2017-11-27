@@ -10,7 +10,7 @@ import SpriteKit
 
 class ZeldaCrazyLinkSwordPattern: EnemyPattern{
     
-    let randomMovementPattern = arc4random_uniform(1)
+    let randomMovementPattern = arc4random_uniform(3)
     
     override init(obstacle: Obstacle) {
         super.init(obstacle: obstacle)
@@ -25,12 +25,20 @@ class ZeldaCrazyLinkSwordPattern: EnemyPattern{
         switch randomMovementPattern {
             
         case 0:
-            obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.1
+            // Straight Throw
+            obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.7
+            break
             
         case 1:
+            // High Angled Throw
+            obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.7
+            obstacle.position.y += (obstacle.gameScene?.movingSpeed)! * 0.5
             break
             
         case 2:
+            // Low Angled Throw
+            obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.7
+            obstacle.position.y += (obstacle.gameScene?.movingSpeed)! * 0.3
             break
             
         default:
