@@ -13,9 +13,9 @@ import SpriteKit
 
 class HudView: UIView  {
   
-    var coinLabel : UILabel?
-    var scoreLabel: UILabel?
-    var scene: GameScene?
+    private var coinLabel : UILabel?
+    private var scoreLabel: UILabel?
+    private var scene: GameScene?
     var root: UIViewController?
     var gameOverView: UIImageView?
     var menuButton: UIButton?
@@ -195,7 +195,17 @@ class HudView: UIView  {
     }
     
     func setCoinLabel(value1: Int, value2: Int) {
-        
+        if (value1 == 0) {
+            self.coinLabel?.text = String(format: "Coin: %04u / ∞", value2)
+        }
+        else {
+         self.coinLabel?.text = String(format: "Coin: %04u / \(value1)", value2)
+        }
+    }
+    
+    func setScoreLabel(value: Int) {
+        self.scoreLabel?.text = String(format: "Score: %08u", value)
+
     }
 
 }

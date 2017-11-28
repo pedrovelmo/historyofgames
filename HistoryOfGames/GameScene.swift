@@ -381,13 +381,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func coinLabelUpdate() {
         
         if (!isTransitioning) {
-            if (epoch.getWhatEpochIsThis() < 3) {
-                hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.getNumberOfCoins())", self.coins)
-            }
-            
-            else {
-                    hudView?.coinLabel?.text = String(format: "Coin: %04u / ∞", self.coins)
-            }
+            hudView?.setCoinLabel(value1: epoch.getNumberOfCoins(), value2: self.coins)
         }
     }
     
@@ -395,7 +389,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if(!isTransitioning){
             score += 1
-            hudView?.scoreLabel?.text = String(format: "Score: %08u", score)
+            hudView?.setScoreLabel(value: score)
         }
     }
     
@@ -410,7 +404,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             epoch = Epoch(whatEpochIsThis: -1, scene: self)
             self.movingSpeed -= 1
             
-            // Can this be delayed?
             Floor.allImages = epoch.getWhatEpochIsThis()
             
             isTransitioning = true
