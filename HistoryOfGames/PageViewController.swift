@@ -20,7 +20,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource  
         return UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewController(withIdentifier: "pageView\(id)")
     }
-
+    
+    private var nextPageSwipe: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,12 +29,33 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource  
         
         dataSource = self
         
+         self.scrollView?.panGestureRecognizer.addTarget(self, action:#selector(self.handlePan(sender:)))
+        
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
                                animated: true,
                                completion: nil)
         }
+    }
+    
+    func handlePan(sender:UIPanGestureRecognizer) {
+        print("nextPageSwipe: ", nextPageSwipe)
+        switch sender.state {
+        case .ended:
+            self.nextPageSwipe = self.nextPageSwipe + 1
+            print("User Swiped ")
+            print(self.nextPageSwipe)
+        default:
+            break
+        }
+        
+        if (nextPageSwipe == 3) {
+            UserProfile.sharedInstance.userDefaults.set(false, forKey: "firstLogin")
+            UserProfile.sharedInstance.firstLogin = false
+            self.dismiss(animated: false, completion: nil)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,13 +86,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource  
             return nil
         }
         
-        let nextIndex = viewControllerIndex + 1
-        print("nextIndex: ", nextIndex)
-        if (nextIndex == 3) {
-            UserProfile.sharedInstance.userDefaults.set(false, forKey: "firstLogin")
-            UserProfile.sharedInstance.firstLogin = false
-            self.dismiss(animated: false, completion: nil)
-        }
+        let  nextIndex = viewControllerIndex + 1
+        
         let orderedViewControllersCount = orderedViewControllers.count
         
         guard orderedViewControllersCount != nextIndex else {
@@ -95,4 +112,17 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource  
         return firstViewControllerIndex
     }
 
+}
+
+extension UIPageViewController {
+    
+    public var scrollView: UIScrollView? {
+        for view in self.view.subviews {
+            if let scrollView = view as? UIScrollView {
+                return scrollView
+            }
+        }
+        return nil
+    }
+    
 }

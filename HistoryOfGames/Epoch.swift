@@ -35,7 +35,7 @@ class Epoch {
         case 0:
 
             obstacles = ["pongBall", "pongBar", "alien1-0"]
-            numberOfCoins = 1000
+            numberOfCoins = 3000
             
         case 1:
 
