@@ -19,7 +19,7 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     @IBOutlet weak var buyButton: UIButton!
     
-    var games = ["didoStore", "odessaRunframe1", "KingArth4"]
+    var games = ["didoStore", "odessaRunframe1", "KingArth4", "LumosStore"]
     var selectedCell: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +92,6 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
             
         case 2:
             // You must set the formatting of the link manually
-            let text = "King Arth is an awesome iOS game, already available on the AppStore! Soon, you will be able to play with the character!"
             let linkAttributes = [
                 NSLinkAttributeName: NSURL(string: "https://itunes.apple.com/br/app/king-arth/id1257902286?mt=8")!,
                 NSForegroundColorAttributeName: UIColor.blue,
@@ -102,6 +101,20 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
                 [NSForegroundColorAttributeName: UIColor.white,
                  NSFontAttributeName:UIFont(name: "Gameplay", size: 14.0)!])
             attributedString.setAttributes(linkAttributes, range: NSMakeRange(120,31))
+            textView.attributedText =  attributedString
+            
+        case 3:
+            // You must set the formatting of the link manually
+            
+            let linkAttributes = [
+                NSLinkAttributeName: NSURL(string: "https://itunes.apple.com/br/app/lumos-the-game/id1291010716?mt=8")!,
+                NSForegroundColorAttributeName: UIColor.blue,
+                NSFontAttributeName:UIFont(name: "Gameplay", size: 14.0)!
+                ] as [String : Any]
+            let attributedString = NSMutableAttributedString(string: "Lumos presents the vision of how the world can change by certain circumstances. So, what can make this changes? Click here to download the game and find out", attributes:
+                [NSForegroundColorAttributeName: UIColor.white,
+                 NSFontAttributeName:UIFont(name: "Gameplay", size: 14.0)!])
+            attributedString.setAttributes(linkAttributes, range: NSMakeRange(112,44))
             textView.attributedText =  attributedString
         default:
             textView.text = ""

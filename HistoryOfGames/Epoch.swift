@@ -40,26 +40,26 @@ class Epoch {
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["pongBall", "pongBar", "alien1-0"]
-            numberOfCoins = 400
+            numberOfCoins = 3000
             
         case 1:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["ghost0", "pacmanBlock0", "tetrisTopBlockA"]
-            numberOfCoins = 600
+            numberOfCoins = 6000
             
         case 2:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
 //            obstacles = ["turtle0","block1","crazyAssLink"]
             obstacles = ["turtle0", "block1"]
-            numberOfCoins = 800
+            numberOfCoins = 12000
             
         case 3:
             background = [Background(epochId: whatEpochIsThis)]
             floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
             obstacles = ["pongBall", "pongBar", "alien1-0", "ghost0", "pacmanBlock0", "tetrisTopBlockA","block1", "turtle0"]
-            numberOfCoins = 99999999999999
+            numberOfCoins = 0
             
         default: break
         }
