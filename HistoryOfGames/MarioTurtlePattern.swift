@@ -14,9 +14,9 @@ class MarioTurtlePattern: EnemyPattern{
         
         super.init(obstacle: obstacle)
 
-        let randomPositionY = CGFloat(arc4random_uniform(UInt32((obstacle.gameScene?.size.height)!)))
+        let randomPositionY = CGFloat(arc4random_uniform(UInt32((obstacle.getGameScene().size.height))))
         
-        obstacle.position = CGPoint(x: (obstacle.gameScene?.size.width)! / 2 + obstacle.size.width / 6, y: 0
+        obstacle.position = CGPoint(x: (obstacle.getGameScene().size.width) / 2 + obstacle.size.width / 6, y: 0
         )
         
         print("Position turtle: ", obstacle.position.y)
@@ -47,9 +47,9 @@ class MarioTurtlePattern: EnemyPattern{
 //        }
         
         let movePath = UIBezierPath(
-                        arcCenter: CGPoint(x:obstacle.gameScene!.size.width / 2,
-                        y:obstacle.gameScene!.floorPosition!),
-                        radius:  obstacle.gameScene!.size.height / 2,
+                        arcCenter: CGPoint(x:obstacle.getGameScene().size.width / 2,
+                        y:obstacle.getGameScene().floorPosition!),
+                        radius:  obstacle.getGameScene().size.height / 2,
                         startAngle: CGFloat(Double.pi / 2),
                         endAngle: CGFloat(Double.pi), clockwise: true
         )
@@ -57,7 +57,7 @@ class MarioTurtlePattern: EnemyPattern{
         let moveArc = SKAction.follow(movePath.cgPath, asOffset: true,
                                       orientToPath: false, duration: 0.6)
         
-        let moveLeft = SKAction.move(to: CGPoint(x: -obstacle.gameScene!.size.width, y: obstacle.position.y), duration: 1.25)
+        let moveLeft = SKAction.move(to: CGPoint(x: -obstacle.getGameScene().size.width, y: obstacle.position.y), duration: 1.25)
         
         let moveActions = SKAction.sequence([moveArc, moveLeft])
         
@@ -78,8 +78,8 @@ class MarioTurtlePattern: EnemyPattern{
             var textureName = ""
             textureName = "turtle\(i)"
             
-            obstacle.texturesArray.append(SKTexture(imageNamed: textureName))
-            obstacle.run(SKAction.repeatForever(SKAction.animate(with: obstacle.texturesArray, timePerFrame: 0.06, resize: true, restore: false)))
+            obstacle.appendItemInTexturesArray(value: SKTexture(imageNamed: textureName))
+            obstacle.run(SKAction.repeatForever(SKAction.animate(with: obstacle.getTexturesArray(), timePerFrame: 0.06, resize: true, restore: false)))
             obstacle.setScale(0.10)
         }
     }

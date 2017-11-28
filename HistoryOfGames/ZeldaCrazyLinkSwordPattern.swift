@@ -26,19 +26,19 @@ class ZeldaCrazyLinkSwordPattern: EnemyPattern{
             
         case 0:
             // Straight Throw
-            obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.7
+            obstacle.position.x -= (obstacle.getGameScene().movingSpeed) * 1.7
             break
             
         case 1:
             // High Angled Throw
-            obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.7
-            obstacle.position.y += (obstacle.gameScene?.movingSpeed)! * 0.5
+            obstacle.position.x -= (obstacle.getGameScene().movingSpeed) * 1.7
+            obstacle.position.y += (obstacle.getGameScene().movingSpeed) * 0.5
             break
             
         case 2:
             // Low Angled Throw
-            obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.7
-            obstacle.position.y += (obstacle.gameScene?.movingSpeed)! * 0.3
+            obstacle.position.x -= (obstacle.getGameScene().movingSpeed) * 1.7
+            obstacle.position.y += (obstacle.getGameScene().movingSpeed) * 0.3
             break
             
         default:

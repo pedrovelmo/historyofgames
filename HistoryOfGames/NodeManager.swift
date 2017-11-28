@@ -1,5 +1,5 @@
 //
-//  BackgroundManager.swift
+//  NodeManager.swift
 //  HistoryOfGames
 //
 //  Created by Pedro Velmovitsky on 03/10/17.
@@ -17,13 +17,13 @@ class NodeManager{
         return nodeManager
     }
     
-    var backgroundNodes: [SKSpriteNode] = []
-    var backgroundNodesPatternVector: [[SKSpriteNode]] = [[]]
-    var floorBackgroundNodes: [String] = []
-    var skyBackgroundNodes: [String] = []
+    private var backgroundNodes: [SKSpriteNode] = []
+    private var backgroundNodesPatternVector: [[SKSpriteNode]] = [[]]
+    private var floorBackgroundNodes: [String] = []
+    private var skyBackgroundNodes: [String] = []
     
-    var scene: SKScene?
-    var floor: Floor?
+    private var scene: SKScene?
+    private var floor: Floor?
     
     
     
@@ -95,5 +95,9 @@ class NodeManager{
         backgroundNodesPatternVector = [[]]
         floorBackgroundNodes = []
         skyBackgroundNodes = []
+    }
+    
+    func getBackgroundNodesPatternVector() -> [[SKSpriteNode]] {
+        return self.backgroundNodesPatternVector
     }
 }

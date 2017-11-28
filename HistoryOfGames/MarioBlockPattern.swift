@@ -20,17 +20,17 @@ class MarioBlockPattern: EnemyPattern{
         
         obstacle.size = CGSize(width: 40, height: 40)
         
-        obstacle.position.y = CGFloat(arc4random_uniform(UInt32((obstacle.gameScene?.size.height)! - obstacle.size.height / 2))) + (obstacle.gameScene?.floorPosition)! + obstacle.size.height / 2
+        obstacle.position.y = CGFloat(arc4random_uniform(UInt32((obstacle.getGameScene().size.height) - obstacle.size.height / 2))) + (obstacle.getGameScene().floorPosition)! + obstacle.size.height / 2
         
-        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
+        obstacle.position.x = (obstacle.getGameScene().size.width) + 20
         
         let randomMoveUp = Double(arc4random_uniform(UInt32(0.5))) + 0.5
         let randomMoveDown = Double(arc4random_uniform(UInt32(0.5))) + 0.5
         let randomMoveSideways = Double(arc4random_uniform(UInt32(0.5))) + 0.7
         
-        let moveUpAction = SKAction.moveTo(y: (obstacle.gameScene?.size.height)! - obstacle.size.height / 2, duration: randomMoveUp)
+        let moveUpAction = SKAction.moveTo(y: (obstacle.getGameScene().size.height) - obstacle.size.height / 2, duration: randomMoveUp)
         // move down 100
-        let moveDownAction = SKAction.moveTo(y: (obstacle.gameScene?.floorPosition!)! + obstacle.size.height / 2, duration: randomMoveDown)
+        let moveDownAction = SKAction.moveTo(y: (obstacle.getGameScene().floorPosition!) + obstacle.size.height / 2, duration: randomMoveDown)
         
             
 
@@ -61,6 +61,6 @@ class MarioBlockPattern: EnemyPattern{
     
     override func move() {
         
-        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
+        obstacle.position.x -= (obstacle.getGameScene().movingSpeed)
     }
 }

@@ -18,9 +18,9 @@ class PongBallPattern: EnemyPattern{
         
         super.init(obstacle: obstacle)
         
-        let randomPosition = arc4random_uniform(UInt32((obstacle.gameScene?.size.height)!))
+        let randomPosition = arc4random_uniform(UInt32((obstacle.getGameScene().size.height)))
         
-        obstacle.position = CGPoint(x: obstacle.gameScene!.size.width + 20, y: CGFloat(CGFloat(randomPosition) +  (obstacle.gameScene?.floorPosition)!))
+        obstacle.position = CGPoint(x: obstacle.getGameScene().size.width + 20, y: CGFloat(CGFloat(randomPosition) +  (obstacle.getGameScene().floorPosition)!))
         
         obstacle.configPhysicsBody()
         
@@ -31,7 +31,7 @@ class PongBallPattern: EnemyPattern{
         
         if(!didStartMoving){
             
-            let randomX = -Double(arc4random_uniform(UInt32((obstacle.gameScene?.movingSpeed)! * 1.7))) - Double((obstacle.gameScene?.movingSpeed)!) * 1.3
+            let randomX = -Double(arc4random_uniform(UInt32((obstacle.getGameScene().movingSpeed) * 1.7))) - Double((obstacle.getGameScene().movingSpeed)) * 1.3
             
             var randomY: Double!
             let yType = arc4random_uniform(2)

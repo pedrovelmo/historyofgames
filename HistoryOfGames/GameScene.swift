@@ -46,9 +46,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        // self.parentViewController?.oldScene = self
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
-        CoinManager.sharedInstance.scene = self
+        CoinManager.sharedInstance.setScene(scene: self) 
       
-        epoch = Epoch(whatEpochIsThis: 0, scene: self)
+        epoch = Epoch(whatEpochIsThis: 2, scene: self)
         
         hudView = HudView(frame: self.frame, scene: self)
         print("Instanciou outra hud view")
@@ -191,7 +191,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Generates new Floors
         if(Floor.floorsArray.count <= Floor.maxFloors){
             
-            let newFloor = Floor(epochId: self.epoch.whatEpochIsThis!, screenSize: self.scene!.size)
+            let newFloor = Floor(epochId: self.epoch.getWhatEpochIsThis(), screenSize: self.scene!.size)
             
             newFloor.size = CGSize(width: (self.scene?.size.width)! , height: (self.scene?.size.height)! / 8)
             newFloor.position = CGPoint(x: (CGFloat(Floor.floorsArray.count) * (self.scene?.size.width)!) , y: newFloor.size.height / 2)
@@ -211,7 +211,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Generates new Backgrounds
             if(Background.backgroundsArray.count <= Background.maxBackgrounds){
                 
-                let newBackground = Background(epochId: self.epoch.whatEpochIsThis!)
+                let newBackground = Background(epochId: self.epoch.getWhatEpochIsThis())
                 
                 newBackground.size.width = (self.scene?.size.width)!
                 newBackground.size.height = (self.scene?.size.height)!
@@ -253,13 +253,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let spawnEnemy = SKAction.run({
                     
                     // TO-DO: Generate random obstacle
-                    let numberOfObstaclesInEpoch = UInt32(CGFloat((self.epoch.obstacles?.count)!))
+                    let numberOfObstaclesInEpoch = UInt32(CGFloat((self.epoch.getObstacles().count)))
                     let obstacleNumber = Int(arc4random_uniform(numberOfObstaclesInEpoch))
                     print("Obstacle", obstacleNumber)
+                    var obstacleInEpoch = self.epoch.getObstacles()
                     
-                    let newObstacle = Obstacle(name: (self.epoch.obstacles?[obstacleNumber])!, scene: self)
+                    let newObstacle = Obstacle(name: (obstacleInEpoch[obstacleNumber]), scene: self)
                     
-                    if(newObstacle.obstacleName == "tetrisTopBlockA"){
+                    if(newObstacle.getObstacleName() == "tetrisTopBlockA"){
                         
                         let newObstacle2 = Obstacle(name: "tetrisBottomBlockA", scene: self)
                         
@@ -284,8 +285,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         for o in Obstacle.obstaclesArray{
             
-            o.pattern?.move()
-            o.pattern?.checkPosition()
+            o.getPattern().move()
+            o.getPattern().checkPosition()
             
             }
         
@@ -324,7 +325,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 obstacle.removeFromParent()
             }
 
-            for pattern in CoinManager.sharedInstance.patternVector {
+            for pattern in CoinManager.sharedInstance.getPatternVector() {
                 for coin in pattern {
                     coin.removeFromParent()
                 }
@@ -380,8 +381,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func coinLabelUpdate() {
         
         if (!isTransitioning) {
-            if (epoch.whatEpochIsThis! < 3) {
-            hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.numberOfCoins!)", self.coins)
+            if (epoch.getWhatEpochIsThis() < 3) {
+                hudView?.coinLabel?.text = String(format: "Coin: %04u / \(epoch.getNumberOfCoins())", self.coins)
             }
             
             else {
@@ -400,9 +401,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func epochManager(){
         
-        if((epoch.whatEpochIsThis! == 0 && coins >= epoch.numberOfCoins!) ||
-            (epoch.whatEpochIsThis! == 1 && coins >= epoch.numberOfCoins!) ||
-            (epoch.whatEpochIsThis! == 2 && coins >= epoch.numberOfCoins!)){
+        if((epoch.getWhatEpochIsThis() == 0 && coins >= epoch.getNumberOfCoins()) ||
+            (epoch.getWhatEpochIsThis() == 1 && coins >= epoch.getNumberOfCoins()) ||
+            (epoch.getWhatEpochIsThis() == 2 && coins >= epoch.getNumberOfCoins())){
             
             lastEpoch = epoch
             
@@ -410,14 +411,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.movingSpeed -= 1
             
             // Can this be delayed?
-            Floor.allImages = epoch.whatEpochIsThis!
+            Floor.allImages = epoch.getWhatEpochIsThis()
             
             isTransitioning = true
             
             let waitTimeBeforeTransition = SKAction.wait(forDuration: 3)
             
             let enterTransition = SKAction.run {
-                for pattern in NodeManager.sharedInstance.backgroundNodesPatternVector {
+                for pattern in NodeManager.sharedInstance.getBackgroundNodesPatternVector() {
                     for node in pattern{
                        
                             node.removeFromParent()
@@ -434,13 +435,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let exitTransition = SKAction.run {
                 
-                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.whatEpochIsThis!)! + 1, scene: self)
+                self.epoch = Epoch(whatEpochIsThis: (self.lastEpoch?.getWhatEpochIsThis())! + 1, scene: self)
                 
-                Floor.allImages = self.epoch.whatEpochIsThis!
+                Floor.allImages = self.epoch.getWhatEpochIsThis()
                 
                 for b in Background.backgroundsArray{
                     
-                    b.setBackgroundImage(epochId: self.epoch.whatEpochIsThis!)
+                    b.setBackgroundImage(epochId: self.epoch.getWhatEpochIsThis())
                 }
                 
                 // Fade out transition background
@@ -470,13 +471,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (Floor.floorsArray.count != 0) {
             backgroundObjectTimerIsRunning = false
-            NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.whatEpochIsThis!, scene: self, floor: Floor.floorsArray[0])
+            NodeManager.sharedInstance.createBackgroundNodes(epochId: epoch.getWhatEpochIsThis(), scene: self, floor: Floor.floorsArray[0])
         }
     }
     
     func backgroundNodeManager() {
         if (!isTransitioning) {
-            for pattern in NodeManager.sharedInstance.backgroundNodesPatternVector {
+            for pattern in NodeManager.sharedInstance.getBackgroundNodesPatternVector() {
                 for node in pattern{
                     node.position.x -= movingSpeed
                     if node.position.x + node.size.width / 2 <= 0 {
@@ -496,7 +497,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             objectTimerIsRunning = true
         }
         
-        if (!backgroundObjectTimerIsRunning && epoch.whatEpochIsThis == 2) {
+        if (!backgroundObjectTimerIsRunning && epoch.getWhatEpochIsThis() == 2) {
             
             let backgroundObjectSeconds = Double(arc4random_uniform(1)) + 0.5
             backgroundTimer = Timer.scheduledTimer(timeInterval: backgroundObjectSeconds, target: self, selector: (#selector(startSpawningBackgroundNodes)), userInfo: nil, repeats: false)

@@ -18,12 +18,12 @@ class SpaceInvadersAlienPattern: EnemyPattern{
         self.animate(type: randomImage)
         
         let randomY = CGFloat(arc4random_uniform(
-            UInt32((obstacle.gameScene?.size.height)! * 0.3))) + (obstacle.gameScene?.size.height)! * 0.7
+            UInt32((obstacle.getGameScene().size.height) * 0.3))) + (obstacle.getGameScene().size.height) * 0.7
         
         
         obstacle.position.y = randomY
         
-        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
+        obstacle.position.x = (obstacle.getGameScene().size.width) + 20
         
 //        let randomMoveDown = Double(arc4random_uniform(UInt32(0.3))) + 0.7
 //        let randomMoveSideways = Double(arc4random_uniform(UInt32(0.3))) + 0.8
@@ -31,7 +31,7 @@ class SpaceInvadersAlienPattern: EnemyPattern{
 //        let randomQuantitySide = Int(arc4random_uniform(UInt32(40))) + 20
 
         // move down 100
-        let moveDownAction = SKAction.moveBy(x: 0, y: -((obstacle.gameScene?.size.height)! / 5), duration: 0.5)
+        let moveDownAction = SKAction.moveBy(x: 0, y: -((obstacle.getGameScene().size.height) / 5), duration: 0.5)
 
         let moveSidewaysAction = SKAction.moveBy(x: CGFloat(-30), y: 0, duration: 0.5)
        
@@ -47,7 +47,7 @@ class SpaceInvadersAlienPattern: EnemyPattern{
     
     override func move() {
         
-        obstacle.position.x -= ((obstacle.gameScene?.movingSpeed)! * 0.9)
+        obstacle.position.x -= ((obstacle.getGameScene().movingSpeed) * 0.9)
     }
     
     func animate(type: UInt32){
@@ -64,8 +64,8 @@ class SpaceInvadersAlienPattern: EnemyPattern{
         }
         
             
-            obstacle.texturesArray.append(SKTexture(imageNamed: textureName))
-            obstacle.run(SKAction.repeatForever(SKAction.animate(with: obstacle.texturesArray, timePerFrame: 0.15, resize: true, restore: false)))
+            obstacle.appendItemInTexturesArray(value: SKTexture(imageNamed: textureName))
+            obstacle.run(SKAction.repeatForever(SKAction.animate(with: obstacle.getTexturesArray(), timePerFrame: 0.15, resize: true, restore: false)))
             obstacle.setScale(0.4)
         }
     }

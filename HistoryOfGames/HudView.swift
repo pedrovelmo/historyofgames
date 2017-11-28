@@ -30,6 +30,7 @@ class HudView: UIView  {
         setupHud()
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -191,6 +192,10 @@ class HudView: UIView  {
             return currentController
         }
         return nil
+    }
+    
+    func setCoinLabel(value1: Int, value2: Int) {
+        
     }
 
 }

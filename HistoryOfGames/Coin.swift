@@ -11,7 +11,7 @@ import SpriteKit
 
 class Coin: SKSpriteNode{
     
-    var texturesArray =  [SKTexture]()
+    private var texturesArray =  [SKTexture]()
     
     init() {
         

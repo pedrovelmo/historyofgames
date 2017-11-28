@@ -24,7 +24,7 @@ class PacmanGhostPattern: EnemyPattern{
         
         obstacle.size = CGSize(width: 30, height: 30)
         
-        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
+        obstacle.position.x = (obstacle.getGameScene().size.width) + 20
         obstacle.configPhysicsBody()
         
         randomWidth = CGFloat((UInt32(arc4random_uniform(8))) + 3)
@@ -41,14 +41,14 @@ class PacmanGhostPattern: EnemyPattern{
     }
     
     override func move() {
-        let height = randomHeight! * ((obstacle.gameScene?.size.height)!  - (obstacle.gameScene?.floorPosition)!)
+        let height = randomHeight! * ((obstacle.getGameScene().size.height)  - (obstacle.getGameScene().floorPosition)!)
         
-        let width = (obstacle.gameScene?.size.width)! / randomWidth!
+        let width = (obstacle.getGameScene().size.width) / randomWidth!
 
-        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.2
+        obstacle.position.x -= (obstacle.getGameScene().movingSpeed) * 1.2
         
         obstacle.position.y = CGFloat(sinSignal!) * sin(obstacle.position.x / width * 0.75)
-        obstacle.position.y = obstacle.position.y * height + (obstacle.gameScene?.size.height)! / 2
+        obstacle.position.y = obstacle.position.y * height + (obstacle.getGameScene().size.height) / 2
     }
 }
 

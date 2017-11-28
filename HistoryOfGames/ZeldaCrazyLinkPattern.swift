@@ -17,8 +17,8 @@ class ZeldaCrazyLinkPattern: EnemyPattern{
         
         self.obstacle.setScale(0.15)
         
-        obstacle.position = CGPoint(x: obstacle.gameScene!.size.width + 20,
-                                    y: (obstacle.gameScene?.floorPosition)! + obstacle.size.height / 2)
+        obstacle.position = CGPoint(x: obstacle.getGameScene().size.width + 20,
+                                    y: (obstacle.getGameScene().floorPosition)! + obstacle.size.height / 2)
         
         obstacle.configPhysicsBody()
         
@@ -27,14 +27,14 @@ class ZeldaCrazyLinkPattern: EnemyPattern{
         let throwSword = SKAction.run {
             
             self.sword = Obstacle(name: "crazyAssLinkSword",
-                                  scene: self.obstacle.gameScene!)
+                                  scene: self.obstacle.getGameScene())
             
             self.sword?.position = CGPoint(
                 x: self.obstacle.position.x - (self.sword?.size.width)! / 2,
                 y: self.obstacle.position.y)
             
             Obstacle.obstaclesArray.append(self.sword!)
-            obstacle.gameScene?.addChild(self.sword!)
+            obstacle.getGameScene().addChild(self.sword!)
         }
         
         let waitAndThrow = SKAction.sequence([waitBeforeThrowingSword, throwSword])
@@ -44,6 +44,6 @@ class ZeldaCrazyLinkPattern: EnemyPattern{
     
     override func move() {
         
-        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
+        obstacle.position.x -= (obstacle.getGameScene().movingSpeed)
     }
 }

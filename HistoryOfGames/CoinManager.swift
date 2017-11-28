@@ -23,9 +23,9 @@ class CoinManager{
         return coinManager
     }
     
-    var scene: GameScene?
-    var coinVector: [Coin] = []
-    var patternVector: [[Coin]] = [[]]
+    private var scene: GameScene?
+    private var coinVector: [Coin] = []
+    private var patternVector: [[Coin]] = [[]]
     
     func instantiateCoinPattern(pattern: Int){
         
@@ -87,5 +87,13 @@ class CoinManager{
                 }
             }
         }
+    }
+    
+    func setScene(scene: GameScene) {
+        self.scene = scene
+    }
+    
+    func getPatternVector() -> [[Coin]] {
+        return self.patternVector
     }
 }

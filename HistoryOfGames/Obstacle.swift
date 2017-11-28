@@ -12,13 +12,12 @@ import SpriteKit
 
 class Obstacle: SKSpriteNode {
     
-    // MUDAR NA MODELAGEM O NAME
-    static var obstaclesArray: [Obstacle] = []
+   static var obstaclesArray: [Obstacle] = []
     
-    var obstacleName: String
-    var pattern: EnemyPattern?
-    var texturesArray =  [SKTexture]()
-    var gameScene: GameScene?
+    private  var obstacleName: String
+    private var pattern: EnemyPattern?
+    private var texturesArray =  [SKTexture]()
+    private var gameScene: GameScene?
     
     init(name: String, scene: GameScene) {
         
@@ -51,9 +50,6 @@ class Obstacle: SKSpriteNode {
             
         case "block1":
             self.pattern = MarioBlockPattern(obstacle: self)
-            
-//        case "superblock":
-//            self.pattern = MarioSuperBlockPattern(obstacle: self)
             
         case "pacmanBlock0":
             self.pattern = PacmanBlockPattern(obstacle: self)
@@ -92,6 +88,30 @@ class Obstacle: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.angularDamping = 0.0
         self.physicsBody?.linearDamping = 0.0
+    }
+    
+    func getObstacleName() -> String {
+        return self.obstacleName
+    }
+    
+    func getPattern() -> EnemyPattern {
+        return self.pattern!
+    }
+    
+    func getTexturesArray() -> [SKTexture] {
+        return self.texturesArray
+    }
+    
+    func setTexturesArray(value: [SKTexture]) {
+        self.texturesArray = value
+    }
+    
+    func appendItemInTexturesArray(value: SKTexture) {
+        self.texturesArray.append(value)
+    }
+    
+    func getGameScene() -> GameScene {
+        return self.gameScene!
     }
     
  

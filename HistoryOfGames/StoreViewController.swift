@@ -97,10 +97,10 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
                 NSForegroundColorAttributeName: UIColor.blue,
                 NSFontAttributeName:UIFont(name: "Gameplay", size: 14.0)!
                 ] as [String : Any]
-            let attributedString = NSMutableAttributedString(string: "King Arth is an awesome iOS game, already available on the AppStore! Soon, you will be able to play with the character. Click here to download the game", attributes:
+            let attributedString = NSMutableAttributedString(string: "Half-king Arth, bearer of half of the Excalibur. This brave knight travels the land in search of the sacred blade’s missing pieces. Help him on his adventure by downloading the game here", attributes:
                 [NSForegroundColorAttributeName: UIColor.white,
                  NSFontAttributeName:UIFont(name: "Gameplay", size: 14.0)!])
-            attributedString.setAttributes(linkAttributes, range: NSMakeRange(120,31))
+            attributedString.setAttributes(linkAttributes, range: NSMakeRange(132,49))
             textView.attributedText =  attributedString
             
         case 3:

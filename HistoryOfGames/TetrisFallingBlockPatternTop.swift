@@ -14,18 +14,18 @@ class TetrisFallingBlockPatternTop: EnemyPattern{
         
         super.init(obstacle: obstacle)
         
-        let height = (obstacle.gameScene?.size.height)! / 8
-        let width = (obstacle.gameScene?.size.width)! / 10
+        let height = (obstacle.getGameScene().size.height) / 8
+        let width = (obstacle.getGameScene().size.width) / 10
         
         obstacle.size = CGSize(width: width, height: height)
         
-        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
-        obstacle.position.y = (obstacle.gameScene?.size.height)! - obstacle.size.height / 2
+        obstacle.position.x = (obstacle.getGameScene().size.width) + 20
+        obstacle.position.y = (obstacle.getGameScene().size.height) - obstacle.size.height / 2
         obstacle.configPhysicsBody()
     }
     
     override func move() {
         
-        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
+        obstacle.position.x -= (obstacle.getGameScene().movingSpeed)
     }
 }

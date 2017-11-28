@@ -14,7 +14,7 @@ class Player: SKSpriteNode {
     
     private var characterName: String
     private var texturesArray =  [SKTexture]()
-    private var maxJumps = 2
+    private var maxJumps = 2 
     private var defaultPlayerX: CGFloat = 0
     private var toTheRight = false
     private var toTheLeft = false
@@ -69,6 +69,11 @@ class Player: SKSpriteNode {
     
     func getMaxJumps() -> Int {
         return self.maxJumps
+    }
+    
+    func setMaxJumps(value: Int) {
+        self.maxJumps = value
+        
     }
     
     func setPhysicsBody() {

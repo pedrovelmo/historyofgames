@@ -12,16 +12,13 @@ import SpriteKit
 
 
 class Epoch {
+
+    private var whatEpochIsThis: Int?
+    private var obstacles: [String]?
+    private var numberOfCoins: Int?
+    private var scene: GameScene?
     
-    var background : [Background]?
-    var timeInEpoch: Timer?
-    var floors: [Floor]?
-    var whatEpochIsThis: Int?
-    var obstacles: [String]?
-    var numberOfCoins: Int?
-    var scene: GameScene?
     
-    //TO-DO: Set timer when call init
     init(whatEpochIsThis: Int, scene: GameScene) {
         
         self.whatEpochIsThis = whatEpochIsThis
@@ -31,37 +28,46 @@ class Epoch {
             
         // Transition epoch
         case -1:
-            background = [Background(epochId: whatEpochIsThis)]
-            floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
+            
             obstacles = []
             //numberOfCoins = (scene.lastEpoch?.whatEpochIsThis)! + 1
             
         case 0:
-            background = [Background(epochId: whatEpochIsThis)]
-            floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
+
             obstacles = ["pongBall", "pongBar", "alien1-0"]
             numberOfCoins = 3000
             
         case 1:
-            background = [Background(epochId: whatEpochIsThis)]
-            floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
+
             obstacles = ["ghost0", "pacmanBlock0", "tetrisTopBlockA"]
             numberOfCoins = 6000
             
         case 2:
-            background = [Background(epochId: whatEpochIsThis)]
-            floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
+
 //            obstacles = ["turtle0","block1","crazyAssLink"]
             obstacles = ["turtle0", "block1"]
             numberOfCoins = 12000
             
         case 3:
-            background = [Background(epochId: whatEpochIsThis)]
-            floors = [Floor(epochId: whatEpochIsThis, screenSize: scene.size)]
+
             obstacles = ["pongBall", "pongBar", "alien1-0", "ghost0", "pacmanBlock0", "tetrisTopBlockA","block1", "turtle0"]
             numberOfCoins = 0
             
         default: break
         }
     }
+    
+    
+    func getWhatEpochIsThis() -> Int {
+        return self.whatEpochIsThis!
+    }
+    
+    func getObstacles() -> [String] {
+        return self.obstacles!
+    }
+    
+    func getNumberOfCoins() -> Int {
+        return self.numberOfCoins!
+    }
+    
 }

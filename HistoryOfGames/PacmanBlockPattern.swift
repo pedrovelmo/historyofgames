@@ -40,15 +40,15 @@ class PacmanBlockPattern: EnemyPattern{
             obstacle.configPhysicsBody()
         }
         
-        obstacle.position.y = CGFloat(arc4random_uniform(UInt32(((obstacle.gameScene?.size.height)! * 0.6) - obstacle.size.height / 2))) + (obstacle.gameScene?.floorPosition)! + obstacle.size.height / 2
+        obstacle.position.y = CGFloat(arc4random_uniform(UInt32(((obstacle.getGameScene().size.height) * 0.6) - obstacle.size.height / 2))) + (obstacle.getGameScene().floorPosition)! + obstacle.size.height / 2
         
-        obstacle.position.x = (obstacle.gameScene?.size.width)! + 20
+        obstacle.position.x = (obstacle.getGameScene().size.width) + 20
         print("Position x: ", obstacle.position.x)
         print("Position y: ", obstacle.position.y)
     }
 
     override func move() {
-        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)!
+        obstacle.position.x -= (obstacle.getGameScene().movingSpeed)
     }
 }
 
