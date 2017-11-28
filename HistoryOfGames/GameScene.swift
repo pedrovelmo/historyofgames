@@ -101,8 +101,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func configureAndAddPlayer() {
         
-        player.setDefaultX(scene: self.scene!)
-        player.position.x = player.defaultPlayerX
+        player.setDefaultPlayerX(scene: self.scene!)
+        player.position.x = player.getDefaultPlayerX()
         player.position.y = Floor.floorsArray[0].size.height + player.size.height / 2
         player.zPosition = 5
         self.player.setPhysicsBody()
@@ -128,7 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!isGameOver) {
             
-            if (jumpCounter < player.maxJumps) {
+            if (jumpCounter < player.getMaxJumps()) {
                 jumpCounter = jumpCounter + 1
                 
                 player.jump(jumpCount: jumpCounter)
@@ -152,7 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func swipeHandler(sender: UISwipeGestureRecognizer){
         
         // Player is in default position
-        if(!player.toTheLeft && !player.toTheRight){
+        if(!player.getToTheLeft() && !player.getToTheRight()){
             
             if(sender.direction == .right){
                 if (sender.location(in: self.view).x < (self.view?.scene?.size.width)! / 2) {
@@ -161,7 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.run(SKAction.move(to: CGPoint(x: player.position.x + player.size.width,
                                                          y: player.position.y), duration: 0.2))
                     
-                    player.toTheRight = true
+                    player.setToTheRight(value: true) 
                 }
             }
             
@@ -171,18 +171,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //                player.position.x -= player.size.width
                     player.run(SKAction.move(to: CGPoint(x: player.position.x - player.size.width,
                                                          y: player.position.y), duration: 0.1))
-                    player.toTheLeft = true
+                    player.setToTheLeft(value: true)
                 }
             }
         }
         
-        if((player.toTheRight && sender.direction == .left) ||
-            (player.toTheLeft && sender.direction == .right)){
+        if((player.getToTheRight() && sender.direction == .left) ||
+            (player.getToTheLeft() && sender.direction == .right)){
             
-            player.run(SKAction.move(to: CGPoint(x: player.defaultPlayerX,
+            player.run(SKAction.move(to: CGPoint(x: player.getDefaultPlayerX(),
                                                  y: player.position.y), duration: 0.1))
-            player.toTheRight = false
-            player.toTheLeft = false
+            player.setToTheLeft(value: false)
+            player.setToTheRight(value: false)
         }
     }
     

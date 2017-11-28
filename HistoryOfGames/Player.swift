@@ -12,12 +12,12 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    var characterName: String
-    var texturesArray =  [SKTexture]()
-    var maxJumps = 2
-    var defaultPlayerX: CGFloat = 0
-    var toTheRight = false
-    var toTheLeft = false
+    private var characterName: String
+    private var texturesArray =  [SKTexture]()
+    private var maxJumps = 2
+    private var defaultPlayerX: CGFloat = 0
+    private var toTheRight = false
+    private var toTheLeft = false
     
     // TO-DO: Define image name pattern and update init
     init(name: String) {
@@ -42,9 +42,33 @@ class Player: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setDefaultX(scene: SKScene){
+    func getToTheRight() -> Bool {
+        return self.toTheRight
+    }
+    
+    func setToTheRight(value: Bool) {
+        self.toTheRight = value
+    }
+    
+    func getToTheLeft() -> Bool {
+        return self.toTheLeft
+    }
+    
+    func setToTheLeft(value: Bool) {
+        self.toTheLeft = value
+    }
+    
+    func getDefaultPlayerX() -> CGFloat {
+        return self.defaultPlayerX
+    }
+    
+    func setDefaultPlayerX(scene: SKScene){
         
         self.defaultPlayerX = (scene.size.width) / 8 + self.size.width / 2
+    }
+    
+    func getMaxJumps() -> Int {
+        return self.maxJumps
     }
     
     func setPhysicsBody() {
