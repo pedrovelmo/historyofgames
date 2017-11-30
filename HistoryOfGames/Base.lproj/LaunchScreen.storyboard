@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,19 +18,19 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen1" translatesAutoresizingMaskIntoConstraints="NO" id="zh5-n3-k5k">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zh5-n3-k5k" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="1q0-mZ-dtM"/>
-                            <constraint firstItem="zh5-n3-k5k" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="6t2-pC-U7Z"/>
-                            <constraint firstItem="zh5-n3-k5k" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="gFI-M0-CLl"/>
-                            <constraint firstAttribute="trailing" secondItem="zh5-n3-k5k" secondAttribute="trailing" id="z9l-xp-XpG"/>
+                            <constraint firstItem="zh5-n3-k5k" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="8P7-SP-5db"/>
+                            <constraint firstItem="zh5-n3-k5k" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="Hul-AQ-Feg"/>
+                            <constraint firstItem="zh5-n3-k5k" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gm1-Qd-vVW"/>
+                            <constraint firstItem="zh5-n3-k5k" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vFM-OO-j7a"/>
                         </constraints>
                     </view>
                 </viewController>
