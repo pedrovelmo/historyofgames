@@ -123,7 +123,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.14901961389999999" green="0.14901961389999999" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="Qi9-Qc-8iA" firstAttribute="centerX" secondItem="6Mr-dj-i6S" secondAttribute="centerX" id="4R5-3T-KwI"/>
                             <constraint firstItem="H67-nu-gh8" firstAttribute="height" secondItem="6Mr-dj-i6S" secondAttribute="height" id="7Bb-b0-TIQ"/>
@@ -169,7 +169,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COINS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCW-st-qsW">
-                                <rect key="frame" x="357" y="71.5" width="55.5" height="20"/>
+                                <rect key="frame" x="358.5" y="71.5" width="53" height="20"/>
                                 <fontDescription key="fontDescription" name="Gameplay" family="Gameplay" pointSize="17"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -208,13 +208,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIGHT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1j-ur-fZd">
-                                <rect key="frame" x="357" y="32.5" width="55.5" height="20"/>
+                                <rect key="frame" x="359" y="32.5" width="52" height="20"/>
                                 <fontDescription key="fontDescription" name="Gameplay" family="Gameplay" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.14901961389999999" green="0.14901961389999999" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="mF9-1O-pzz" firstAttribute="top" secondItem="3a2-WY-CJT" secondAttribute="bottom" constant="16" id="0cy-9Z-h9J"/>
                             <constraint firstItem="3a2-WY-CJT" firstAttribute="leading" secondItem="a8I-lm-gb9" secondAttribute="leading" constant="20" id="5cQ-LM-2IU"/>
