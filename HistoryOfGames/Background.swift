@@ -79,6 +79,7 @@ class Background: SKSpriteNode {
         
         transitionBackground.alpha = 0.0
         transitionBackground.size.height = scene.size.height
+        transitionBackground.size.width = scene.size.width
         transitionBackground.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
         transitionBackground.zPosition = -2
         scene.addChild(transitionBackground)
