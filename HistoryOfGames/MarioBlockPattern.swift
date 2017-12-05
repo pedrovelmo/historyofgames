@@ -18,7 +18,7 @@ class MarioBlockPattern: EnemyPattern{
         
         obstacle.texture = SKTexture(imageNamed: "block" + String(randomImage))
         
-        obstacle.size = CGSize(width: 40, height: 40)
+        obstacle.size = CGSize(width: obstacle.getGameScene().size.width * 0.1, height: obstacle.getGameScene().size.height * 0.11)
         
         obstacle.position.y = CGFloat(arc4random_uniform(UInt32((obstacle.getGameScene().size.height) - obstacle.size.height / 2))) + (obstacle.getGameScene().floorPosition)! + obstacle.size.height / 2
         

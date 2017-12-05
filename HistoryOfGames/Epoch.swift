@@ -45,7 +45,7 @@ class Epoch {
         case 2:
 
 //            obstacles = ["turtle0","block1","crazyAssLink"]
-            obstacles = ["turtle0", "block1"]
+            obstacles = ["block1"]
             numberOfCoins = 12000
             
         case 3:
