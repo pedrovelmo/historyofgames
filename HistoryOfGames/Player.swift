@@ -99,7 +99,7 @@ class Player: SKSpriteNode {
         if(jumpCount <= self.maxJumps){
            
             self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 120))
         }
     }
 }

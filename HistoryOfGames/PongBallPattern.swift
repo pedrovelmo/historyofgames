@@ -14,7 +14,7 @@ class PongBallPattern: EnemyPattern{
     
     override init(obstacle: Obstacle) {
         
-        obstacle.size = CGSize(width: 10, height: 10)
+        obstacle.size = CGSize(width: obstacle.getGameScene().size.width * 0.02, height: obstacle.getGameScene().size.height * 0.032)
         
         super.init(obstacle: obstacle)
         
