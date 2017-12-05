@@ -16,8 +16,8 @@ class PacmanBlockPattern: EnemyPattern{
         
         let randomImage = arc4random_uniform(2)
         obstacle.texture = SKTexture(imageNamed: "pacmanBlock" + String(randomImage))
-        let width = CGFloat(arc4random_uniform(UInt32(obstacle.getGameScene().size.width * 0.1))) + obstacle.getGameScene().size.width * 0.07
-        let height = CGFloat(arc4random_uniform(UInt32(obstacle.getGameScene().size.width * 0.1))) + obstacle.getGameScene().size.width * 0.07
+        let width = CGFloat(arc4random_uniform(UInt32(obstacle.getGameScene().size.width * 0.1))) + obstacle.getGameScene().size.width * 0.05
+        let height = CGFloat(arc4random_uniform(UInt32(obstacle.getGameScene().size.width * 0.1))) + obstacle.getGameScene().size.width * 0.05
         print("Width: ", width)
         print("Height: ", height)
         obstacle.size = CGSize(width: width, height: height)

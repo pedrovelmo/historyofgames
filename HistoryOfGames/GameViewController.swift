@@ -73,7 +73,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
         request.testDevices = [kGADSimulatorID,                       // All simulators
             "b0ef8c411b1165d1bdeb146215e061ed"];
         GADRewardBasedVideoAd.sharedInstance().load(request,
-                                                    withAdUnitID: "ca-app-pub-3456908685378113/2356254230")
+                                                    withAdUnitID: "ca-app-pub-3456908685378113/4475805050")
 
     }
     
@@ -82,7 +82,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
+        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .pad  {
             return .allButUpsideDown
         } else {
             return .all
@@ -121,7 +121,7 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
             view.ignoresSiblingOrder = true
             
             view.showsFPS = false
-            view.showsNodeCount = true
+            view.showsNodeCount = false
             view.showsPhysics = false
         }
     }

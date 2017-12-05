@@ -22,7 +22,7 @@ class PacmanGhostPattern: EnemyPattern{
         
         self.obstacle.texture = SKTexture(imageNamed: "ghost" + String(randomImage))
         
-        obstacle.size = CGSize(width: 30, height: 30)
+        obstacle.size = CGSize(width: obstacle.getGameScene().size.width * 0.07, height: obstacle.getGameScene().size.height * 0.075)
         
         obstacle.position.x = (obstacle.getGameScene().size.width) + 20
         obstacle.configPhysicsBody()

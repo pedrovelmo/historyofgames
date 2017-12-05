@@ -18,7 +18,7 @@ class MarioBlockPattern: EnemyPattern{
         
         obstacle.texture = SKTexture(imageNamed: "block" + String(randomImage))
         
-        obstacle.size = CGSize(width: obstacle.getGameScene().size.width * 0.1, height: obstacle.getGameScene().size.height * 0.11)
+        obstacle.size = CGSize(width: obstacle.getGameScene().size.width * 0.085, height: obstacle.getGameScene().size.height * 0.1)
         
         obstacle.position.y = CGFloat(arc4random_uniform(UInt32((obstacle.getGameScene().size.height) - obstacle.size.height / 2))) + (obstacle.getGameScene().floorPosition)! + obstacle.size.height / 2
         
@@ -26,7 +26,7 @@ class MarioBlockPattern: EnemyPattern{
         
         let randomMoveUp = Double(arc4random_uniform(UInt32(0.5))) + 0.5
         let randomMoveDown = Double(arc4random_uniform(UInt32(0.5))) + 0.5
-        let randomMoveSideways = Double(arc4random_uniform(UInt32(0.5))) + 0.7
+        let randomMoveSideways = Double(arc4random_uniform(UInt32(0.5))) + 0.5
         
         let moveUpAction = SKAction.moveTo(y: (obstacle.getGameScene().size.height) - obstacle.size.height / 2, duration: randomMoveUp)
         // move down 100
@@ -36,7 +36,7 @@ class MarioBlockPattern: EnemyPattern{
 
         let shakeAction = SKAction.rotate(byAngle: CGFloat(3.14/4), duration: 0.2)
         let shakeAction1 = SKAction.rotate(toAngle: CGFloat(0), duration: 0.2)
-        let moveSidewaysAction = SKAction.sequence([SKAction.moveBy(x: -40, y: 0, duration: randomMoveSideways),shakeAction,shakeAction.reversed(), shakeAction1])
+        let moveSidewaysAction = SKAction.sequence([SKAction.moveBy(x: -30, y: 0, duration: randomMoveSideways),shakeAction,shakeAction.reversed(), shakeAction1])
         
 
         
