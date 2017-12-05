@@ -224,12 +224,6 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
                             didFailToLoadWithError error: Error) {
         print("Reward based video ad failed to load.")
         adFailedToLoad = true
-    
-  
-        
     }
-    
- 
-
 }
 

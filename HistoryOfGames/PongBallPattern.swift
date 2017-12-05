@@ -36,9 +36,8 @@ class PongBallPattern: EnemyPattern{
             }
                 
             else {
-                 randomX = -Double(arc4random_uniform(UInt32((obstacle.getGameScene().movingSpeed) * 2.0))) - Double((obstacle.getGameScene().movingSpeed)) * 1.5
+                 randomX = -Double(arc4random_uniform(UInt32((obstacle.getGameScene().movingSpeed) * 1.25))) - Double((obstacle.getGameScene().movingSpeed)) * 2
             }
-            
             
             var randomY: Double!
             let yType = arc4random_uniform(2)
