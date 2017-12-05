@@ -120,13 +120,11 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = false
-            view.showsNodeCount = false
+            view.showsFPS = true
+            view.showsNodeCount = true
             view.showsPhysics = false
         }
     }
-    
-
     
     func createLoadingView() {
         let loadingView = UIView(frame: CGRect(x: self.view.frame.width / 2 - 120, y: self.view.frame.height / 2 - 20 , width: 0, height: 40))
@@ -224,12 +222,6 @@ class GameViewController: UIViewController, GADRewardBasedVideoAdDelegate {
                             didFailToLoadWithError error: Error) {
         print("Reward based video ad failed to load.")
         adFailedToLoad = true
-    
-  
-        
     }
-    
- 
-
 }
 
