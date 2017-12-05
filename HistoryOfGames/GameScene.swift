@@ -42,7 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         if (numberOfDeaths == 0) {
-            player = Player(name: "dido", gameScene: self)
+            
+            
         self.parentViewController?.gameOverAlreadyHappened = true
        // self.parentViewController?.oldScene = self
         self.physicsWorld.contactDelegate = self
@@ -101,6 +102,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func configureAndAddPlayer() {
+        
+        switch(UserProfile.sharedInstance.characterSelected) {
+        case "didoStore":
+                player = Player(name: "dido", gameScene: self)
+        case "odessaRunframe1":
+                player = Player(name: "odessa", gameScene: self)
+        case "KingArth4":
+            player = Player(name: "kingArth", gameScene: self)
+        case "LumosStore":
+            player = Player(name: "lumos", gameScene: self)
+            
+            default: break
+        }
         
         player.setDefaultPlayerX(scene: self.scene!)
         player.position.x = player.getDefaultPlayerX()

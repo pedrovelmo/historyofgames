@@ -26,6 +26,10 @@ class UserProfile{
     var coinsTotal: Int = 0
     
     var userDefaults = UserDefaults.standard
+    
+    var gameModeStore: Bool = true
+    
+    var characterSelected: String = "didoStore"
 
     func updateUserData(coins: Int, score: Int){
         

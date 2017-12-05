@@ -25,24 +25,77 @@ class Player: SKSpriteNode {
         self.characterName = name
         self.gameScene = gameScene
        
-        for i in 1...7{
+
+        var texture: SKTexture = SKTexture(imageNamed: "dido1")
+        super.init(texture: texture, color: UIColor.clear, size: (texture.size()))
+        switch characterName {
+        case "dido":
             
-            var textureName = ""
+            for i in 1...7{
+                
+                var textureName = ""
+                
+                textureName = "dido\(i)"
+                
+                texturesArray.append(SKTexture(imageNamed: textureName))
+            }
             
-            textureName = "dido\(i)"
+            texture = SKTexture(imageNamed: "dido1")
+            self.setScale(gameScene.size.height * 0.0005)
             
-            texturesArray.append(SKTexture(imageNamed: textureName))
+        case "odessa":
+            for i in 1...9{
+                
+                var textureName = ""
+                
+                textureName = "odessaRunframe\(i)"
+                
+                texturesArray.append(SKTexture(imageNamed: textureName))
+            }
+            
+            texture = SKTexture(imageNamed: "odessaRunframe1")
+            self.setScale(gameScene.size.height * 0.001)
+            
+        case "kingArth":
+            for i in 1...13{
+                
+                var textureName = ""
+                
+                textureName = "KingArth\(i)"
+                
+                texturesArray.append(SKTexture(imageNamed: textureName))
+            }
+            
+            texture = SKTexture(imageNamed: "KingArth1")
+            self.setScale(gameScene.size.height * 0.0005)
+            
+        case "lumos":
+            for i in 1...8{
+                
+                var textureName = ""
+                
+                textureName = "LumosWalking\(i)"
+                
+                texturesArray.append(SKTexture(imageNamed: textureName))
+                self.setScale(gameScene.size.height * 0.0005)
+            }
+            
+            texture = SKTexture(imageNamed: "LumosWalking")
+            
+            
+            
+        default:
+            break
         }
         
-        let texture = SKTexture(imageNamed: "dido1")
+       
         
-        super.init(texture: texture, color: UIColor.clear, size: texture.size())
-        self.setScale(gameScene.size.height * 0.0005)
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     func getToTheRight() -> Bool {
         return self.toTheRight
@@ -104,7 +157,15 @@ class Player: SKSpriteNode {
             }
             
             else {
+                if (characterName == "dido") {
                 self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 110))
+                }
+                
+                else if (characterName == "kingArth") {
+                    self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 140))
+                }
+                
+                
             }
         }
     }

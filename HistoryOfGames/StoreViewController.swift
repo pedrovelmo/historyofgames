@@ -68,7 +68,10 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
         selectedCell = indexPath.row
         let cell = collectionView.cellForItem(at: indexPath) as! StoreCollectionViewCell
          cell.backgroundImageView.image = UIImage(named: "CellBackgroundSelected")
-        
+        if (!UserProfile.sharedInstance.gameModeStore) {
+        UserProfile.sharedInstance.characterSelected = games[indexPath.row]
+        }
+        print("Character Selected: ",UserProfile.sharedInstance.characterSelected)
         updateTextView()
         updateBuyButtonImage()
         
@@ -126,13 +129,32 @@ class StoreViewController: UIViewController, UICollectionViewDelegate, UICollect
     func updateBuyButtonImage() {
         switch(selectedCell) {
         case 0:
+            
             buyButton.setImage(UIImage(named: "SelectedButton"), for: UIControlState.normal)
         case 1:
+            if (UserProfile.sharedInstance.gameModeStore) {
             buyButton.setImage(UIImage(named: "Soon"), for: UIControlState.normal)
+            }
+            
+            else {
+                buyButton.setImage(UIImage(named: "SelectedButton"), for: UIControlState.normal)
+            }
         case 2:
-            buyButton.setImage(UIImage(named: "Soon"), for: UIControlState.normal)
+            if (UserProfile.sharedInstance.gameModeStore) {
+                buyButton.setImage(UIImage(named: "Soon"), for: UIControlState.normal)
+            }
+                
+            else {
+                buyButton.setImage(UIImage(named: "SelectedButton"), for: UIControlState.normal)
+            }
         default:
-            buyButton.setImage(UIImage(named: "Soon"), for: UIControlState.normal)
+            if (UserProfile.sharedInstance.gameModeStore) {
+                buyButton.setImage(UIImage(named: "Soon"), for: UIControlState.normal)
+            }
+                
+            else {
+                buyButton.setImage(UIImage(named: "SelectedButton"), for: UIControlState.normal)
+            }
             
             
         }
