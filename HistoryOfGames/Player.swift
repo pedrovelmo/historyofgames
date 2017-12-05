@@ -54,7 +54,7 @@ class Player: SKSpriteNode {
             }
             
             texture = SKTexture(imageNamed: "odessaRunframe1")
-            self.setScale(gameScene.size.height * 0.001)
+            self.setScale(gameScene.size.height * 0.0012)
             
         case "kingArth":
             for i in 1...13{
@@ -77,7 +77,7 @@ class Player: SKSpriteNode {
                 textureName = "LumosWalking\(i)"
                 
                 texturesArray.append(SKTexture(imageNamed: textureName))
-                self.setScale(gameScene.size.height * 0.0005)
+                self.setScale(gameScene.size.height * 0.0025)
             }
             
             texture = SKTexture(imageNamed: "LumosWalking")
@@ -135,9 +135,16 @@ class Player: SKSpriteNode {
         
         let hitbox: CGSize!
         if (characterName == "odessa") {
-            hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.5)
+            hitbox = CGSize(width: self.size.width * 0.3, height: self.size.height * 0.35)
         }
         
+        else if (characterName == "kingArth") {
+            hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.85)
+        }
+            
+        else if (characterName == "lumos") {
+            hitbox = CGSize(width: self.size.width * 0.1, height: self.size.height * 0.15)
+        }
         else {
         hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.9)
         }
@@ -160,7 +167,21 @@ class Player: SKSpriteNode {
            
             self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             if UIDevice.current.userInterfaceIdiom == .pad {
+                if (characterName == "dido") {
             self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: ((gameScene?.size.height)! * 1.3)))
+                }
+                
+                else if (characterName == "odessa") {
+                    self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: ((gameScene?.size.height)! * 1.6)))
+                }
+                
+                else if (characterName == "kingArth") {
+                    self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: ((gameScene?.size.height)! * 1.6)))
+                }
+                
+                else if (characterName == "lumos") {
+                    self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: ((gameScene?.size.height)! * 1.1)))
+                }
             }
             
             else {
@@ -170,6 +191,14 @@ class Player: SKSpriteNode {
                 
                 else if (characterName == "kingArth") {
                     self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 140))
+                }
+                
+                else if (characterName == "odessa") {
+                    self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 150))
+                }
+                
+                else if (characterName == "lumos") {
+                    self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 90))
                 }
                 
                 
