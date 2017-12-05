@@ -30,8 +30,15 @@ class PongBallPattern: EnemyPattern{
     override func move() {
         
         if(!didStartMoving){
+            let randomX: Double!
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                randomX = -Double(arc4random_uniform(UInt32((obstacle.getGameScene().movingSpeed) * 7.0))) - Double((obstacle.getGameScene().movingSpeed)) * 5.0
+            }
+                
+            else {
+                 randomX = -Double(arc4random_uniform(UInt32((obstacle.getGameScene().movingSpeed) * 2.0))) - Double((obstacle.getGameScene().movingSpeed)) * 1.5
+            }
             
-            let randomX = -Double(arc4random_uniform(UInt32((obstacle.getGameScene().movingSpeed) * 1.7))) - Double((obstacle.getGameScene().movingSpeed)) * 1.3
             
             var randomY: Double!
             let yType = arc4random_uniform(2)

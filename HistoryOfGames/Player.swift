@@ -99,7 +99,13 @@ class Player: SKSpriteNode {
         if(jumpCount <= self.maxJumps){
            
             self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 120))
+            if UIDevice.current.userInterfaceIdiom == .pad {
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: ((gameScene?.size.height)! * 1.3)))
+            }
+            
+            else {
+                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 110))
+            }
         }
     }
 }

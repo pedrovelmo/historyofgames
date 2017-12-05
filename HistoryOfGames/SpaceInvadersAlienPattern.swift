@@ -66,7 +66,7 @@ class SpaceInvadersAlienPattern: EnemyPattern{
             
             obstacle.appendItemInTexturesArray(value: SKTexture(imageNamed: textureName))
             obstacle.run(SKAction.repeatForever(SKAction.animate(with: obstacle.getTexturesArray(), timePerFrame: 0.15, resize: true, restore: false)))
-            obstacle.setScale(0.4)
+            obstacle.setScale(obstacle.getGameScene().size.height * 0.0011)
         }
     }
 }

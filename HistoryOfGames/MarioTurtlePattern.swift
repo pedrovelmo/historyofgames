@@ -80,7 +80,7 @@ class MarioTurtlePattern: EnemyPattern{
             
             obstacle.appendItemInTexturesArray(value: SKTexture(imageNamed: textureName))
             obstacle.run(SKAction.repeatForever(SKAction.animate(with: obstacle.getTexturesArray(), timePerFrame: 0.06, resize: true, restore: false)))
-            obstacle.setScale(obstacle.getGameScene().size.height * 0.00025)
+            obstacle.setScale(obstacle.getGameScene().size.height * 0.0003)
         }
     }
 }
