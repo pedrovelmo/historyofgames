@@ -27,7 +27,7 @@ class UserProfile{
     
     var userDefaults = UserDefaults.standard
     
-    var gameModeStore: Bool = true
+    var gameModeStore: Bool = false
     
     var characterSelected: String = "didoStore"
 

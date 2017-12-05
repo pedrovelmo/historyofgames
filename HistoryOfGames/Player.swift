@@ -133,7 +133,14 @@ class Player: SKSpriteNode {
     
     func setPhysicsBody() {
         
-        let hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.9)
+        let hitbox: CGSize!
+        if (characterName == "odessa") {
+            hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.5)
+        }
+        
+        else {
+        hitbox = CGSize(width: self.size.width * 0.6, height: self.size.height * 0.9)
+        }
         self.physicsBody = SKPhysicsBody(rectangleOf: hitbox)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = true
