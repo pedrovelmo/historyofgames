@@ -12,7 +12,7 @@ class PongBarPattern: EnemyPattern{
     
     override init(obstacle: Obstacle) {
         
-        obstacle.size = CGSize(width: 10, height: 50)
+        obstacle.size = CGSize(width: obstacle.getGameScene().size.width * 0.018, height: obstacle.getGameScene().size.height * 0.18)
         
         obstacle.position.x = (obstacle.getGameScene().size.width) + 20
         
