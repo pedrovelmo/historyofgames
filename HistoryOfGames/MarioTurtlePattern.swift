@@ -35,17 +35,6 @@ class MarioTurtlePattern: EnemyPattern{
         obstacle.physicsBody?.linearDamping = 0.9
         obstacle.physicsBody?.mass = 0.01
         
-//        let randomX = Int(arc4random_uniform(5)) + 5
-//        let randomY = -Int(arc4random_uniform(7)) - 5
-//        obstacle.physicsBody?.applyImpulse(CGVector(dx: -60, dy: 0))
-        
-//        var parableX: CGFloat = obstacle.position.x
-//        var parableY: CGFloat = obstacle.position.y
-//
-//        let parableMovement = SKAction.run {
-//
-//        }
-        
         let movePath = UIBezierPath(
                         arcCenter: CGPoint(x:obstacle.getGameScene().size.width / 2,
                         y:obstacle.getGameScene().floorPosition!),
@@ -67,9 +56,7 @@ class MarioTurtlePattern: EnemyPattern{
     }
     
     override func move() {
-        
-//        obstacle.position.x -= (obstacle.gameScene?.movingSpeed)! * 1.5
-//        obstacle.position.y = -CGFloat(pow(Double((obstacle.gameScene?.movingSpeed)!), 4)) + obstacle.size.height / 2 + (obstacle.gameScene?.size.height)!
+
     }
     
     func animate(){

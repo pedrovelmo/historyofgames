@@ -369,7 +369,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         || (contact.bodyA.categoryBitMask == PhysicsCategory.Coin && contact.bodyB.categoryBitMask == PhysicsCategory.Player){
             
             contact.bodyB.node?.removeFromParent()
-            self.coins += 25
+            self.coins += 1
             coinLabelUpdate()
             self.run(AudioManager.sharedInstance.coinSound)
             

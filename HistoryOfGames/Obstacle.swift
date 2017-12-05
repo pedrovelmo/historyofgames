@@ -9,14 +9,13 @@
 import UIKit
 import SpriteKit
 
-
 class Obstacle: SKSpriteNode {
     
    static var obstaclesArray: [Obstacle] = []
     
     private  var obstacleName: String
     private var pattern: EnemyPattern?
-    private var texturesArray =  [SKTexture]()
+    private var texturesArray = [SKTexture]()
     private var gameScene: GameScene?
     
     init(name: String, scene: GameScene) {
@@ -113,6 +112,4 @@ class Obstacle: SKSpriteNode {
     func getGameScene() -> GameScene {
         return self.gameScene!
     }
-    
- 
 }

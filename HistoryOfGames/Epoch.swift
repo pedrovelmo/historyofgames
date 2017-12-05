@@ -35,18 +35,18 @@ class Epoch {
         case 0:
 
             obstacles = ["alien1-0", "pongBall", "pongBar"]
-            numberOfCoins = 3000
+            numberOfCoins = 90
             
         case 1:
 
             obstacles = ["ghost0", "pacmanBlock0", "tetrisTopBlockA"]
-            numberOfCoins = 6000
+            numberOfCoins = 200
             
         case 2:
 
 //            obstacles = ["turtle0","block1","crazyAssLink"]
             obstacles = ["turtle0", "block1"]
-            numberOfCoins = 12000
+            numberOfCoins = 320
             
         case 3:
 
