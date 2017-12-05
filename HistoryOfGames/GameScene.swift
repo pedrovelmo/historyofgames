@@ -14,7 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var menu: MenuViewController!
     var epoch: Epoch!
     var lastEpoch: Epoch?
-    var player = Player(name: "dido")
+    var player: Player!
     var movingSpeed: CGFloat = 0.0
     var jumpCounter = 0
     var hudView: HudView?
@@ -42,6 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         if (numberOfDeaths == 0) {
+            player = Player(name: "dido", gameScene: self)
         self.parentViewController?.gameOverAlreadyHappened = true
        // self.parentViewController?.oldScene = self
         self.physicsWorld.contactDelegate = self

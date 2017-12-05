@@ -18,10 +18,12 @@ class Player: SKSpriteNode {
     private var defaultPlayerX: CGFloat = 0
     private var toTheRight = false
     private var toTheLeft = false
+    var gameScene: GameScene?
     
     // TO-DO: Define image name pattern and update init
-    init(name: String) {
+    init(name: String, gameScene: GameScene) {
         self.characterName = name
+        self.gameScene = gameScene
        
         for i in 1...7{
             
@@ -35,7 +37,7 @@ class Player: SKSpriteNode {
         let texture = SKTexture(imageNamed: "dido1")
         
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
-        self.setScale(0.15)
+        self.setScale(gameScene.size.height * 0.0005)
     }
     
     required init(coder aDecoder: NSCoder) {
